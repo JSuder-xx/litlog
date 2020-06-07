@@ -1,0 +1,39 @@
+{
+  "name": "litlog",
+  "version": "0.1.0",
+  "scripts": {
+    "serve": "serve dist",
+    "clean": "bsb -clean-world",
+    "build:bsb": "bsb -make-world",
+    "build:js": "rollup -c",
+    "build": "run-s build:bsb build:js",
+    "watch:bsb": "bsb -make-world -w",
+    "watch:js": "rollup -c -w",
+    "watch": "run-p watch:bsb watch:js serve"
+  },
+  "description": "An on-line literate logic programming language (similar to Prolog) designed to replace symbol heavy syntax with literate keywords in order to focus learners on fundamental logic programming concepts.",
+  "keywords": [
+    "Literate Logic Programming",
+    "Logic Programming",
+    "Prolog",
+    "TEA",
+    "BuckleScript"
+  ],
+  "author": "John Suder",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "bs-platform": "^7.3.2",
+    "bucklescript-tea": "^0.7.5",
+    "merlin": "0.0.1-0",
+    "moduleserve": "^0.9.1",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.13.1",
+    "rollup-plugin-terser": "^6.1.0",
+    "serve": "^11.3.2"
+  },
+  "dependencies": {
+    "bsb": "0.0.1",
+    "nodejs": "0.0.0"
+  }
+}
