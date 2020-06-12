@@ -1,23 +1,45 @@
 open Language.Types
 open Utils
 
-module Model = struct
+module ApplicationModel = struct
     
-    module ParsedTextEditing = struct
+    module CompiledTextEditing = struct
+
         type 'a t =
             { text: string
-            ; parse_result: 'a ParserM.parse_result
+            ; compilation_result: ('a, string list) Tea.Result.t
             }
 
         let empty () : 'a t =
             { text = ""
-            ; parse_result = Tea.Result.Error []
+            ; compilation_result = Tea.Result.Error []
             }
 
-        let make text parser : 'a t = 
-            { text
-            ; parse_result = ParserM.parse_require_all parser text                   
+        let edit string_of_item item : 'a t =
+            { text = string_of_item item
+            ; compilation_result = Tea.Result.Ok item
             }
+
+        let make text parser validator : 'a t = 
+            { text
+            ; compilation_result = 
+                match ParserM.parse_require_all parser text with
+                | Tea.Result.Ok { result } -> (
+                    match validator result with
+                    | [] -> 
+                        Tea.Result.Ok result
+                    | validation_messages ->
+                        Tea.Result.Error validation_messages
+                )
+                | Tea.Result.Error errors -> (
+                    match List.sort ParserM.parse_error_compare errors with
+                    | [] -> Tea.Result.Error []
+                    | first_error::rest_of_errors ->
+                        let errors' = first_error::(rest_of_errors |> List.filter (fun err -> (ParserM.parse_error_compare err first_error) <= 0)) in 
+                        Tea.Result.Error (errors' |> List.map ParserM.string_of_parse_error)
+                )
+            }
+
     end
 
     module ExecutingQueryInfo = struct
@@ -44,8 +66,11 @@ module Model = struct
     end
 
     type interaction_mode = 
-        | AddingRule of Rule.t ParsedTextEditing.t
-        | EditingQuery of (ComplexTerm.t list) ParsedTextEditing.t
+        | ViewingRules 
+        | AddingRule of Rule.t CompiledTextEditing.t
+        | EditingRule of RuleDatabase.rule_entry * Rule.t CompiledTextEditing.t
+
+        | EditingQuery of (ComplexTerm.t list) CompiledTextEditing.t
         | ExecutingQuery of ExecutingQueryInfo.t
 
     type t = 
@@ -55,20 +80,22 @@ module Model = struct
     
     let init () : t = 
         { rule_database = RuleDatabase.empty
-        ; interaction_mode = AddingRule (ParsedTextEditing.empty ())
+        ; interaction_mode = ViewingRules
         }
 end
 
 module Message = struct
 
-    type t =
-        | LoadRulesFromLocation of Web.Location.location
-        
+    type t =              
+        | ViewRules
+        | InitiateAddRule
+        | InitiateEditRule of RuleDatabase.rule_entry
+        | InitiateEditQuery
+
         | UpdateText of string
-        | SwitchToAddRule
-        | SwitchToEditQuery
-        
+
         | AddRule of Rule.t
+        | EditRuleEntry of RuleDatabase.rule_entry
         | DeleteRule of RuleDatabase.rule_entry
 
         | ExecuteQuery of ComplexTerm.t list
@@ -77,36 +104,64 @@ module Message = struct
 
 end
 
-let update ({ rule_database; interaction_mode }: Model.t) msg = Message.(
+let update ({ rule_database; interaction_mode }: ApplicationModel.t) msg = 
+    let open Message in
+    let open ApplicationModel in 
     (
-        match msg with        
-        | LoadRulesFromLocation _location -> (
-            { Model.rule_database; interaction_mode }
-        )            
-        
+        match msg with                
         | UpdateText text -> (
+            let snapshot = rule_database |> Language.Validator.rule_database_snapshot in
             match interaction_mode with 
             | AddingRule _ ->
-                { Model.rule_database
-                ; interaction_mode = AddingRule (Model.ParsedTextEditing.make text Language.Parser.rule_parser)
+                { rule_database
+                ; interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.make text Language.Parser.rule_parser (Language.Validator.issues_in_new_rule snapshot))
+                }
+            | EditingRule (rule_entry, _) ->
+                let validator rule = 
+                    Language.Types.RuleDatabase.update_rule_entry rule_entry rule
+                    |> Language.Validator.issues_in_existing_rule snapshot in
+                { rule_database
+                ; interaction_mode = EditingRule 
+                    (
+                        rule_entry
+                        , ApplicationModel.CompiledTextEditing.make text Language.Parser.rule_parser validator
+                    )                    
                 }
             | EditingQuery _ ->
-                { Model.rule_database
-                ; interaction_mode = EditingQuery (Model.ParsedTextEditing.make text Language.Parser.query_parser)
+                { rule_database
+                ; interaction_mode = EditingQuery (ApplicationModel.CompiledTextEditing.make text Language.Parser.query_parser (Language.Validator.issues_in_query snapshot))
                 }
             | _ ->
-                { Model.rule_database; interaction_mode }
-        )            
+                { rule_database; interaction_mode }
+        )         
 
-        | SwitchToAddRule ->
-            { rule_database; interaction_mode = AddingRule (Model.ParsedTextEditing.empty ()) }
+        | ViewRules ->
+            { rule_database; interaction_mode = ViewingRules }
 
-        | SwitchToEditQuery ->
-            { rule_database; interaction_mode = EditingQuery (Model.ParsedTextEditing.empty ()) }
+        | InitiateEditRule rule_entry ->            
+            let rule = Language.Types.RuleDatabase.rule_from_entry rule_entry in
+            { rule_database; 
+            interaction_mode = EditingRule
+                (
+                    rule_entry
+                    , (ApplicationModel.CompiledTextEditing.edit Language.Types.Rule.to_string rule)
+                ) 
+            }
+
+        | InitiateAddRule ->
+            { rule_database; interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.empty ()) }
+
+        | InitiateEditQuery ->
+            { rule_database; interaction_mode = EditingQuery (ApplicationModel.CompiledTextEditing.empty ()) }
 
         | AddRule rule -> 
             { rule_database = (RuleDatabase.add_rule rule_database rule)
-            ; interaction_mode = AddingRule (Model.ParsedTextEditing.empty ())
+            ; interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.empty ())
+            }
+
+        | EditRuleEntry rule_entry ->
+            { rule_database = (RuleDatabase.update_rule rule_database rule_entry)
+            ; interaction_mode = ViewingRules 
             }
 
         | DeleteRule rule_entry ->
@@ -128,10 +183,10 @@ let update ({ rule_database; interaction_mode }: Model.t) msg = Message.(
             match interaction_mode with
             | ExecutingQuery executing_query_info ->
                 { rule_database
-                ; interaction_mode =  ExecutingQuery (Model.ExecutingQueryInfo.next_solution executing_query_info)
+                ; interaction_mode =  ExecutingQuery (ApplicationModel.ExecutingQueryInfo.next_solution executing_query_info)
                 }
             | _ ->
                 { rule_database; interaction_mode }
     )
     |> (fun model -> (model, Tea.Cmd.NoCmd))
-)
+

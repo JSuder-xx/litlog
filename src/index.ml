@@ -2,9 +2,9 @@ open Application
 
 let main =
     let program = Tea.Navigation.navigationProgram
-        (Message.loadRulesFromLocation)
+        (fun _location -> Message.viewRules)
         {
-            init = (fun _ _ -> (Application.Model.init (), Tea.Cmd.NoCmd))
+            init = (fun _ _ -> (Application.ApplicationModel.init (), Tea.Cmd.NoCmd))
             ; update  = update
             ; view = ApplicationView.view
             ; shutdown = (fun _ -> Tea.Cmd.none)
@@ -18,4 +18,3 @@ let main =
         ); 
         program web_node ()        
     )
-

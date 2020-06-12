@@ -1,3 +1,10 @@
+module Func = struct
+
+    let compose f g x = x |> f |> g
+    let (>>) = compose
+
+end
+
 module ListEx = struct
     (* take n from a list, if the list has fewer than n that is OK *)
     let take (n: int) (lst: 'a list) =
@@ -16,15 +23,35 @@ module ListEx = struct
 
     let apply v fn = fn v
 
+    let bind lst fn = lst |> List.map fn |> List.concat
+
+    let concat_map fn lst = bind lst fn
+
+    let (>>=) = bind
+
     let list_from_option = function
     | None -> []
     | Some item -> [item]
+
+    (** Given a list and a key selector, returns the first pair of entries that are unequal if any are found otherwise None. *)
+    let first_inconsistent_opt lst fn =
+        let rec aux last = function
+        | [] -> None
+        | head::rest ->
+            let current = fn head in
+            if current = last
+            then aux current rest
+            else Some (last, current) in
+        match lst with
+        | [] -> None
+        | head::rest -> aux (fn head) rest
+
 
 end
 
 module AggregateMap(Ord: Map.OrderedType) = struct
 
-    module Map = Map.Make(Ord)           
+    module Map = Map.Make(Ord)   
 
     let make (key_of: 'a -> Ord.t) (lst: 'a list)  =
         let add_to_list item = function
@@ -36,6 +63,11 @@ module AggregateMap(Ord: Map.OrderedType) = struct
                 Map.update (key_of item) (add_to_list item) map
             )
             Map.empty 
+    
+    (** the keys for the aggregated map *)
+    let keys map = Map.bindings map |> List.map fst
+
+    let find_opt key map = Map.find_opt key map 
 
 end
 

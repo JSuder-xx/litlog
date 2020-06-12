@@ -34,8 +34,8 @@ type parse_error =
 let parse_error_compare left right =
     location_compare left.location right.location
 
-let string_of_parse_error { expecting; location } =
-    Printf.sprintf "%s: %s" (string_of_location location) expecting
+let string_of_parse_error { expecting; location; actual } =
+    Printf.sprintf "At %s; Expecting %s but actual %s" (string_of_location location) expecting actual
 
 type 'value parse_success = 
     { result: 'value
