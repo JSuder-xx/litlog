@@ -6,11 +6,18 @@ open Utils
 module ContainersView = struct
 
     let style = {j|
+        html {
+            height: 100%
+        }
+
         body {
+            height: 100%;
             background-color: #eee;
             display: flex;
             flex-direction: column;
             font-family: sans-serif;
+            padding: 0;
+            margin: 0;
         }
 
         p {
@@ -82,29 +89,58 @@ end
 
 module PanelView = struct
 
-    let container_class = "panel-container"
-    let panel_header_class = "header"
+    let panels_class = "panels"
+    let panel_class = "panel"
+    let panel_header_class = "panel-header"
     let panel_body_class = "panel-body"
 
-    let view ~header body =
-        div [ class' container_class]
+    let panel_view ~header body =
+        div [ class' panel_class]
             [ div [ class' panel_header_class ] [text header] 
             ; div [ class' panel_body_class ] body
             ]
 
+    let panels_container_view panels =
+        div [ class' panels_class ]
+            panels        
+
     let style = {j|
+        div.$panels_class {
+            height: 98%;
+        }
+
         div.$panel_header_class {
-            background-color: blue;
+            background-color: #248;
             color: white;
             font-weight: bold;
             padding: 4px;
-        }        
+        }   
 
-        div.$container_class {
-            float: left;
-            margin: 5px;
-            width: 48%;
-            border: solid 1px #aaa;
+        div.$panel_class {
+            overflow-y: auto;
+            background-color: white;
+            margin-top: 5px;
+        }     
+        
+
+        @media screen and (max-width: 1023px) {
+            div.$panel_class {
+                float: left;
+                width: 99%;
+                margin-top: 10px;
+                border: solid 1px #aaa;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            div.$panel_class {
+                float: left;
+                margin-left: 5px;
+                margin-right: 5px;
+                width: 48%;
+                height: 98%;
+                border: solid 1px #aaa;
+            }
         }
 
         div.$panel_body_class {
@@ -135,7 +171,8 @@ module RuleView = struct
         }
         
         .$relation_name_class {
-            color: #4af;
+            color: #6af;
+            font-weight: bold;
         }
 
         .$punctuation_class {
@@ -177,7 +214,7 @@ module RuleView = struct
     
     let rec term_view = function
         | Term.Variable VariableName var ->
-            span [class' variable_class] [text var]
+            span [class' variable_class] [var |> Printf.sprintf "?%s" |> text]
         | Term.Relation { relation_name = RelationName name; related_terms } ->
             match related_terms with
             | [] -> 
@@ -226,13 +263,29 @@ module RuleView = struct
             [ term_view consequent            
             ; (
                 match antecedents with
-                | [] -> noNode
-                | first::rest ->
-                    ul []
-                        (
-                            (introduced_complex "when " first)::
-                            (rest |> List.map (introduced_complex "and "))
-                        )
+                | [] -> punctuation_view "."
+                | first::after_first ->
+                    match after_first |> List.rev with
+                    | [] -> 
+                        span []
+                            [ punctuation_view " when " 
+                            ; complex_term_view first
+                            ; punctuation_view "."
+                            ]
+                    | last::everything_but_last ->
+                        ul []
+                           (List.concat 
+                                [ [introduced_complex "when " first]
+                                ; (everything_but_last |> List.rev |> List.map (introduced_complex "and "))
+                                ; [
+                                    li [] 
+                                       [ punctuation_view "and "
+                                       ; complex_term_view last
+                                       ; punctuation_view "."
+                                       ]
+                                  ]
+                                ]
+                           )
             )
             ]    
 
@@ -284,6 +337,7 @@ module CompiledTextEditingView = struct
         (editing: 'result ApplicationModel.CompiledTextEditing.t) 
         ~result_button_caption 
         ~message_of_result
+        ~cancel_message
         ~placeholder_text =
         let parse_error_result_view = function
             | [] ->
@@ -318,13 +372,15 @@ module CompiledTextEditingView = struct
                 | _ ->
                     Tea.Html.noNode
             )
-            ; (
-                match editing.compilation_result with
+            ; CommandView.button_bar 
+                [ (match editing.compilation_result with
                 | Tea.Result.Ok result ->
                     CommandView.button result_button_caption (message_of_result result)
                 | Tea.Result.Error errors ->
                     parse_error_result_view errors
-            )
+                )
+                ; CommandView.button "Cancel" cancel_message
+                ]            
             ]
 end
 
@@ -338,14 +394,14 @@ module RulesPanelView = struct
             div [] (rules |> List.map (RuleView.readonly rules_applied)) in
         let editable_rules_view () = 
             div [] (rules |> List.map RuleView.editable) in
-        PanelView.view
-            ~header: "Rules"
+        PanelView.panel_view
+            ~header: "Rules and Facts"
             [ match model.interaction_mode with
                 | ViewingRules ->
                     (** Next actions for Add Rule and Query *)
                     div []
                         [ CommandView.button_bar 
-                            [ CommandView.button "Add Rule" (Message.InitiateAddRule)
+                            [ CommandView.button "Add Rule / Fact" (Message.InitiateAddRule)
                             ; CommandView.button "Query" (Message.InitiateEditQuery)
                             ]
                         ; hr [] []
@@ -357,11 +413,11 @@ module RulesPanelView = struct
                     div [] 
                         [ CompiledTextEditingView.view editing 
                             ~result_button_caption: "Update Rule" 
+                            ~cancel_message: Message.ViewRules
                             ~message_of_result: (fun updated_rule ->
                                 Message.editRuleEntry (RuleDatabase.update_rule_entry rule_entry updated_rule)
                             )
                             ~placeholder_text: "Edit rule..."
-                        ; CommandView.button_bar [ CommandView.button "Cancel Edit" Message.ViewRules ]
                         ; hr [] []
                         ; readonly_rules_view []
                         ]
@@ -370,9 +426,9 @@ module RulesPanelView = struct
                     div []
                         [ CompiledTextEditingView.view adding 
                             ~result_button_caption: "Add Rule" 
+                            ~cancel_message: Message.ViewRules
                             ~message_of_result: Message.addRule
                             ~placeholder_text: "New rule..."
-                        ; CommandView.button_bar [ CommandView.button "Cancel Add" Message.ViewRules ]
                         ; hr [] []
                         ; readonly_rules_view []
                         ]
@@ -429,19 +485,70 @@ module QueryPanelView = struct
                 ~result_button_caption: "Execute Query" 
                 ~message_of_result: Message.executeQuery
                 ~placeholder_text: "New query..."
-            ; CommandView.button "Cancel" Message.ViewRules
+                ~cancel_message: Message.ViewRules
             ]
 
     (* A panel displayed on the right side of the screen which presents query editing and execution. *)
     let view (model: ApplicationModel.t) =
-        let panel content = PanelView.view ~header: "Query" [content] in
+        let query_panel content = PanelView.panel_view ~header: "Query" [content] in
+        let paragraph txt = Tea.Html.p [] [text txt] in
         match model.interaction_mode with
         | EditingQuery editing_query ->
-            editing_query |> editing_query_view |> panel
+            editing_query |> editing_query_view |> query_panel;
         | ExecutingQuery executing_query ->
-            executing_query |> executing_query_view |> panel
-        | _ ->
-            Tea.Html.noNode
+            executing_query |> executing_query_view |> query_panel;
+        | _ ->             
+            let relation fact_name relations = Term.make_relation fact_name relations in
+            let variable name = Term.Variable (VariableName name) in
+            let fact fact_name = relation fact_name [] in
+            let rule consequent antecedent_terms = 
+                { Language.Types.Rule.consequent; antecedents = antecedent_terms |> List.map (fun term -> Language.Types.ComplexTerm.Term term) } in
+            let fact_view consequent = RuleView.rule_display { Language.Types.Rule.consequent; antecedents = [] } in
+            PanelView.panel_view ~header: "Instructions"
+                [ paragraph {j|LitLog, short for Literate Logic programming, is a subset of Prolog with a simpler syntax and an on-line editor. 
+                The goal of LitLog is offer a path to quickly learning the basics of declarative logic programming in three lunch breaks or less.|j}
+                ; paragraph {j|When Logic Programming fits the problem space, it beats other programming paradigms by orders of magnitude so it is a helpful tool to
+                have in your mental toolbox (even if an applicable problem may only arise once in a decade). It is also just neat and that alone is worth a few lunch periods.|j}
+                ; paragraph "The act of declarative logic programming is building a knowledge database that can be queried. It is the query powers that are surprising and interesting."
+                ; paragraph "Rules & Facts are the two forms of knowledge representation."
+                ; paragraph {j|FACTs are unconditionally true statements. As soon as a fact is entered into the database it is known to be true. 
+                A Fact can relate other terms together or it can stand on its own. An example of a Fact that stands on its own without any relationships might be|j}
+                ; fact_view (fact "OrangesAreSpherical")
+                ; paragraph {j|A Fact is represented as an identifier written in any case. Spaces cannot be used inside Fact names but underscores can be. The above fact could have also been written|j}
+                ; fact_view (fact "oranges_are_spherical")
+                ; paragraph {j|Facts can also express the truth of a _relationship_ between things. A Fact that expresses a relationship with a single term can be viewed as a declaration of 
+                inclusion in a Set (a Predicate). For example, the Fact above could be represented, more usefully, as|j}
+                ; fact_view (relation "Spherical" [fact "Oranges"])
+                ; paragraph {j|The form above now expresses that Oranges are in the set of spherical things. The knowledge database could list other spherical things|j}
+                ; fact_view (relation "Spherical" [fact "SoccerBalls"])
+                ; fact_view (relation "Spherical" [fact "BasketBalls"])
+                ; paragraph "Facts can express relationships between multiple things. For example, a fact which expresses a Mother-Child relationship between Sally and Bob"
+                ; fact_view (relation "MotherOf" [fact "Sally"; fact "Bob"])
+                ; paragraph "Another example might be a relation named 'SumOf' that expresses that two and two relate to four "
+                ; fact_view (relation "SumOf" [fact "Two"; fact "Two"; fact "Four"])
+                ; paragraph {j|While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, we might instruct the logic database that 
+                Sally being the Mother of Bob also means that Sally is a Parent of Bob.|j}
+                ; RuleView.rule_display (rule 
+                    (relation "ParentOf" [fact "Sally"; fact "Bob"]) 
+                    [ relation "MotherOf" [fact "Sally"; fact "Bob"] ]
+                )                
+                ; paragraph {j|Observe that the rule above is unfortunately specific. It is not a general statement about all mothers and sons but rather a specific statement about two specific individuals.
+                In order to get the power of generalization (abstraction) we need to introduce variables.|j}
+                ; paragraph {j|Variables are written with a ? prefix. To make a general statement about all mothers also being parents we would write|j}
+                ; RuleView.rule_display (rule 
+                    (relation "ParentOf" [variable "Mother"; variable "Child"]) 
+                    [ relation "MotherOf" [variable "Mother"; variable "Child"] ]
+                )
+                ; paragraph {j|Rules can state multiple conditions that must be true for the rule to be true. To encode the transitive property of the GreaterThan relationship we might write|j}
+                ; RuleView.rule_display (rule 
+                    (relation "GreaterThan" [variable "A"; variable "C"]) 
+                    [ relation "GreaterThan" [variable "A"; variable "B"] 
+                    ; relation "GreaterThan" [variable "B"; variable "C"] 
+                    ]
+                )
+                ; paragraph {j|Facts, Rules, and Variables are nearly the extent of how knowledge is represented in LitLog. Now we turn to the truly fun part QUERIES!!!
+                |j}
+                ]       
             
 end
 
@@ -457,8 +564,7 @@ let style =
     |> String.concat " "
 
 let view (model: ApplicationModel.t) =
-    div
-        []
+    PanelView.panels_container_view
         [ RulesPanelView.view model
-        ; QueryPanelView.view model
+        ; QueryPanelView.view model       
         ]

@@ -7,6 +7,8 @@ module Types = struct
         type t = VariableName of string
         let compare (VariableName left) (VariableName right) = compare left right
 
+        let make name = VariableName name
+
         (** Make a new variable from an existing by appending a number. *)
         let make_numbered (VariableName variable) num = VariableName (Printf.sprintf "%s%d" variable num)
 
@@ -18,6 +20,7 @@ module Types = struct
     module RelationName = struct
 
         type t = RelationName of string
+        let make name = RelationName name
         let compare (RelationName left) (RelationName right) = compare left right        
         let equals (RelationName left) (RelationName right) = left = right        
         let to_string (RelationName name) = name
@@ -33,6 +36,12 @@ module Types = struct
             { relation_name : RelationName.t
             ; related_terms : t list    
             }
+
+        let make_relation name related_terms = 
+            Relation { relation_name = RelationName.make name; related_terms  }
+
+        let make_variable name = 
+            Variable (VariableName.make name)
 
         let rec to_string = function
         | Variable variable -> 
