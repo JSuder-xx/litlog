@@ -1,5 +1,5 @@
 import resolve from "@rollup/plugin-node-resolve";
-import { terser } from "rollup-plugin-terser";
+//import { terser } from "rollup-plugin-terser";
 
 export default {
   input: "./src/index.bs.js",
@@ -8,7 +8,9 @@ export default {
       file: "./dist/index.js",
       format: "iife",
       name: "starter",
-      plugins: [terser()],
+      plugins: [
+        //terser()
+      ],
     },
   ],
   plugins: [resolve()],

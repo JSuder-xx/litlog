@@ -73,20 +73,62 @@ end
 
 module TeaHtmlEx = struct
 
+    (** 
+    Custom version of "on" which takes a key in order to ensure that eventhandlers are
+    properly merged on updates. Without a key, event handlers on text inputs were not 
+    getting updated. 
+    CONTACT LIBRARY AUTHOR or submit a PR.
+    *)
+    let on_keyed ~eventName ~key ~decoder = 
+        Tea.Html.onCB eventName key (fun event ->
+            if Tea.Html.defaultOptions.stopPropagation then event##stopPropagation () |> ignore;
+            if Tea.Html.defaultOptions.preventDefault then event##preventDefault () |> ignore;
+            event
+            |> Tea_json.Decoder.decodeEvent decoder
+            |> Tea_result.result_to_option
+        )
+
     module Keydown = struct
         type keydown_info = 
             { ctrlKey: bool
             ; keyCode: int
             }
-
-        let keydown keydown_to_message = 
+        
+        let keydown ~key ~msg ~keydown_predicate = 
             let decode_keydown_info = 
                 let ctrlKey = Tea_json.Decoder.field "ctrlKey" Tea_json.Decoder.bool in
                 Tea.Json.Decoder.map2 (fun keyCode ctrlKey -> { keyCode; ctrlKey }) Tea.Html.keyCode ctrlKey in
-            Tea.Html.on 
-                "keydown" 
-                (Tea.Json.Decoder.andThen keydown_to_message decode_keydown_info)
+            let keydown_to_message info = 
+                if keydown_predicate info
+                then Tea.Json.Decoder.succeed msg                
+                else Tea.Json.Decoder.fail "Incorrect keys" in
+            on_keyed 
+                ~eventName: "keydown" 
+                ~key: key
+                ~decoder: (Tea.Json.Decoder.andThen keydown_to_message decode_keydown_info)
     end
+
+end
+
+module ResultEx = struct
+
+    let map fn = function
+    | Tea.Result.Error _ as ret -> ret
+    | Tea.Result.Ok v -> Tea.Result.Ok (fn v)
+
+    let map_error fn = function
+    | Tea.Result.Error err -> Tea.Result.Error (fn err)
+    | Tea.Result.Ok _ as ret -> ret
+
+    let flatten = function
+    | Tea.Result.Error _ as ret -> ret
+    | Tea.Result.Ok outer -> outer
+
+    let flat_map fn result = result |> map fn |> flatten
+
+    let bind result fn = flat_map fn result
+
+    let (>>=) = bind
 
 end
 

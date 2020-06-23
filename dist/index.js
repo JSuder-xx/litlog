@@ -1,1 +1,13630 @@
-var starter=function(r){"use strict";var n=["Failure",-2],e=["Invalid_argument",-3],t=["Division_by_zero",-5],a=["Not_found",-6],u=["Match_failure",-7],i=["Assert_failure",-10];function o(r,n,e){for(var t=new Array(e),a=0,u=n;a<e;)t[a]=r[u],a=a+1|0,u=u+1|0;return t}function c(r,n){if(n<0||n>=r.length)throw[e,"index out of bounds"];return r[n]}function f(r,n){for(;;){var e=n,t=r,a=t.length,u=0===a?1:a,i=u-e.length|0;if(0===i)return t.apply(null,e);if(i>=0)return function(r,n){return function(e){return f(r,n.concat([e]))}}(t,e);n=o(e,u,0|-i),r=t.apply(null,o(e,0,u))}}function s(r,n){var e=r.length;if(1===e)return r(n);switch(e){case 1:return r(n);case 2:return function(e){return r(n,e)};case 3:return function(e,t){return r(n,e,t)};case 4:return function(e,t,a){return r(n,e,t,a)};case 5:return function(e,t,a,u){return r(n,e,t,a,u)};case 6:return function(e,t,a,u,i){return r(n,e,t,a,u,i)};case 7:return function(e,t,a,u,i,o){return r(n,e,t,a,u,i,o)};default:return f(r,[n])}}function v(r,n,e){var t=r.length;if(2===t)return r(n,e);switch(t){case 1:return f(r(n),[e]);case 2:return r(n,e);case 3:return function(t){return r(n,e,t)};case 4:return function(t,a){return r(n,e,t,a)};case 5:return function(t,a,u){return r(n,e,t,a,u)};case 6:return function(t,a,u,i){return r(n,e,t,a,u,i)};case 7:return function(t,a,u,i,o){return r(n,e,t,a,u,i,o)};default:return f(r,[n,e])}}function l(r,n,e,t){var a=r.length;if(3===a)return r(n,e,t);switch(a){case 1:return f(r(n),[e,t]);case 2:return f(r(n,e),[t]);case 3:return r(n,e,t);case 4:return function(a){return r(n,e,t,a)};case 5:return function(a,u){return r(n,e,t,a,u)};case 6:return function(a,u,i){return r(n,e,t,a,u,i)};case 7:return function(a,u,i,o){return r(n,e,t,a,u,i,o)};default:return f(r,[n,e,t])}}function d(r,n,e,t,a){var u=r.length;if(4===u)return r(n,e,t,a);switch(u){case 1:return f(r(n),[e,t,a]);case 2:return f(r(n,e),[t,a]);case 3:return f(r(n,e,t),[a]);case 4:return r(n,e,t,a);case 5:return function(u){return r(n,e,t,a,u)};case 6:return function(u,i){return r(n,e,t,a,u,i)};case 7:return function(u,i,o){return r(n,e,t,a,u,i,o)};default:return f(r,[n,e,t,a])}}function h(r,n,e,t,a,u){var i=r.length;if(5===i)return r(n,e,t,a,u);switch(i){case 1:return f(r(n),[e,t,a,u]);case 2:return f(r(n,e),[t,a,u]);case 3:return f(r(n,e,t),[a,u]);case 4:return f(r(n,e,t,a),[u]);case 5:return r(n,e,t,a,u);case 6:return function(i){return r(n,e,t,a,u,i)};case 7:return function(i,o){return r(n,e,t,a,u,i,o)};default:return f(r,[n,e,t,a,u])}}function m(r,n,e,t,a,u,i){var o=r.length;if(6===o)return r(n,e,t,a,u,i);switch(o){case 1:return f(r(n),[e,t,a,u,i]);case 2:return f(r(n,e),[t,a,u,i]);case 3:return f(r(n,e,t),[a,u,i]);case 4:return f(r(n,e,t,a),[u,i]);case 5:return f(r(n,e,t,a,u),[i]);case 6:return r(n,e,t,a,u,i);case 7:return function(o){return r(n,e,t,a,u,i,o)};default:return f(r,[n,e,t,a,u,i])}}function g(r,n,e,t,a,u,i,o){var c=r.length;if(7===c)return r(n,e,t,a,u,i,o);switch(c){case 1:return f(r(n),[e,t,a,u,i,o]);case 2:return f(r(n,e),[t,a,u,i,o]);case 3:return f(r(n,e,t),[a,u,i,o]);case 4:return f(r(n,e,t,a),[u,i,o]);case 5:return f(r(n,e,t,a,u),[i,o]);case 6:return f(r(n,e,t,a,u,i),[o]);case 7:return r(n,e,t,a,u,i,o);default:return f(r,[n,e,t,a,u,i,o])}}function p(r,n,e,t,a,u,i,o,c){var s=r.length;if(8===s)return r(n,e,t,a,u,i,o,c);switch(s){case 1:return f(r(n),[e,t,a,u,i,o,c]);case 2:return f(r(n,e),[t,a,u,i,o,c]);case 3:return f(r(n,e,t),[a,u,i,o,c]);case 4:return f(r(n,e,t,a),[u,i,o,c]);case 5:return f(r(n,e,t,a,u),[i,o,c]);case 6:return f(r(n,e,t,a,u,i),[o,c]);case 7:return f(r(n,e,t,a,u,i,o),[c]);default:return f(r,[n,e,t,a,u,i,o,c])}}function b(r,n){return n.tag=r,n}function w(r,n){return r<n?-1:r===n?0:1}function _(r,n){return r===n?0:r<n?-1:1}n.tag=248,e.tag=248,t.tag=248,a.tag=248,u.tag=248,i.tag=248;var y=function(r,n){for(var e in r)n(e)};function k(r){var n=[r];return n.tag=246,n}function x(r,n){for(;;){var t=n,a=r;if(a===t)return!0;var u=typeof a;if("string"===u||"number"===u||"boolean"===u||"undefined"===u||null===a)return!1;var i=typeof t;if("function"===u||"function"===i)throw[e,"equal: functional value"];if("number"===i||"undefined"===i||null===t)return!1;var o=0|a.tag,c=0|t.tag;if(250!==o)if(250!==c){if(248===o)return a[1]===t[1];if(251===o)throw[e,"equal: abstract value"];if(o!==c)return!1;if(256===o)return a[1]===t[1];var f=0|a.length;if(f!==(0|t.length))return!1;if(!Array.isArray(a)){if(a instanceof Date&&t instanceof Date)return!(a>t||a<t);var s={contents:!0},v=function(r,n){return function(e){r.hasOwnProperty(e)||(n.contents=!1)}}(t,s),l=function(r,n,e){return function(t){r.hasOwnProperty(t)&&x(n[t],r[t])||(e.contents=!1)}}(a,t,s);return y(a,v),s.contents&&y(t,l),s.contents}for(var d=0;;){var h=d;if(h===f)return!0;if(!x(a[h],t[h]))return!1;d=h+1|0}}else n=t[0];else r=a[0]}}function q(r,n){return!x(r,n)}function F(r){if(r<0)throw[e,"String.create"];for(var n=new Array(r),t=0;t<r;++t)n[t]=0;return n}function S(r,n,e,t,a){if(!(a<=0))if(r!==e){var u=r.length-n|0;if(a<=u)for(var i=0;i<a;++i)e[t+i|0]=r[n+i|0];else{for(var o=0;o<u;++o)e[t+o|0]=r[n+o|0];for(var c=u;c<a;++c)e[t+c|0]=0}}else{if(n<t){for(var f=(r.length-t|0)-1|0,s=a-1|0,v=f>s?s:f;v>=0;--v)r[t+v|0]=r[n+v|0];return}if(n<=t)return;for(var l=(r.length-n|0)-1|0,d=a-1|0,h=l>d?d:l,m=0;m<=h;++m)r[t+m|0]=r[n+m|0]}}function N(r){var n=r.length,e="",t=n;if(n<=4096&&n===r.length)return String.fromCharCode.apply(null,r);for(var a=0;t>0;){var u=t<1024?t:1024,i=new Array(u);S(r,a,i,0,u),e+=String.fromCharCode.apply(null,i),t=t-u|0,a=a+u|0}return e}function C(r,n,e,t,a){if(!(a<=0)){var u=r.length-n|0;if(a<=u)for(var i=0;i<a;++i)e[t+i|0]=r.charCodeAt(n+i|0);else{for(var o=0;o<u;++o)e[t+o|0]=r.charCodeAt(n+o|0);for(var c=u;c<a;++c)e[t+c|0]=0}}}function A(r){for(var n=r.length,e=new Array(n),t=0;t<n;++t)e[t]=r.charCodeAt(t);return e}var M=Math.imul||function(r,n){return((r>>16)*(n|=0)<<16)+(65535&r)*n|0};function R(r,n){return[n,r>>>0]}var L=[-2147483648,0],O=[2147483647,4294967295],D=[0,1],T=[0,0],$=[-1,4294967295];function E(r){return 0!=(2147483648&r)}function P(r){return 0==(2147483648&r)}function I(r){var n=1+(-1^r[1])|0;return R(n,(-1^r[0])+(0===n?1:0)|0)}function V(r,n,e){var t=r[1],a=t+n|0,u=E(t)&&(E(n)||P(a))||E(n)&&P(a)?1:0;return R(a,r[0]+e+u|0)}function B(r,n){return V(r,n[1],n[0])}function U(r,n){return r[0]===n[0]&&r[1]===n[1]}function Q(r,n,e){var t=1+(-1^n)>>>0;return V(r,t,(-1^e)+(0===t?1:0)|0)}function j(r,n){return Q(r,n[1],n[0])}function z(r,n){if(0===n)return r;var e=r[1];return n>=32?R(0,e<<(n-32|0)):R(e<<n,e>>>(32-n|0)|r[0]<<n)}function X(r,n){if(0===n)return r;var e=r[0];return n<32?R(e<<(32-n|0)|r[1]>>>n,e>>n):R(e>>(n-32|0),e>=0?0:-1)}function K(r,n){for(;;){var e,t=n,a=r,u=0,i=0;if(0!==a[0])i=3;else{if(0===a[1])return T;i=3}if(3===i)if(0!==t[0])u=2;else{if(0===t[1])return T;u=2}if(2===u){var o=a[0],c=0;if(-2147483648!==o||0!==a[1]?c=3:e=t[1],3===c){var f=t[0],s=a[1],v=0;if(-2147483648!==f||0!==t[1]?v=4:e=s,4===v){var l=t[1];if(o<0){if(f>=0)return I(K(I(a),t));n=I(t),r=I(a);continue}if(f<0)return I(K(a,I(t)));var d=65535&o,h=s>>>16,m=65535&s,g=65535&f,p=l>>>16,b=65535&l,w=0,_=0,y=0,k=m*b;return w=(_=(_=(y=(k>>>16)+h*b)>>>16)+((y=(65535&y)+m*p)>>>16)+d*b)>>>16,w+=(_=(65535&_)+h*p)>>>16,w+=(_=(65535&_)+m*g)>>>16,R(65535&k|(65535&y)<<16,(_&=65535)|(w=w+((o>>>16)*b+d*p+h*g+m*(f>>>16))&65535)<<16)}}}return 0==(1&e)?T:L}}function G(r,n){var e=n[0],t=r[0];return t>e||!(t<e)&&r[1]>=n[1]}function J(r,n){return!U(r,n)}function H(r,n){return!G(r,n)}function W(r,n){return r[0]>n[0]||!(r[0]<n[0])&&r[1]>n[1]}function Y(r){return 4294967296*r[0]+r[1]}function Z(r){return isNaN(r)||!isFinite(r)?T:r<=-0x8000000000000000?L:r+1>=0x8000000000000000?O:r<0?I(Z(-r)):R(r%4294967296|0,r/4294967296|0)}function rr(r){if(function(r){var n=r[0],e=n>>21;return 0===e||-1===e&&!(0===r[1]&&-2097152===n)}(r))return String(Y(r));if(r[0]<0)return U(r,L)?"-9223372036854775808":"-"+rr(I(r));var n=Z(Math.floor(Y(r)/10)),e=n[1],t=n[0],a=Q(Q(r,e<<3,e>>>29|t<<3),e<<1,e>>>31|t<<1),u=a[1],i=a[0];if(0===u&&0===i)return rr(n)+"0";if(i<0){var o=1+(-1^u)>>>0,c=Math.ceil(o/10),f=10*c-o;return rr(Q(n,0|c,0))+String(0|f)}var s=u,v=Math.floor(s/10),l=s-10*v;return rr(V(n,0|v,0))+String(0|l)}function nr(r,n){var e=function r(n,e){for(;;){var a=e,u=n,i=0;if(0===a[0]&&0===a[1])throw t;if(3===3){var o=u[0];if(-2147483648!==o)if(0!==o)i=2;else{if(0===u[1])return T;i=2}else if(0!==u[1])i=2;else{if(U(a,D)||U(a,$))return u;if(U(a,L))return D;var c=z(r(X(u,1),a),1),f=0;if(0!==c[0])f=4;else{if(0===c[1])return a[0]<0?D:I(D);f=4}if(4===f)return B(c,r(j(u,K(a,c)),a))}}if(2===i&&-2147483648===a[0]&&0===a[1])return T;var s=a[0];if(!(u[0]<0)){if(s<0)return I(r(u,I(a)));for(var v=T,l=u;G(l,a);){for(var d=(w=1,_=Math.floor(Y(l)/Y(a)),w>_?w:_),h=Math.ceil(Math.log(d)/Math.LN2),m=h<=48?1:Math.pow(2,h-48),g=Z(d),p=K(g,a);p[0]<0||W(p,l);)p=K(g=Z(d-=m),a);0===(b=g)[0]&&0===b[1]&&(g=D),v=B(v,g),l=j(l,p)}return v}if(s>=0)return I(r(I(u),a));e=I(a),n=I(u)}var b,w,_}(r,n);return[e,j(r,K(e,n))]}function er(r){return 0|r[1]}function tr(r){return[2147483647&r[0],r[1]]}function ar(r){return r>=65&&r<=90||r>=192&&r<=214||r>=216&&r<=222?r+32|0:r}function ur(r){var n=r.length;if(n>31)throw[e,"format_int: format too long"];for(var t={justify:"+",signstyle:"-",filter:" ",alternate:!1,base:2,signedconv:!1,width:0,uppercase:!1,sign:1,prec:-1,conv:"f"},a=0;;){var u=a;if(u>=n)return t;var i=r.charCodeAt(u),o=0;if(i>=69)if(i>=88)if(i>=121)o=1;else switch(i-88|0){case 0:t.base=1,t.uppercase=!0,a=u+1|0;continue;case 13:case 14:case 15:o=5;break;case 12:case 17:o=4;break;case 23:t.base=0,a=u+1|0;continue;case 29:t.base=2,a=u+1|0;continue;case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 16:case 18:case 19:case 20:case 21:case 22:case 24:case 25:case 26:case 27:case 28:case 30:case 31:o=1;break;case 32:t.base=1,a=u+1|0;continue}else{if(!(i>=72)){t.signedconv=!0,t.uppercase=!0,t.conv=String.fromCharCode(ar(i)),a=u+1|0;continue}o=1}else switch(i){case 35:t.alternate=!0,a=u+1|0;continue;case 32:case 43:o=2;break;case 45:t.justify="-",a=u+1|0;continue;case 46:t.prec=0;for(var c=u+1|0;function(n){return function(){var e=r.charCodeAt(n)-48|0;return e>=0&&e<=9}}(c)();)t.prec=(M(t.prec,10)+r.charCodeAt(c)|0)-48|0,c=c+1|0;a=c;continue;case 33:case 34:case 36:case 37:case 38:case 39:case 40:case 41:case 42:case 44:case 47:o=1;break;case 48:t.filter="0",a=u+1|0;continue;case 49:case 50:case 51:case 52:case 53:case 54:case 55:case 56:case 57:o=3;break;default:o=1}switch(o){case 1:a=u+1|0;continue;case 2:t.signstyle=String.fromCharCode(i),a=u+1|0;continue;case 3:t.width=0;for(var f=u;function(n){return function(){var e=r.charCodeAt(n)-48|0;return e>=0&&e<=9}}(f)();)t.width=(M(t.width,10)+r.charCodeAt(f)|0)-48|0,f=f+1|0;a=f;continue;case 4:t.signedconv=!0,t.base=2,a=u+1|0;continue;case 5:t.signedconv=!0,t.conv=String.fromCharCode(i),a=u+1|0;continue}}}function ir(r,n){var e=r.justify,t=r.signstyle,a=r.filter,u=r.alternate,i=r.base,o=r.signedconv,c=r.width,f=r.uppercase,s=r.sign,v=n.length;o&&(s<0||"-"!==t)&&(v=v+1|0),u&&(0===i?v=v+1|0:1===i&&(v=v+2|0));var l="";if("+"===e&&" "===a)for(var d=v;d<c;++d)l+=a;if(o&&(s<0?l+="-":"-"!==t&&(l+=t)),u&&0===i&&(l+="0"),u&&1===i&&(l+="0x"),"+"===e&&"0"===a)for(var h=v;h<c;++h)l+=a;if(l=f?l+n.toUpperCase():l+n,"-"===e)for(var m=v;m<c;++m)l+=" ";return l}function or(r,n){if("%d"===r)return String(n);var e=ur(r),t=(n<0?e.signedconv?(e.sign=-1,-n):n>>>0:n).toString(function(r){switch(r){case 0:return 8;case 1:return 16;case 2:return 10}}(e.base));if(e.prec>=0){e.filter=" ";var a=e.prec-t.length|0;a>0&&(t="0".repeat(a)+t)}return ir(e,t)}function cr(r,n){if("%d"===r)return rr(n);var e,t,a=ur(r),u=a.signedconv&&H(n,T)?(a.sign=-1,I(n)):n;switch(a.base){case 0:e=function(r){var n="",e=R(8,0),t="01234567";if(H(r,T)){var a=nr(tr(r),e),u=B(R(0,268435456),a[0]),i=a[1];for(n=t[er(i)]+n;J(u,T);){var o=nr(u,e);u=o[0],n=t[er(i=o[1])]+n}}else{var c=nr(r,e),f=c[0],s=c[1];for(n=t[er(s)]+n;J(f,T);){var v=nr(f,e);f=v[0],n=t[er(s=v[1])]+n}}return n}(u);break;case 1:e=function(r){var n=r[1],e=r[0],t=function(r){return(r>>>0).toString(16)};if(0===e&&0===n)return"0";if(0===n)return t(e)+"00000000";if(0===e)return t(n);var a=t(n),u=8-a.length|0;return u<=0?t(e)+a:t(e)+("0".repeat(u)+a)}(u);break;case 2:e=function(r){if(!H(r,T))return rr(r);var n=R(10,0),e=nr(tr(r),n),t=nr(B(R(8,0),e[1]),n);return rr(B(B(R(-858993460,214748364),e[0]),t[0]))+"0123456789"[er(t[1])]}(u)}if(a.prec>=0){a.filter=" ";var i=a.prec-e.length|0;t=i>0?"0".repeat(i)+e:e}else t=e;return ir(a,t)}var fr=or,sr=or;function vr(r,n){if(n>=r.length||n<0)throw[e,"index out of bounds"];return r.charCodeAt(n)}var lr={contents:0};function dr(r){var n=[r,(lr.contents=lr.contents+1,lr.contents)];return n.tag=248,n}var hr=[];function mr(r){if(void 0===r){var n=[hr,0];return n.tag=256,n}if(null===r||r[0]!==hr)return r;var e=r[1]+1|0,t=[hr,e];return t.tag=256,t}function gr(r){if(null===r||r[0]!==hr)return r;var n=r[1];return 0===n?void 0:[hr,n-1|0]}var pr=dr("Caml_js_exceptions.Error");function br(r){return function(r){if(void 0===r)return!1;if(248===r.tag)return!0;var n=r[0];return void 0!==n&&248===n.tag}(r)?r:[pr,r]}function wr(r){if("number"==typeof r)return 0;switch(0|r.tag){case 0:return b(0,[wr(r[0])]);case 1:return b(1,[wr(r[0])]);case 2:return b(2,[wr(r[0])]);case 3:return b(3,[wr(r[0])]);case 4:return b(4,[wr(r[0])]);case 5:return b(5,[wr(r[0])]);case 6:return b(6,[wr(r[0])]);case 7:return b(7,[wr(r[0])]);case 8:return b(8,[r[0],wr(r[1])]);case 9:var n=r[0];return b(9,[n,n,wr(r[2])]);case 10:return b(10,[wr(r[0])]);case 11:return b(11,[wr(r[0])]);case 12:return b(12,[wr(r[0])]);case 13:return b(13,[wr(r[0])]);case 14:return b(14,[wr(r[0])])}}function _r(r,n){if("number"==typeof r)return n;switch(0|r.tag){case 0:return b(0,[_r(r[0],n)]);case 1:return b(1,[_r(r[0],n)]);case 2:return b(2,[r[0],_r(r[1],n)]);case 3:return b(3,[r[0],_r(r[1],n)]);case 4:return b(4,[r[0],r[1],r[2],_r(r[3],n)]);case 5:return b(5,[r[0],r[1],r[2],_r(r[3],n)]);case 6:return b(6,[r[0],r[1],r[2],_r(r[3],n)]);case 7:return b(7,[r[0],r[1],r[2],_r(r[3],n)]);case 8:return b(8,[r[0],r[1],r[2],_r(r[3],n)]);case 9:return b(9,[r[0],_r(r[1],n)]);case 10:return b(10,[_r(r[0],n)]);case 11:return b(11,[r[0],_r(r[1],n)]);case 12:return b(12,[r[0],_r(r[1],n)]);case 13:return b(13,[r[0],r[1],_r(r[2],n)]);case 14:return b(14,[r[0],r[1],_r(r[2],n)]);case 15:return b(15,[_r(r[0],n)]);case 16:return b(16,[_r(r[0],n)]);case 17:return b(17,[r[0],_r(r[1],n)]);case 18:return b(18,[r[0],_r(r[1],n)]);case 19:return b(19,[_r(r[0],n)]);case 20:return b(20,[r[0],r[1],_r(r[2],n)]);case 21:return b(21,[r[0],_r(r[1],n)]);case 22:return b(22,[_r(r[0],n)]);case 23:return b(23,[r[0],_r(r[1],n)]);case 24:return b(24,[r[0],r[1],_r(r[2],n)])}}dr("Pervasives.Exit");function yr(r){return r>=0?r:0|-r}function kr(r){return r?"true":"false"}function xr(r){for(var n=0,e=r;;){var t=n;if(!e)return t;e=e[1],n=t+1|0}}function qr(r,n){for(;;){var e=n,t=r;if(!t)return e;n=[t[0],e],r=t[1]}}function Fr(r){return qr(r,0)}function Sr(r){return r?function r(n,e){return n?[n[0],r(n[1],e)]:e}(r[0],Sr(r[1])):0}function Nr(r,n){return n?[s(r,n[0]),Nr(r,n[1])]:0}function Cr(r,n){for(;;){var e=n;if(!e)return;s(r,e[0]),n=e[1]}}function Ar(r,n,e){for(;;){var t=e,a=n;if(!t)return a;e=t[1],n=v(r,a,t[0])}}function Mr(r,n){for(;;){var e=n;if(!e)return!1;if(s(r,e[0]))return!0;n=e[1]}}function Rr(r,n){for(;;){var e=r;if(0===e)return n;if(!n)throw[i,["list.ml",262,11]];n=n[1],r=e-1|0}}var Lr=Sr,Or=function(r){return function(n){for(var e=0,t=n;;){var a=t,u=e;if(!a)return qr(u,0);var i=a[1],o=a[0];s(r,o)?(t=i,e=[o,u]):t=i}}},Dr=function(r,n){var e=function(n,e){if(2!==n){if(3===n&&e){var a=e[1];if(a){var u=a[1];if(u){var i=u[0],o=a[0],c=e[0];return v(r,c,o)<=0?v(r,o,i)<=0?[c,[o,[i,0]]]:v(r,c,i)<=0?[c,[i,[o,0]]]:[i,[c,[o,0]]]:v(r,c,i)<=0?[o,[c,[i,0]]]:v(r,o,i)<=0?[o,[i,[c,0]]]:[i,[o,[c,0]]]}}}}else if(e){var f=e[1];if(f){var s=f[0],l=e[0];return v(r,l,s)<=0?[l,[s,0]]:[s,[l,0]]}}for(var d=n>>1,h=n-d|0,m=Rr(d,e),g=t(d,e),p=t(h,m),b=0;;){var w=b,_=p,y=g;if(!y)return qr(_,w);if(!_)return qr(y,w);var k=_[0],x=y[0];v(r,x,k)>0?(b=[x,w],g=y[1]):(b=[k,w],p=_[1])}},t=function(n,t){if(2!==n){if(3===n&&t){var a=t[1];if(a){var u=a[1];if(u){var i=u[0],o=a[0],c=t[0];return v(r,c,o)>0?v(r,o,i)>0?[c,[o,[i,0]]]:v(r,c,i)>0?[c,[i,[o,0]]]:[i,[c,[o,0]]]:v(r,c,i)>0?[o,[c,[i,0]]]:v(r,o,i)>0?[o,[i,[c,0]]]:[i,[o,[c,0]]]}}}}else if(t){var f=t[1];if(f){var s=f[0],l=t[0];return v(r,l,s)>0?[l,[s,0]]:[s,[l,0]]}}for(var d=n>>1,h=n-d|0,m=Rr(d,t),g=e(d,t),p=e(h,m),b=0;;){var w=b,_=p,y=g;if(!y)return qr(_,w);if(!_)return qr(y,w);var k=_[0],x=y[0];v(r,x,k)<=0?(b=[x,w],g=y[1]):(b=[k,w],p=_[1])}},a=xr(n);return a<2?n:e(a,n)};function Tr(r){return r>=97&&r<=122?r-32|0:r}function $r(r,n){var e=F(r);return function(r,n,e,t){if(!(e<=0))for(var a=n,u=e+n|0;a<u;++a)r[a]=t}(e,0,r,n),e}var Er=[];function Pr(r,n,t){if(n<0||t<0||n>(r.length-t|0))throw[e,"String.sub / Bytes.sub"];var a=F(t);return S(r,n,a,0,t),a}function Ir(r,n,e){return N(Pr(r,n,e))}function Vr(r,n,t,a,u){if(u<0||n<0||n>(r.length-u|0)||a<0||a>(t.length-u|0))throw[e,"Bytes.blit"];return S(r,n,t,a,u)}function Br(r,n,t,a,u){if(u<0||n<0||n>(r.length-u|0)||a<0||a>(t.length-u|0))throw[e,"String.blit / Bytes.blit_string"];return C(r,n,t,a,u)}function Ur(r){var n=r-9|0;return n>4||n<0?23===n:2!==n}function Qr(r){for(var n=0,e=0,t=r.length;e<t;++e){var a,u=r[e];if(u>=32){var i=u-34|0;a=i>58||i<0?i>=93?4:1:i>57||i<1?2:1}else a=u>=11?13!==u?4:2:u>=8?2:4;n=n+a|0}if(n===r.length)return function(r){var n=r.length,e=F(n);return S(r,0,e,0,n),e}(r);var o=F(n);n=0;for(var c=0,f=r.length;c<f;++c){var s=r[c],v=0;if(s>=35)92!==s?s>=127?v=1:o[n]=s:v=2;else if(s>=32)s>=34?v=2:o[n]=s;else if(s>=14)v=1;else switch(s){case 8:o[n]=92,o[n=n+1|0]=98;break;case 9:o[n]=92,o[n=n+1|0]=116;break;case 10:o[n]=92,o[n=n+1|0]=110;break;case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 11:case 12:v=1;break;case 13:o[n]=92,o[n=n+1|0]=114}switch(v){case 1:o[n]=92,o[n=n+1|0]=48+(s/100|0)|0,o[n=n+1|0]=48+(s/10|0)%10|0,o[n=n+1|0]=48+s%10|0;break;case 2:o[n]=92,o[n=n+1|0]=s}n=n+1|0}return o}function jr(r){return function(r,n){var e=n.length;if(0===e)return n;for(var t=F(e),a=0;a<e;++a)t[a]=s(r,n[a]);return t}(Tr,r)}function zr(r,n){return N($r(r,n))}function Xr(r,n){if(r>=n)return r;throw[e,"String.concat"]}function Kr(r,n){if(!n)return"";var e=r.length;return N(function(r,n,e,t,a){for(;;){var u=a,i=n;if(!u)return r;var o=u[1],c=u[0];if(!o)return C(c,0,r,i,c.length),r;C(c,0,r,i,c.length),C(e,0,r,i+c.length|0,t),a=o,n=(i+c.length|0)+t|0}}(F(function(r,n,e){for(;;){var t=e,a=r;if(!t)return a;var u=t[1],i=t[0];if(!u)return i.length+a|0;e=u,r=Xr((i.length+n|0)+a|0,a)}}(0,e,n)),0,r,e,n))}function Gr(r){var n=r-9|0;return n>4||n<0?23===n:2!==n}function Jr(r){return""===r||!Gr(r.charCodeAt(0))&&!Gr(r.charCodeAt(r.length-1|0))?r:N(function(r){for(var n=r.length,e=0;e<n&&Ur(r[e]);)e=e+1|0;for(var t=n-1|0;t>=e&&Ur(r[t]);)t=t-1|0;return t>=e?Pr(r,e,1+(t-e|0)|0):Er}(A(r)))}var Hr=_,Wr=Br;function Yr(r,n,e,t){var a=void 0!==n&&n,u=r.style;return void 0!==u.setProperty?u.setProperty(e,t,a?"important":null):function(r,n,e){r.style[n]=e}(r,e,t)}function Zr(r,n,e){return r.insertBefore(n,e)}function rn(r,n,e,t){return""===n?r.setAttribute(e,t):r.setAttributeNS(n,e,t)}function nn(r,n){return""===r?document.createElement(n):document.createElementNS(r,n)}var en=b(0,[""]);function tn(r,n,e,t,a,u){return b(2,[r,n,e,t,a,u])}function an(r,n,e){return b(3,[r,b(0,[n,e]),{contents:void 0}])}function un(r){for(;;){var n=r;switch(0|n.tag){case 0:return"\x3c!-- "+n[0]+" --\x3e";case 1:return n[0];case 2:var e=n[1],t=n[0];return Kr("",["<",[t,[""===t?"":":",[e,[Kr("",Nr((function(r){if("number"==typeof r)return"";switch(0|r.tag){case 0:return Kr("",[" ",[r[0],['="',[r[1],['"',0]]]]]);case 1:return Kr("",[" ",[r[1],['="',[r[2],['"',0]]]]]);case 2:return Kr("",[" data-",[r[0],['="',[r[1],['"',0]]]]]);case 3:return"";case 4:return Kr("",[' style="',[Kr(";",Nr((function(r){return Kr("",[r[0],[":",[r[1],[";",0]]]])}),r[0])),['"',0]]])}}),n[4])),[">",[Kr("",Nr(un,n[5])),["</",[e,[">",0]]]]]]]]]]);case 3:r=s(n[1],void 0);continue;case 4:r=n[1];continue}}}function on(r){if(!r.tag)return r[1];var n=r[0];return function(r){return mr(n)}}function cn(r,n,e,t){var a,u,i,o={contents:on(t)},c=function(r,n){return function(e){var t=s(n.contents,e);if(void 0!==t)return s(r.contents.enqueue,gr(t))}}(r,o);return a=e,u=c,i=!1,n.addEventListener(a,u,i),{handler:c,cb:o}}function fn(r,n,e){if(void 0!==e)return t=r,a=n,u=e.handler,i=!1,void t.removeEventListener(a,u,i);var t,a,u,i}function sn(r,n,e,t,a,u,i,o){var c=i.contents;if(void 0!==c)if(e!==t)i.contents=fn(n,e,i.contents),o.contents=cn(r,n,t,u);else{if(o.contents=i.contents,function(r,n){return n.tag?!(!r.tag||!x(n[0],r[0])):!r.tag&&n[0]===r[0]}(a,u))return;var f=on(u);c.cb.contents=f}else o.contents=cn(r,n,t,u)}function vn(r,e,t,a,u){!function(r,e,t,a){var u,i,o;if("number"!=typeof a)switch(0|a.tag){case 0:return void(e[a[0]]=void 0);case 1:return u=e,i=a[0],o=a[1],""===i?u.removeAttribute(o):u.removeAttributeNS(i,o);case 2:throw console.log(["TODO:  Remove Data Unhandled",a[0],a[1]]),[n,"TODO:  Remove Data Unhandled"];case 3:var c=a[2];return void(c.contents=fn(e,a[0],c.contents));case 4:Ar((function(r,n){return Yr(e,void 0,n[0],null)}),void 0,a[0])}}(0,e,0,a),function(r,e,t,a){if("number"!=typeof a)switch(0|a.tag){case 0:return void(e[a[0]]=a[1]);case 1:return rn(e,a[0],a[1],a[2]);case 2:throw console.log(["TODO:  Add Data Unhandled",a[0],a[1]]),[n,"TODO:  Add Data Unhandled"];case 3:return void(a[2].contents=cn(r,e,a[0],a[1]));case 4:Ar((function(r,n){return Yr(e,void 0,n[0],n[1])}),void 0,a[0])}}(r,e,0,u)}function ln(r,t,a,u,i){if("number"==typeof i)throw[n,"This should never be called as all entries through NoProp are gated."];switch(0|i.tag){case 0:return void(t[i[0]]=i[1]);case 1:return rn(t,i[0],i[1],i[2]);case 2:throw console.log(["TODO:  Mutate Data Unhandled",i[0],i[1]]),[n,"TODO:  Mutate Data Unhandled"];case 3:throw[n,"This will never be called because it is gated"];case 4:if("number"==typeof u)throw[n,"Passed a non-Style to a new Style as a Mutations while the old Style is not actually a style!"];if(4===u.tag)return function(r,n,t,a){for(;;){var u=a,i=t,o=n;if(i){if(u){a=u[1],t=i[1],n=l(r,o,i[0],u[0]);continue}throw[e,"List.fold_left2"]}if(u)throw[e,"List.fold_left2"];return o}}((function(r,n,e){var a=e[1],u=e[0],i=n[0];return i===u?n[1]===a?void 0:Yr(t,void 0,u,a):(Yr(t,void 0,i,null),Yr(t,void 0,u,a))}),void 0,u[0],i[0]);throw[n,"Passed a non-Style to a new Style as a Mutations while the old Style is not actually a style!"]}}function dn(r,n,e,t){return function(r,n,e,t,a){for(;;){var u=a,i=t,o=e;if(!i)return!u;var c=i[0];if(!u)return!1;if("number"==typeof c){if("number"==typeof u[0]){a=u[1],t=i[1],e=o+1|0;continue}}else switch(0|c.tag){case 0:var f=u[0];if("number"!=typeof f&&!f.tag){c[0]===f[0]&&c[1]===f[1]||ln(0,n,0,c,f),a=u[1],t=i[1],e=o+1|0;continue}break;case 1:var s=u[0];if("number"!=typeof s&&1===s.tag){c[0]===s[0]&&c[1]===s[1]&&c[2]===s[2]||ln(0,n,0,c,s),a=u[1],t=i[1],e=o+1|0;continue}break;case 2:var v=u[0];if("number"!=typeof v&&2===v.tag){c[0]===v[0]&&c[1]===v[1]||ln(0,n,0,c,v),a=u[1],t=i[1],e=o+1|0;continue}break;case 3:var l=u[0];if("number"!=typeof l&&3===l.tag){sn(r,n,c[0],l[0],c[1],l[1],c[2],l[2]),a=u[1],t=i[1],e=o+1|0;continue}break;case 4:var d=u[0];if("number"!=typeof d&&4===d.tag){x(c[0],d[0])||ln(0,n,0,c,d),a=u[1],t=i[1],e=o+1|0;continue}}vn(r,n,0,c,u[0]),a=u[1],t=i[1],e=o+1|0}}(r,n,0,e,t)}function hn(r,e,t,a,i){if(2===i.tag){var o=i[4],f=c(t,a),s=nn(i[0],i[1]);if(dn(r,s,Nr((function(r){return 0}),o),o))return pn(r,s,s.childNodes,0,0,i[5]),Zr(e,s,f),void e.removeChild(f);throw[u,["vdom.ml",319,30]]}throw[n,"Node replacement should never be passed anything but a node itself"]}function mn(r,n){for(;;){var e=n,t=r;switch(0|e.tag){case 0:var a=e[0];return document.createComment(a);case 1:var i=e[0];return document.createTextNode(i);case 2:var o=e[4],c=nn(e[0],e[1]);if(dn(t,c,Nr((function(r){return 0}),o),o))return pn(t,c,c.childNodes,0,0,e[5]),c;throw[u,["vdom.ml",333,30]];case 3:var f=s(e[1],void 0);e[2].contents=f,n=f;continue;case 4:n=e[1],r=s(e[0],t);continue}}}function gn(r,e,t,a,u,i){if(2===u.tag){if(2===i.tag){if(u[3]!==i[3]||u[1]!==i[1])return hn(r,e,t,a,i);var o=c(t,a),f=o.childNodes;return dn(r,o,u[4],i[4])||(console.log("VDom:  Failed swapping properties because the property list length changed, use `noProp` to swap properties instead, not by altering the list structure.  This is a massive inefficiency until this issue is resolved."),hn(r,e,t,a,i)),pn(r,o,f,0,u[5],i[5])}throw[n,"Non-node passed to patchVNodesOnElems_MutateNode"]}throw[n,"Non-node passed to patchVNodesOnElems_MutateNode"]}function pn(r,n,e,t,a,u){for(;;){var i=u,o=a,f=t;if(o){var v=o[0];switch(0|v.tag){case 0:if(i){var l=i[0];if(!l.tag&&v[0]===l[0]){u=i[1],a=o[1],t=f+1|0;continue}}break;case 1:if(i){var d=i[0];if(1===d.tag){var h=d[0];if(v[0]!==h)c(e,f).nodeValue=h;u=i[1],a=o[1],t=f+1|0;continue}}break;case 2:if(i){var m=i[0];if(2===m.tag){var g=i[1],p=m[2],b=m[1],w=m[0],_=o[1],y=v[2],k=v[1],x=v[0];if(y===p&&""!==y){u=g,a=_,t=f+1|0;continue}if(""===y||""===p){gn(r,n,e,f,v,m),u=g,a=_,t=f+1|0;continue}var q=0,F=0;if(_){var S=_[0];if(2===S.tag){var N=_[1],C=S[2],A=S[1],M=S[0],R=0;if(g){var L=g[0];if(2===L.tag){if(M===w&&A===b&&C===p&&x===L[0]&&k===L[1]&&y===L[2]){var O=c(e,f),D=c(e,f+1|0);n.removeChild(D),Zr(n,D,O),u=g[1],a=N,t=f+2|0;continue}R=4}else R=4}else R=4;if(4===R){if(M===w&&A===b&&C===p){var T=c(e,f);n.removeChild(T),u=g,a=N,t=f+1|0;continue}F=3}}else F=3}else F=3;if(3===F)if(g){var $=g[0];if(2===$.tag){if(x===$[0]&&k===$[1]&&y===$[2]){var E=c(e,f);Zr(n,mn(r,m),E),u=g,t=f+1|0;continue}q=2}else q=2}else q=2;if(2===q){gn(r,n,e,f,v,m),u=g,a=_,t=f+1|0;continue}}}break;case 3:if(i){var P=i[0];if(3===P.tag){var I=i[1],V=P[2],B=P[1],U=P[0],Q=o[1],j=v[2],z=v[0];if(z===U){V.contents=j.contents,u=I,a=Q,t=f+1|0;continue}var X=0,K=0;if(Q){var G=Q[0];if(3===G.tag){var J=Q[1],H=G[0],W=0;if(I){var Y=I[0];if(3===Y.tag){if(H===U&&z===Y[0]){var Z=c(e,f),rr=c(e,f+1|0);n.removeChild(rr),Zr(n,rr,Z),u=I[1],a=J,t=f+2|0;continue}W=4}else W=4}else W=4;if(4===W){if(H===U){var nr=c(e,f);n.removeChild(nr);var er=G[2].contents;V.contents=er,u=I,a=J,t=f+1|0;continue}K=3}}else K=3}else K=3;if(3===K)if(I){var tr=I[0];if(3===tr.tag){if(tr[0]===z){var ar=c(e,f),ur=s(B,void 0);V.contents=ur,Zr(n,mn(r,ur),ar),u=I,t=f+1|0;continue}X=2}else X=2}else X=2;if(2===X){var ir=j.contents,or=s(B,void 0);V.contents=or,u=[or,I],a=[ir,Q];continue}}}break;case 4:a=[v[1],o[1]];continue}var cr=o[1];if(i){var fr=i[0];if(4===fr.tag){pn(s(fr[0],r),n,e,f,[v,0],[fr[1],0]),u=i[1],a=cr,t=f+1|0;continue}var sr=c(e,f);Zr(n,mn(r,fr),sr),n.removeChild(sr),u=i[1],a=cr,t=f+1|0;continue}var vr=c(e,f);n.removeChild(vr),u=0,a=cr}else{if(!i)return;var lr=mn(r,i[0]);n.appendChild(lr),u=i[1],a=0,t=f+1|0}}}function bn(r,n){if("number"!=typeof n)switch(0|n.tag){case 1:return Ar((function(n,e){return bn(r,e)}),void 0,n[0]);case 0:case 2:return s(n[0],r)}}function wn(r,n,e,t){var a=function(r,n){for(;;){var e=n,t=r;if("number"==typeof e)return;switch(0|e.tag){case 0:var u=e[0];return u?Cr(function(r){return function(n){return a(r,n)}}(t),u):void 0;case 1:return void(e[2].contents=s(e[1],t));case 2:var i=s(e[0],t);n=e[1],r=i;continue}}},u=function(r,n){for(;;){var e=n,t=r;if("number"==typeof e)return;switch(0|e.tag){case 0:var a=e[0];return a?Cr(function(r){return function(n){return u(r,n)}}(t),a):void 0;case 1:var i=e[2],o=i.contents;return void 0!==o?(i.contents=void 0,s(o,void 0)):void 0;case 2:var c=s(e[0],t);n=e[1],r=c;continue}}};if("number"==typeof e){if("number"==typeof t)return t}else switch(0|e.tag){case 0:if("number"!=typeof t&&!t.tag){return function(e,t){for(;;){var i=t,o=e;if(o){var c=o[1],f=o[0];if(i){wn(r,n,f,i[0]),t=i[1],e=c;continue}u(r,f),t=0,e=c}else{if(!i)return;a(n,i[0]),t=i[1],e=0}}}(e[0],t[0]),t}break;case 1:if("number"!=typeof t&&1===t.tag&&e[0]===t[0])return t[2].contents=e[2].contents,t;break;case 2:if("number"!=typeof t&&2===t.tag)return wn(s(e[0],r),s(t[0],n),e[1],t[1]),t}return u(r,e),a(n,t),t}function _n(r,n){for(var e=r.length;(r.position+n|0)>e;)e<<=1;var t=F(e);Vr(r.buffer,0,t,0,r.position),r.buffer=t,r.length=e}function yn(r,n){var e=r.position;e>=r.length&&_n(r,1),r.buffer[e]=n,r.position=e+1|0}function kn(r,n){var e=n.length,t=r.position+e|0;t>r.length&&_n(r,e),Br(n,0,r.buffer,r.position,e),r.position=t}function xn(r,n){var e=r.bytes.length,t=r.ind+n|0;if(!(t<=e)){var a,u,i=F((a=e<<1)>(u=t)?a:u);Vr(r.bytes,0,i,0,e),r.bytes=i}}function qn(r,n){xn(r,1),r.bytes[r.ind]=n,r.ind=r.ind+1|0}function Fn(r,n){var e=n.length;xn(r,e),Wr(n,0,r.bytes,r.ind,e),r.ind=r.ind+e|0}function Sn(r){return Ir(r.bytes,0,r.ind)}function Nn(r){if("number"==typeof r)switch(r){case 0:return"@]";case 1:return"@}";case 2:return"@?";case 3:return"@\n";case 4:return"@.";case 5:return"@@";case 6:return"@%"}else switch(0|r.tag){case 0:case 1:return r[0];case 2:return"@"+N($r(1,r[0]))}}function Cn(r){if("number"==typeof r)return 0;switch(0|r.tag){case 0:return b(0,[Cn(r[0])]);case 1:return b(1,[Cn(r[0])]);case 2:return b(2,[Cn(r[0])]);case 3:return b(3,[Cn(r[0])]);case 4:return b(4,[Cn(r[0])]);case 5:return b(5,[Cn(r[0])]);case 6:return b(6,[Cn(r[0])]);case 7:return b(7,[Cn(r[0])]);case 8:return b(8,[r[0],Cn(r[1])]);case 9:return b(9,[r[1],r[0],Cn(r[2])]);case 10:return b(10,[Cn(r[0])]);case 11:return b(11,[Cn(r[0])]);case 12:return b(12,[Cn(r[0])]);case 13:return b(13,[Cn(r[0])]);case 14:return b(14,[Cn(r[0])])}}function An(r){if("number"==typeof r)return[function(r){return 0},function(r){return 0},function(r){return 0},function(r){return 0}];switch(0|r.tag){case 0:var n=An(r[0]),e=n[1],t=n[0];return[function(r){return s(t,0),0},function(r){return s(e,0),0},n[2],n[3]];case 1:var a=An(r[0]),u=a[1],i=a[0];return[function(r){return s(i,0),0},function(r){return s(u,0),0},a[2],a[3]];case 2:var o=An(r[0]),c=o[1],f=o[0];return[function(r){return s(f,0),0},function(r){return s(c,0),0},o[2],o[3]];case 3:var v=An(r[0]),l=v[1],d=v[0];return[function(r){return s(d,0),0},function(r){return s(l,0),0},v[2],v[3]];case 4:var h=An(r[0]),m=h[1],g=h[0];return[function(r){return s(g,0),0},function(r){return s(m,0),0},h[2],h[3]];case 5:var p=An(r[0]),b=p[1],w=p[0];return[function(r){return s(w,0),0},function(r){return s(b,0),0},p[2],p[3]];case 6:var _=An(r[0]),y=_[1],k=_[0];return[function(r){return s(k,0),0},function(r){return s(y,0),0},_[2],_[3]];case 7:var x=An(r[0]),q=x[1],F=x[0];return[function(r){return s(F,0),0},function(r){return s(q,0),0},x[2],x[3]];case 8:var S=An(r[1]),N=S[1],C=S[0];return[function(r){return s(C,0),0},function(r){return s(N,0),0},S[2],S[3]];case 9:var A=An(r[2]),M=A[3],R=A[2],L=A[1],O=A[0],D=An(Mn(Cn(r[0]),r[1])),T=D[3],$=D[2],E=D[1],P=D[0];return[function(r){return s(O,0),s(P,0),0},function(r){return s(E,0),s(L,0),0},function(r){return s(R,0),s($,0),0},function(r){return s(T,0),s(M,0),0}];case 10:var I=An(r[0]),V=I[1],B=I[0];return[function(r){return s(B,0),0},function(r){return s(V,0),0},I[2],I[3]];case 11:var U=An(r[0]),Q=U[1],j=U[0];return[function(r){return s(j,0),0},function(r){return s(Q,0),0},U[2],U[3]];case 12:var z=An(r[0]),X=z[1],K=z[0];return[function(r){return s(K,0),0},function(r){return s(X,0),0},z[2],z[3]];case 13:var G=An(r[0]),J=G[3],H=G[2],W=G[1],Y=G[0];return[function(r){return s(Y,0),0},function(r){return s(W,0),0},function(r){return s(H,0),0},function(r){return s(J,0),0}];case 14:var Z=An(r[0]),rr=Z[3],nr=Z[2],er=Z[1],tr=Z[0];return[function(r){return s(tr,0),0},function(r){return s(er,0),0},function(r){return s(nr,0),0},function(r){return s(rr,0),0}]}}function Mn(r,n){var e=0;if("number"==typeof r){if("number"==typeof n)return 0;switch(0|n.tag){case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5;break;default:throw[i,["camlinternalFormat.ml",846,23]]}}else switch(0|r.tag){case 0:if("number"==typeof n)e=8;else switch(0|n.tag){case 0:return b(0,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 1:if("number"==typeof n)e=8;else switch(0|n.tag){case 1:return b(1,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 2:if("number"==typeof n)e=8;else switch(0|n.tag){case 2:return b(2,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 3:if("number"==typeof n)e=8;else switch(0|n.tag){case 3:return b(3,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 4:if("number"==typeof n)e=8;else switch(0|n.tag){case 4:return b(4,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 5:if("number"==typeof n)e=8;else switch(0|n.tag){case 5:return b(5,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 6:if("number"==typeof n)e=8;else switch(0|n.tag){case 6:return b(6,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 7:if("number"==typeof n)e=8;else switch(0|n.tag){case 7:return b(7,[Mn(r[0],n[0])]);case 8:e=6;break;case 9:e=7;break;case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5}break;case 8:if("number"==typeof n)throw[i,["camlinternalFormat.ml",832,26]];switch(0|n.tag){case 8:return b(8,[Mn(r[0],n[0]),Mn(r[1],n[1])]);case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5;break;default:throw[i,["camlinternalFormat.ml",832,26]]}break;case 9:if("number"==typeof n)throw[i,["camlinternalFormat.ml",842,28]];switch(0|n.tag){case 8:e=6;break;case 9:var t=An(Mn(Cn(r[1]),n[0]));return s(t[1],0),s(t[3],0),b(9,[r[0],n[1],Mn(r[2],n[2])]);case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:e=5;break;default:throw[i,["camlinternalFormat.ml",842,28]]}break;case 10:if("number"==typeof n)throw[i,["camlinternalFormat.ml",810,21]];if(10===n.tag)return b(10,[Mn(r[0],n[0])]);throw[i,["camlinternalFormat.ml",810,21]];case 11:if("number"==typeof n)throw[i,["camlinternalFormat.ml",814,21]];switch(0|n.tag){case 10:e=1;break;case 11:return b(11,[Mn(r[0],n[0])]);default:throw[i,["camlinternalFormat.ml",814,21]]}break;case 12:if("number"==typeof n)throw[i,["camlinternalFormat.ml",818,19]];switch(0|n.tag){case 10:e=1;break;case 11:e=2;break;case 12:return b(12,[Mn(r[0],n[0])]);default:throw[i,["camlinternalFormat.ml",818,19]]}break;case 13:if("number"==typeof n)throw[i,["camlinternalFormat.ml",822,22]];switch(0|n.tag){case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:return b(13,[Mn(r[0],n[0])]);default:throw[i,["camlinternalFormat.ml",822,22]]}break;case 14:if("number"==typeof n)throw[i,["camlinternalFormat.ml",827,30]];switch(0|n.tag){case 10:e=1;break;case 11:e=2;break;case 12:e=3;break;case 13:e=4;break;case 14:return b(14,[Mn(r[0],n[0])]);default:throw[i,["camlinternalFormat.ml",827,30]]}}switch(e){case 1:throw[i,["camlinternalFormat.ml",811,21]];case 2:throw[i,["camlinternalFormat.ml",815,21]];case 3:throw[i,["camlinternalFormat.ml",819,19]];case 4:throw[i,["camlinternalFormat.ml",823,22]];case 5:throw[i,["camlinternalFormat.ml",828,30]];case 6:throw[i,["camlinternalFormat.ml",833,26]];case 7:throw[i,["camlinternalFormat.ml",843,28]];case 8:throw[i,["camlinternalFormat.ml",847,23]]}}var Rn=dr("CamlinternalFormat.Type_mismatch");function Ln(r,n){if("number"==typeof r)return[0,n];if(!r.tag)return[b(0,[r[0],r[1]]),n];if("number"==typeof n)throw Rn;if(2===n.tag)return[b(1,[r[0]]),n[0]];throw Rn}function On(r,n,e){var t=Ln(r,e);if("number"!=typeof n)return[t[0],[n[0]],t[1]];if(0===n)return[t[0],0,t[1]];var a=t[1];if("number"==typeof a)throw Rn;if(2===a.tag)return[t[0],1,a[0]];throw Rn}function Dn(r,n){if("number"==typeof r)return[0,n];switch(0|r.tag){case 0:if("number"==typeof n)throw Rn;if(n.tag)throw Rn;var e=Dn(r[0],n[0]);return[b(0,[e[0]]),e[1]];case 1:if("number"==typeof n)throw Rn;if(n.tag)throw Rn;var t=Dn(r[0],n[0]);return[b(1,[t[0]]),t[1]];case 2:var a=Ln(r[0],n),u=a[1];if("number"==typeof u)throw Rn;if(1===u.tag){var i=Dn(r[1],u[0]);return[b(2,[a[0],i[0]]),i[1]]}throw Rn;case 3:var o=Ln(r[0],n),c=o[1];if("number"==typeof c)throw Rn;if(1===c.tag){var f=Dn(r[1],c[0]);return[b(3,[o[0],f[0]]),f[1]]}throw Rn;case 4:var v=On(r[1],r[2],n),l=v[2];if("number"==typeof l)throw Rn;if(2===l.tag){var d=Dn(r[3],l[0]);return[b(4,[r[0],v[0],v[1],d[0]]),d[1]]}throw Rn;case 5:var h=On(r[1],r[2],n),m=h[2];if("number"==typeof m)throw Rn;if(3===m.tag){var g=Dn(r[3],m[0]);return[b(5,[r[0],h[0],h[1],g[0]]),g[1]]}throw Rn;case 6:var p=On(r[1],r[2],n),w=p[2];if("number"==typeof w)throw Rn;if(4===w.tag){var _=Dn(r[3],w[0]);return[b(6,[r[0],p[0],p[1],_[0]]),_[1]]}throw Rn;case 7:var y=On(r[1],r[2],n),k=y[2];if("number"==typeof k)throw Rn;if(5===k.tag){var x=Dn(r[3],k[0]);return[b(7,[r[0],y[0],y[1],x[0]]),x[1]]}throw Rn;case 8:var F=On(r[1],r[2],n),S=F[2];if("number"==typeof S)throw Rn;if(6===S.tag){var N=Dn(r[3],S[0]);return[b(8,[r[0],F[0],F[1],N[0]]),N[1]]}throw Rn;case 9:var C=Ln(r[0],n),A=C[1];if("number"==typeof A)throw Rn;if(7===A.tag){var M=Dn(r[1],A[0]);return[b(9,[C[0],M[0]]),M[1]]}throw Rn;case 10:var R=Dn(r[0],n);return[b(10,[R[0]]),R[1]];case 11:var L=Dn(r[1],n);return[b(11,[r[0],L[0]]),L[1]];case 12:var O=Dn(r[1],n);return[b(12,[r[0],O[0]]),O[1]];case 13:if("number"==typeof n)throw Rn;if(8===n.tag){var D=n[0];if(q([r[1]],[D]))throw Rn;var T=Dn(r[2],n[1]);return[b(13,[r[0],D,T[0]]),T[1]]}throw Rn;case 14:if("number"==typeof n)throw Rn;if(9===n.tag){var $=n[0];if(q([wr(r[1])],[wr($)]))throw Rn;var E=Dn(r[2],wr(n[2]));return[b(14,[r[0],$,E[0]]),E[1]]}throw Rn;case 15:if("number"==typeof n)throw Rn;if(10===n.tag){var P=Dn(r[0],n[0]);return[b(15,[P[0]]),P[1]]}throw Rn;case 16:if("number"==typeof n)throw Rn;if(11===n.tag){var I=Dn(r[0],n[0]);return[b(16,[I[0]]),I[1]]}throw Rn;case 17:var V=Dn(r[1],n);return[b(17,[r[0],V[0]]),V[1]];case 18:var B=r[0],U=r[1];if(B.tag){var Q=B[0],j=Dn(Q[0],n),z=Dn(U,j[1]);return[b(18,[b(1,[[j[0],Q[1]]]),z[0]]),z[1]]}var X=B[0],K=Dn(X[0],n),G=Dn(U,K[1]);return[b(18,[b(0,[[K[0],X[1]]]),G[0]]),G[1]];case 19:if("number"==typeof n)throw Rn;if(13===n.tag){var J=Dn(r[0],n[0]);return[b(19,[J[0]]),J[1]]}throw Rn;case 20:if("number"==typeof n)throw Rn;if(1===n.tag){var H=Dn(r[2],n[0]);return[b(20,[r[0],r[1],H[0]]),H[1]]}throw Rn;case 21:if("number"==typeof n)throw Rn;if(2===n.tag){var W=Dn(r[1],n[0]);return[b(21,[r[0],W[0]]),W[1]]}throw Rn;case 23:var Y=r[0],Z=r[1];if("number"==typeof Y){if(2!==Y)return Tn(Y,Z,n);if("number"==typeof n)throw Rn;if(14===n.tag){var rr=Dn(Z,n[0]);return[b(23,[2,rr[0]]),rr[1]]}throw Rn}switch(0|Y.tag){case 8:return Tn(b(8,[Y[0],Y[1]]),Z,n);case 9:var nr=function r(n,e,t){if("number"==typeof n)return[0,Dn(e,t)];switch(0|n.tag){case 0:if("number"==typeof t)throw Rn;if(t.tag)throw Rn;var a=r(n[0],e,t[0]);return[b(0,[a[0]]),a[1]];case 1:if("number"==typeof t)throw Rn;if(1===t.tag){var u=r(n[0],e,t[0]);return[b(1,[u[0]]),u[1]]}throw Rn;case 2:if("number"==typeof t)throw Rn;if(2===t.tag){var i=r(n[0],e,t[0]);return[b(2,[i[0]]),i[1]]}throw Rn;case 3:if("number"==typeof t)throw Rn;if(3===t.tag){var o=r(n[0],e,t[0]);return[b(3,[o[0]]),o[1]]}throw Rn;case 4:if("number"==typeof t)throw Rn;if(4===t.tag){var c=r(n[0],e,t[0]);return[b(4,[c[0]]),c[1]]}throw Rn;case 5:if("number"==typeof t)throw Rn;if(5===t.tag){var f=r(n[0],e,t[0]);return[b(5,[f[0]]),f[1]]}throw Rn;case 6:if("number"==typeof t)throw Rn;if(6===t.tag){var v=r(n[0],e,t[0]);return[b(6,[v[0]]),v[1]]}throw Rn;case 7:if("number"==typeof t)throw Rn;if(7===t.tag){var l=r(n[0],e,t[0]);return[b(7,[l[0]]),l[1]]}throw Rn;case 8:if("number"==typeof t)throw Rn;if(8===t.tag){var d=t[0];if(q([n[0]],[d]))throw Rn;var h=r(n[1],e,t[1]);return[b(8,[d,h[0]]),h[1]]}throw Rn;case 9:if("number"==typeof t)throw Rn;if(9===t.tag){var m=t[1],g=t[0];if(q([wr(n[0])],[wr(g)]))throw Rn;if(q([wr(n[1])],[wr(m)]))throw Rn;var p=An(Mn(Cn(g),m));s(p[1],0),s(p[3],0);var w=r(wr(n[2]),e,t[2]);return[b(9,[g,m,Cn(w[0])]),w[1]]}throw Rn;case 10:if("number"==typeof t)throw Rn;if(10===t.tag){var _=r(n[0],e,t[0]);return[b(10,[_[0]]),_[1]]}throw Rn;case 11:if("number"==typeof t)throw Rn;if(11===t.tag){var y=r(n[0],e,t[0]);return[b(11,[y[0]]),y[1]]}throw Rn;case 12:throw Rn;case 13:if("number"==typeof t)throw Rn;if(13===t.tag){var k=r(n[0],e,t[0]);return[b(13,[k[0]]),k[1]]}throw Rn;case 14:if("number"==typeof t)throw Rn;if(14===t.tag){var x=r(n[0],e,t[0]);return[b(14,[x[0]]),x[1]]}throw Rn}}(Y[1],Z,n),er=nr[1];return[b(23,[b(9,[Y[0],nr[0]]),er[0]]),er[1]];default:return Tn(Y,Z,n)}case 22:case 24:throw Rn}}function Tn(r,n,e){var t=Dn(n,e);return[b(23,[r,t[0]]),t[1]]}function $n(r,n){return function(r,n){var e=Dn(r,n);if("number"==typeof e[1])return e[0];throw Rn}(r,wr(Cn(n)))}function En(r,n,e){var t=e.length,a=yr(n),u=n<0?0:r;if(a<=t)return e;var i=$r(a,2===u?48:32);switch(u){case 0:Wr(e,0,i,0,t);break;case 1:Wr(e,0,i,a-t|0,t);break;case 2:t>0&&(43===vr(e,0)||45===vr(e,0)||32===vr(e,0))?(i[0]=vr(e,0),Wr(e,1,i,1+(a-t|0)|0,t-1|0)):t>1&&48===vr(e,0)&&(120===vr(e,1)||88===vr(e,1))?(i[1]=vr(e,1),Wr(e,2,i,2+(a-t|0)|0,t-2|0)):Wr(e,0,i,a-t|0,t)}return N(i)}function Pn(r,n){var e=yr(r),t=n.length,a=vr(n,0),u=0;if(a>=58)if(a>=71){if(a>102||a<97)return n;u=2}else{if(a<65)return n;u=2}else if(32!==a){if(a<43)return n;switch(a-43|0){case 0:case 2:u=1;break;case 1:case 3:case 4:return n;case 5:if((e+2|0)>t&&t>1&&(120===vr(n,1)||88===vr(n,1))){var i=$r(e+2|0,48);return i[1]=vr(n,1),Wr(n,2,i,4+(e-t|0)|0,t-2|0),N(i)}u=2;break;case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:u=2}}else u=1;switch(u){case 1:if((e+1|0)<=t)return n;var o=$r(e+1|0,48);return o[0]=a,Wr(n,1,o,2+(e-t|0)|0,t-1|0),N(o);case 2:if(e<=t)return n;var c=$r(e,48);return Wr(n,0,c,e-t|0,t),N(c)}}function In(r){var n,e=(n=r,function(r){for(;;){var e=r;if(e>=n.length)return!1;var t=n.charCodeAt(e);if(t<32)return!0;var a=t-34|0;if(a>58||a<0){if(a>=93)return!0;r=e+1|0}else{if(a>57||a<1)return!0;r=e+1|0}}}(0)?N(Qr(A(n))):n),t=e.length,a=$r(t+2|0,34);return C(e,0,a,1,t),N(a)}function Vn(r,n){if(15===r)return"%.12g";var e=yr(n),t=function(r){switch(r){case 0:case 1:case 2:return 102;case 3:case 4:case 5:return 101;case 6:case 7:case 8:return 69;case 9:case 10:case 11:return 103;case 12:case 13:case 14:return 71;case 15:return 70;case 16:case 17:case 18:return 104;case 19:case 20:case 21:return 72}}(r),a={ind:0,bytes:F(16)};return qn(a,37),function(r,n){switch(n){case 0:case 3:case 6:case 9:case 12:case 15:case 16:case 19:return;case 1:case 4:case 7:case 10:case 13:case 17:case 20:return qn(r,43);case 2:case 5:case 8:case 11:case 14:case 18:case 21:qn(r,32)}}(a,r),qn(a,46),Fn(a,String(e)),qn(a,t),Sn(a)}function Bn(r,n){return or(function(r){switch(r){case 0:return"%d";case 1:return"%+d";case 2:return"% d";case 3:return"%i";case 4:return"%+i";case 5:return"% i";case 6:return"%x";case 7:return"%#x";case 8:return"%X";case 9:return"%#X";case 10:return"%o";case 11:return"%#o";case 12:return"%u"}}(r),n)}function Un(r,n){return sr(function(r){switch(r){case 0:return"%ld";case 1:return"%+ld";case 2:return"% ld";case 3:return"%li";case 4:return"%+li";case 5:return"% li";case 6:return"%lx";case 7:return"%#lx";case 8:return"%lX";case 9:return"%#lX";case 10:return"%lo";case 11:return"%#lo";case 12:return"%lu"}}(r),n)}function Qn(r,n){return fr(function(r){switch(r){case 0:return"%nd";case 1:return"%+nd";case 2:return"% nd";case 3:return"%ni";case 4:return"%+ni";case 5:return"% ni";case 6:return"%nx";case 7:return"%#nx";case 8:return"%nX";case 9:return"%#nX";case 10:return"%no";case 11:return"%#no";case 12:return"%nu"}}(r),n)}function jn(r,n){return cr(function(r){switch(r){case 0:return"%Ld";case 1:return"%+Ld";case 2:return"% Ld";case 3:return"%Li";case 4:return"%+Li";case 5:return"% Li";case 6:return"%Lx";case 7:return"%#Lx";case 8:return"%LX";case 9:return"%#LX";case 10:return"%Lo";case 11:return"%#Lo";case 12:return"%Lu"}}(r),n)}function zn(r,n,e){if(r>=16){var t;if(r>=17)switch(r-17|0){case 2:t=45;break;case 0:case 3:t=43;break;case 1:case 4:t=32}else t=45;var a=function(r,n,e){if(!isFinite(r))return isNaN(r)?"nan":r>0?"infinity":"-infinity";var t=0==r&&1/r==-1/0?1:r>=0?0:1;t&&(r=-r);var a=0;if(0==r);else if(r<1)for(;r<1&&a>-1022;)r*=2,a--;else for(;r>=2;)r/=2,a++;var u=a<0?"":"+",i="";if(t)i="-";else switch(e){case 43:i="+";break;case 32:i=" "}if(n>=0&&n<13){var o=Math.pow(2,4*n);r=Math.round(r*o)/o}var c=r.toString(16);if(n>=0){var f=c.indexOf(".");if(f<0)c+="."+"0".repeat(n);else{var s=f+1+n;c.length<s?c+="0".repeat(s-c.length):c=c.substr(0,s)}}return i+"0x"+c+"p"+u+a.toString(10)}(e,n,t);return r>=19?N(jr(A(a))):a}var u=function(r,n){var e=ur(r),t=e.prec<0?6:e.prec,a=n<0?(e.sign=-1,-n):n,u="";if(isNaN(a))u="nan",e.filter=" ";else if(isFinite(a)){switch(e.conv){case"e":var i=(u=a.toExponential(t)).length;"e"===u[i-3|0]&&(u=u.slice(0,i-1|0)+"0"+u.slice(i-1|0));break;case"f":u=a.toFixed(t);break;case"g":var o=0!==t?t:1,c=(u=a.toExponential(o-1|0)).indexOf("e"),f=0|Number(u.slice(c+1|0));if(f<-4||a>=1e21||a.toFixed().length>o){for(var s=c-1|0;"0"===u[s];)s=s-1|0;"."===u[s]&&(s=s-1|0);var v=(u=u.slice(0,s+1|0)+u.slice(c)).length;"e"===u[v-3|0]&&(u=u.slice(0,v-1|0)+"0"+u.slice(v-1|0))}else{var l=o;if(f<0)l=l-(f+1|0)|0,u=a.toFixed(l);else for(;(u=a.toFixed(l)).length>(o+1|0);)l=l-1|0;if(0!==l){for(var d=u.length-1|0;"0"===u[d];)d=d-1|0;"."===u[d]&&(d=d-1|0),u=u.slice(0,d+1|0)}}}}else u="inf",e.filter=" ";return ir(e,u)}(Vn(r,n),e);if(15!==r)return u;var i=u.length,o=function(r){return isFinite(r)?Math.abs(r)>=22250738585072014e-324?0:0!==r?1:2:isNaN(r)?4:3}(e);return 3!==o?o>=4?"nan":function(r){for(;;){var n=r;if(n===i)return!1;var e=vr(u,n)-46|0;if(e>23||e<0){if(55===e)return!0;r=n+1|0}else{if(e>22||e<1)return!0;r=n+1|0}}}(0)?u:u+".":e<0?"neg_infinity":"infinity"}function Xn(r){var n=function(r){var n=0;if(r>=40){if(92===r)return"\\\\";n=r>=127?1:2}else if(r>=32){if(r>=39)return"\\'";n=2}else if(r>=14)n=1;else switch(r){case 8:return"\\b";case 9:return"\\t";case 10:return"\\n";case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 11:case 12:n=1;break;case 13:return"\\r"}switch(n){case 1:var e=[0,0,0,0];return e[0]=92,e[1]=48+(r/100|0)|0,e[2]=48+(r/10|0)%10|0,e[3]=48+r%10|0,N(e);case 2:var t=[0];return t[0]=r,N(t)}}(r),e=n.length,t=$r(e+2|0,39);return C(n,0,t,1,e),N(t)}function Kn(r){var n={ind:0,bytes:F(16)};return function r(n,e){for(;;){var t=e;if("number"==typeof t)return;switch(0|t.tag){case 0:Fn(n,"%c"),e=t[0];continue;case 1:Fn(n,"%s"),e=t[0];continue;case 2:Fn(n,"%i"),e=t[0];continue;case 3:Fn(n,"%li"),e=t[0];continue;case 4:Fn(n,"%ni"),e=t[0];continue;case 5:Fn(n,"%Li"),e=t[0];continue;case 6:Fn(n,"%f"),e=t[0];continue;case 7:Fn(n,"%B"),e=t[0];continue;case 8:Fn(n,"%{"),r(n,t[0]),Fn(n,"%}"),e=t[1];continue;case 9:Fn(n,"%("),r(n,t[0]),Fn(n,"%)"),e=t[2];continue;case 10:Fn(n,"%a"),e=t[0];continue;case 11:Fn(n,"%t"),e=t[0];continue;case 12:Fn(n,"%?"),e=t[0];continue;case 13:Fn(n,"%r"),e=t[0];continue;case 14:Fn(n,"%_r"),e=t[0];continue}}}(n,r),Sn(n)}function Gn(r,n,e,t){for(;;){var a=t,u=e,o=r;if("number"==typeof a)return v(o,n,u);switch(0|a.tag){case 0:return function(r,e,t){return function(a){var u=b(5,[e,a]);return Gn(r,n,u,t)}}(o,u,a[0]);case 1:return function(r,e,t){return function(a){var u=Xn(a),i=b(4,[e,u]);return Gn(r,n,i,t)}}(o,u,a[0]);case 2:return Wn(o,n,u,a[1],a[0],(function(r){return r}));case 3:return Wn(o,n,u,a[1],a[0],In);case 4:return Yn(o,n,u,a[3],a[1],a[2],Bn,a[0]);case 5:return Yn(o,n,u,a[3],a[1],a[2],Un,a[0]);case 6:return Yn(o,n,u,a[3],a[1],a[2],Qn,a[0]);case 7:return Yn(o,n,u,a[3],a[1],a[2],jn,a[0]);case 8:var c=a[3],f=a[1],l=a[2],d=a[0];if("number"==typeof f)return"number"==typeof l?0!==l?function(r,e,t,a){return function(u,i){var o=zn(a,u,i);return Gn(r,n,b(4,[e,o]),t)}}(o,u,c,d):function(r,e,t,a){return function(u){var i=zn(a,-6,u);return Gn(r,n,b(4,[e,i]),t)}}(o,u,c,d):function(r,e,t,a,u){return function(i){var o=zn(a,u,i);return Gn(r,n,b(4,[e,o]),t)}}(o,u,c,d,l[0]);if(f.tag){var h=f[0];return"number"==typeof l?0!==l?function(r,e,t,a,u){return function(i,o,c){var f=En(u,i,zn(a,o,c));return Gn(r,n,b(4,[e,f]),t)}}(o,u,c,d,h):function(r,e,t,a,u){return function(i,o){var c=zn(a,-6,o),f=En(u,i,c);return Gn(r,n,b(4,[e,f]),t)}}(o,u,c,d,h):function(r,e,t,a,u,i){return function(o,c){var f=En(u,o,zn(a,i,c));return Gn(r,n,b(4,[e,f]),t)}}(o,u,c,d,h,l[0])}var m=f[1],g=f[0];return"number"==typeof l?0!==l?function(r,e,t,a,u,i){return function(o,c){var f=En(u,i,zn(a,o,c));return Gn(r,n,b(4,[e,f]),t)}}(o,u,c,d,g,m):function(r,e,t,a,u,i){return function(o){var c=zn(a,-6,o),f=En(u,i,c);return Gn(r,n,b(4,[e,f]),t)}}(o,u,c,d,g,m):function(r,e,t,a,u,i,o){return function(c){var f=En(u,i,zn(a,o,c));return Gn(r,n,b(4,[e,f]),t)}}(o,u,c,d,g,m,l[0]);case 9:return Wn(o,n,u,a[1],a[0],kr);case 10:t=a[0],e=b(7,[u]);continue;case 11:t=a[1],e=b(2,[u,a[0]]);continue;case 12:t=a[1],e=b(3,[u,a[0]]);continue;case 13:return function(r,e,t,a){return function(u){return Gn(r,n,b(4,[e,a]),t)}}(o,u,a[2],Kn(a[1]));case 14:var p=a[2];return function(r,e,t,a){return function(u){return Gn(r,n,e,_r($n(u[0],t),a))}}(o,u,a[1],p);case 15:return function(r,e,t){return function(a,u){return Gn(r,n,b(6,[e,function(r){return v(a,r,u)}]),t)}}(o,u,a[0]);case 16:return function(r,e,t){return function(a){return Gn(r,n,b(6,[e,a]),t)}}(o,u,a[0]);case 17:t=a[1],e=b(0,[u,a[0]]);continue;case 18:var w=a[0];if(w.tag){var _=function(r,n,e){return function(t,a){return Gn(r,t,b(1,[n,b(1,[a])]),e)}}(o,u,a[1]);t=w[0][0],e=0,r=_;continue}var y=function(r,n,e){return function(t,a){return Gn(r,t,b(1,[n,b(0,[a])]),e)}}(o,u,a[1]);t=w[0][0],e=0,r=y;continue;case 19:throw[i,["camlinternalFormat.ml",1525,4]];case 20:return function(r,e,t){return function(a){return Gn(r,n,t,e)}}(o,a[2],b(8,[u,"Printf: bad conversion %["]));case 21:return function(r,e,t){return function(a){var u=or("%u",a),i=b(4,[e,u]);return Gn(r,n,i,t)}}(o,u,a[1]);case 22:return function(r,e,t){return function(a){var u=b(5,[e,a]);return Gn(r,n,u,t)}}(o,u,a[0]);case 23:return Jn(o,n,u,a[0],a[1]);case 24:return Zn(o,n,u,a[2],a[0],s(a[1],void 0))}}}function Jn(r,n,e,t,a){if("number"!=typeof t)return 9===t.tag?function r(n,e,t,a,u){if("number"==typeof a)return Hn(n,e,t,u);switch(0|a.tag){case 0:var o=a[0];return function(a){return r(n,e,t,o,u)};case 1:var c=a[0];return function(a){return r(n,e,t,c,u)};case 2:var f=a[0];return function(a){return r(n,e,t,f,u)};case 3:var s=a[0];return function(a){return r(n,e,t,s,u)};case 4:var v=a[0];return function(a){return r(n,e,t,v,u)};case 5:var l=a[0];return function(a){return r(n,e,t,l,u)};case 6:var d=a[0];return function(a){return r(n,e,t,d,u)};case 7:var h=a[0];return function(a){return r(n,e,t,h,u)};case 8:var m=a[1];return function(a){return r(n,e,t,m,u)};case 9:var g=a[2],p=Mn(Cn(a[0]),a[1]);return function(a){return r(n,e,t,function r(n,e){if("number"==typeof n)return e;switch(0|n.tag){case 0:return b(0,[r(n[0],e)]);case 1:return b(1,[r(n[0],e)]);case 2:return b(2,[r(n[0],e)]);case 3:return b(3,[r(n[0],e)]);case 4:return b(4,[r(n[0],e)]);case 5:return b(5,[r(n[0],e)]);case 6:return b(6,[r(n[0],e)]);case 7:return b(7,[r(n[0],e)]);case 8:return b(8,[n[0],r(n[1],e)]);case 9:return b(9,[n[0],n[1],r(n[2],e)]);case 10:return b(10,[r(n[0],e)]);case 11:return b(11,[r(n[0],e)]);case 12:return b(12,[r(n[0],e)]);case 13:return b(13,[r(n[0],e)]);case 14:return b(14,[r(n[0],e)])}}(p,g),u)};case 10:var w=a[0];return function(a,i){return r(n,e,t,w,u)};case 11:var _=a[0];return function(a){return r(n,e,t,_,u)};case 12:var y=a[0];return function(a){return r(n,e,t,y,u)};case 13:throw[i,["camlinternalFormat.ml",1616,31]];case 14:throw[i,["camlinternalFormat.ml",1617,31]]}}(r,n,e,t[1],a):Hn(r,n,e,a);if(2!==t)return Hn(r,n,e,a);throw[i,["camlinternalFormat.ml",1593,39]]}function Hn(r,n,e,t){return Gn(r,n,b(8,[e,"Printf: bad conversion %_"]),t)}function Wn(r,n,e,t,a,u){if("number"==typeof a)return function(a){var i=s(u,a),o=b(4,[e,i]);return Gn(r,n,o,t)};if(a.tag){var i=a[0];return function(a,o){var c=En(i,a,s(u,o)),f=b(4,[e,c]);return Gn(r,n,f,t)}}var o=a[1],c=a[0];return function(a){var i=En(c,o,s(u,a)),f=b(4,[e,i]);return Gn(r,n,f,t)}}function Yn(r,n,e,t,a,u,i,o){if("number"==typeof a){if("number"==typeof u)return 0!==u?function(a,u){var c=Pn(a,v(i,o,u));return Gn(r,n,b(4,[e,c]),t)}:function(a){var u=v(i,o,a);return Gn(r,n,b(4,[e,u]),t)};var c=u[0];return function(a){var u=Pn(c,v(i,o,a));return Gn(r,n,b(4,[e,u]),t)}}if(a.tag){var f=a[0];if("number"==typeof u)return 0!==u?function(a,u,c){var s=En(f,a,Pn(u,v(i,o,c)));return Gn(r,n,b(4,[e,s]),t)}:function(a,u){var c=En(f,a,v(i,o,u));return Gn(r,n,b(4,[e,c]),t)};var s=u[0];return function(a,u){var c=En(f,a,Pn(s,v(i,o,u)));return Gn(r,n,b(4,[e,c]),t)}}var l=a[1],d=a[0];if("number"==typeof u)return 0!==u?function(a,u){var c=En(d,l,Pn(a,v(i,o,u)));return Gn(r,n,b(4,[e,c]),t)}:function(a){var u=En(d,l,v(i,o,a));return Gn(r,n,b(4,[e,u]),t)};var h=u[0];return function(a){var u=En(d,l,Pn(h,v(i,o,a)));return Gn(r,n,b(4,[e,u]),t)}}function Zn(r,n,e,t,a,u){if(!a)return Gn(r,n,b(4,[e,u]),t);var i=a[0];return function(a){return Zn(r,n,e,t,i,s(u,a))}}function re(r,n){return Gn((function(n,t){var a,u,i,o,c={buffer:i=F(u=(a=64)<1?1:a),position:0,length:u,initial_buffer:i};return function r(n,t){for(;;){var a=t,u=0;if("number"==typeof a)return;switch(0|a.tag){case 0:var i=Nn(a[1]);return r(n,a[0]),kn(n,i);case 1:var o=a[1],c=a[0];if(o.tag){r(n,c),kn(n,"@["),t=o[0];continue}r(n,c),kn(n,"@{"),t=o[0];continue;case 2:case 4:u=1;break;case 3:case 5:u=2;break;case 6:return r(n,a[0]),kn(n,s(a[1],void 0));case 7:t=a[0];continue;case 8:throw r(n,a[0]),[e,a[1]]}switch(u){case 1:return r(n,a[0]),kn(n,a[1]);case 2:return r(n,a[0]),yn(n,a[1])}}}(c,t),s(r,Ir((o=c).buffer,0,o.position))}),void 0,0,n[0])}function ne(r){return re((function(r){return r}),r)}function ee(r){var n=r.length;return Fr(function(e,t){for(;;){var a=t,u=e;if(a===n)return u;t=a+1|0,e=[vr(r,a),u]}}(0,0))}function te(r,n){return function(r,n){return r.line===n.line?w(n.column,r.column):w(n.line,r.line)}(r.location,n.location)}function ae(r){return l(ne([b(11,["At ",b(2,[0,b(11,["; Expecting ",b(2,[0,b(11,[" but actual ",b(2,[0,0])])])])])]),"At %s; Expecting %s but actual %s"]),function(r){return v(ne([b(11,["Ln ",b(4,[0,0,0,b(11,[", Col ",b(4,[0,0,0,0])])])]),"Ln %d, Col %d"]),r.line,r.column)}(r.location),r.expecting,r.actual)}function ue(r,n,e){var t=s(r,e);if(t.tag)return b(1,[t[0]]);var a=t[0];return v(n,a.result,{location:a.location,input_chars:a.remaining_chars})}function ie(r,n,e,t){var a=s(r,t);if(a.tag)return b(0,[{result:e,location:t.location,remaining_chars:t.input_chars}]);var u=a[0];return v(n,u.result,{location:u.location,input_chars:u.remaining_chars})}function oe(r,n){return b(0,[{result:r,location:n.location,remaining_chars:n.input_chars}])}function ce(r,n,e){var t=s(n,e);if(!t.tag)return t;var a=t[0];return b(1,a?[[{expecting:s(r,Kr(" OR ",Nr((function(r){return r.expecting}),a))),actual:a[0].actual,location:e.location},0]]:[[{expecting:s(r,""),actual:"No input",location:e.location},0]])}function fe(r,n,e){var t=s(n,e);if(!t.tag)return t;var a=t[0];return b(1,a?[[{expecting:r,actual:a[0].actual,location:e.location},a[1]]]:[[{expecting:r,actual:"",location:e.location},0]])}function se(r,n){return function(e){return ue(n,(function(n){var e=s(r,n);return function(r){return oe(e,r)}}),e)}}function ve(r,n,e){var t=s(r,e);if(!t.tag)return t;var a=s(n,e);return a.tag?b(1,[Lr([t[0],[a[0],0]])]):a}function le(r){if(!r)return function(r){return b(1,[0])};var n=r[0],e=le(r[1]);return function(r){return ve(n,e,r)}}function de(r,n){return e=r,t=function(r,n){var e=function(t){return function(a){return ie(r,(function(r){return function(r){return ue(n,(function(r){return e([r,t])}),r)}}),t,a)}};return e(0)}(n,r),function(r){return ue(e,(function(r){return function(n){return ue(t,(function(n){var e=[r,n];return function(r){return oe(e,r)}}),n)}}),r)};var e,t}function he(r,n,e){var t=e.input_chars;if(!t)return b(1,[[{expecting:n,actual:"Ran out of characters",location:e.location},0]]);var a,u,i,o=t[0];return s(r,o)?b(0,[{result:o,location:(a=e.location,u=o,i=a.line,10!==u&&13!==u?{column:a.column+1|0,line:i}:{column:1,line:i+1|0}),remaining_chars:t[1]}]):b(1,[[{expecting:n,actual:s(ne([b(12,[39,b(0,[b(12,[39,0])])]),"'%c'"]),o),location:e.location},0]])}function me(r){var n=s(ne([b(0,[0]),"%c"]),r);return function(e){return he((function(n){return r===n}),n,e)}}function ge(r,n){var e=v(ne([b(11,["A character between ",b(0,[b(11,[" and ",b(0,[0])])])]),"A character between %c and %c"]),r,n);return function(t){return he((function(e){return e>=r&&e<=n}),e,t)}}var pe=function(r){var n=s(ne([b(11,["One of: ",b(2,[0,0])]),"One of: %s"]),Kr(", ",Nr((function(r){return zr(1,r)}),r)));return function(e){return he((function(n){return function(r,n){for(;;){var e=n;if(!e)return!1;if(x(e[0],r))return!0;n=e[1]}}(n,r)}),n,e)}}([32,[9,[13,[10,0]]]]),be=(me(10),me(9),ge(65,90)),we=ge(97,122),_e=ge(48,57),ye=ne([b(2,[0,0]),"%s"]);function ke(r){return ce(ye,(function(r){return ve(we,be,r)}),r)}le([ge(97,102),[ge(65,70),[_e,0]]]);var xe=function r(n){var e=function(e){return ue(n,(function(e){return r(n)}),e)};return function(r){return ve(e,(function(r){return oe(void 0,r)}),r)}}(pe);ge(48,55);function qe(r){var e=r.length,t=function(n){if(n>=e)return function(n){return oe(r,n)};var a=t(n+1|0),u=me(vr(r,n));return function(r){return ue(u,(function(r){return a}),r)}};if(e<=0)return function(r){throw[n,r]}("token must be a non-empty string");var a=t(0),u=function(r){return ue(xe,(function(r){return a}),r)};return function(n){return fe(r,u,n)}}function Fe(r,n){var e=function(r,n){return s(r,{location:{column:1,line:1},input_chars:ee(Jr(n))})}(r,n);if(e.tag)return b(1,[e[0]]);var t=e[0],a=t.remaining_chars,u=t.location;return a?b(1,[[{expecting:"End of input",actual:s(ne([b(11,["Characters remaining: ",b(2,[0,0])]),"Characters remaining: %s"]),Kr("",Nr((function(r){return zr(1,r)}),a))),location:u},0]]):b(0,[{result:t.result,location:u,remaining_chars:a}])}var Se=ue,Ne=ve,Ce=function(r,n){return function(e){return ue(r,(function(r){return n}),e)}},Ae=function(r,n){return function(e){return ue(r,(function(r){return function(e){return ue(n,(function(n){return function(n){return oe(r,n)}}),e)}}),e)}};function Me(r){var n=function(r){return r?r[4]:0},t=function(r,e,t,a){var u=n(r),i=n(a);return[r,e,t,a,u>=i?u+1|0:i+1|0]},u=function(r,n){return[0,r,n,0,1]},o=function(r,a,u,i){var o=r?r[4]:0,c=i?i[4]:0;if(o>(c+2|0)){if(r){var f=r[3],s=r[2],v=r[1],l=r[0];if(n(l)>=n(f))return t(l,v,s,t(f,a,u,i));if(f)return t(t(l,v,s,f[0]),f[1],f[2],t(f[3],a,u,i));throw[e,"Map.bal"]}throw[e,"Map.bal"]}if(c<=(o+2|0))return[r,a,u,i,o>=c?o+1|0:c+1|0];if(i){var d=i[3],h=i[2],m=i[1],g=i[0];if(n(d)>=n(g))return t(t(r,a,u,g),m,h,d);if(g)return t(t(r,a,u,g[0]),g[1],g[2],t(g[3],m,h,d));throw[e,"Map.bal"]}throw[e,"Map.bal"]},c=function(n,e,t){if(!t)return[0,n,e,0,1];var a=t[3],u=t[2],i=t[1],f=t[0],s=v(r.compare,n,i);if(0===s)return u===e?t:[f,n,e,a,t[4]];if(s<0){var l=c(n,e,f);return f===l?t:o(l,i,u,a)}var d=c(n,e,a);return a===d?t:o(f,i,u,d)},f=function(r){for(;;){var n=r;if(!n)throw a;var e=n[0];if(!e)return[n[1],n[2]];r=e}},d=function(r){for(;;){var n=r;if(!n)return;var e=n[0];if(!e)return[n[1],n[2]];r=e}},h=function(r){if(r){var n=r[0];return n?o(h(n),r[1],r[2],r[3]):r[3]}throw[e,"Map.remove_min_elt"]},m=function(r,n){if(!r)return n;if(!n)return r;var e=f(n);return o(r,e[0],e[1],h(n))},g=function(n,e){if(!e)return 0;var t=e[3],a=e[2],u=e[1],i=e[0],c=v(r.compare,n,u);if(0===c)return m(i,t);if(c<0){var f=g(n,i);return i===f?e:o(f,u,a,t)}var s=g(n,t);return t===s?e:o(i,u,a,s)},p=function(n,e,t){if(t){var a=t[3],u=t[2],i=t[1],c=t[0],f=v(r.compare,n,i);if(0===f){var l=s(e,mr(u));if(void 0===l)return m(c,a);var d=gr(l);return u===d?t:[c,n,d,a,t[4]]}if(f<0){var h=p(n,e,c);return c===h?t:o(h,i,u,a)}var g=p(n,e,a);return a===g?t:o(c,i,u,g)}var b=s(e,void 0);return void 0!==b?[0,n,gr(b),0,1]:0},b=function(r,n){for(;;){var e=n;if(!e)return;b(r,e[0]),v(r,e[1],e[2]),n=e[3]}},w=function(r,n){if(!n)return 0;var e=w(r,n[0]),t=s(r,n[2]),a=w(r,n[3]);return[e,n[1],t,a,n[4]]},_=function(r,n){if(!n)return 0;var e=n[1];return[_(r,n[0]),e,v(r,e,n[2]),_(r,n[3]),n[4]]},y=function(r,n,e){for(;;){var t=e,a=n;if(!a)return t;e=l(r,a[1],a[2],y(r,a[0],t)),n=a[3]}},k=function(r,n){for(;;){var e=n;if(!e)return!0;if(!v(r,e[1],e[2]))return!1;if(!k(r,e[0]))return!1;n=e[3]}},x=function(r,n){for(;;){var e=n;if(!e)return!1;if(v(r,e[1],e[2]))return!0;if(x(r,e[0]))return!0;n=e[3]}},q=function(r,n,e){return e?o(q(r,n,e[0]),e[1],e[2],e[3]):u(r,n)},F=function(r,n,e){return e?o(e[0],e[1],e[2],F(r,n,e[3])):u(r,n)},S=function(r,n,e,a){if(!r)return q(n,e,a);if(!a)return F(n,e,r);var u=a[4],i=r[4];return i>(u+2|0)?o(r[0],r[1],r[2],S(r[3],n,e,a)):u>(i+2|0)?o(S(r,n,e,a[0]),a[1],a[2],a[3]):t(r,n,e,a)},N=function(r,n){if(!r)return n;if(!n)return r;var e=f(n);return S(r,e[0],e[1],h(n))},C=function(r,n,e,t){return void 0!==e?S(r,n,gr(e),t):N(r,t)},A=function(n,e){if(!e)return[0,void 0,0];var t=e[3],a=e[2],u=e[1],i=e[0],o=v(r.compare,n,u);if(0===o)return[i,mr(a),t];if(o<0){var c=A(n,i);return[c[0],c[1],S(c[2],u,a,t)]}var f=A(n,t);return[S(i,u,a,f[0]),f[1],f[2]]},M=function(r,e,t){if(e){var a=e[1];if(e[4]>=n(t)){var u=A(a,t);return C(M(r,e[0],u[0]),a,l(r,a,mr(e[2]),u[1]),M(r,e[3],u[2]))}}else if(!t)return 0;if(t){var o=t[1],c=A(o,e);return C(M(r,c[0],t[0]),o,l(r,o,c[1],mr(t[2])),M(r,c[2],t[3]))}throw[i,["map.ml",393,10]]},R=function(r,n,e){if(!n)return e;if(!e)return n;var t=e[2],a=e[1],u=n[2],i=n[1];if(n[4]>=e[4]){var o=A(i,e),c=o[1],f=R(r,n[0],o[0]),s=R(r,n[3],o[2]);return void 0!==c?C(f,i,l(r,i,u,gr(c)),s):S(f,i,u,s)}var v=A(a,n),d=v[1],h=R(r,v[0],e[0]),m=R(r,v[2],e[3]);return void 0!==d?C(h,a,l(r,a,gr(d),t),m):S(h,a,t,m)},L=function(r,n){if(!n)return 0;var e=n[3],t=n[2],a=n[1],u=n[0],i=L(r,u),o=v(r,a,t),c=L(r,e);return o?u===i&&e===c?n:S(i,a,t,c):N(i,c)},O=function(r,n){if(!n)return[0,0];var e=n[2],t=n[1],a=O(r,n[0]),u=a[1],i=a[0],o=v(r,t,e),c=O(r,n[3]),f=c[1],s=c[0];return o?[S(i,t,e,s),N(u,f)]:[N(i,s),S(u,t,e,f)]},D=function(r,n){for(;;){var e=n,t=r;if(!t)return e;n=[t[1],t[2],t[3],e],r=t[0]}},T=function(r){return r?(T(r[0])+1|0)+T(r[3])|0:0},$=function(r,n){for(;;){var e=n,t=r;if(!e)return t;n=e[0],r=[[e[1],e[2]],$(t,e[3])]}};return{empty:0,is_empty:function(r){return!r},mem:function(n,e){for(;;){var t=e;if(!t)return!1;var a=v(r.compare,n,t[1]);if(0===a)return!0;e=a<0?t[0]:t[3]}},add:c,update:p,singleton:u,remove:g,merge:M,union:R,compare:function(n,e,t){for(var a=D(e,0),u=D(t,0);;){var i=u,o=a;if(!o)return i?-1:0;if(!i)return 1;var c=v(r.compare,o[0],i[0]);if(0!==c)return c;var f=v(n,o[1],i[1]);if(0!==f)return f;u=D(i[2],i[3]),a=D(o[2],o[3])}},equal:function(n,e,t){for(var a=D(e,0),u=D(t,0);;){var i=u,o=a;if(!o)return!i;if(!i)return!1;if(0!==v(r.compare,o[0],i[0]))return!1;if(!v(n,o[1],i[1]))return!1;u=D(i[2],i[3]),a=D(o[2],o[3])}},iter:b,fold:y,for_all:k,exists:x,filter:L,partition:O,cardinal:T,bindings:function(r){return $(0,r)},min_binding:f,min_binding_opt:d,max_binding:function(r){for(;;){var n=r;if(!n)throw a;var e=n[3];if(!e)return[n[1],n[2]];r=e}},max_binding_opt:function(r){for(;;){var n=r;if(!n)return;var e=n[3];if(!e)return[n[1],n[2]];r=e}},choose:f,choose_opt:d,split:A,find:function(n,e){for(;;){var t=e;if(!t)throw a;var u=v(r.compare,n,t[1]);if(0===u)return t[2];e=u<0?t[0]:t[3]}},find_opt:function(n,e){for(;;){var t=e;if(!t)return;var a=v(r.compare,n,t[1]);if(0===a)return mr(t[2]);e=a<0?t[0]:t[3]}},find_first:function(r,n){for(;;){var e=n;if(!e)throw a;var t=e[1];if(s(r,t))for(var u=t,i=e[2],o=e[0];;){var c=o;if(!c)return[u,i];var f=c[1];s(r,f)?(o=c[0],i=c[2],u=f):o=c[3]}n=e[3]}},find_first_opt:function(r,n){for(;;){var e=n;if(!e)return;var t=e[1];if(s(r,t))for(var a=t,u=e[2],i=e[0];;){var o=i;if(!o)return[a,u];var c=o[1];s(r,c)?(i=o[0],u=o[2],a=c):i=o[3]}n=e[3]}},find_last:function(r,n){for(;;){var e=n;if(!e)throw a;var t=e[1];if(s(r,t))for(var u=t,i=e[2],o=e[3];;){var c=o;if(!c)return[u,i];var f=c[1];s(r,f)?(o=c[3],i=c[2],u=f):o=c[0]}n=e[0]}},find_last_opt:function(r,n){for(;;){var e=n;if(!e)return;var t=e[1];if(s(r,t))for(var a=t,u=e[2],i=e[3];;){var o=i;if(!o)return[a,u];var c=o[1];s(r,c)?(i=o[3],u=o[2],a=c):i=o[0]}n=e[0]}},map:w,mapi:_}}function Re(r,n){var e=n.length;if(0===e)return[];for(var t=function(r,n){for(var e=new Array(r),t=0;t<r;++t)e[t]=n;return e}(e,s(r,n[0])),a=1;a<e;++a)t[a]=s(r,n[a]);return t}function Le(r){for(var n=r.length-1|0,e=0;;){var t=e,a=n;if(a<0)return t;e=[r[a],t],n=a-1|0}}function Oe(r,n,e){for(var t=e,a=n.length-1|0;a>=0;--a)t=v(r,n[a],t);return t}dr("Array.Bottom");function De(r,n){if(n in r)return mr(r[n])}var Te=function(r){var n=typeof r;return"string"===n?b(0,[r]):"number"===n?b(1,[r]):"boolean"===n?!0===r?1:0:null===r?2:Array.isArray(r)?b(3,[r]):b(2,[r])};function $e(r,n){return n.tag?n:r}function Ee(r,n){return n.tag?mr(n[0]):function(r){if(r.tag)return mr(r[0])}(r)}function Pe(r){return r?r[4]:0}function Ie(r,n,e,t){var a=Pe(r),u=Pe(t);return[r,n,e,t,a>=u?a+1|0:u+1|0]}function Ve(r,n){return[0,r,n,0,1]}function Be(r,n,t,a){var u=r?r[4]:0,i=a?a[4]:0;if(u>(i+2|0)){if(r){var o=r[3],c=r[2],f=r[1],s=r[0];if(Pe(s)>=Pe(o))return Ie(s,f,c,Ie(o,n,t,a));if(o)return Ie(Ie(s,f,c,o[0]),o[1],o[2],Ie(o[3],n,t,a));throw[e,"Map.bal"]}throw[e,"Map.bal"]}if(i<=(u+2|0))return[r,n,t,a,u>=i?u+1|0:i+1|0];if(a){var v=a[3],l=a[2],d=a[1],h=a[0];if(Pe(v)>=Pe(h))return Ie(Ie(r,n,t,h),d,l,v);if(h)return Ie(Ie(r,n,t,h[0]),h[1],h[2],Ie(h[3],d,l,v));throw[e,"Map.bal"]}throw[e,"Map.bal"]}function Ue(r,n,e){if(!e)return[0,r,n,0,1];var t=e[3],a=e[2],u=e[1],i=e[0],o=_(r,u);if(0===o)return a===n?e:[i,r,n,t,e[4]];if(o<0){var c=Ue(r,n,i);return i===c?e:Be(c,u,a,t)}var f=Ue(r,n,t);return t===f?e:Be(i,u,a,f)}function Qe(r){for(;;){var n=r;if(!n)throw a;var e=n[0];if(!e)return[n[1],n[2]];r=e}}function je(r){for(;;){var n=r;if(!n)return;var e=n[0];if(!e)return[n[1],n[2]];r=e}}function ze(r){if(r){var n=r[0];return n?Be(ze(n),r[1],r[2],r[3]):r[3]}throw[e,"Map.remove_min_elt"]}function Xe(r,n){if(!r)return n;if(!n)return r;var e=Qe(n);return Be(r,e[0],e[1],ze(n))}function Ke(r,n,e,t){if(!r)return function r(n,e,t){return t?Be(r(n,e,t[0]),t[1],t[2],t[3]):Ve(n,e)}(n,e,t);if(!t)return function r(n,e,t){return t?Be(t[0],t[1],t[2],r(n,e,t[3])):Ve(n,e)}(n,e,r);var a=t[4],u=r[4];return u>(a+2|0)?Be(r[0],r[1],r[2],Ke(r[3],n,e,t)):a>(u+2|0)?Be(Ke(r,n,e,t[0]),t[1],t[2],t[3]):Ie(r,n,e,t)}function Ge(r,n){if(!r)return n;if(!n)return r;var e=Qe(n);return Ke(r,e[0],e[1],ze(n))}function Je(r,n,e,t){return void 0!==e?Ke(r,n,gr(e),t):Ge(r,t)}function He(r,n){if(!n)return[0,void 0,0];var e=n[3],t=n[2],a=n[1],u=n[0],i=_(r,a);if(0===i)return[u,mr(t),e];if(i<0){var o=He(r,u);return[o[0],o[1],Ke(o[2],a,t,e)]}var c=He(r,e);return[Ke(u,a,t,c[0]),c[1],c[2]]}function We(r,n){for(;;){var e=n,t=r;if(!t)return e;n=[t[1],t[2],t[3],e],r=t[0]}}var Ye={empty:0,is_empty:function(r){return!r},mem:function(r,n){for(;;){var e=n;if(!e)return!1;var t=_(r,e[1]);if(0===t)return!0;n=t<0?e[0]:e[3]}},add:Ue,update:function r(n,e,t){if(t){var a=t[3],u=t[2],i=t[1],o=t[0],c=_(n,i);if(0===c){var f=s(e,mr(u));if(void 0===f)return Xe(o,a);var v=gr(f);return u===v?t:[o,n,v,a,t[4]]}if(c<0){var l=r(n,e,o);return o===l?t:Be(l,i,u,a)}var d=r(n,e,a);return a===d?t:Be(o,i,u,d)}var h=s(e,void 0);return void 0!==h?[0,n,gr(h),0,1]:0},singleton:Ve,remove:function r(n,e){if(!e)return 0;var t=e[3],a=e[2],u=e[1],i=e[0],o=_(n,u);if(0===o)return Xe(i,t);if(o<0){var c=r(n,i);return i===c?e:Be(c,u,a,t)}var f=r(n,t);return t===f?e:Be(i,u,a,f)},merge:function r(n,e,t){if(e){var a=e[1];if(e[4]>=Pe(t)){var u=He(a,t);return Je(r(n,e[0],u[0]),a,l(n,a,mr(e[2]),u[1]),r(n,e[3],u[2]))}}else if(!t)return 0;if(t){var o=t[1],c=He(o,e);return Je(r(n,c[0],t[0]),o,l(n,o,c[1],mr(t[2])),r(n,c[2],t[3]))}throw[i,["map.ml",393,10]]},union:function r(n,e,t){if(!e)return t;if(!t)return e;var a=t[2],u=t[1],i=e[2],o=e[1];if(e[4]>=t[4]){var c=He(o,t),f=c[1],s=r(n,e[0],c[0]),v=r(n,e[3],c[2]);return void 0!==f?Je(s,o,l(n,o,i,gr(f)),v):Ke(s,o,i,v)}var d=He(u,e),h=d[1],m=r(n,d[0],t[0]),g=r(n,d[2],t[3]);return void 0!==h?Je(m,u,l(n,u,gr(h),a),g):Ke(m,u,a,g)},compare:function(r,n,e){for(var t=We(n,0),a=We(e,0);;){var u=a,i=t;if(!i)return u?-1:0;if(!u)return 1;var o=_(i[0],u[0]);if(0!==o)return o;var c=v(r,i[1],u[1]);if(0!==c)return c;a=We(u[2],u[3]),t=We(i[2],i[3])}},equal:function(r,n,e){for(var t=We(n,0),a=We(e,0);;){var u=a,i=t;if(!i)return!u;if(!u)return!1;if(0!==_(i[0],u[0]))return!1;if(!v(r,i[1],u[1]))return!1;a=We(u[2],u[3]),t=We(i[2],i[3])}},iter:function r(n,e){for(;;){var t=e;if(!t)return;r(n,t[0]),v(n,t[1],t[2]),e=t[3]}},fold:function r(n,e,t){for(;;){var a=t,u=e;if(!u)return a;t=l(n,u[1],u[2],r(n,u[0],a)),e=u[3]}},for_all:function r(n,e){for(;;){var t=e;if(!t)return!0;if(!v(n,t[1],t[2]))return!1;if(!r(n,t[0]))return!1;e=t[3]}},exists:function r(n,e){for(;;){var t=e;if(!t)return!1;if(v(n,t[1],t[2]))return!0;if(r(n,t[0]))return!0;e=t[3]}},filter:function r(n,e){if(!e)return 0;var t=e[3],a=e[2],u=e[1],i=e[0],o=r(n,i),c=v(n,u,a),f=r(n,t);return c?i===o&&t===f?e:Ke(o,u,a,f):Ge(o,f)},partition:function r(n,e){if(!e)return[0,0];var t=e[2],a=e[1],u=r(n,e[0]),i=u[1],o=u[0],c=v(n,a,t),f=r(n,e[3]),s=f[1],l=f[0];return c?[Ke(o,a,t,l),Ge(i,s)]:[Ge(o,l),Ke(i,a,t,s)]},cardinal:function r(n){return n?(r(n[0])+1|0)+r(n[3])|0:0},bindings:function(r){return function r(n,e){for(;;){var t=e,a=n;if(!t)return a;e=t[0],n=[[t[1],t[2]],r(a,t[3])]}}(0,r)},min_binding:Qe,min_binding_opt:je,max_binding:function(r){for(;;){var n=r;if(!n)throw a;var e=n[3];if(!e)return[n[1],n[2]];r=e}},max_binding_opt:function(r){for(;;){var n=r;if(!n)return;var e=n[3];if(!e)return[n[1],n[2]];r=e}},choose:Qe,choose_opt:je,split:He,find:function(r,n){for(;;){var e=n;if(!e)throw a;var t=_(r,e[1]);if(0===t)return e[2];n=t<0?e[0]:e[3]}},find_opt:function(r,n){for(;;){var e=n;if(!e)return;var t=_(r,e[1]);if(0===t)return mr(e[2]);n=t<0?e[0]:e[3]}},find_first:function(r,n){for(;;){var e=n;if(!e)throw a;var t=e[1];if(s(r,t))for(var u=t,i=e[2],o=e[0];;){var c=o;if(!c)return[u,i];var f=c[1];s(r,f)?(o=c[0],i=c[2],u=f):o=c[3]}n=e[3]}},find_first_opt:function(r,n){for(;;){var e=n;if(!e)return;var t=e[1];if(s(r,t))for(var a=t,u=e[2],i=e[0];;){var o=i;if(!o)return[a,u];var c=o[1];s(r,c)?(i=o[0],u=o[2],a=c):i=o[3]}n=e[3]}},find_last:function(r,n){for(;;){var e=n;if(!e)throw a;var t=e[1];if(s(r,t))for(var u=t,i=e[2],o=e[3];;){var c=o;if(!c)return[u,i];var f=c[1];s(r,f)?(o=c[3],i=c[2],u=f):o=c[0]}n=e[0]}},find_last_opt:function(r,n){for(;;){var e=n;if(!e)return;var t=e[1];if(s(r,t))for(var a=t,u=e[2],i=e[3];;){var o=i;if(!o)return[a,u];var c=o[1];s(r,c)?(i=o[3],u=o[2],a=c):i=o[0]}n=e[0]}},map:function r(n,e){if(!e)return 0;var t=r(n,e[0]),a=s(n,e[2]),u=r(n,e[3]);return[t,e[1],a,u,e[4]]},mapi:function r(n,e){if(!e)return 0;var t=e[1];return[r(n,e[0]),t,v(n,t,e[2]),r(n,e[3]),e[4]]}},Ze=dr("Tea_json.Decoder.ParseFail");function rt(r){return[function(n){var e=Te(n);return"number"==typeof e&&e>=2?b(0,[r]):b(1,["Non-null value"])}]}function nt(r,n){var e=n[0];return[function(n){var t=Te(n);if("number"==typeof t)return b(1,["Non-fieldable value"]);if(2!==t.tag)return b(1,["Non-fieldable value"]);var a=De(t[0],r);if(void 0===a)return b(1,["Field Value is undefined: "+r]);var u=s(e,gr(a));return u.tag?b(1,["field `"+r+"` -> "+u[0]]):u}]}function et(r){return[function(n){var e=function(r,n){for(;;){var t=n;if(!t)return b(1,["No one-of's matched"]);var a=t[1];try{var u=s(t[0][0],r);return u.tag?e(r,a):u}catch(r){n=a;continue}}};return e(n,r)}]}function tt(r,n){var e=n[0];return[function(n){var t=s(e,n);return t.tag?b(1,["map "+t[0]]):b(0,[s(r,t[0])])}]}function at(r,n){var e=n[0];return[function(n){var t=s(e,n);if(t.tag)return t;var a=s(r,t[0]);return s(a[0],n)}]}function ut(r,n){try{return s(r[0],n)}catch(r){var e=br(r);return e[0]===Ze?b(1,[e[1]]):b(1,["Unknown JSON parsing error"])}}var it={ObjectDict:Ye,ParseFail:Ze,string:[function(r){var n=Te(r);return"number"==typeof n||n.tag?b(1,["Non-string value"]):b(0,[n[0]])}],$$int:[function(r){var n=Te(r);if("number"==typeof n)return b(1,["Non-int value"]);if(1!==n.tag)return b(1,["Non-int value"]);var e=n[0];return e>-2147483648&&e<2147483647?b(0,[0|e]):b(1,["number out of int range"])}],$$float:[function(r){var n=Te(r);return"number"==typeof n||1!==n.tag?b(1,["Non-float-value"]):b(0,[n[0]])}],bool:[function(r){var n=Te(r);if("number"!=typeof n)return b(1,["Non-boolean value"]);switch(n){case 0:return b(0,[!1]);case 1:return b(0,[!0]);case 2:return b(1,["Non-boolean value"])}}],$$null:rt,list:function(r){var n=r[0];return[function(r){var e=Te(r);if("number"==typeof e)return b(1,["Non-list value"]);if(3!==e.tag)return b(1,["Non-list value"]);try{return b(0,[Nr((function(r){var e=s(n,r);if(!e.tag)return e[0];throw[Ze,e[0]]}),Le(e[0]))])}catch(r){var t=br(r);if(t[0]===Ze)return b(1,["list -> "+t[1]]);throw t}}]},array:function(r){var n=r[0];return[function(r){var e=Te(r);if("number"==typeof e)return b(1,["Non-array value"]);if(3!==e.tag)return b(1,["Non-array value"]);try{return b(0,[Re((function(r){var e=s(n,r);if(!e.tag)return e[0];throw[Ze,e[0]]}),e[0])])}catch(r){var t=br(r);if(t[0]===Ze)return b(1,["array -> "+t[1]]);throw t}}]},keyValuePairs:function(r){var n=r[0];return[function(r){var e=Te(r);if("number"==typeof e)return b(1,["Non-keyValuePair value"]);if(2!==e.tag)return b(1,["Non-keyValuePair value"]);var t=e[0],a=Object.keys(t);try{return b(0,[Oe((function(r,e){var a=De(t,r);if(void 0!==a){var u=s(n,gr(a));if(!u.tag)return[[r,u[0]],e];throw[Ze,u[0]]}throw[Ze,"Key is undefined: "+r]}),a,0)])}catch(r){var u=br(r);if(u[0]===Ze)return b(1,["Invalid keyValuePair parsing: "+u[1]]);throw u}}]},dict:function(r){var n=r[0];return[function(r){var e=Te(r);if("number"==typeof e)return b(1,["Non-dict value"]);if(2!==e.tag)return b(1,["Non-dict value"]);var t=e[0],a=Object.keys(t);try{return b(0,[Oe((function(r,e){var a=De(t,r);if(void 0!==a){var u=s(n,gr(a));if(!u.tag)return Ue(r,u[0],e);throw[Ze,u[0]]}throw[Ze,"Key is undefined: "+r]}),a,0)])}catch(r){var u=br(r);if(u[0]===Ze)return b(1,["Invalid dict parsing: "+u[1]]);throw u}}]},field:nt,at:function(r,n){return function r(n,e,t){return e?v(n,e[0],r(n,e[1],t)):t}(nt,r,n)},index:function(r,n){var e=n[0];return[function(n){var t=Te(n);if("number"==typeof t)return b(1,["Non-array value"]);if(3!==t.tag)return b(1,["Non-array value"]);var a=t[0];return r<0||r>a.length?b(1,["Array index out of range: "+String(r)]):s(e,c(a,r))}]},maybe:function(r){var n=r[0];return[function(r){var e=s(n,r);return e.tag?b(0,[void 0]):b(0,[mr(e[0])])}]},oneOf:et,map:tt,map2:function(r,e,t){var a=t[0],u=e[0];return[function(e){var t=s(u,e),i=s(a,e);if(!t.tag&&!i.tag)return b(0,[v(r,t[0],i[0])]);var o=Ee(t,i);if(void 0!==o)return b(1,["map2 -> "+o]);throw[n,"Impossible case"]}]},map3:function(r,e,t,a){var u=a[0],i=t[0],o=e[0];return[function(e){var t=s(o,e),a=s(i,e),c=s(u,e);if(!t.tag&&!a.tag&&!c.tag)return b(0,[l(r,t[0],a[0],c[0])]);var f=$e(c,$e(a,t));if(f.tag)return b(1,["map3 -> "+f[0]]);throw[n,"Impossible case"]}]},map4:function(r,e,t,a,u){var i=u[0],o=a[0],c=t[0],f=e[0];return[function(e){var t=s(f,e),a=s(c,e),u=s(o,e),v=s(i,e);if(!(t.tag||a.tag||u.tag||v.tag))return b(0,[d(r,t[0],a[0],u[0],v[0])]);var l=$e(v,$e(u,$e(a,t)));if(l.tag)return b(1,["map4 -> "+l[0]]);throw[n,"Impossible case"]}]},map5:function(r,e,t,a,u,i){var o=i[0],c=u[0],f=a[0],v=t[0],l=e[0];return[function(e){var t=s(l,e),a=s(v,e),u=s(f,e),i=s(c,e),d=s(o,e);if(!(t.tag||a.tag||u.tag||i.tag||d.tag))return b(0,[h(r,t[0],a[0],u[0],i[0],d[0])]);var m=$e(d,$e(i,$e(u,$e(a,t))));if(m.tag)return b(1,["map5 -> "+m[0]]);throw[n,"Impossible case"]}]},map6:function(r,e,t,a,u,i,o){var c=o[0],f=i[0],v=u[0],l=a[0],d=t[0],h=e[0];return[function(e){var t=s(h,e),a=s(d,e),u=s(l,e),i=s(v,e),o=s(f,e),g=s(c,e);if(!(t.tag||a.tag||u.tag||i.tag||o.tag||g.tag))return b(0,[m(r,t[0],a[0],u[0],i[0],o[0],g[0])]);var p=$e(g,$e(o,$e(i,$e(u,$e(a,t)))));if(p.tag)return b(1,["map6 -> "+p[0]]);throw[n,"Impossible case"]}]},map7:function(r,e,t,a,u,i,o,c){var f=c[0],v=o[0],l=i[0],d=u[0],h=a[0],m=t[0],p=e[0];return[function(e){var t=s(p,e),a=s(m,e),u=s(h,e),i=s(d,e),o=s(l,e),c=s(v,e),w=s(f,e);if(!(t.tag||a.tag||u.tag||i.tag||o.tag||c.tag||w.tag))return b(0,[g(r,t[0],a[0],u[0],i[0],o[0],c[0],w[0])]);var _=$e(w,$e(c,$e(o,$e(i,$e(u,$e(a,t))))));if(_.tag)return b(1,["map7 -> "+_[0]]);throw[n,"Impossible case"]}]},map8:function(r,e,t,a,u,i,o,c,f){var v=f[0],l=c[0],d=o[0],h=i[0],m=u[0],g=a[0],w=t[0],_=e[0];return[function(e){var t=s(_,e),a=s(w,e),u=s(g,e),i=s(m,e),o=s(h,e),c=s(d,e),f=s(l,e),y=s(v,e);if(!(t.tag||a.tag||u.tag||i.tag||o.tag||c.tag||f.tag||y.tag))return b(0,[p(r,t[0],a[0],u[0],i[0],o[0],c[0],f[0],y[0])]);var k=$e(y,$e(f,$e(c,$e(o,$e(i,$e(u,$e(a,t)))))));if(k.tag)return b(1,["map8 -> "+k[0]]);throw[n,"Impossible case"]}]},succeed:function(r){return[function(n){return b(0,[r])}]},fail:function(r){return[function(n){return b(1,[r])}]},value:[function(r){return b(0,[r])}],andThen:at,lazy_:function(r){return at(r,[function(r){return b(0,[void 0])}])},nullable:function(r){return et([rt(void 0),[tt((function(r){return mr(r)}),r),0]])},decodeValue:ut,decodeEvent:function(r,n){try{return s(r[0],n)}catch(r){var e=br(r);return e[0]===Ze?b(1,[e[1]]):b(1,["Unknown JSON parsing error"])}},decodeString:function(r,n){try{return ut(r,JSON.parse(n))}catch(r){return b(1,["Invalid JSON string"])}}};function ot(r){return b(1,[r])}function ct(r,n,e,t){return tn("","div",void 0!==r?r:"",void 0!==n?n:"",e,t)}function ft(r,n,e,t){return tn("","span",void 0!==r?r:"",void 0!==n?n:"",e,t)}function st(r,n,e,t){return tn("","h3",void 0!==r?r:"",void 0!==n?n:"",e,t)}function vt(r,n,e,t){return tn("","ul",void 0!==r?r:"",void 0!==n?n:"",e,t)}function lt(r,n,e,t){return tn("","li",void 0!==r?r:"",void 0!==n?n:"",e,t)}function dt(r,n,e,t){return tn("","hr",void 0!==r?r:"",void 0!==n?n:"",e,t)}function ht(r){return b(0,["className",r])}function mt(r){return b(0,["className",Kr(" ",Nr((function(r){return r[0]}),Or((function(r){return r[1]}))(r)))])}function gt(r){return b(0,["value",r])}function pt(r,n){return function(r,n){return an("input",void 0!==r?r:"",(function(r){var e=r.target;if(void 0!==e){var t=e.value;return void 0!==t?s(n,t):void 0}}))}(void 0!==r?r:"",(function(r){return mr(s(n,r))}))}function bt(r){return function(r,n){return b(3,[r,b(1,[n]),{contents:void 0}])}("click",r)}var wt={stopPropagation:!1,preventDefault:!1};function _t(r,n,e){return an(r,"",(function(r){return n.stopPropagation&&r.stopPropagation(),n.preventDefault&&r.preventDefault(),(t=it.decodeEvent(e,r)).tag?void 0:mr(t[0]);var t}))}it.at(["target",["value",0]],it.string),it.at(["target",["checked",0]],it.bool);var yt=it.field("keyCode",it.$$int);var kt={max:function(r){return b(1,["","max",r])},min:function(r){return b(1,["","min",r])},step:function(r){return b(1,["","step",r])},disabled:function(r){return r?b(1,["","disabled","true"]):0},selected:function(r){return r?b(1,["","selected","true"]):0},acceptCharset:function(r){return b(1,["","accept-charset",r])},rel:function(r){return b(1,["","rel",r])}},xt=en,qt=dr("CamlinternalLazy.Undefined");function Ft(r){throw qt}function St(r){var n=0|r.tag;return 250===n?r[0]:246!==n?r:function(r){var n,e=r[0];r[0]=Ft;try{var t=s(e,void 0);return r[0]=t,n=250,r.tag=n,t}catch(n){throw r[0]=function(r){throw n},n}}(r)}function Nt(r,n){return Lr(Nr(n,r))}var Ct={take:function(r,n){var e=function(r,n,e){for(;;){var t=n,a=r;if(0===e)return[a,t];if(!t)return[a,0];e=e-1|0,n=t[1],r=[t[0],a]}}(0,n,r);return[Fr(e[0]),e[1]]},apply:function(r,n){return s(n,r)},bind:Nt,concat_map:function(r,n){return Lr(Nr(r,n))},$great$great$eq:Nt,list_from_option:function(r){return void 0!==r?[gr(r),0]:0},first_inconsistent_opt:function(r,n){if(r)for(var e=s(n,r[0]),t=r[1];;){var a=t,u=e;if(!a)return;var i=s(n,a[0]);if(!x(i,u))return[u,i];t=a[1],e=i}}};var At={keydown:function(r){var n,e,t=it.field("ctrlKey",it.bool),a=it.map2((function(r,n){return{ctrlKey:n,keyCode:r}}),yt,t);return n="keydown",e=it.andThen(r,a),_t(n,wt,e)}};function Mt(r){return[r,0]}function Rt(r,n){if(!n)return 0;var e=n[1];return[s(r,n[0]),k((function(n){return Rt(r,St(e))}))]}function Lt(r,n){if(!r)return St(n);var e=r[1];return[r[0],k((function(r){return Lt(St(n),e)}))]}function Ot(r){if(!r)return 0;var n=r[1];return Lt(r[0],k((function(r){return Ot(St(n))})))}function Dt(r,n){return Ot(Rt(n,r))}var Tt={$$return:Mt,unit:Mt,push:function(r,n){return[r,n]},map:Rt,filter:function r(n,e){for(;;){var t=e;if(!t)return 0;var a=t[1],u=t[0];if(s(n,u))return[u,k(function(e){return function(t){return r(n,St(e))}}(a))];e=St(a)}},interleave_delayed:Lt,append_delayed:function r(n,e){if(!n)return St(e);var t=n[1];return[n[0],k((function(n){return r(St(t),e)}))]},flatten:Ot,bind:Dt,$great$great$eq:Dt,from_list:function r(n){if(!n)return 0;var e=n[1];return[n[0],k((function(n){return r(e)}))]},from_option:function(r){return void 0!==r?[gr(r),0]:0}};function $t(r,n){return[v(ne([b(2,[0,b(4,[0,0,0,0])]),"%s%d"]),r[0],n)]}function Et(r){return s(ne([b(12,[63,b(2,[0,0])]),"?%s"]),r[0])}var Pt={compare:function(r,n){return _(r[0],n[0])},make:function(r){return[r]},make_numbered:$t,to_string:Et};function It(r,n){return _(r[0],n[0])}function Vt(r,n){return r[0]===n[0]}var Bt={make:function(r){return[r]},compare:It,equals:Vt,to_string:function(r){return r[0]}};function Ut(r){if(!r.tag)return Et(r[0]);var n=r[0],e=n.related_terms,t=n.relation_name[0];return e?v(ne([b(2,[0,b(12,[40,b(2,[0,b(12,[41,0])])])]),"%s(%s)"]),t,Kr(", ",Nr(Ut,e))):t}function Qt(r){if(!r.tag)return 0;var n=r[0],e=n.related_terms;return[[n.relation_name,xr(e)],Ct.concat_map(Qt,e)]}var jt={make_relation:function(r,n){return b(1,[{relation_name:[r],related_terms:n}])},make_variable:function(r){return b(0,[[r]])},to_string:Ut,relation_arities:Qt};function zt(r){switch(0|r.tag){case 0:return Ut(r[0]);case 1:return v(ne([b(12,[60,b(2,[0,b(11,[" = ",b(2,[0,b(12,[62,0])])])])]),"<%s = %s>"]),Ut(r[0]),Ut(r[1]));case 2:return v(ne([b(12,[60,b(2,[0,b(11,[" /= ",b(2,[0,b(12,[62,0])])])])]),"<%s /= %s>"]),Ut(r[0]),Ut(r[1]))}}function Xt(r){switch(0|r.tag){case 0:return Qt(r[0])}return Lr([Qt(r[0]),[Qt(r[1]),0]])}var Kt={to_string:zt,relation_arities:Xt},Gt=Me(Pt),Jt=Gt.empty;function Ht(r,n){return l(Gt.add,r[0],r[1],n)}function Wt(r,n){var e=v(Gt.find_opt,r,n);if(void 0!==e){if(e.tag)return e;var t=Wt(e[0],n);return void 0!==t?t:e}}function Yt(r,n){var e=function(r){var e=Wt(r,n);return void 0!==e?a(e):b(0,[["?"]])},t=function(r,n){if(n.tag)return Ar(t,r,n[0].related_terms);var a=n[0];return Ht([a,e(a)],r)},a=function(r){if(!r.tag)return e(r[0]);var n=r[0];return b(1,[{relation_name:n.relation_name,related_terms:Nr(a,n.related_terms)}])};return s(Gt.bindings,Ar((function(r,n){switch(0|n.tag){case 0:return t(r,n[0])}return t(t(r,n[0]),n[1])}),Jt,r))}function Zt(r,n,e){var t=function(r){for(;;){var a=r;if(a.tag)return Mr(t,a[0].related_terms);var u=a[0];if(x(u,n))return!0;var i=Wt(u,e);if(void 0===i)return!1;r=i}};return t(r)}var ra={FrameMap:Gt,empty:Jt,extend:Ht,lookup:Wt,instantiate:function(r){var n=function(e){if(!e.tag){var t=Wt(e[0],r);return void 0!==t?n(t):b(0,[["?"]])}var a=e[0];return b(1,[{relation_name:a.relation_name,related_terms:Nr(n,a.related_terms)}])};return n},variable_bindings_in_query:Yt,to_strings:function(r,n){var e=Yt(r,n);return e?Nr((function(r){return v(ne([b(2,[0,b(11,[" := ",b(2,[0,0])])]),"%s := %s"]),Et(r[0]),Ut(r[1]))}),e):0},term_depends_on_variable:Zt};function na(r){return Lr([Sr(Nr(Xt,r.antecedents)),[Qt(r.consequent),0]])}var ea={contents:0};function ta(r){switch(0|r.tag){case 0:return b(0,[aa(r[0])]);case 1:return b(1,[aa(r[0]),aa(r[1])]);case 2:return b(2,[aa(r[0]),aa(r[1])])}}function aa(r){if(!r.tag)return b(0,[$t(r[0],ea.contents)]);var n=r[0],e=Nr(aa,n.related_terms);return b(1,[{relation_name:n.relation_name,related_terms:e}])}function ua(r){return ea.contents=ea.contents+1|0,{antecedents:Nr(ta,r.antecedents),consequent:aa(r.consequent)}}var ia={to_string:function(r){var n=r.antecedents,e=Ut(r.consequent);if(!n)return e;var t=Kr(" and ",Nr(zt,n));return v(ne([b(2,[0,b(11,[" when ",b(2,[0,0])])]),"%s when %s"]),e,t)},relation_arities:na,rename_rule_variables:ua},oa=Me({compare:Hr});function ca(r){return r.rule}function fa(r,n){return r.id===n.id}var sa=oa.empty;function va(r,n){var e;if(n.tag){var t=v(oa.find_opt,n[0].relation_name[0],r.indexed_by_consequent_relation);e=void 0!==t?t:0}else e=r.all_rules;return Tt.from_list(Fr(e))}function la(r){return r.all_rules}var da={contents:1};var ha={VariableName:Pt,RelationName:Bt,Term:jt,ComplexTerm:Kt,Frame:ra,Rule:ia,RuleDatabase:{empty:{all_rules:0,indexed_by_consequent_relation:sa},rule_from_entry:ca,update_rule_entry:function(r,n){return{id:r.id,rule:n}},is_same:fa,remove_rule:function(r,n){var e=n.id,t=Or((function(r){return r.id!==e})),a=s(t,r.all_rules),u=n.rule.consequent;return u.tag?{all_rules:a,indexed_by_consequent_relation:l(oa.update,u[0].relation_name[0],(function(r){return void 0!==r?s(t,r):0}),r.indexed_by_consequent_relation)}:{all_rules:a,indexed_by_consequent_relation:r.indexed_by_consequent_relation}},add_rule:function(r,n){var e={id:(da.contents=da.contents+1|0,da.contents),rule:n},t=n.consequent;return t.tag?{all_rules:[e,r.all_rules],indexed_by_consequent_relation:l(oa.update,t[0].relation_name[0],(function(r){return void 0!==r?[e,r]:[e,0]}),r.indexed_by_consequent_relation)}:{all_rules:[e,r.all_rules],indexed_by_consequent_relation:r.indexed_by_consequent_relation}},update_rule:function(r,n){var e=function(r){return Nr((function(r){return r.id===n.id?n:r}),r)},t=e(r.all_rules),a=n.rule.consequent;return a.tag?{all_rules:t,indexed_by_consequent_relation:l(oa.update,a[0].relation_name[0],(function(r){return void 0!==r?e(r):[n,0]}),r.indexed_by_consequent_relation)}:{all_rules:t,indexed_by_consequent_relation:r.indexed_by_consequent_relation}},fetch_for_query:va,all_rules:la}};function ma(r){var n=me(95),e=function(r){return Ne(ke,n,r)},t=s(ne([b(2,[0,b(11,[" requires ",b(2,[0,0])])]),"%s requires %s"]),r),a=function(r){return ce(t,e,r)};return function(r){return Se(a,(function(r){return se((function(n){return Kr("",Nr((function(r){return zr(1,r)}),[r,n]))}),function r(n){var e=function(e){return ue(n,(function(e){var t=r(n);return function(r){return ue(t,(function(r){var n=[e,r];return function(r){return oe(n,r)}}),r)}}),e)};return function(r){return ve(e,(function(r){return oe(0,r)}),r)}}(le([ke,[_e,[me(95),[me(45),0]]]])))}),r)}}var ga=Ce(me(63),se((function(r){return b(0,[[r]])}),ma("Variable")));function pa(r){return fe("Variable starting with ?",ga,r)}var ba=Ce(qe("= "),(function(r){return oe(!0,r)})),wa=Ce(qe("/= "),(function(r){return oe(!1,r)}));function _a(r){return Ne(ba,wa,r)}function ya(r){return de(r,Ce(Ce(xe,qe("and")),xe))}function ka(r){return Ne(se((function(r){return b(0,[r])}),qa),xa,r)}function xa(r){return Se(Ce(me(60),qa),(function(r){return function(n){return Se(_a,(function(n){var e=Ae(qa,me(62));return function(t){return Se(e,(function(e){var t=b(n?1:2,[r,e]);return function(r){return oe(t,r)}}),t)}}),n)}}),r)}function qa(r){return Ne(pa,Sa,r)}function Fa(r){return de(Ae(qa,xe),Ce(me(44),xe))(r)}function Sa(r){return Se(Ae(ma("Relation"),xe),(function(r){var n=[r],e=b(1,[{relation_name:n,related_terms:0}]),t=Ae(me(40),xe);return function(r){return ie(t,(function(r){return se((function(r){return b(1,[{relation_name:n,related_terms:r}])}),Ae(Ae(Fa,xe),me(41)))}),e,r)}}),r)}function Na(r){return ya(ka)(r)}var Ca,Aa=function(r){return Ae((function(r){return Se(qa,(function(r){var n={antecedents:0,consequent:r},e=function(r){return oe(n,r)},t=se((function(n){return{antecedents:n,consequent:r}}),Ce(Ce(Ce(xe,qe("when")),xe),Na));return function(r){return Ne(t,e,r)}}),r)}),me(46))(r)},Ma=function(r){return ya(ka)(r)},Ra={$$Map:Ca=Me({compare:It}),make:function(r,n){return Ar((function(n,e){return l(Ca.update,s(r,e),(function(r){return void 0!==r?[e,r]:[e,0]}),n)}),Ca.empty,n)},keys:function(r){return Nr((function(r){return r[0]}),s(Ca.bindings,r))},find_opt:function(r,n){return v(Ca.find_opt,r,n)}};function La(r,n){return Ar((function(n,e){var t=s(r,e);if(void 0===t)return n;var a=Ct.first_inconsistent_opt(t,(function(r){return r[1]}));return void 0!==a?[l(ne([b(11,["Relation '",b(2,[0,b(11,["' has inconsistent number of terms applied of ",b(4,[0,0,0,b(11,[" and ",b(4,[0,0,0,0])])])])])]),"Relation '%s' has inconsistent number of terms applied of %d and %d"]),e[0],a[0],a[1]),n]:n}),0,n)}function Oa(r){return v(Ra.make,(function(r){return r[0]}),Ct.concat_map(na,r))}function Da(r){return s(Ra.keys,v(Ra.make,(function(r){return r[0]}),na(r)))}var Ta={rule_database_snapshot:la,issues_in_existing_rule:function(r,n){var e=Oa(Nr(ca,[n,Or((function(r){return!fa(r,n)}))(r)]));return La((function(r){return v(Ra.find_opt,r,e)}),Da(ca(n)))},issues_in_new_rule:function(r,n){var e=Oa([n,Nr(ca,r)]);return La((function(r){return v(Ra.find_opt,r,e)}),Da(n))},issues_in_query:function(r,n){var e=Ct.concat_map(Xt,n),t=v(Ra.make,(function(r){return r[0]}),Lr([e,[Ct.concat_map(na,Nr(ca,r)),0]]));return La((function(r){return v(Ra.find_opt,r,t)}),s(Ra.keys,v(Ra.make,(function(r){return r[0]}),e)))}};function $a(r){var n=function(r,n){for(var e=0,t=0,a=n;;){var u=a,i=t,o=e;if(!u)return[qr(o,0),qr(i,0)];var c=u[1],f=u[0];s(r,f)?(a=c,e=[f,o]):(a=c,t=[f,i])}}((function(r){switch(0|r.tag){case 0:case 1:return!1;case 2:return!0}}),r);return Lr([n[1],[n[0],0]])}function Ea(r,n){var t=function(r,n){for(;;){var e=n,t=r;if(!t)return e;n=a(t[0],e),r=t[1]}},a=function(n,e){switch(0|n.tag){case 0:var a=n[0];return Tt.$great$great$eq(e,(function(n){return Tt.$great$great$eq(va(r,a),(function(r){var e=ua(ca(r)),i=u(a,e.consequent,n);return void 0!==i?t(e.antecedents,Tt.$$return({frame:i.frame,rules_applied:[r,i.rules_applied]})):0}))}));case 1:var i=n[1],o=n[0];return Tt.$great$great$eq(e,(function(r){return Tt.from_option(u(o,i,r))}));case 2:var c=n[1],f=n[0];return Tt.$great$great$eq(e,(function(r){return void 0!==u(f,c,r)?0:Tt.$$return(r)}))}},u=function(r,n,t){if(x(r,n))return t;if(!r.tag)return i(r[0],n,t);var a=r[0];if(!n.tag)return i(n[0],r,t);var o=n[0];return Vt(a.relation_name,o.relation_name)?Ar((function(r,n){if(void 0!==r)return u(n[0],n[1],r)}),t,function r(n,t){if(n){if(t)return[[n[0],t[0]],r(n[1],t[1])];throw[e,"List.combine"]}if(!t)return 0;throw[e,"List.combine"]}(a.related_terms,o.related_terms)):void 0},i=function(r,n,e){var t=Wt(r,e.frame);if(void 0!==t)return u(t,n,e);if(n.tag)return Zt(n,r,e.frame)?void 0:{frame:Ht([r,n],e.frame),rules_applied:e.rules_applied};var a=Wt(n[0],e.frame);return void 0!==a?u(b(0,[r]),a,e):{frame:Ht([r,n],e.frame),rules_applied:e.rules_applied}},o=$a(n);return function(r){return t(o,r)}}var Pa={query:function(r,n){return Ea(r,n)(Tt.$$return({frame:Jt,rules_applied:0}))}};function Ia(r,n){return{text:s(r,n),compilation_result:b(0,[n])}}function Va(r,n,e){var t,a=Fe(n,r);if(a.tag){var u=Dr(te,a[0]);if(u){var i=u[0],o=Or((function(r){return te(r,i)<=0}))(u[1]);t=b(1,[Nr(ae,[i,o])])}else t=b(1,[0])}else{var c=a[0].result,f=s(e,c);t=f?b(1,[f]):b(0,[c])}return{text:r,compilation_result:t}}function Ba(r){var n=r.solution_stream;return n?{initiating_query:r.initiating_query,solution_stream:St(n[1]),displayed_solutions:[n[0],r.displayed_solutions]}:r}var Ua={CompiledTextEditing:{empty:function(r){return{text:"",compilation_result:b(1,[0])}},edit:Ia,make:Va},ExecutingQueryInfo:{next_solution:Ba},init:function(r){return{rule_database:ha.RuleDatabase.empty,interaction_mode:0}}};var Qa={viewRules:0,initiateAddRule:1,initiateEditRule:function(r){return b(0,[r])},initiateEditQuery:2,updateText:function(r){return b(1,[r])},addRule:function(r){return b(2,[r])},editRuleEntry:function(r){return b(3,[r])},deleteRule:function(r){return b(4,[r])},executeQuery:function(r){return b(5,[r])},nextFrame:3};function ja(r){"remove"in Element.prototype||(Element.prototype.remove=function(){this.parentNode&&this.parentNode.removeChild(this)}),function(){for(var r=0,n=["ms","moz","webkit","o"],e=0;e<n.length&&!window.requestAnimationFrame;++e)window.requestAnimationFrame=window[n[e]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[n[e]+"CancelAnimationFrame"]||window[n[e]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(n,e){var t=(new Date).getTime(),a=Math.max(0,16-(t-r)),u=window.setTimeout((function(){n(t+a)}),a);return r=t+a,u}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(r){clearTimeout(r)})}()}function za(r,n,e,t,a,u){if(void 0===u)return function(u){var i={contents:0},o=function(r){var n=s(e,r);i.contents=wn(u,u,i.contents,n)};return{startup:function(r){bn(u,a),o(t)},render_string:function(r){return un(s(n,r))},handleMsg:function(n,e){var t=v(r,n,e),a=t[0];return bn(u,t[1]),o(a),a},shutdown:function(r){bn(u,r),i.contents=wn(u,u,i.contents,0)}}};var i=gr(u);return function(u){var o={contents:0},c={contents:t},f={contents:void 0},l=function(r){if(void 0!==f.contents){var e=[s(n,c.contents),0],t=function(r,n,e,t){return pn(r,n,n.childNodes,0,e,t),t}(u,i,o.contents,e);o.contents=t,f.contents=void 0}},d=function(r){for(;i.childNodes.length>0;){var n=i.firstChild;null!==n&&i.removeChild(n)}},h={contents:0},m=function(r){var n=s(e,r);h.contents=wn(u,u,h.contents,n)};return{startup:function(r){d(),bn(u,a),m(c.contents),f.contents=-1,l()},render_string:function(r){return un(s(n,r))},handleMsg:function(n,e){var t=v(r,n,e),a=t[0];return c.contents=a,bn(u,t[1]),void 0!==f.contents||(f.contents=-1,l()),m(a),a},shutdown:function(r){f.contents=void 0,bn(u,r),h.contents=wn(u,u,h.contents,0),o.contents=0,d()}}}}function Xa(r,e,t){ja();var a=s(r.init,t),u=a[0],i=null==e?void 0:mr(e);return function(r,e,t){var a={contents:r},u={contents:{enqueue:function(r){console.log("INVALID enqueue CALL!")}}},i=s(e,u),o={contents:void 0},c=function(r){var e=o.contents;if(void 0===e){o.contents=0;var t=v(i.handleMsg,a.contents,r);a.contents=t;var u=o.contents;if(void 0!==u)return u?(o.contents=void 0,Cr(c,Fr(u))):void(o.contents=void 0);throw[n,"INVALID message queue state, should never be None during message processing!"]}o.contents=[r,e]},f={enqueue:c};return u.contents=f,s(i.startup,void 0),{pushMsg:c,shutdown:function(r){u.contents={enqueue:function(r){console.log("INVALID message enqueued when shut down")}};var n=s(t,a.contents);s(i.shutdown,n)},getHtmlString:function(r){return s(i.render_string,a.contents)}}}(u,za(r.update,r.view,r.subscriptions,u,a[1],i),r.shutdown)}function Ka(r){return{href:r.href,protocol:r.protocol,host:r.host,hostname:r.hostname,port:r.port,pathname:r.pathname,search:r.search,hash:r.hash,username:r.username,password:r.password,origin:r.origin}}var Ga={contents:void 0};function Ja(r){return function(r,n){return b(1,[r,function(r){return s(n,r.contents)},{contents:void 0}])}("navigation",(function(n){Ga.contents=function(e){return s(n.enqueue,s(r,e))};var e,t,a,u=function(r){var n;void 0!==(n=Ga.contents)&&s(n,Ka(document.location))};return e="popstate",t=u,a=!1,window.addEventListener(e,t,a),function(r){return function(r,n,e){return window.removeEventListener(r,n,e)}("popstate",u,!1)}}))}function Ha(r,n,e){var t,a,u,i,o=void 0===r||r;return t=void 0,a=void 0,u=[bt(e),[kt.disabled(!o),0]],i=[ot(n),0],tn("","button",void 0!==t?t:"",void 0!==a?a:"",u,i)}function Wa(r){return ct(void 0,void 0,[ht("button-bar"),0],r)}var Ya="\n\n        ."+String("button-bar")+" {\n            padding-top: 5px; \n            padding-bottom: 5px;\n        }\n\n        button {\n            background-color: white;\n            color: #555;\n            box-shadow: 0 0 0 1px "+String("#48a9dc")+";\n            border: none;\n            border-radius: 4px;\n            padding: 6px;\n            margin-right: 8px;\n            font-size: 14px;\n        }\n\n        button:active {\n            background-color: "+String("#48a9dc")+";\n            color: white;\n        }\n\n        button:disabled {\n            background-color: #ddd;\n            color: #90adbd;\n        }\n\n        a, a:active, a:visited {\n            display: inline-block;\n            color: "+String("#48a9dc")+"\n        }\n\n        a, a:active, a:visited {\n            display: inline-block;\n            color: "+String("#48a9dc")+"\n        }\n    ";function Za(r,n){return ct(void 0,void 0,[ht("panel"),0],[ct(void 0,void 0,[ht("panel-header"),0],[ot(r),0]),[ct(void 0,void 0,[ht("panel-body"),0],n),0]])}var ru="\n        div."+String("panels")+" {\n            height: 98%;\n        }\n\n        div."+String("panel-header")+" {\n            background-color: #248;\n            color: white;\n            font-weight: bold;\n            padding: 4px;\n        }   \n\n        div."+String("panel")+" {\n            overflow-y: auto;\n            background-color: white;\n            margin-top: 5px;\n        }     \n        \n\n        @media screen and (max-width: 1023px) {\n            div."+String("panel")+" {\n                float: left;\n                width: 99%;\n                margin-top: 10px;\n                border: solid 1px #aaa;\n            }\n        }\n\n        @media screen and (min-width: 1024px) {\n            div."+String("panel")+" {\n                float: left;\n                margin-left: 5px;\n                margin-right: 5px;\n                width: 48%;\n                height: 98%;\n                border: solid 1px #aaa;\n            }\n        }\n\n        div."+String("panel-body")+" {\n            padding: 6px;\n        }\n    ",nu="\n        ."+String("variable")+" {\n            color: #ff0; \n        }\n\n        ."+String("fact")+" {\n            color: #0f0;\n        }\n        \n        ."+String("relation")+" {\n            color: #6af;\n            font-weight: bold;\n        }\n\n        ."+String("punctuation")+" {\n            color: white;\n            font-weight: bold;\n        }\n\n        ."+String("rule-display")+" {\n            background-color: black;\n            font-family: Consolas, monospace;\n            padding: 4px;\n        }\n\n        ."+String("rule-item")+" {\n            color: black;\n            background-color: white;\n\n            border-radius: 6px;\n            padding: 6px;\n            box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);\n\n            margin-bottom: 12px;\n        }\n\n        ."+String("rule-item")+"."+String("rule-used")+" {\n            border: solid 2px #44f;\n            background-color: yellow;            \n        }\n\n        ul {\n            list-style: none;\n            margin-block-start: 0;\n            margin-block-end: 0;\n        }\n    ";function eu(r){return ft(void 0,void 0,[ht("punctuation"),0],[ot(r),0])}function tu(r){if(!r.tag)return ft(void 0,void 0,[ht("variable"),0],[ot(s(ne([b(12,[63,b(2,[0,0])]),"?%s"]),r[0][0])),0]);var n=r[0],e=n.related_terms,t=n.relation_name[0];return e?ft(void 0,void 0,0,[ft(void 0,void 0,[ht("relation"),0],[ot(t),0]),[eu("("),[tu(e[0]),[ft(void 0,void 0,0,Nr((function(r){return ft(void 0,void 0,0,[eu(", "),[tu(r),0]])}),e[1])),[eu(")"),0]]]]]):ft(void 0,void 0,[ht("fact"),0],[ot(t),0])}function au(r){switch(0|r.tag){case 0:return tu(r[0]);case 1:return ft(void 0,void 0,0,[tu(r[0]),[eu("="),[tu(r[1]),0]]]);case 2:return ft(void 0,void 0,0,[tu(r[0]),[eu("/="),[tu(r[1]),0]]])}}function uu(r){var n,e=r.antecedents,t=function(r,n){return lt(void 0,void 0,0,[eu(r),[au(n),0]])};if(e){var a=e[0],u=Fr(e[1]);n=u?vt(void 0,void 0,0,Lr([[t("when ",a),0],[Nr((function(r){return t("and ",r)}),Fr(u[1])),[[lt(void 0,void 0,0,[eu("and "),[au(u[0]),[eu("."),0]]]),0],0]]])):ft(void 0,void 0,0,[eu(" when "),[au(a),[eu("."),0]]])}else n=eu(".");return ct(void 0,void 0,[ht("rule-display"),0],[tu(r.consequent),[n,0]])}function iu(r){return ct(void 0,void 0,[mt([["rule-item",!0],0]),0],[Wa([Ha(void 0,"Edit",Qa.initiateEditRule(r)),[Ha(void 0,"Delete",Qa.deleteRule(r)),0]]),[uu(s(ha.RuleDatabase.rule_from_entry,r)),0]])}function ou(r,n,e,t,a){var u,i,o=r.compilation_result;if(o.tag)u=0;else{var c=o[0];u=s(At.keydown,(function(r){return 13===r.keyCode&&r.ctrlKey?it.succeed(s(e,c)):it.fail("Expecting Ctrl-Enter")}))}i=r.compilation_result.tag?xt:ct(void 0,void 0,0,[ot(s(ne([b(11,["(ctrl+enter to ",b(2,[0,b(12,[41,0])])]),"(ctrl+enter to %s)"]),n)),0]);var f,v,l,d,h,m,g,p=r.compilation_result;return f=p.tag?(v=p[0])?ct(void 0,void 0,[ht("errors-container"),0],[vt(void 0,void 0,0,Nr((function(r){return lt(void 0,void 0,0,[ot(r),0])}),v)),0]):xt:Ha(void 0,n,s(e,p[0])),ct(void 0,void 0,0,[(l=void 0,d=void 0,h=[pt(void 0,Qa.updateText),[ht("language-editing"),[(g=a,b(0,["placeholder",g])),[gt(r.text),[u,0]]]]],m=0,tn("","textarea",void 0!==l?l:"",void 0!==d?d:"",h,m)),[i,[Wa([f,[Ha(void 0,"Cancel",t),0]]),0]]])}function cu(r){var n,e=s(ha.RuleDatabase.all_rules,r.rule_database),t=function(r){return ct(void 0,void 0,0,Nr((function(n){return function(r,n){return ct(void 0,void 0,[mt([["rule-item",!0],[["rule-used",Mr((function(r){return v(ha.RuleDatabase.is_same,r,n)}),r)],0]]),0],[uu(s(ha.RuleDatabase.rule_from_entry,n)),0])}(r,n)}),e))},a=r.interaction_mode;if("number"==typeof a)n=ct(void 0,void 0,0,[Wa([Ha(void 0,"Add Rule / Fact",1),[Ha(void 0,"Query",2),0]]),[dt(void 0,void 0,0,0),[ct(void 0,void 0,0,Nr(iu,e)),0]]]);else switch(0|a.tag){case 0:n=ct(void 0,void 0,0,[ou(a[0],"Add Rule",Qa.addRule,0,"New rule..."),[dt(void 0,void 0,0,0),[t(0),0]]]);break;case 1:var u=a[0];n=ct(void 0,void 0,0,[ou(a[1],"Update Rule",(function(r){return Qa.editRuleEntry(v(ha.RuleDatabase.update_rule_entry,u,r))}),0,"Edit rule..."),[dt(void 0,void 0,0,0),[t(0),0]]]);break;case 2:n=t(0);break;case 3:var i=a[0].solution_stream;n=t(i?i[0].rules_applied:0)}return Za("Rules and Facts",[n,0])}function fu(r){var n,e,t,a,u=function(r){return Za("Query",[r,0])},i=function(r){return n=void 0,e=void 0,t=0,a=[ot(r),0],tn("","p",void 0!==n?n:"",void 0!==e?e:"",t,a);var n,e,t,a},o=r.interaction_mode;if("number"!=typeof o)switch(0|o.tag){case 2:return u(function(r){return ct(void 0,void 0,0,[ou(r,"Execute Query",Qa.executeQuery,0,"New query..."),0])}(o[0]));case 3:return u((n=o[0],e=n.solution_stream,t=n.initiating_query,a=function(r){var n=v(ha.Frame.to_strings,t,r.frame);return n?ct(void 0,void 0,0,[st(void 0,void 0,0,[ot("Satisfied:"),0]),[vt(void 0,void 0,0,Nr((function(r){return lt(void 0,void 0,0,[ot(r),0])}),n)),0]]):st(void 0,void 0,0,[ot("Satisfied"),0])},ct(void 0,void 0,0,[ct(void 0,void 0,0,Nr(a,n.displayed_solutions)),[e?ct(void 0,void 0,0,[a(e[0]),[Ha(void 0,"Next Frame",3),[Ha(void 0,"New Query",2),[Ha(void 0,"Cancel",0),0]]]]):Ha(void 0,"Another Query",2),0]])))}var c=function(r,n){return v(ha.Term.make_relation,r,n)},f=function(r,n){return{antecedents:Nr((function(r){return b(0,[r])}),n),consequent:r}},s=c("OrangesAreSpherical",0),l=c("oranges_are_spherical",0),d=c("Spherical",[c("Oranges",0),0]),h=c("Spherical",[c("SoccerBalls",0),0]),m=c("Spherical",[c("BasketBalls",0),0]),g=c("MotherOf",[c("Sally",0),[c("Bob",0),0]]),p=c("SumOf",[c("Two",0),[c("Two",0),[c("Four",0),0]]]);return Za("Instructions",[i("LitLog, short for Literate Logic programming, is a subset of Prolog with a simpler syntax and an on-line editor. \n                The goal of LitLog is offer a path to quickly learning the basics of declarative logic programming in three lunch breaks or less."),[i("When Logic Programming fits the problem space, it beats other programming paradigms by orders of magnitude so it is a helpful tool to\n                have in your mental toolbox (even if an applicable problem may only arise once in a decade). It is also just neat and that alone is worth a few lunch periods."),[i("The act of declarative logic programming is building a knowledge database that can be queried. It is the query powers that are surprising and interesting."),[i("Rules & Facts are the two forms of knowledge representation."),[i("FACTs are unconditionally true statements. As soon as a fact is entered into the database it is known to be true. \n                A Fact can relate other terms together or it can stand on its own. An example of a Fact that stands on its own without any relationships might be"),[uu({antecedents:0,consequent:s}),[i("A Fact is represented as an identifier written in any case. Spaces cannot be used inside Fact names but underscores can be. The above fact could have also been written"),[uu({antecedents:0,consequent:l}),[i("Facts can also express the truth of a _relationship_ between things. A Fact that expresses a relationship with a single term can be viewed as a declaration of \n                inclusion in a Set (a Predicate). For example, the Fact above could be represented, more usefully, as"),[uu({antecedents:0,consequent:d}),[i("The form above now expresses that Oranges are in the set of spherical things. The knowledge database could list other spherical things"),[uu({antecedents:0,consequent:h}),[uu({antecedents:0,consequent:m}),[i("Facts can express relationships between multiple things. For example, a fact which expresses a Mother-Child relationship between Sally and Bob"),[uu({antecedents:0,consequent:g}),[i("Another example might be a relation named 'SumOf' that expresses that two and two relate to four "),[uu({antecedents:0,consequent:p}),[i("While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, we might instruct the logic database that \n                Sally being the Mother of Bob also means that Sally is a Parent of Bob."),[uu(f(c("ParentOf",[c("Sally",0),[c("Bob",0),0]]),[c("MotherOf",[c("Sally",0),[c("Bob",0),0]]),0])),[i("Observe that the rule above is unfortunately specific. It is not a general statement about all mothers and sons but rather a specific statement about two specific individuals.\n                In order to get the power of generalization (abstraction) we need to introduce variables."),[i("Variables are written with a ? prefix. To make a general statement about all mothers also being parents we would write"),[uu(f(c("ParentOf",[b(0,[["Mother"]]),[b(0,[["Child"]]),0]]),[c("MotherOf",[b(0,[["Mother"]]),[b(0,[["Child"]]),0]]),0])),[i("Rules can state multiple conditions that must be true for the rule to be true. To encode the transitive property of the GreaterThan relationship we might write"),[uu(f(c("GreaterThan",[b(0,[["A"]]),[b(0,[["C"]]),0]]),[c("GreaterThan",[b(0,[["A"]]),[b(0,[["B"]]),0]]),[c("GreaterThan",[b(0,[["B"]]),[b(0,[["C"]]),0]]),0]])),[i("Facts, Rules, and Variables are nearly the extent of how knowledge is represented in LitLog. Now we turn to the truly fun part QUERIES!!!\n                "),0]]]]]]]]]]]]]]]]]]]]]]]]])}var su=Kr(" ",["\n        html {\n            height: 100%\n        }\n\n        body {\n            height: 100%;\n            background-color: #eee;\n            display: flex;\n            flex-direction: column;\n            font-family: sans-serif;\n            padding: 0;\n            margin: 0;\n        }\n\n        p {\n            font-size: 14px;\n        }\n    ",[Ya,[ru,[nu,["\n        input {\n            margin-left: 6px;\n        }          \n        \n        ."+String("language-editing")+" {\n            width: 96%;\n            font-family: Consolas, monospace;\n            background-color: black;\n            color: white;\n        }\n\n        ."+String("errors-container")+" ul {\n            padding-left: 20px;\n            list-style: square;\n        }\n\n        ."+String("errors-container")+" li {\n            color: #800;\n            font-size: 14px;\n        }\n    ",["",["",0]]]]]]]);var vu=function(r,n){var e={init:function(r){return v(n.init,r,Ka(document.location))},update:n.update,view:n.view,subscriptions:function(e){return b(0,[[Ja(r),[s(n.subscriptions,e),0]]])},shutdown:n.shutdown};return function(r,n){return Xa(e,r,n)}}((function(r){return Qa.viewRules}),{init:function(r,n){return[Ua.init(void 0),0]},update:function(r,n){var e,t=r.interaction_mode,a=r.rule_database;if("number"==typeof n)switch(n){case 0:e={rule_database:a,interaction_mode:0};break;case 1:e={rule_database:a,interaction_mode:b(0,[{text:"",compilation_result:b(1,[0])}])};break;case 2:e={rule_database:a,interaction_mode:b(2,[{text:"",compilation_result:b(1,[0])}])};break;case 3:e="number"==typeof t||3!==t.tag?{rule_database:a,interaction_mode:t}:{rule_database:a,interaction_mode:b(3,[Ba(t[0])])}}else switch(0|n.tag){case 0:var u=n[0],i=s(ha.RuleDatabase.rule_from_entry,u);e={rule_database:a,interaction_mode:b(1,[u,Ia(ha.Rule.to_string,i)])};break;case 1:var o=n[0],c=Ta.rule_database_snapshot(a);if("number"==typeof t)e={rule_database:a,interaction_mode:t};else switch(0|t.tag){case 0:e={rule_database:a,interaction_mode:b(0,[Va(o,Aa,(function(r){return Ta.issues_in_new_rule(c,r)}))])};break;case 1:var f=t[0];e={rule_database:a,interaction_mode:b(1,[f,Va(o,Aa,(function(r){return Ta.issues_in_existing_rule(c,v(ha.RuleDatabase.update_rule_entry,f,r))}))])};break;case 2:e={rule_database:a,interaction_mode:b(2,[Va(o,Ma,(function(r){return Ta.issues_in_query(c,r)}))])};break;case 3:e={rule_database:a,interaction_mode:t}}break;case 2:e={rule_database:v(ha.RuleDatabase.add_rule,a,n[0]),interaction_mode:b(0,[{text:"",compilation_result:b(1,[0])}])};break;case 3:e={rule_database:v(ha.RuleDatabase.update_rule,a,n[0]),interaction_mode:0};break;case 4:e={rule_database:v(ha.RuleDatabase.remove_rule,a,n[0]),interaction_mode:t};break;case 5:var l=n[0];e={rule_database:a,interaction_mode:b(3,[{initiating_query:l,solution_stream:Pa.query(a,l),displayed_solutions:0}])}}return[e,0]},view:function(r){return n=[cu(r),[fu(r),0]],ct(void 0,void 0,[ht("panels"),0],n);var n},subscriptions:function(r){return 0},shutdown:function(r){return 0}});return r.main=function(r,n){var e=document.createElement("style");return document.head.appendChild(e),e.innerHTML=su,v(vu,r,void 0)},r}({});
+var starter = (function (exports) {
+  'use strict';
+
+  var out_of_memory = /* tuple */[
+    "Out_of_memory",
+    0
+  ];
+
+  var sys_error = /* tuple */[
+    "Sys_error",
+    -1
+  ];
+
+  var failure = /* tuple */[
+    "Failure",
+    -2
+  ];
+
+  var invalid_argument = /* tuple */[
+    "Invalid_argument",
+    -3
+  ];
+
+  var end_of_file = /* tuple */[
+    "End_of_file",
+    -4
+  ];
+
+  var division_by_zero = /* tuple */[
+    "Division_by_zero",
+    -5
+  ];
+
+  var not_found = /* tuple */[
+    "Not_found",
+    -6
+  ];
+
+  var match_failure = /* tuple */[
+    "Match_failure",
+    -7
+  ];
+
+  var stack_overflow = /* tuple */[
+    "Stack_overflow",
+    -8
+  ];
+
+  var sys_blocked_io = /* tuple */[
+    "Sys_blocked_io",
+    -9
+  ];
+
+  var assert_failure = /* tuple */[
+    "Assert_failure",
+    -10
+  ];
+
+  var undefined_recursive_module = /* tuple */[
+    "Undefined_recursive_module",
+    -11
+  ];
+
+  out_of_memory.tag = 248;
+
+  sys_error.tag = 248;
+
+  failure.tag = 248;
+
+  invalid_argument.tag = 248;
+
+  end_of_file.tag = 248;
+
+  division_by_zero.tag = 248;
+
+  not_found.tag = 248;
+
+  match_failure.tag = 248;
+
+  stack_overflow.tag = 248;
+
+  sys_blocked_io.tag = 248;
+
+  assert_failure.tag = 248;
+
+  undefined_recursive_module.tag = 248;
+  /*  Not a pure module */
+
+  function caml_array_sub(x, offset, len) {
+    var result = new Array(len);
+    var j = 0;
+    var i = offset;
+    while(j < len) {
+      result[j] = x[i];
+      j = j + 1 | 0;
+      i = i + 1 | 0;
+    }  return result;
+  }
+
+  function caml_array_get(xs, index) {
+    if (index < 0 || index >= xs.length) {
+      throw [
+            invalid_argument,
+            "index out of bounds"
+          ];
+    }
+    return xs[index];
+  }
+
+  function caml_make_vect(len, init) {
+    var b = new Array(len);
+    for(var i = 0; i < len; ++i){
+      b[i] = init;
+    }
+    return b;
+  }
+  /* No side effect */
+
+  function app(_f, _args) {
+    while(true) {
+      var args = _args;
+      var f = _f;
+      var init_arity = f.length;
+      var arity = init_arity === 0 ? 1 : init_arity;
+      var len = args.length;
+      var d = arity - len | 0;
+      if (d === 0) {
+        return f.apply(null, args);
+      }
+      if (d >= 0) {
+        return (function(f,args){
+        return function (x) {
+          return app(f, args.concat([x]));
+        }
+        }(f,args));
+      }
+      _args = caml_array_sub(args, arity, -d | 0);
+      _f = f.apply(null, caml_array_sub(args, 0, arity));
+      continue ;
+    }}
+
+  function _1(o, a0) {
+    var arity = o.length;
+    if (arity === 1) {
+      return o(a0);
+    } else {
+      switch (arity) {
+        case 1 :
+            return o(a0);
+        case 2 :
+            return (function (param) {
+                return o(a0, param);
+              });
+        case 3 :
+            return (function (param, param$1) {
+                return o(a0, param, param$1);
+              });
+        case 4 :
+            return (function (param, param$1, param$2) {
+                return o(a0, param, param$1, param$2);
+              });
+        case 5 :
+            return (function (param, param$1, param$2, param$3) {
+                return o(a0, param, param$1, param$2, param$3);
+              });
+        case 6 :
+            return (function (param, param$1, param$2, param$3, param$4) {
+                return o(a0, param, param$1, param$2, param$3, param$4);
+              });
+        case 7 :
+            return (function (param, param$1, param$2, param$3, param$4, param$5) {
+                return o(a0, param, param$1, param$2, param$3, param$4, param$5);
+              });
+        default:
+          return app(o, [a0]);
+      }
+    }
+  }
+
+  function _2(o, a0, a1) {
+    var arity = o.length;
+    if (arity === 2) {
+      return o(a0, a1);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [a1]);
+        case 2 :
+            return o(a0, a1);
+        case 3 :
+            return (function (param) {
+                return o(a0, a1, param);
+              });
+        case 4 :
+            return (function (param, param$1) {
+                return o(a0, a1, param, param$1);
+              });
+        case 5 :
+            return (function (param, param$1, param$2) {
+                return o(a0, a1, param, param$1, param$2);
+              });
+        case 6 :
+            return (function (param, param$1, param$2, param$3) {
+                return o(a0, a1, param, param$1, param$2, param$3);
+              });
+        case 7 :
+            return (function (param, param$1, param$2, param$3, param$4) {
+                return o(a0, a1, param, param$1, param$2, param$3, param$4);
+              });
+        default:
+          return app(o, [
+                      a0,
+                      a1
+                    ]);
+      }
+    }
+  }
+
+  function _3(o, a0, a1, a2) {
+    var arity = o.length;
+    if (arity === 3) {
+      return o(a0, a1, a2);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [
+                        a1,
+                        a2
+                      ]);
+        case 2 :
+            return app(o(a0, a1), [a2]);
+        case 3 :
+            return o(a0, a1, a2);
+        case 4 :
+            return (function (param) {
+                return o(a0, a1, a2, param);
+              });
+        case 5 :
+            return (function (param, param$1) {
+                return o(a0, a1, a2, param, param$1);
+              });
+        case 6 :
+            return (function (param, param$1, param$2) {
+                return o(a0, a1, a2, param, param$1, param$2);
+              });
+        case 7 :
+            return (function (param, param$1, param$2, param$3) {
+                return o(a0, a1, a2, param, param$1, param$2, param$3);
+              });
+        default:
+          return app(o, [
+                      a0,
+                      a1,
+                      a2
+                    ]);
+      }
+    }
+  }
+
+  function _4(o, a0, a1, a2, a3) {
+    var arity = o.length;
+    if (arity === 4) {
+      return o(a0, a1, a2, a3);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [
+                        a1,
+                        a2,
+                        a3
+                      ]);
+        case 2 :
+            return app(o(a0, a1), [
+                        a2,
+                        a3
+                      ]);
+        case 3 :
+            return app(o(a0, a1, a2), [a3]);
+        case 4 :
+            return o(a0, a1, a2, a3);
+        case 5 :
+            return (function (param) {
+                return o(a0, a1, a2, a3, param);
+              });
+        case 6 :
+            return (function (param, param$1) {
+                return o(a0, a1, a2, a3, param, param$1);
+              });
+        case 7 :
+            return (function (param, param$1, param$2) {
+                return o(a0, a1, a2, a3, param, param$1, param$2);
+              });
+        default:
+          return app(o, [
+                      a0,
+                      a1,
+                      a2,
+                      a3
+                    ]);
+      }
+    }
+  }
+
+  function _5(o, a0, a1, a2, a3, a4) {
+    var arity = o.length;
+    if (arity === 5) {
+      return o(a0, a1, a2, a3, a4);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [
+                        a1,
+                        a2,
+                        a3,
+                        a4
+                      ]);
+        case 2 :
+            return app(o(a0, a1), [
+                        a2,
+                        a3,
+                        a4
+                      ]);
+        case 3 :
+            return app(o(a0, a1, a2), [
+                        a3,
+                        a4
+                      ]);
+        case 4 :
+            return app(o(a0, a1, a2, a3), [a4]);
+        case 5 :
+            return o(a0, a1, a2, a3, a4);
+        case 6 :
+            return (function (param) {
+                return o(a0, a1, a2, a3, a4, param);
+              });
+        case 7 :
+            return (function (param, param$1) {
+                return o(a0, a1, a2, a3, a4, param, param$1);
+              });
+        default:
+          return app(o, [
+                      a0,
+                      a1,
+                      a2,
+                      a3,
+                      a4
+                    ]);
+      }
+    }
+  }
+
+  function _6(o, a0, a1, a2, a3, a4, a5) {
+    var arity = o.length;
+    if (arity === 6) {
+      return o(a0, a1, a2, a3, a4, a5);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [
+                        a1,
+                        a2,
+                        a3,
+                        a4,
+                        a5
+                      ]);
+        case 2 :
+            return app(o(a0, a1), [
+                        a2,
+                        a3,
+                        a4,
+                        a5
+                      ]);
+        case 3 :
+            return app(o(a0, a1, a2), [
+                        a3,
+                        a4,
+                        a5
+                      ]);
+        case 4 :
+            return app(o(a0, a1, a2, a3), [
+                        a4,
+                        a5
+                      ]);
+        case 5 :
+            return app(o(a0, a1, a2, a3, a4), [a5]);
+        case 6 :
+            return o(a0, a1, a2, a3, a4, a5);
+        case 7 :
+            return (function (param) {
+                return o(a0, a1, a2, a3, a4, a5, param);
+              });
+        default:
+          return app(o, [
+                      a0,
+                      a1,
+                      a2,
+                      a3,
+                      a4,
+                      a5
+                    ]);
+      }
+    }
+  }
+
+  function _7(o, a0, a1, a2, a3, a4, a5, a6) {
+    var arity = o.length;
+    if (arity === 7) {
+      return o(a0, a1, a2, a3, a4, a5, a6);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [
+                        a1,
+                        a2,
+                        a3,
+                        a4,
+                        a5,
+                        a6
+                      ]);
+        case 2 :
+            return app(o(a0, a1), [
+                        a2,
+                        a3,
+                        a4,
+                        a5,
+                        a6
+                      ]);
+        case 3 :
+            return app(o(a0, a1, a2), [
+                        a3,
+                        a4,
+                        a5,
+                        a6
+                      ]);
+        case 4 :
+            return app(o(a0, a1, a2, a3), [
+                        a4,
+                        a5,
+                        a6
+                      ]);
+        case 5 :
+            return app(o(a0, a1, a2, a3, a4), [
+                        a5,
+                        a6
+                      ]);
+        case 6 :
+            return app(o(a0, a1, a2, a3, a4, a5), [a6]);
+        case 7 :
+            return o(a0, a1, a2, a3, a4, a5, a6);
+        default:
+          return app(o, [
+                      a0,
+                      a1,
+                      a2,
+                      a3,
+                      a4,
+                      a5,
+                      a6
+                    ]);
+      }
+    }
+  }
+
+  function _8(o, a0, a1, a2, a3, a4, a5, a6, a7) {
+    var arity = o.length;
+    if (arity === 8) {
+      return o(a0, a1, a2, a3, a4, a5, a6, a7);
+    } else {
+      switch (arity) {
+        case 1 :
+            return app(o(a0), [
+                        a1,
+                        a2,
+                        a3,
+                        a4,
+                        a5,
+                        a6,
+                        a7
+                      ]);
+        case 2 :
+            return app(o(a0, a1), [
+                        a2,
+                        a3,
+                        a4,
+                        a5,
+                        a6,
+                        a7
+                      ]);
+        case 3 :
+            return app(o(a0, a1, a2), [
+                        a3,
+                        a4,
+                        a5,
+                        a6,
+                        a7
+                      ]);
+        case 4 :
+            return app(o(a0, a1, a2, a3), [
+                        a4,
+                        a5,
+                        a6,
+                        a7
+                      ]);
+        case 5 :
+            return app(o(a0, a1, a2, a3, a4), [
+                        a5,
+                        a6,
+                        a7
+                      ]);
+        case 6 :
+            return app(o(a0, a1, a2, a3, a4, a5), [
+                        a6,
+                        a7
+                      ]);
+        case 7 :
+            return app(o(a0, a1, a2, a3, a4, a5, a6), [a7]);
+        default:
+          return app(o, [
+                      a0,
+                      a1,
+                      a2,
+                      a3,
+                      a4,
+                      a5,
+                      a6,
+                      a7
+                    ]);
+      }
+    }
+  }
+  /* No side effect */
+
+  function __(tag, block) {
+    block.tag = tag;
+    return block;
+  }
+  /* No side effect */
+
+  function caml_int_compare(x, y) {
+    if (x < y) {
+      return -1;
+    } else if (x === y) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
+  function caml_string_compare(s1, s2) {
+    if (s1 === s2) {
+      return 0;
+    } else if (s1 < s2) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+
+  function caml_int_max(x, y) {
+    if (x > y) {
+      return x;
+    } else {
+      return y;
+    }
+  }
+
+  function caml_float_max(x, y) {
+    if (x > y) {
+      return x;
+    } else {
+      return y;
+    }
+  }
+  /* No side effect */
+
+  var for_in = (function(o,foo){
+          for (var x in o) { foo(x); }});
+
+  function caml_lazy_make(fn) {
+    var block = [fn];
+    block.tag = 246;
+    return block;
+  }
+
+  function caml_equal(_a, _b) {
+    while(true) {
+      var b = _b;
+      var a = _a;
+      if (a === b) {
+        return true;
+      }
+      var a_type = typeof a;
+      if (a_type === "string" || a_type === "number" || a_type === "boolean" || a_type === "undefined" || a === null) {
+        return false;
+      }
+      var b_type = typeof b;
+      if (a_type === "function" || b_type === "function") {
+        throw [
+              invalid_argument,
+              "equal: functional value"
+            ];
+      }
+      if (b_type === "number" || b_type === "undefined" || b === null) {
+        return false;
+      }
+      var tag_a = a.tag | 0;
+      var tag_b = b.tag | 0;
+      if (tag_a === 250) {
+        _a = a[0];
+        continue ;
+      }
+      if (tag_b === 250) {
+        _b = b[0];
+        continue ;
+      }
+      if (tag_a === 248) {
+        return a[1] === b[1];
+      }
+      if (tag_a === 251) {
+        throw [
+              invalid_argument,
+              "equal: abstract value"
+            ];
+      }
+      if (tag_a !== tag_b) {
+        return false;
+      }
+      if (tag_a === 256) {
+        return a[1] === b[1];
+      }
+      var len_a = a.length | 0;
+      var len_b = b.length | 0;
+      if (len_a === len_b) {
+        if (Array.isArray(a)) {
+          var _i = 0;
+          while(true) {
+            var i = _i;
+            if (i === len_a) {
+              return true;
+            }
+            if (!caml_equal(a[i], b[i])) {
+              return false;
+            }
+            _i = i + 1 | 0;
+            continue ;
+          }      } else if ((a instanceof Date && b instanceof Date)) {
+          return !(a > b || a < b);
+        } else {
+          var result = {
+            contents: true
+          };
+          var do_key_a = (function(b,result){
+          return function do_key_a(key) {
+            if (!b.hasOwnProperty(key)) {
+              result.contents = false;
+              return ;
+            }
+            
+          }
+          }(b,result));
+          var do_key_b = (function(a,b,result){
+          return function do_key_b(key) {
+            if (!a.hasOwnProperty(key) || !caml_equal(b[key], a[key])) {
+              result.contents = false;
+              return ;
+            }
+            
+          }
+          }(a,b,result));
+          for_in(a, do_key_a);
+          if (result.contents) {
+            for_in(b, do_key_b);
+          }
+          return result.contents;
+        }
+      } else {
+        return false;
+      }
+    }}
+
+  function caml_notequal(a, b) {
+    return !caml_equal(a, b);
+  }
+
+  function caml_obj_set_tag(prim, prim$1) {
+    prim.tag = prim$1;
+    
+  }
+  /* No side effect */
+
+  function caml_fill_bytes(s, i, l, c) {
+    if (l <= 0) {
+      return ;
+    }
+    for(var k = i ,k_finish = l + i | 0; k < k_finish; ++k){
+      s[k] = c;
+    }
+    
+  }
+
+  function caml_create_bytes(len) {
+    if (len < 0) {
+      throw [
+            invalid_argument,
+            "String.create"
+          ];
+    }
+    var result = new Array(len);
+    for(var i = 0; i < len; ++i){
+      result[i] = /* "\000" */0;
+    }
+    return result;
+  }
+
+  function caml_blit_bytes(s1, i1, s2, i2, len) {
+    if (len <= 0) {
+      return ;
+    }
+    if (s1 === s2) {
+      if (i1 < i2) {
+        var range_a = (s1.length - i2 | 0) - 1 | 0;
+        var range_b = len - 1 | 0;
+        var range = range_a > range_b ? range_b : range_a;
+        for(var j = range; j >= 0; --j){
+          s1[i2 + j | 0] = s1[i1 + j | 0];
+        }
+        return ;
+      }
+      if (i1 <= i2) {
+        return ;
+      }
+      var range_a$1 = (s1.length - i1 | 0) - 1 | 0;
+      var range_b$1 = len - 1 | 0;
+      var range$1 = range_a$1 > range_b$1 ? range_b$1 : range_a$1;
+      for(var k = 0; k <= range$1; ++k){
+        s1[i2 + k | 0] = s1[i1 + k | 0];
+      }
+      return ;
+    }
+    var off1 = s1.length - i1 | 0;
+    if (len <= off1) {
+      for(var i = 0; i < len; ++i){
+        s2[i2 + i | 0] = s1[i1 + i | 0];
+      }
+      return ;
+    }
+    for(var i$1 = 0; i$1 < off1; ++i$1){
+      s2[i2 + i$1 | 0] = s1[i1 + i$1 | 0];
+    }
+    for(var i$2 = off1; i$2 < len; ++i$2){
+      s2[i2 + i$2 | 0] = /* "\000" */0;
+    }
+    
+  }
+
+  function bytes_to_string(a) {
+    var len = a.length;
+    var s = "";
+    var s_len = len;
+    if ( len <= 4096 && len === a.length) {
+      return String.fromCharCode.apply(null, a);
+    }
+    var offset = 0;
+    while(s_len > 0) {
+      var next = s_len < 1024 ? s_len : 1024;
+      var tmp_bytes = new Array(next);
+      caml_blit_bytes(a, offset, tmp_bytes, 0, next);
+      s = s + String.fromCharCode.apply(null, tmp_bytes);
+      s_len = s_len - next | 0;
+      offset = offset + next | 0;
+    }  return s;
+  }
+
+  function caml_blit_string(s1, i1, s2, i2, len) {
+    if (len <= 0) {
+      return ;
+    }
+    var off1 = s1.length - i1 | 0;
+    if (len <= off1) {
+      for(var i = 0; i < len; ++i){
+        s2[i2 + i | 0] = s1.charCodeAt(i1 + i | 0);
+      }
+      return ;
+    }
+    for(var i$1 = 0; i$1 < off1; ++i$1){
+      s2[i2 + i$1 | 0] = s1.charCodeAt(i1 + i$1 | 0);
+    }
+    for(var i$2 = off1; i$2 < len; ++i$2){
+      s2[i2 + i$2 | 0] = /* "\000" */0;
+    }
+    
+  }
+
+  function bytes_of_string(s) {
+    var len = s.length;
+    var res = new Array(len);
+    for(var i = 0; i < len; ++i){
+      res[i] = s.charCodeAt(i);
+    }
+    return res;
+  }
+  /* No side effect */
+
+  var imul = (Math.imul || function (x,y) {
+    y |= 0; return ((((x >> 16) * y) << 16) + (x & 0xffff) * y)|0; 
+  });
+  /* imul Not a pure module */
+
+  function mk(lo, hi) {
+    return /* Int64 */[
+            /* hi */hi,
+            /* lo */(lo >>> 0)
+          ];
+  }
+
+  var min_int = /* Int64 */[
+    /* hi */-2147483648,
+    /* lo */0
+  ];
+
+  var max_int = /* Int64 */[
+    /* hi */2147483647,
+    /* lo */4294967295
+  ];
+
+  var one = /* Int64 */[
+    /* hi */0,
+    /* lo */1
+  ];
+
+  var zero = /* Int64 */[
+    /* hi */0,
+    /* lo */0
+  ];
+
+  var neg_one = /* Int64 */[
+    /* hi */-1,
+    /* lo */4294967295
+  ];
+
+  function neg_signed(x) {
+    return (x & 2147483648) !== 0;
+  }
+
+  function non_neg_signed(x) {
+    return (x & 2147483648) === 0;
+  }
+
+  function neg(param) {
+    var other_lo = (param[/* lo */1] ^ -1) + 1 | 0;
+    return mk(other_lo, (param[/* hi */0] ^ -1) + (
+                other_lo === 0 ? 1 : 0
+              ) | 0);
+  }
+
+  function add_aux(param, y_lo, y_hi) {
+    var x_lo = param[/* lo */1];
+    var lo = x_lo + y_lo | 0;
+    var overflow = neg_signed(x_lo) && (neg_signed(y_lo) || non_neg_signed(lo)) || neg_signed(y_lo) && non_neg_signed(lo) ? 1 : 0;
+    return mk(lo, param[/* hi */0] + y_hi + overflow | 0);
+  }
+
+  function add(self, param) {
+    return add_aux(self, param[/* lo */1], param[/* hi */0]);
+  }
+
+  function eq(x, y) {
+    if (x[/* hi */0] === y[/* hi */0]) {
+      return x[/* lo */1] === y[/* lo */1];
+    } else {
+      return false;
+    }
+  }
+
+  function sub_aux(x, lo, hi) {
+    var y_lo = ((lo ^ -1) + 1 >>> 0);
+    var y_hi = (hi ^ -1) + (
+      y_lo === 0 ? 1 : 0
+    ) | 0;
+    return add_aux(x, y_lo, y_hi);
+  }
+
+  function sub(self, param) {
+    return sub_aux(self, param[/* lo */1], param[/* hi */0]);
+  }
+
+  function lsl_(x, numBits) {
+    if (numBits === 0) {
+      return x;
+    }
+    var lo = x[/* lo */1];
+    if (numBits >= 32) {
+      return mk(0, (lo << (numBits - 32 | 0)));
+    } else {
+      return mk((lo << numBits), (lo >>> (32 - numBits | 0)) | (x[/* hi */0] << numBits));
+    }
+  }
+
+  function asr_(x, numBits) {
+    if (numBits === 0) {
+      return x;
+    }
+    var hi = x[/* hi */0];
+    if (numBits < 32) {
+      return mk((hi << (32 - numBits | 0)) | (x[/* lo */1] >>> numBits), (hi >> numBits));
+    } else {
+      return mk((hi >> (numBits - 32 | 0)), hi >= 0 ? 0 : -1);
+    }
+  }
+
+  function is_zero(param) {
+    if (param[/* hi */0] !== 0 || param[/* lo */1] !== 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function mul(_this, _other) {
+    while(true) {
+      var other = _other;
+      var $$this = _this;
+      var lo;
+      var exit = 0;
+      var exit$1 = 0;
+      if ($$this[/* hi */0] !== 0) {
+        exit$1 = 3;
+      } else {
+        if ($$this[/* lo */1] === 0) {
+          return zero;
+        }
+        exit$1 = 3;
+      }
+      if (exit$1 === 3) {
+        if (other[/* hi */0] !== 0) {
+          exit = 2;
+        } else {
+          if (other[/* lo */1] === 0) {
+            return zero;
+          }
+          exit = 2;
+        }
+      }
+      if (exit === 2) {
+        var this_hi = $$this[/* hi */0];
+        var exit$2 = 0;
+        if (this_hi !== -2147483648 || $$this[/* lo */1] !== 0) {
+          exit$2 = 3;
+        } else {
+          lo = other[/* lo */1];
+        }
+        if (exit$2 === 3) {
+          var other_hi = other[/* hi */0];
+          var lo$1 = $$this[/* lo */1];
+          var exit$3 = 0;
+          if (other_hi !== -2147483648 || other[/* lo */1] !== 0) {
+            exit$3 = 4;
+          } else {
+            lo = lo$1;
+          }
+          if (exit$3 === 4) {
+            var other_lo = other[/* lo */1];
+            if (this_hi < 0) {
+              if (other_hi >= 0) {
+                return neg(mul(neg($$this), other));
+              }
+              _other = neg(other);
+              _this = neg($$this);
+              continue ;
+            }
+            if (other_hi < 0) {
+              return neg(mul($$this, neg(other)));
+            }
+            var a48 = (this_hi >>> 16);
+            var a32 = this_hi & 65535;
+            var a16 = (lo$1 >>> 16);
+            var a00 = lo$1 & 65535;
+            var b48 = (other_hi >>> 16);
+            var b32 = other_hi & 65535;
+            var b16 = (other_lo >>> 16);
+            var b00 = other_lo & 65535;
+            var c48 = 0;
+            var c32 = 0;
+            var c16 = 0;
+            var c00 = a00 * b00;
+            c16 = (c00 >>> 16) + a16 * b00;
+            c32 = (c16 >>> 16);
+            c16 = (c16 & 65535) + a00 * b16;
+            c32 = c32 + (c16 >>> 16) + a32 * b00;
+            c48 = (c32 >>> 16);
+            c32 = (c32 & 65535) + a16 * b16;
+            c48 = c48 + (c32 >>> 16);
+            c32 = (c32 & 65535) + a00 * b32;
+            c48 = c48 + (c32 >>> 16);
+            c32 = c32 & 65535;
+            c48 = c48 + (a48 * b00 + a32 * b16 + a16 * b32 + a00 * b48) & 65535;
+            return mk(c00 & 65535 | ((c16 & 65535) << 16), c32 | (c48 << 16));
+          }
+          
+        }
+        
+      }
+      if ((lo & 1) === 0) {
+        return zero;
+      } else {
+        return min_int;
+      }
+    }}
+
+  function ge(param, param$1) {
+    var other_hi = param$1[/* hi */0];
+    var hi = param[/* hi */0];
+    if (hi > other_hi) {
+      return true;
+    } else if (hi < other_hi) {
+      return false;
+    } else {
+      return param[/* lo */1] >= param$1[/* lo */1];
+    }
+  }
+
+  function neq(x, y) {
+    return !eq(x, y);
+  }
+
+  function lt(x, y) {
+    return !ge(x, y);
+  }
+
+  function gt(x, y) {
+    if (x[/* hi */0] > y[/* hi */0]) {
+      return true;
+    } else if (x[/* hi */0] < y[/* hi */0]) {
+      return false;
+    } else {
+      return x[/* lo */1] > y[/* lo */1];
+    }
+  }
+
+  function to_float(param) {
+    return param[/* hi */0] * 0x100000000 + param[/* lo */1];
+  }
+
+  function of_float(x) {
+    if (isNaN(x) || !isFinite(x)) {
+      return zero;
+    } else if (x <= -9.22337203685477581e+18) {
+      return min_int;
+    } else if (x + 1 >= 9.22337203685477581e+18) {
+      return max_int;
+    } else if (x < 0) {
+      return neg(of_float(-x));
+    } else {
+      return mk(x % 4294967296 | 0, x / 4294967296 | 0);
+    }
+  }
+
+  function isSafeInteger(param) {
+    var hi = param[/* hi */0];
+    var top11Bits = (hi >> 21);
+    if (top11Bits === 0) {
+      return true;
+    } else if (top11Bits === -1) {
+      return !(param[/* lo */1] === 0 && hi === (4292870144 | 0));
+    } else {
+      return false;
+    }
+  }
+
+  function to_string(self) {
+    if (isSafeInteger(self)) {
+      return String(to_float(self));
+    }
+    if (self[/* hi */0] < 0) {
+      if (eq(self, min_int)) {
+        return "-9223372036854775808";
+      } else {
+        return "-" + to_string(neg(self));
+      }
+    }
+    var approx_div1 = of_float(Math.floor(to_float(self) / 10));
+    var lo = approx_div1[/* lo */1];
+    var hi = approx_div1[/* hi */0];
+    var match = sub_aux(sub_aux(self, (lo << 3), (lo >>> 29) | (hi << 3)), (lo << 1), (lo >>> 31) | (hi << 1));
+    var rem_lo = match[/* lo */1];
+    var rem_hi = match[/* hi */0];
+    if (rem_lo === 0 && rem_hi === 0) {
+      return to_string(approx_div1) + "0";
+    }
+    if (rem_hi < 0) {
+      var rem_lo$1 = ((rem_lo ^ -1) + 1 >>> 0);
+      var delta = Math.ceil(rem_lo$1 / 10);
+      var remainder = 10 * delta - rem_lo$1;
+      return to_string(sub_aux(approx_div1, delta | 0, 0)) + String(remainder | 0);
+    }
+    var rem_lo$2 = rem_lo;
+    var delta$1 = Math.floor(rem_lo$2 / 10);
+    var remainder$1 = rem_lo$2 - 10 * delta$1;
+    return to_string(add_aux(approx_div1, delta$1 | 0, 0)) + String(remainder$1 | 0);
+  }
+
+  function div(_self, _other) {
+    while(true) {
+      var other = _other;
+      var self = _self;
+      var exit = 0;
+      var exit$1 = 0;
+      if (other[/* hi */0] !== 0 || other[/* lo */1] !== 0) {
+        exit$1 = 3;
+      } else {
+        throw division_by_zero;
+      }
+      if (exit$1 === 3) {
+        var match = self[/* hi */0];
+        if (match !== -2147483648) {
+          if (match !== 0) {
+            exit = 2;
+          } else {
+            if (self[/* lo */1] === 0) {
+              return zero;
+            }
+            exit = 2;
+          }
+        } else if (self[/* lo */1] !== 0) {
+          exit = 2;
+        } else {
+          if (eq(other, one) || eq(other, neg_one)) {
+            return self;
+          }
+          if (eq(other, min_int)) {
+            return one;
+          }
+          var half_this = asr_(self, 1);
+          var approx = lsl_(div(half_this, other), 1);
+          var exit$2 = 0;
+          if (approx[/* hi */0] !== 0) {
+            exit$2 = 4;
+          } else {
+            if (approx[/* lo */1] === 0) {
+              if (other[/* hi */0] < 0) {
+                return one;
+              } else {
+                return neg(one);
+              }
+            }
+            exit$2 = 4;
+          }
+          if (exit$2 === 4) {
+            var rem = sub(self, mul(other, approx));
+            return add(approx, div(rem, other));
+          }
+          
+        }
+      }
+      if (exit === 2 && other[/* hi */0] === -2147483648 && other[/* lo */1] === 0) {
+        return zero;
+      }
+      var other_hi = other[/* hi */0];
+      if (self[/* hi */0] < 0) {
+        if (other_hi >= 0) {
+          return neg(div(neg(self), other));
+        }
+        _other = neg(other);
+        _self = neg(self);
+        continue ;
+      }
+      if (other_hi < 0) {
+        return neg(div(self, neg(other)));
+      }
+      var res = zero;
+      var rem$1 = self;
+      while(ge(rem$1, other)) {
+        var approx$1 = caml_float_max(1, Math.floor(to_float(rem$1) / to_float(other)));
+        var log2 = Math.ceil(Math.log(approx$1) / Math.LN2);
+        var delta = log2 <= 48 ? 1 : Math.pow(2, log2 - 48);
+        var approxRes = of_float(approx$1);
+        var approxRem = mul(approxRes, other);
+        while(approxRem[/* hi */0] < 0 || gt(approxRem, rem$1)) {
+          approx$1 = approx$1 - delta;
+          approxRes = of_float(approx$1);
+          approxRem = mul(approxRes, other);
+        }      if (is_zero(approxRes)) {
+          approxRes = one;
+        }
+        res = add(res, approxRes);
+        rem$1 = sub(rem$1, approxRem);
+      }    return res;
+    }}
+
+  function div_mod(self, other) {
+    var quotient = div(self, other);
+    return /* tuple */[
+            quotient,
+            sub(self, mul(quotient, other))
+          ];
+  }
+
+  function to_int32(x) {
+    return x[/* lo */1] | 0;
+  }
+
+  function to_hex(x) {
+    var x_lo = x[/* lo */1];
+    var x_hi = x[/* hi */0];
+    var aux = function (v) {
+      return (v >>> 0).toString(16);
+    };
+    if (x_hi === 0 && x_lo === 0) {
+      return "0";
+    }
+    if (x_lo === 0) {
+      return aux(x_hi) + "00000000";
+    }
+    if (x_hi === 0) {
+      return aux(x_lo);
+    }
+    var lo = aux(x_lo);
+    var pad = 8 - lo.length | 0;
+    if (pad <= 0) {
+      return aux(x_hi) + lo;
+    } else {
+      return aux(x_hi) + ("0".repeat(pad) + lo);
+    }
+  }
+
+  function discard_sign(x) {
+    return /* Int64 */[
+            /* hi */2147483647 & x[/* hi */0],
+            /* lo */x[/* lo */1]
+          ];
+  }
+  /* Caml_int32 Not a pure module */
+
+  function int_of_base(param) {
+    switch (param) {
+      case /* Oct */0 :
+          return 8;
+      case /* Hex */1 :
+          return 16;
+      case /* Dec */2 :
+          return 10;
+      
+    }
+  }
+
+  function lowercase(c) {
+    if (c >= /* "A" */65 && c <= /* "Z" */90 || c >= /* "\192" */192 && c <= /* "\214" */214 || c >= /* "\216" */216 && c <= /* "\222" */222) {
+      return c + 32 | 0;
+    } else {
+      return c;
+    }
+  }
+
+  function parse_format(fmt) {
+    var len = fmt.length;
+    if (len > 31) {
+      throw [
+            invalid_argument,
+            "format_int: format too long"
+          ];
+    }
+    var f = {
+      justify: "+",
+      signstyle: "-",
+      filter: " ",
+      alternate: false,
+      base: /* Dec */2,
+      signedconv: false,
+      width: 0,
+      uppercase: false,
+      sign: 1,
+      prec: -1,
+      conv: "f"
+    };
+    var _i = 0;
+    while(true) {
+      var i = _i;
+      if (i >= len) {
+        return f;
+      }
+      var c = fmt.charCodeAt(i);
+      var exit = 0;
+      if (c >= 69) {
+        if (c >= 88) {
+          if (c >= 121) {
+            exit = 1;
+          } else {
+            switch (c - 88 | 0) {
+              case 0 :
+                  f.base = /* Hex */1;
+                  f.uppercase = true;
+                  _i = i + 1 | 0;
+                  continue ;
+              case 13 :
+              case 14 :
+              case 15 :
+                  exit = 5;
+                  break;
+              case 12 :
+              case 17 :
+                  exit = 4;
+                  break;
+              case 23 :
+                  f.base = /* Oct */0;
+                  _i = i + 1 | 0;
+                  continue ;
+              case 29 :
+                  f.base = /* Dec */2;
+                  _i = i + 1 | 0;
+                  continue ;
+              case 1 :
+              case 2 :
+              case 3 :
+              case 4 :
+              case 5 :
+              case 6 :
+              case 7 :
+              case 8 :
+              case 9 :
+              case 10 :
+              case 11 :
+              case 16 :
+              case 18 :
+              case 19 :
+              case 20 :
+              case 21 :
+              case 22 :
+              case 24 :
+              case 25 :
+              case 26 :
+              case 27 :
+              case 28 :
+              case 30 :
+              case 31 :
+                  exit = 1;
+                  break;
+              case 32 :
+                  f.base = /* Hex */1;
+                  _i = i + 1 | 0;
+                  continue ;
+              
+            }
+          }
+        } else if (c >= 72) {
+          exit = 1;
+        } else {
+          f.signedconv = true;
+          f.uppercase = true;
+          f.conv = String.fromCharCode(lowercase(c));
+          _i = i + 1 | 0;
+          continue ;
+        }
+      } else {
+        switch (c) {
+          case 35 :
+              f.alternate = true;
+              _i = i + 1 | 0;
+              continue ;
+          case 32 :
+          case 43 :
+              exit = 2;
+              break;
+          case 45 :
+              f.justify = "-";
+              _i = i + 1 | 0;
+              continue ;
+          case 46 :
+              f.prec = 0;
+              var j = i + 1 | 0;
+              while((function(j){
+                  return function () {
+                    var w = fmt.charCodeAt(j) - /* "0" */48 | 0;
+                    return w >= 0 && w <= 9;
+                  }
+                  }(j))()) {
+                f.prec = (imul(f.prec, 10) + fmt.charCodeAt(j) | 0) - /* "0" */48 | 0;
+                j = j + 1 | 0;
+              }            _i = j;
+              continue ;
+          case 33 :
+          case 34 :
+          case 36 :
+          case 37 :
+          case 38 :
+          case 39 :
+          case 40 :
+          case 41 :
+          case 42 :
+          case 44 :
+          case 47 :
+              exit = 1;
+              break;
+          case 48 :
+              f.filter = "0";
+              _i = i + 1 | 0;
+              continue ;
+          case 49 :
+          case 50 :
+          case 51 :
+          case 52 :
+          case 53 :
+          case 54 :
+          case 55 :
+          case 56 :
+          case 57 :
+              exit = 3;
+              break;
+          default:
+            exit = 1;
+        }
+      }
+      switch (exit) {
+        case 1 :
+            _i = i + 1 | 0;
+            continue ;
+        case 2 :
+            f.signstyle = String.fromCharCode(c);
+            _i = i + 1 | 0;
+            continue ;
+        case 3 :
+            f.width = 0;
+            var j$1 = i;
+            while((function(j$1){
+                return function () {
+                  var w = fmt.charCodeAt(j$1) - /* "0" */48 | 0;
+                  return w >= 0 && w <= 9;
+                }
+                }(j$1))()) {
+              f.width = (imul(f.width, 10) + fmt.charCodeAt(j$1) | 0) - /* "0" */48 | 0;
+              j$1 = j$1 + 1 | 0;
+            }          _i = j$1;
+            continue ;
+        case 4 :
+            f.signedconv = true;
+            f.base = /* Dec */2;
+            _i = i + 1 | 0;
+            continue ;
+        case 5 :
+            f.signedconv = true;
+            f.conv = String.fromCharCode(c);
+            _i = i + 1 | 0;
+            continue ;
+        
+      }
+    }}
+
+  function finish_formatting(config, rawbuffer) {
+    var justify = config.justify;
+    var signstyle = config.signstyle;
+    var filter = config.filter;
+    var alternate = config.alternate;
+    var base = config.base;
+    var signedconv = config.signedconv;
+    var width = config.width;
+    var uppercase = config.uppercase;
+    var sign = config.sign;
+    var len = rawbuffer.length;
+    if (signedconv && (sign < 0 || signstyle !== "-")) {
+      len = len + 1 | 0;
+    }
+    if (alternate) {
+      if (base === /* Oct */0) {
+        len = len + 1 | 0;
+      } else if (base === /* Hex */1) {
+        len = len + 2 | 0;
+      }
+      
+    }
+    var buffer = "";
+    if (justify === "+" && filter === " ") {
+      for(var _for = len; _for < width; ++_for){
+        buffer = buffer + filter;
+      }
+    }
+    if (signedconv) {
+      if (sign < 0) {
+        buffer = buffer + "-";
+      } else if (signstyle !== "-") {
+        buffer = buffer + signstyle;
+      }
+      
+    }
+    if (alternate && base === /* Oct */0) {
+      buffer = buffer + "0";
+    }
+    if (alternate && base === /* Hex */1) {
+      buffer = buffer + "0x";
+    }
+    if (justify === "+" && filter === "0") {
+      for(var _for$1 = len; _for$1 < width; ++_for$1){
+        buffer = buffer + filter;
+      }
+    }
+    buffer = uppercase ? buffer + rawbuffer.toUpperCase() : buffer + rawbuffer;
+    if (justify === "-") {
+      for(var _for$2 = len; _for$2 < width; ++_for$2){
+        buffer = buffer + " ";
+      }
+    }
+    return buffer;
+  }
+
+  function caml_format_int(fmt, i) {
+    if (fmt === "%d") {
+      return String(i);
+    }
+    var f = parse_format(fmt);
+    var i$1 = i < 0 ? (
+        f.signedconv ? (f.sign = -1, -i) : (i >>> 0)
+      ) : i;
+    var s = i$1.toString(int_of_base(f.base));
+    if (f.prec >= 0) {
+      f.filter = " ";
+      var n = f.prec - s.length | 0;
+      if (n > 0) {
+        s = "0".repeat(n) + s;
+      }
+      
+    }
+    return finish_formatting(f, s);
+  }
+
+  function dec_of_pos_int64(x) {
+    if (!lt(x, zero)) {
+      return to_string(x);
+    }
+    var wbase = mk(10, 0);
+    var y = discard_sign(x);
+    var match = div_mod(y, wbase);
+    var match$1 = div_mod(add(mk(8, 0), match[1]), wbase);
+    var quotient = add(add(mk(-858993460, 214748364), match[0]), match$1[0]);
+    return to_string(quotient) + "0123456789"[to_int32(match$1[1])];
+  }
+
+  function oct_of_int64(x) {
+    var s = "";
+    var wbase = mk(8, 0);
+    var cvtbl = "01234567";
+    if (lt(x, zero)) {
+      var y = discard_sign(x);
+      var match = div_mod(y, wbase);
+      var quotient = add(mk(0, 268435456), match[0]);
+      var modulus = match[1];
+      s = cvtbl[to_int32(modulus)] + s;
+      while(neq(quotient, zero)) {
+        var match$1 = div_mod(quotient, wbase);
+        quotient = match$1[0];
+        modulus = match$1[1];
+        s = cvtbl[to_int32(modulus)] + s;
+      }  } else {
+      var match$2 = div_mod(x, wbase);
+      var quotient$1 = match$2[0];
+      var modulus$1 = match$2[1];
+      s = cvtbl[to_int32(modulus$1)] + s;
+      while(neq(quotient$1, zero)) {
+        var match$3 = div_mod(quotient$1, wbase);
+        quotient$1 = match$3[0];
+        modulus$1 = match$3[1];
+        s = cvtbl[to_int32(modulus$1)] + s;
+      }  }
+    return s;
+  }
+
+  function caml_int64_format(fmt, x) {
+    if (fmt === "%d") {
+      return to_string(x);
+    }
+    var f = parse_format(fmt);
+    var x$1 = f.signedconv && lt(x, zero) ? (f.sign = -1, neg(x)) : x;
+    var match = f.base;
+    var s;
+    switch (match) {
+      case /* Oct */0 :
+          s = oct_of_int64(x$1);
+          break;
+      case /* Hex */1 :
+          s = to_hex(x$1);
+          break;
+      case /* Dec */2 :
+          s = dec_of_pos_int64(x$1);
+          break;
+      
+    }
+    var fill_s;
+    if (f.prec >= 0) {
+      f.filter = " ";
+      var n = f.prec - s.length | 0;
+      fill_s = n > 0 ? "0".repeat(n) + s : s;
+    } else {
+      fill_s = s;
+    }
+    return finish_formatting(f, fill_s);
+  }
+
+  function caml_format_float(fmt, x) {
+    var f = parse_format(fmt);
+    var prec = f.prec < 0 ? 6 : f.prec;
+    var x$1 = x < 0 ? (f.sign = -1, -x) : x;
+    var s = "";
+    if (isNaN(x$1)) {
+      s = "nan";
+      f.filter = " ";
+    } else if (isFinite(x$1)) {
+      var match = f.conv;
+      switch (match) {
+        case "e" :
+            s = x$1.toExponential(prec);
+            var i = s.length;
+            if (s[i - 3 | 0] === "e") {
+              s = s.slice(0, i - 1 | 0) + ("0" + s.slice(i - 1 | 0));
+            }
+            break;
+        case "f" :
+            s = x$1.toFixed(prec);
+            break;
+        case "g" :
+            var prec$1 = prec !== 0 ? prec : 1;
+            s = x$1.toExponential(prec$1 - 1 | 0);
+            var j = s.indexOf("e");
+            var exp = Number(s.slice(j + 1 | 0)) | 0;
+            if (exp < -4 || x$1 >= 1e21 || x$1.toFixed().length > prec$1) {
+              var i$1 = j - 1 | 0;
+              while(s[i$1] === "0") {
+                i$1 = i$1 - 1 | 0;
+              }            if (s[i$1] === ".") {
+                i$1 = i$1 - 1 | 0;
+              }
+              s = s.slice(0, i$1 + 1 | 0) + s.slice(j);
+              var i$2 = s.length;
+              if (s[i$2 - 3 | 0] === "e") {
+                s = s.slice(0, i$2 - 1 | 0) + ("0" + s.slice(i$2 - 1 | 0));
+              }
+              
+            } else {
+              var p = prec$1;
+              if (exp < 0) {
+                p = p - (exp + 1 | 0) | 0;
+                s = x$1.toFixed(p);
+              } else {
+                while((function () {
+                        s = x$1.toFixed(p);
+                        return s.length > (prec$1 + 1 | 0);
+                      })()) {
+                  p = p - 1 | 0;
+                }            }
+              if (p !== 0) {
+                var k = s.length - 1 | 0;
+                while(s[k] === "0") {
+                  k = k - 1 | 0;
+                }              if (s[k] === ".") {
+                  k = k - 1 | 0;
+                }
+                s = s.slice(0, k + 1 | 0);
+              }
+              
+            }
+            break;
+          
+      }
+    } else {
+      s = "inf";
+      f.filter = " ";
+    }
+    return finish_formatting(f, s);
+  }
+
+  var caml_hexstring_of_float = (function(x,prec,style){
+    if (!isFinite(x)) {
+      if (isNaN(x)) return "nan";
+      return x > 0 ? "infinity":"-infinity";
+    }
+    var sign = (x==0 && 1/x == -Infinity)?1:(x>=0)?0:1;
+    if(sign) x = -x;
+    var exp = 0;
+    if (x == 0) ;
+    else if (x < 1) {
+      while (x < 1 && exp > -1022)  { x *= 2; exp--; }
+    } else {
+      while (x >= 2) { x /= 2; exp++; }
+    }
+    var exp_sign = exp < 0 ? '' : '+';
+    var sign_str = '';
+    if (sign) sign_str = '-';
+    else {
+      switch(style){
+      case 43 /* '+' */: sign_str = '+'; break;
+      case 32 /* ' ' */: sign_str = ' '; break;
+      }
+    }
+    if (prec >= 0 && prec < 13) {
+      /* If a precision is given, and is small, round mantissa accordingly */
+        var cst = Math.pow(2,prec * 4);
+        x = Math.round(x * cst) / cst;
+    }
+    var x_str = x.toString(16);
+    if(prec >= 0){
+        var idx = x_str.indexOf('.');
+      if(idx<0) {
+        x_str += '.' +  '0'.repeat(prec);
+      }
+      else {
+        var size = idx+1+prec;
+        if(x_str.length < size)
+          x_str += '0'.repeat(size - x_str.length);
+        else
+          x_str = x_str.substr(0,size);
+      }
+    }
+    return  (sign_str + '0x' + x_str + 'p' + exp_sign + exp.toString(10));
+  });
+
+  var caml_nativeint_format = caml_format_int;
+
+  var caml_int32_format = caml_format_int;
+  /* No side effect */
+
+  function get(s, i) {
+    if (i >= s.length || i < 0) {
+      throw [
+            invalid_argument,
+            "index out of bounds"
+          ];
+    }
+    return s.charCodeAt(i);
+  }
+  /* No side effect */
+
+  var id = {
+    contents: 0
+  };
+
+  function caml_fresh_oo_id(param) {
+    id.contents = id.contents + 1;
+    return id.contents;
+  }
+
+  function create(str) {
+    var v_001 = caml_fresh_oo_id();
+    var v = /* tuple */[
+      str,
+      v_001
+    ];
+    v.tag = 248;
+    return v;
+  }
+
+  function caml_is_extension(e) {
+    if (e === undefined) {
+      return false;
+    }
+    if (e.tag === 248) {
+      return true;
+    }
+    var slot = e[0];
+    if (slot !== undefined) {
+      return slot.tag === 248;
+    } else {
+      return false;
+    }
+  }
+  /* No side effect */
+
+  var undefinedHeader = [];
+
+  function some(x) {
+    if (x === undefined) {
+      var block = /* tuple */[
+        undefinedHeader,
+        0
+      ];
+      block.tag = 256;
+      return block;
+    }
+    if (!(x !== null && x[0] === undefinedHeader)) {
+      return x;
+    }
+    var nid = x[1] + 1 | 0;
+    var block$1 = /* tuple */[
+      undefinedHeader,
+      nid
+    ];
+    block$1.tag = 256;
+    return block$1;
+  }
+
+  function valFromOption(x) {
+    if (!(x !== null && x[0] === undefinedHeader)) {
+      return x;
+    }
+    var depth = x[1];
+    if (depth === 0) {
+      return ;
+    } else {
+      return /* tuple */[
+              undefinedHeader,
+              depth - 1 | 0
+            ];
+    }
+  }
+  /* No side effect */
+
+  var $$Error = create("Caml_js_exceptions.Error");
+
+  function internalToOCamlException(e) {
+    if (caml_is_extension(e)) {
+      return e;
+    } else {
+      return [
+              $$Error,
+              e
+            ];
+    }
+  }
+  /* No side effect */
+
+  function erase_rel(rest) {
+    if (typeof rest === "number") {
+      return /* End_of_fmtty */0;
+    }
+    switch (rest.tag | 0) {
+      case /* Char_ty */0 :
+          return /* Char_ty */__(0, [erase_rel(rest[0])]);
+      case /* String_ty */1 :
+          return /* String_ty */__(1, [erase_rel(rest[0])]);
+      case /* Int_ty */2 :
+          return /* Int_ty */__(2, [erase_rel(rest[0])]);
+      case /* Int32_ty */3 :
+          return /* Int32_ty */__(3, [erase_rel(rest[0])]);
+      case /* Nativeint_ty */4 :
+          return /* Nativeint_ty */__(4, [erase_rel(rest[0])]);
+      case /* Int64_ty */5 :
+          return /* Int64_ty */__(5, [erase_rel(rest[0])]);
+      case /* Float_ty */6 :
+          return /* Float_ty */__(6, [erase_rel(rest[0])]);
+      case /* Bool_ty */7 :
+          return /* Bool_ty */__(7, [erase_rel(rest[0])]);
+      case /* Format_arg_ty */8 :
+          return /* Format_arg_ty */__(8, [
+                    rest[0],
+                    erase_rel(rest[1])
+                  ]);
+      case /* Format_subst_ty */9 :
+          var ty1 = rest[0];
+          return /* Format_subst_ty */__(9, [
+                    ty1,
+                    ty1,
+                    erase_rel(rest[2])
+                  ]);
+      case /* Alpha_ty */10 :
+          return /* Alpha_ty */__(10, [erase_rel(rest[0])]);
+      case /* Theta_ty */11 :
+          return /* Theta_ty */__(11, [erase_rel(rest[0])]);
+      case /* Any_ty */12 :
+          return /* Any_ty */__(12, [erase_rel(rest[0])]);
+      case /* Reader_ty */13 :
+          return /* Reader_ty */__(13, [erase_rel(rest[0])]);
+      case /* Ignored_reader_ty */14 :
+          return /* Ignored_reader_ty */__(14, [erase_rel(rest[0])]);
+      
+    }
+  }
+
+  function concat_fmtty(fmtty1, fmtty2) {
+    if (typeof fmtty1 === "number") {
+      return fmtty2;
+    }
+    switch (fmtty1.tag | 0) {
+      case /* Char_ty */0 :
+          return /* Char_ty */__(0, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* String_ty */1 :
+          return /* String_ty */__(1, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Int_ty */2 :
+          return /* Int_ty */__(2, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Int32_ty */3 :
+          return /* Int32_ty */__(3, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Nativeint_ty */4 :
+          return /* Nativeint_ty */__(4, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Int64_ty */5 :
+          return /* Int64_ty */__(5, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Float_ty */6 :
+          return /* Float_ty */__(6, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Bool_ty */7 :
+          return /* Bool_ty */__(7, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Format_arg_ty */8 :
+          return /* Format_arg_ty */__(8, [
+                    fmtty1[0],
+                    concat_fmtty(fmtty1[1], fmtty2)
+                  ]);
+      case /* Format_subst_ty */9 :
+          return /* Format_subst_ty */__(9, [
+                    fmtty1[0],
+                    fmtty1[1],
+                    concat_fmtty(fmtty1[2], fmtty2)
+                  ]);
+      case /* Alpha_ty */10 :
+          return /* Alpha_ty */__(10, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Theta_ty */11 :
+          return /* Theta_ty */__(11, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Any_ty */12 :
+          return /* Any_ty */__(12, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Reader_ty */13 :
+          return /* Reader_ty */__(13, [concat_fmtty(fmtty1[0], fmtty2)]);
+      case /* Ignored_reader_ty */14 :
+          return /* Ignored_reader_ty */__(14, [concat_fmtty(fmtty1[0], fmtty2)]);
+      
+    }
+  }
+
+  function concat_fmt(fmt1, fmt2) {
+    if (typeof fmt1 === "number") {
+      return fmt2;
+    }
+    switch (fmt1.tag | 0) {
+      case /* Char */0 :
+          return /* Char */__(0, [concat_fmt(fmt1[0], fmt2)]);
+      case /* Caml_char */1 :
+          return /* Caml_char */__(1, [concat_fmt(fmt1[0], fmt2)]);
+      case /* String */2 :
+          return /* String */__(2, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Caml_string */3 :
+          return /* Caml_string */__(3, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Int */4 :
+          return /* Int */__(4, [
+                    fmt1[0],
+                    fmt1[1],
+                    fmt1[2],
+                    concat_fmt(fmt1[3], fmt2)
+                  ]);
+      case /* Int32 */5 :
+          return /* Int32 */__(5, [
+                    fmt1[0],
+                    fmt1[1],
+                    fmt1[2],
+                    concat_fmt(fmt1[3], fmt2)
+                  ]);
+      case /* Nativeint */6 :
+          return /* Nativeint */__(6, [
+                    fmt1[0],
+                    fmt1[1],
+                    fmt1[2],
+                    concat_fmt(fmt1[3], fmt2)
+                  ]);
+      case /* Int64 */7 :
+          return /* Int64 */__(7, [
+                    fmt1[0],
+                    fmt1[1],
+                    fmt1[2],
+                    concat_fmt(fmt1[3], fmt2)
+                  ]);
+      case /* Float */8 :
+          return /* Float */__(8, [
+                    fmt1[0],
+                    fmt1[1],
+                    fmt1[2],
+                    concat_fmt(fmt1[3], fmt2)
+                  ]);
+      case /* Bool */9 :
+          return /* Bool */__(9, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Flush */10 :
+          return /* Flush */__(10, [concat_fmt(fmt1[0], fmt2)]);
+      case /* String_literal */11 :
+          return /* String_literal */__(11, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Char_literal */12 :
+          return /* Char_literal */__(12, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Format_arg */13 :
+          return /* Format_arg */__(13, [
+                    fmt1[0],
+                    fmt1[1],
+                    concat_fmt(fmt1[2], fmt2)
+                  ]);
+      case /* Format_subst */14 :
+          return /* Format_subst */__(14, [
+                    fmt1[0],
+                    fmt1[1],
+                    concat_fmt(fmt1[2], fmt2)
+                  ]);
+      case /* Alpha */15 :
+          return /* Alpha */__(15, [concat_fmt(fmt1[0], fmt2)]);
+      case /* Theta */16 :
+          return /* Theta */__(16, [concat_fmt(fmt1[0], fmt2)]);
+      case /* Formatting_lit */17 :
+          return /* Formatting_lit */__(17, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Formatting_gen */18 :
+          return /* Formatting_gen */__(18, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Reader */19 :
+          return /* Reader */__(19, [concat_fmt(fmt1[0], fmt2)]);
+      case /* Scan_char_set */20 :
+          return /* Scan_char_set */__(20, [
+                    fmt1[0],
+                    fmt1[1],
+                    concat_fmt(fmt1[2], fmt2)
+                  ]);
+      case /* Scan_get_counter */21 :
+          return /* Scan_get_counter */__(21, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Scan_next_char */22 :
+          return /* Scan_next_char */__(22, [concat_fmt(fmt1[0], fmt2)]);
+      case /* Ignored_param */23 :
+          return /* Ignored_param */__(23, [
+                    fmt1[0],
+                    concat_fmt(fmt1[1], fmt2)
+                  ]);
+      case /* Custom */24 :
+          return /* Custom */__(24, [
+                    fmt1[0],
+                    fmt1[1],
+                    concat_fmt(fmt1[2], fmt2)
+                  ]);
+      
+    }
+  }
+  /* No side effect */
+
+  function failwith(s) {
+    throw [
+          failure,
+          s
+        ];
+  }
+
+  var Exit = create("Pervasives.Exit");
+
+  function abs(x) {
+    if (x >= 0) {
+      return x;
+    } else {
+      return -x | 0;
+    }
+  }
+
+  var min_int$1 = -2147483648;
+
+  function classify_float(x) {
+    if (isFinite(x)) {
+      if (Math.abs(x) >= 2.22507385850720138e-308) {
+        return /* FP_normal */0;
+      } else if (x !== 0) {
+        return /* FP_subnormal */1;
+      } else {
+        return /* FP_zero */2;
+      }
+    } else if (isNaN(x)) {
+      return /* FP_nan */4;
+    } else {
+      return /* FP_infinite */3;
+    }
+  }
+
+  function string_of_bool(b) {
+    if (b) {
+      return "true";
+    } else {
+      return "false";
+    }
+  }
+
+  function $at(l1, l2) {
+    if (l1) {
+      return /* :: */[
+              l1[0],
+              $at(l1[1], l2)
+            ];
+    } else {
+      return l2;
+    }
+  }
+
+  var max_int$1 = 2147483647;
+  /* No side effect */
+
+  function length(l) {
+    var _len = 0;
+    var _param = l;
+    while(true) {
+      var param = _param;
+      var len = _len;
+      if (!param) {
+        return len;
+      }
+      _param = param[1];
+      _len = len + 1 | 0;
+      continue ;
+    }}
+
+  function rev_append(_l1, _l2) {
+    while(true) {
+      var l2 = _l2;
+      var l1 = _l1;
+      if (!l1) {
+        return l2;
+      }
+      _l2 = /* :: */[
+        l1[0],
+        l2
+      ];
+      _l1 = l1[1];
+      continue ;
+    }}
+
+  function rev(l) {
+    return rev_append(l, /* [] */0);
+  }
+
+  function flatten(param) {
+    if (param) {
+      return $at(param[0], flatten(param[1]));
+    } else {
+      return /* [] */0;
+    }
+  }
+
+  function map(f, param) {
+    if (!param) {
+      return /* [] */0;
+    }
+    var r = _1(f, param[0]);
+    return /* :: */[
+            r,
+            map(f, param[1])
+          ];
+  }
+
+  function iter(f, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      _1(f, param[0]);
+      _param = param[1];
+      continue ;
+    }}
+
+  function fold_left(f, _accu, _l) {
+    while(true) {
+      var l = _l;
+      var accu = _accu;
+      if (!l) {
+        return accu;
+      }
+      _l = l[1];
+      _accu = _2(f, accu, l[0]);
+      continue ;
+    }}
+
+  function fold_right(f, l, accu) {
+    if (l) {
+      return _2(f, l[0], fold_right(f, l[1], accu));
+    } else {
+      return accu;
+    }
+  }
+
+  function fold_left2(f, _accu, _l1, _l2) {
+    while(true) {
+      var l2 = _l2;
+      var l1 = _l1;
+      var accu = _accu;
+      if (l1) {
+        if (l2) {
+          _l2 = l2[1];
+          _l1 = l1[1];
+          _accu = _3(f, accu, l1[0], l2[0]);
+          continue ;
+        }
+        throw [
+              invalid_argument,
+              "List.fold_left2"
+            ];
+      }
+      if (l2) {
+        throw [
+              invalid_argument,
+              "List.fold_left2"
+            ];
+      }
+      return accu;
+    }}
+
+  function exists(p, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return false;
+      }
+      if (_1(p, param[0])) {
+        return true;
+      }
+      _param = param[1];
+      continue ;
+    }}
+
+  function mem(x, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return false;
+      }
+      if (caml_equal(param[0], x)) {
+        return true;
+      }
+      _param = param[1];
+      continue ;
+    }}
+
+  function find_all(p) {
+    return (function (param) {
+        var _accu = /* [] */0;
+        var _param = param;
+        while(true) {
+          var param$1 = _param;
+          var accu = _accu;
+          if (!param$1) {
+            return rev_append(accu, /* [] */0);
+          }
+          var l = param$1[1];
+          var x = param$1[0];
+          if (_1(p, x)) {
+            _param = l;
+            _accu = /* :: */[
+              x,
+              accu
+            ];
+            continue ;
+          }
+          _param = l;
+          continue ;
+        }    });
+  }
+
+  function partition(p, l) {
+    var _yes = /* [] */0;
+    var _no = /* [] */0;
+    var _param = l;
+    while(true) {
+      var param = _param;
+      var no = _no;
+      var yes = _yes;
+      if (!param) {
+        return /* tuple */[
+                rev_append(yes, /* [] */0),
+                rev_append(no, /* [] */0)
+              ];
+      }
+      var l$1 = param[1];
+      var x = param[0];
+      if (_1(p, x)) {
+        _param = l$1;
+        _yes = /* :: */[
+          x,
+          yes
+        ];
+        continue ;
+      }
+      _param = l$1;
+      _no = /* :: */[
+        x,
+        no
+      ];
+      continue ;
+    }}
+
+  function combine(l1, l2) {
+    if (l1) {
+      if (l2) {
+        return /* :: */[
+                /* tuple */[
+                  l1[0],
+                  l2[0]
+                ],
+                combine(l1[1], l2[1])
+              ];
+      }
+      throw [
+            invalid_argument,
+            "List.combine"
+          ];
+    }
+    if (!l2) {
+      return /* [] */0;
+    }
+    throw [
+          invalid_argument,
+          "List.combine"
+        ];
+  }
+
+  function chop(_k, _l) {
+    while(true) {
+      var l = _l;
+      var k = _k;
+      if (k === 0) {
+        return l;
+      }
+      if (l) {
+        _l = l[1];
+        _k = k - 1 | 0;
+        continue ;
+      }
+      throw [
+            assert_failure,
+            /* tuple */[
+              "list.ml",
+              262,
+              11
+            ]
+          ];
+    }}
+
+  function stable_sort(cmp, l) {
+    var sort = function (n, l) {
+      if (n !== 2) {
+        if (n === 3 && l) {
+          var match = l[1];
+          if (match) {
+            var match$1 = match[1];
+            if (match$1) {
+              var x3 = match$1[0];
+              var x2 = match[0];
+              var x1 = l[0];
+              if (_2(cmp, x1, x2) <= 0) {
+                if (_2(cmp, x2, x3) <= 0) {
+                  return /* :: */[
+                          x1,
+                          /* :: */[
+                            x2,
+                            /* :: */[
+                              x3,
+                              /* [] */0
+                            ]
+                          ]
+                        ];
+                } else if (_2(cmp, x1, x3) <= 0) {
+                  return /* :: */[
+                          x1,
+                          /* :: */[
+                            x3,
+                            /* :: */[
+                              x2,
+                              /* [] */0
+                            ]
+                          ]
+                        ];
+                } else {
+                  return /* :: */[
+                          x3,
+                          /* :: */[
+                            x1,
+                            /* :: */[
+                              x2,
+                              /* [] */0
+                            ]
+                          ]
+                        ];
+                }
+              } else if (_2(cmp, x1, x3) <= 0) {
+                return /* :: */[
+                        x2,
+                        /* :: */[
+                          x1,
+                          /* :: */[
+                            x3,
+                            /* [] */0
+                          ]
+                        ]
+                      ];
+              } else if (_2(cmp, x2, x3) <= 0) {
+                return /* :: */[
+                        x2,
+                        /* :: */[
+                          x3,
+                          /* :: */[
+                            x1,
+                            /* [] */0
+                          ]
+                        ]
+                      ];
+              } else {
+                return /* :: */[
+                        x3,
+                        /* :: */[
+                          x2,
+                          /* :: */[
+                            x1,
+                            /* [] */0
+                          ]
+                        ]
+                      ];
+              }
+            }
+            
+          }
+          
+        }
+        
+      } else if (l) {
+        var match$2 = l[1];
+        if (match$2) {
+          var x2$1 = match$2[0];
+          var x1$1 = l[0];
+          if (_2(cmp, x1$1, x2$1) <= 0) {
+            return /* :: */[
+                    x1$1,
+                    /* :: */[
+                      x2$1,
+                      /* [] */0
+                    ]
+                  ];
+          } else {
+            return /* :: */[
+                    x2$1,
+                    /* :: */[
+                      x1$1,
+                      /* [] */0
+                    ]
+                  ];
+          }
+        }
+        
+      }
+      var n1 = (n >> 1);
+      var n2 = n - n1 | 0;
+      var l2 = chop(n1, l);
+      var s1 = rev_sort(n1, l);
+      var s2 = rev_sort(n2, l2);
+      var _l1 = s1;
+      var _l2 = s2;
+      var _accu = /* [] */0;
+      while(true) {
+        var accu = _accu;
+        var l2$1 = _l2;
+        var l1 = _l1;
+        if (!l1) {
+          return rev_append(l2$1, accu);
+        }
+        if (!l2$1) {
+          return rev_append(l1, accu);
+        }
+        var h2 = l2$1[0];
+        var h1 = l1[0];
+        if (_2(cmp, h1, h2) > 0) {
+          _accu = /* :: */[
+            h1,
+            accu
+          ];
+          _l1 = l1[1];
+          continue ;
+        }
+        _accu = /* :: */[
+          h2,
+          accu
+        ];
+        _l2 = l2$1[1];
+        continue ;
+      }  };
+    var rev_sort = function (n, l) {
+      if (n !== 2) {
+        if (n === 3 && l) {
+          var match = l[1];
+          if (match) {
+            var match$1 = match[1];
+            if (match$1) {
+              var x3 = match$1[0];
+              var x2 = match[0];
+              var x1 = l[0];
+              if (_2(cmp, x1, x2) > 0) {
+                if (_2(cmp, x2, x3) > 0) {
+                  return /* :: */[
+                          x1,
+                          /* :: */[
+                            x2,
+                            /* :: */[
+                              x3,
+                              /* [] */0
+                            ]
+                          ]
+                        ];
+                } else if (_2(cmp, x1, x3) > 0) {
+                  return /* :: */[
+                          x1,
+                          /* :: */[
+                            x3,
+                            /* :: */[
+                              x2,
+                              /* [] */0
+                            ]
+                          ]
+                        ];
+                } else {
+                  return /* :: */[
+                          x3,
+                          /* :: */[
+                            x1,
+                            /* :: */[
+                              x2,
+                              /* [] */0
+                            ]
+                          ]
+                        ];
+                }
+              } else if (_2(cmp, x1, x3) > 0) {
+                return /* :: */[
+                        x2,
+                        /* :: */[
+                          x1,
+                          /* :: */[
+                            x3,
+                            /* [] */0
+                          ]
+                        ]
+                      ];
+              } else if (_2(cmp, x2, x3) > 0) {
+                return /* :: */[
+                        x2,
+                        /* :: */[
+                          x3,
+                          /* :: */[
+                            x1,
+                            /* [] */0
+                          ]
+                        ]
+                      ];
+              } else {
+                return /* :: */[
+                        x3,
+                        /* :: */[
+                          x2,
+                          /* :: */[
+                            x1,
+                            /* [] */0
+                          ]
+                        ]
+                      ];
+              }
+            }
+            
+          }
+          
+        }
+        
+      } else if (l) {
+        var match$2 = l[1];
+        if (match$2) {
+          var x2$1 = match$2[0];
+          var x1$1 = l[0];
+          if (_2(cmp, x1$1, x2$1) > 0) {
+            return /* :: */[
+                    x1$1,
+                    /* :: */[
+                      x2$1,
+                      /* [] */0
+                    ]
+                  ];
+          } else {
+            return /* :: */[
+                    x2$1,
+                    /* :: */[
+                      x1$1,
+                      /* [] */0
+                    ]
+                  ];
+          }
+        }
+        
+      }
+      var n1 = (n >> 1);
+      var n2 = n - n1 | 0;
+      var l2 = chop(n1, l);
+      var s1 = sort(n1, l);
+      var s2 = sort(n2, l2);
+      var _l1 = s1;
+      var _l2 = s2;
+      var _accu = /* [] */0;
+      while(true) {
+        var accu = _accu;
+        var l2$1 = _l2;
+        var l1 = _l1;
+        if (!l1) {
+          return rev_append(l2$1, accu);
+        }
+        if (!l2$1) {
+          return rev_append(l1, accu);
+        }
+        var h2 = l2$1[0];
+        var h1 = l1[0];
+        if (_2(cmp, h1, h2) <= 0) {
+          _accu = /* :: */[
+            h1,
+            accu
+          ];
+          _l1 = l1[1];
+          continue ;
+        }
+        _accu = /* :: */[
+          h2,
+          accu
+        ];
+        _l2 = l2$1[1];
+        continue ;
+      }  };
+    var len = length(l);
+    if (len < 2) {
+      return l;
+    } else {
+      return sort(len, l);
+    }
+  }
+
+  var concat = flatten;
+
+  var filter = find_all;
+
+  var sort = stable_sort;
+  /* No side effect */
+
+  function escaped(c) {
+    var exit = 0;
+    if (c >= 40) {
+      if (c === 92) {
+        return "\\\\";
+      }
+      exit = c >= 127 ? 1 : 2;
+    } else if (c >= 32) {
+      if (c >= 39) {
+        return "\\'";
+      }
+      exit = 2;
+    } else if (c >= 14) {
+      exit = 1;
+    } else {
+      switch (c) {
+        case 8 :
+            return "\\b";
+        case 9 :
+            return "\\t";
+        case 10 :
+            return "\\n";
+        case 0 :
+        case 1 :
+        case 2 :
+        case 3 :
+        case 4 :
+        case 5 :
+        case 6 :
+        case 7 :
+        case 11 :
+        case 12 :
+            exit = 1;
+            break;
+        case 13 :
+            return "\\r";
+        
+      }
+    }
+    switch (exit) {
+      case 1 :
+          var s = [
+            0,
+            0,
+            0,
+            0
+          ];
+          s[0] = /* "\\" */92;
+          s[1] = 48 + (c / 100 | 0) | 0;
+          s[2] = 48 + (c / 10 | 0) % 10 | 0;
+          s[3] = 48 + c % 10 | 0;
+          return bytes_to_string(s);
+      case 2 :
+          var s$1 = [0];
+          s$1[0] = c;
+          return bytes_to_string(s$1);
+      
+    }
+  }
+
+  function uppercase_ascii(c) {
+    if (c >= /* "a" */97 && c <= /* "z" */122) {
+      return c - 32 | 0;
+    } else {
+      return c;
+    }
+  }
+  /* No side effect */
+
+  function make(n, c) {
+    var s = caml_create_bytes(n);
+    caml_fill_bytes(s, 0, n, c);
+    return s;
+  }
+
+  var empty = [];
+
+  function copy(s) {
+    var len = s.length;
+    var r = caml_create_bytes(len);
+    caml_blit_bytes(s, 0, r, 0, len);
+    return r;
+  }
+
+  function sub$1(s, ofs, len) {
+    if (ofs < 0 || len < 0 || ofs > (s.length - len | 0)) {
+      throw [
+            invalid_argument,
+            "String.sub / Bytes.sub"
+          ];
+    }
+    var r = caml_create_bytes(len);
+    caml_blit_bytes(s, ofs, r, 0, len);
+    return r;
+  }
+
+  function sub_string(b, ofs, len) {
+    return bytes_to_string(sub$1(b, ofs, len));
+  }
+
+  function blit(s1, ofs1, s2, ofs2, len) {
+    if (len < 0 || ofs1 < 0 || ofs1 > (s1.length - len | 0) || ofs2 < 0 || ofs2 > (s2.length - len | 0)) {
+      throw [
+            invalid_argument,
+            "Bytes.blit"
+          ];
+    }
+    return caml_blit_bytes(s1, ofs1, s2, ofs2, len);
+  }
+
+  function blit_string(s1, ofs1, s2, ofs2, len) {
+    if (len < 0 || ofs1 < 0 || ofs1 > (s1.length - len | 0) || ofs2 < 0 || ofs2 > (s2.length - len | 0)) {
+      throw [
+            invalid_argument,
+            "String.blit / Bytes.blit_string"
+          ];
+    }
+    return caml_blit_string(s1, ofs1, s2, ofs2, len);
+  }
+
+  function is_space(param) {
+    var switcher = param - 9 | 0;
+    if (switcher > 4 || switcher < 0) {
+      return switcher === 23;
+    } else {
+      return switcher !== 2;
+    }
+  }
+
+  function trim(s) {
+    var len = s.length;
+    var i = 0;
+    while(i < len && is_space(s[i])) {
+      i = i + 1 | 0;
+    }  var j = len - 1 | 0;
+    while(j >= i && is_space(s[j])) {
+      j = j - 1 | 0;
+    }  if (j >= i) {
+      return sub$1(s, i, (j - i | 0) + 1 | 0);
+    } else {
+      return empty;
+    }
+  }
+
+  function escaped$1(s) {
+    var n = 0;
+    for(var i = 0 ,i_finish = s.length; i < i_finish; ++i){
+      var match = s[i];
+      var tmp;
+      if (match >= 32) {
+        var switcher = match - 34 | 0;
+        tmp = switcher > 58 || switcher < 0 ? (
+            switcher >= 93 ? 4 : 1
+          ) : (
+            switcher > 57 || switcher < 1 ? 2 : 1
+          );
+      } else {
+        tmp = match >= 11 ? (
+            match !== 13 ? 4 : 2
+          ) : (
+            match >= 8 ? 2 : 4
+          );
+      }
+      n = n + tmp | 0;
+    }
+    if (n === s.length) {
+      return copy(s);
+    }
+    var s$prime = caml_create_bytes(n);
+    n = 0;
+    for(var i$1 = 0 ,i_finish$1 = s.length; i$1 < i_finish$1; ++i$1){
+      var c = s[i$1];
+      var exit = 0;
+      if (c >= 35) {
+        if (c !== 92) {
+          if (c >= 127) {
+            exit = 1;
+          } else {
+            s$prime[n] = c;
+          }
+        } else {
+          exit = 2;
+        }
+      } else if (c >= 32) {
+        if (c >= 34) {
+          exit = 2;
+        } else {
+          s$prime[n] = c;
+        }
+      } else if (c >= 14) {
+        exit = 1;
+      } else {
+        switch (c) {
+          case 8 :
+              s$prime[n] = /* "\\" */92;
+              n = n + 1 | 0;
+              s$prime[n] = /* "b" */98;
+              break;
+          case 9 :
+              s$prime[n] = /* "\\" */92;
+              n = n + 1 | 0;
+              s$prime[n] = /* "t" */116;
+              break;
+          case 10 :
+              s$prime[n] = /* "\\" */92;
+              n = n + 1 | 0;
+              s$prime[n] = /* "n" */110;
+              break;
+          case 0 :
+          case 1 :
+          case 2 :
+          case 3 :
+          case 4 :
+          case 5 :
+          case 6 :
+          case 7 :
+          case 11 :
+          case 12 :
+              exit = 1;
+              break;
+          case 13 :
+              s$prime[n] = /* "\\" */92;
+              n = n + 1 | 0;
+              s$prime[n] = /* "r" */114;
+              break;
+          
+        }
+      }
+      switch (exit) {
+        case 1 :
+            s$prime[n] = /* "\\" */92;
+            n = n + 1 | 0;
+            s$prime[n] = 48 + (c / 100 | 0) | 0;
+            n = n + 1 | 0;
+            s$prime[n] = 48 + (c / 10 | 0) % 10 | 0;
+            n = n + 1 | 0;
+            s$prime[n] = 48 + c % 10 | 0;
+            break;
+        case 2 :
+            s$prime[n] = /* "\\" */92;
+            n = n + 1 | 0;
+            s$prime[n] = c;
+            break;
+        
+      }
+      n = n + 1 | 0;
+    }
+    return s$prime;
+  }
+
+  function map$1(f, s) {
+    var l = s.length;
+    if (l === 0) {
+      return s;
+    }
+    var r = caml_create_bytes(l);
+    for(var i = 0; i < l; ++i){
+      r[i] = _1(f, s[i]);
+    }
+    return r;
+  }
+
+  function uppercase_ascii$1(s) {
+    return map$1(uppercase_ascii, s);
+  }
+  /* No side effect */
+
+  function make$1(n, c) {
+    return bytes_to_string(make(n, c));
+  }
+
+  function ensure_ge(x, y) {
+    if (x >= y) {
+      return x;
+    }
+    throw [
+          invalid_argument,
+          "String.concat"
+        ];
+  }
+
+  function sum_lengths(_acc, seplen, _param) {
+    while(true) {
+      var param = _param;
+      var acc = _acc;
+      if (!param) {
+        return acc;
+      }
+      var tl = param[1];
+      var hd = param[0];
+      if (!tl) {
+        return hd.length + acc | 0;
+      }
+      _param = tl;
+      _acc = ensure_ge((hd.length + seplen | 0) + acc | 0, acc);
+      continue ;
+    }}
+
+  function unsafe_blits(dst, _pos, sep, seplen, _param) {
+    while(true) {
+      var param = _param;
+      var pos = _pos;
+      if (!param) {
+        return dst;
+      }
+      var tl = param[1];
+      var hd = param[0];
+      if (tl) {
+        caml_blit_string(hd, 0, dst, pos, hd.length);
+        caml_blit_string(sep, 0, dst, pos + hd.length | 0, seplen);
+        _param = tl;
+        _pos = (pos + hd.length | 0) + seplen | 0;
+        continue ;
+      }
+      caml_blit_string(hd, 0, dst, pos, hd.length);
+      return dst;
+    }}
+
+  function concat$1(sep, l) {
+    if (!l) {
+      return "";
+    }
+    var seplen = sep.length;
+    return bytes_to_string(unsafe_blits(caml_create_bytes(sum_lengths(0, seplen, l)), 0, sep, seplen, l));
+  }
+
+  function is_space$1(param) {
+    var switcher = param - 9 | 0;
+    if (switcher > 4 || switcher < 0) {
+      return switcher === 23;
+    } else {
+      return switcher !== 2;
+    }
+  }
+
+  function trim$1(s) {
+    if (s === "" || !(is_space$1(s.charCodeAt(0)) || is_space$1(s.charCodeAt(s.length - 1 | 0)))) {
+      return s;
+    } else {
+      return bytes_to_string(trim(bytes_of_string(s)));
+    }
+  }
+
+  function escaped$2(s) {
+    var needs_escape = function (_i) {
+      while(true) {
+        var i = _i;
+        if (i >= s.length) {
+          return false;
+        }
+        var match = s.charCodeAt(i);
+        if (match < 32) {
+          return true;
+        }
+        var switcher = match - 34 | 0;
+        if (switcher > 58 || switcher < 0) {
+          if (switcher >= 93) {
+            return true;
+          }
+          _i = i + 1 | 0;
+          continue ;
+        }
+        if (switcher > 57 || switcher < 1) {
+          return true;
+        }
+        _i = i + 1 | 0;
+        continue ;
+      }  };
+    if (needs_escape(0)) {
+      return bytes_to_string(escaped$1(bytes_of_string(s)));
+    } else {
+      return s;
+    }
+  }
+
+  var compare = caml_string_compare;
+
+  var blit$1 = blit_string;
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function setStyle(n, key, value) {
+    n.style[key] = value;
+    
+  }
+
+  function setStyleProperty(n, priorityOpt, key, value) {
+    var priority = priorityOpt !== undefined ? priorityOpt : false;
+    var style = n.style;
+    var _valid = style.setProperty;
+    if (_valid !== undefined) {
+      return style.setProperty(key, value, priority ? "important" : null);
+    } else {
+      return setStyle(n, key, value);
+    }
+  }
+
+  function insertBefore(n, child, refNode) {
+    return n.insertBefore(child, refNode);
+  }
+
+  function setAttributeNsOptional(n, namespace, key, value) {
+    if (namespace === "") {
+      return n.setAttribute(key, value);
+    } else {
+      return n.setAttributeNS(namespace, key, value);
+    }
+  }
+
+  function removeAttributeNsOptional(n, namespace, key) {
+    if (namespace === "") {
+      return n.removeAttribute(key);
+    } else {
+      return n.removeAttributeNS(namespace, key);
+    }
+  }
+
+  function addEventListener(n, typ, listener, options) {
+    return n.addEventListener(typ, listener, options);
+  }
+
+  function removeEventListener(n, typ, listener, options) {
+    return n.removeEventListener(typ, listener, options);
+  }
+
+  function remove_polyfill(param) {
+    return (// remove polyfill
+    (function() {
+      if (!('remove' in Element.prototype)) {
+        Element.prototype.remove = function() {
+          if (this.parentNode) {
+            this.parentNode.removeChild(this);
+          }
+        };
+      }  }()));
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function createElementNsOptional(namespace, tagName) {
+    if (namespace === "") {
+      return document.createElement(tagName);
+    } else {
+      return document.createElementNS(namespace, tagName);
+    }
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  var noNode = /* CommentNode */__(0, [""]);
+
+  function fullnode(namespace, tagName, key, unique, props, vdoms) {
+    return /* Node */__(2, [
+              namespace,
+              tagName,
+              key,
+              unique,
+              props,
+              vdoms
+            ]);
+  }
+
+  function onCB(name, key, cb) {
+    return /* Event */__(3, [
+              name,
+              /* EventHandlerCallback */__(0, [
+                  key,
+                  cb
+                ]),
+              {
+                contents: undefined
+              }
+            ]);
+  }
+
+  function onMsg(name, msg) {
+    return /* Event */__(3, [
+              name,
+              /* EventHandlerMsg */__(1, [msg]),
+              {
+                contents: undefined
+              }
+            ]);
+  }
+
+  function renderToHtmlString(_s) {
+    while(true) {
+      var s = _s;
+      switch (s.tag | 0) {
+        case /* CommentNode */0 :
+            return "<!-- " + (s[0] + " -->");
+        case /* Text */1 :
+            return s[0];
+        case /* Node */2 :
+            var tagName = s[1];
+            var namespace = s[0];
+            return concat$1("", /* :: */[
+                        "<",
+                        /* :: */[
+                          namespace,
+                          /* :: */[
+                            namespace === "" ? "" : ":",
+                            /* :: */[
+                              tagName,
+                              /* :: */[
+                                concat$1("", map((function (p) {
+                                            if (typeof p === "number") {
+                                              return "";
+                                            }
+                                            switch (p.tag | 0) {
+                                              case /* RawProp */0 :
+                                                  return concat$1("", /* :: */[
+                                                              " ",
+                                                              /* :: */[
+                                                                p[0],
+                                                                /* :: */[
+                                                                  "=\"",
+                                                                  /* :: */[
+                                                                    p[1],
+                                                                    /* :: */[
+                                                                      "\"",
+                                                                      /* [] */0
+                                                                    ]
+                                                                  ]
+                                                                ]
+                                                              ]
+                                                            ]);
+                                              case /* Attribute */1 :
+                                                  return concat$1("", /* :: */[
+                                                              " ",
+                                                              /* :: */[
+                                                                p[1],
+                                                                /* :: */[
+                                                                  "=\"",
+                                                                  /* :: */[
+                                                                    p[2],
+                                                                    /* :: */[
+                                                                      "\"",
+                                                                      /* [] */0
+                                                                    ]
+                                                                  ]
+                                                                ]
+                                                              ]
+                                                            ]);
+                                              case /* Data */2 :
+                                                  return concat$1("", /* :: */[
+                                                              " data-",
+                                                              /* :: */[
+                                                                p[0],
+                                                                /* :: */[
+                                                                  "=\"",
+                                                                  /* :: */[
+                                                                    p[1],
+                                                                    /* :: */[
+                                                                      "\"",
+                                                                      /* [] */0
+                                                                    ]
+                                                                  ]
+                                                                ]
+                                                              ]
+                                                            ]);
+                                              case /* Event */3 :
+                                                  return "";
+                                              case /* Style */4 :
+                                                  return concat$1("", /* :: */[
+                                                              " style=\"",
+                                                              /* :: */[
+                                                                concat$1(";", map((function (param) {
+                                                                            return concat$1("", /* :: */[
+                                                                                        param[0],
+                                                                                        /* :: */[
+                                                                                          ":",
+                                                                                          /* :: */[
+                                                                                            param[1],
+                                                                                            /* :: */[
+                                                                                              ";",
+                                                                                              /* [] */0
+                                                                                            ]
+                                                                                          ]
+                                                                                        ]
+                                                                                      ]);
+                                                                          }), p[0])),
+                                                                /* :: */[
+                                                                  "\"",
+                                                                  /* [] */0
+                                                                ]
+                                                              ]
+                                                            ]);
+                                              
+                                            }
+                                          }), s[4])),
+                                /* :: */[
+                                  ">",
+                                  /* :: */[
+                                    concat$1("", map(renderToHtmlString, s[5])),
+                                    /* :: */[
+                                      "</",
+                                      /* :: */[
+                                        tagName,
+                                        /* :: */[
+                                          ">",
+                                          /* [] */0
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]);
+        case /* LazyGen */3 :
+            _s = _1(s[1], undefined);
+            continue ;
+        case /* Tagger */4 :
+            _s = s[1];
+            continue ;
+        
+      }
+    }}
+
+  function eventHandler(callbacks, cb) {
+    return (function (ev) {
+        var msg = _1(cb.contents, ev);
+        if (msg !== undefined) {
+          return _1(callbacks.contents.enqueue, valFromOption(msg));
+        }
+        
+      });
+  }
+
+  function eventHandler_GetCB(msg) {
+    if (!msg.tag) {
+      return msg[1];
+    }
+    var msg$1 = msg[0];
+    return (function (_ev) {
+        return some(msg$1);
+      });
+  }
+
+  function compareEventHandlerTypes(left, msg) {
+    if (msg.tag) {
+      if (left.tag && caml_equal(msg[0], left[0])) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (left.tag) {
+      return false;
+    } else {
+      return msg[0] === left[0];
+    }
+  }
+
+  function eventHandler_Register(callbacks, elem, name, handlerType) {
+    var cb = {
+      contents: eventHandler_GetCB(handlerType)
+    };
+    var handler = eventHandler(callbacks, cb);
+    addEventListener(elem, name, handler, false);
+    return {
+            handler: handler,
+            cb: cb
+          };
+  }
+
+  function eventHandler_Unregister(elem, name, cache) {
+    if (cache !== undefined) {
+      removeEventListener(elem, name, cache.handler, false);
+      return ;
+    }
+    
+  }
+
+  function eventHandler_Mutate(callbacks, elem, oldName, newName, oldHandlerType, newHandlerType, oldCache, newCache) {
+    var oldcache = oldCache.contents;
+    if (oldcache === undefined) {
+      newCache.contents = eventHandler_Register(callbacks, elem, newName, newHandlerType);
+      return ;
+    }
+    if (oldName === newName) {
+      newCache.contents = oldCache.contents;
+      if (compareEventHandlerTypes(oldHandlerType, newHandlerType)) {
+        return ;
+      }
+      var cb = eventHandler_GetCB(newHandlerType);
+      oldcache.cb.contents = cb;
+      return ;
+    }
+    oldCache.contents = eventHandler_Unregister(elem, oldName, oldCache.contents);
+    newCache.contents = eventHandler_Register(callbacks, elem, newName, newHandlerType);
+    
+  }
+
+  function patchVNodesOnElems_PropertiesApply_Add(callbacks, elem, _idx, s) {
+    if (typeof s === "number") {
+      return ;
+    }
+    switch (s.tag | 0) {
+      case /* RawProp */0 :
+          elem[s[0]] = s[1];
+          return ;
+      case /* Attribute */1 :
+          return setAttributeNsOptional(elem, s[0], s[1], s[2]);
+      case /* Data */2 :
+          console.log(/* tuple */[
+                "TODO:  Add Data Unhandled",
+                s[0],
+                s[1]
+              ]);
+          throw [
+                failure,
+                "TODO:  Add Data Unhandled"
+              ];
+      case /* Event */3 :
+          s[2].contents = eventHandler_Register(callbacks, elem, s[0], s[1]);
+          return ;
+      case /* Style */4 :
+          return fold_left((function (param, param$1) {
+                        return setStyleProperty(elem, undefined, param$1[0], param$1[1]);
+                      }), undefined, s[0]);
+      
+    }
+  }
+
+  function patchVNodesOnElems_PropertiesApply_Remove(_callbacks, elem, _idx, s) {
+    if (typeof s === "number") {
+      return ;
+    }
+    switch (s.tag | 0) {
+      case /* RawProp */0 :
+          elem[s[0]] = undefined;
+          return ;
+      case /* Attribute */1 :
+          return removeAttributeNsOptional(elem, s[0], s[1]);
+      case /* Data */2 :
+          console.log(/* tuple */[
+                "TODO:  Remove Data Unhandled",
+                s[0],
+                s[1]
+              ]);
+          throw [
+                failure,
+                "TODO:  Remove Data Unhandled"
+              ];
+      case /* Event */3 :
+          var cache = s[2];
+          cache.contents = eventHandler_Unregister(elem, s[0], cache.contents);
+          return ;
+      case /* Style */4 :
+          return fold_left((function (param, param$1) {
+                        return setStyleProperty(elem, undefined, param$1[0], null);
+                      }), undefined, s[0]);
+      
+    }
+  }
+
+  function patchVNodesOnElems_PropertiesApply_RemoveAdd(callbacks, elem, idx, oldProp, newProp) {
+    patchVNodesOnElems_PropertiesApply_Remove(callbacks, elem, idx, oldProp);
+    patchVNodesOnElems_PropertiesApply_Add(callbacks, elem, idx, newProp);
+    
+  }
+
+  function patchVNodesOnElems_PropertiesApply_Mutate(_callbacks, elem, _idx, oldProp, _newProp) {
+    if (typeof _newProp === "number") {
+      throw [
+            failure,
+            "This should never be called as all entries through NoProp are gated."
+          ];
+    }
+    switch (_newProp.tag | 0) {
+      case /* RawProp */0 :
+          elem[_newProp[0]] = _newProp[1];
+          return ;
+      case /* Attribute */1 :
+          return setAttributeNsOptional(elem, _newProp[0], _newProp[1], _newProp[2]);
+      case /* Data */2 :
+          console.log(/* tuple */[
+                "TODO:  Mutate Data Unhandled",
+                _newProp[0],
+                _newProp[1]
+              ]);
+          throw [
+                failure,
+                "TODO:  Mutate Data Unhandled"
+              ];
+      case /* Event */3 :
+          throw [
+                failure,
+                "This will never be called because it is gated"
+              ];
+      case /* Style */4 :
+          if (typeof oldProp === "number") {
+            throw [
+                  failure,
+                  "Passed a non-Style to a new Style as a Mutations while the old Style is not actually a style!"
+                ];
+          }
+          if (oldProp.tag === /* Style */4) {
+            return fold_left2((function (param, param$1, param$2) {
+                          var nv = param$2[1];
+                          var nk = param$2[0];
+                          var ok = param$1[0];
+                          if (ok === nk) {
+                            if (param$1[1] === nv) {
+                              return ;
+                            } else {
+                              return setStyleProperty(elem, undefined, nk, nv);
+                            }
+                          } else {
+                            setStyleProperty(elem, undefined, ok, null);
+                            return setStyleProperty(elem, undefined, nk, nv);
+                          }
+                        }), undefined, oldProp[0], _newProp[0]);
+          }
+          throw [
+                failure,
+                "Passed a non-Style to a new Style as a Mutations while the old Style is not actually a style!"
+              ];
+      
+    }
+  }
+
+  function patchVNodesOnElems_PropertiesApply(callbacks, elem, _idx, _oldProperties, _newProperties) {
+    while(true) {
+      var newProperties = _newProperties;
+      var oldProperties = _oldProperties;
+      var idx = _idx;
+      if (!oldProperties) {
+        if (newProperties) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+      var _oldProp = oldProperties[0];
+      if (!newProperties) {
+        return false;
+      }
+      if (typeof _oldProp === "number") {
+        if (typeof newProperties[0] === "number") {
+          _newProperties = newProperties[1];
+          _oldProperties = oldProperties[1];
+          _idx = idx + 1 | 0;
+          continue ;
+        }
+        
+      } else {
+        switch (_oldProp.tag | 0) {
+          case /* RawProp */0 :
+              var newProp = newProperties[0];
+              if (typeof newProp !== "number" && !newProp.tag) {
+                if (_oldProp[0] === newProp[0] && _oldProp[1] === newProp[1]) ; else {
+                  patchVNodesOnElems_PropertiesApply_Mutate(callbacks, elem, idx, _oldProp, newProp);
+                }
+                _newProperties = newProperties[1];
+                _oldProperties = oldProperties[1];
+                _idx = idx + 1 | 0;
+                continue ;
+              }
+              break;
+          case /* Attribute */1 :
+              var newProp$1 = newProperties[0];
+              if (typeof newProp$1 !== "number" && newProp$1.tag === /* Attribute */1) {
+                if (_oldProp[0] === newProp$1[0] && _oldProp[1] === newProp$1[1] && _oldProp[2] === newProp$1[2]) ; else {
+                  patchVNodesOnElems_PropertiesApply_Mutate(callbacks, elem, idx, _oldProp, newProp$1);
+                }
+                _newProperties = newProperties[1];
+                _oldProperties = oldProperties[1];
+                _idx = idx + 1 | 0;
+                continue ;
+              }
+              break;
+          case /* Data */2 :
+              var newProp$2 = newProperties[0];
+              if (typeof newProp$2 !== "number" && newProp$2.tag === /* Data */2) {
+                if (_oldProp[0] === newProp$2[0] && _oldProp[1] === newProp$2[1]) ; else {
+                  patchVNodesOnElems_PropertiesApply_Mutate(callbacks, elem, idx, _oldProp, newProp$2);
+                }
+                _newProperties = newProperties[1];
+                _oldProperties = oldProperties[1];
+                _idx = idx + 1 | 0;
+                continue ;
+              }
+              break;
+          case /* Event */3 :
+              var _newProp = newProperties[0];
+              if (typeof _newProp !== "number" && _newProp.tag === /* Event */3) {
+                eventHandler_Mutate(callbacks, elem, _oldProp[0], _newProp[0], _oldProp[1], _newProp[1], _oldProp[2], _newProp[2]);
+                _newProperties = newProperties[1];
+                _oldProperties = oldProperties[1];
+                _idx = idx + 1 | 0;
+                continue ;
+              }
+              break;
+          case /* Style */4 :
+              var newProp$3 = newProperties[0];
+              if (typeof newProp$3 !== "number" && newProp$3.tag === /* Style */4) {
+                if (caml_equal(_oldProp[0], newProp$3[0])) ; else {
+                  patchVNodesOnElems_PropertiesApply_Mutate(callbacks, elem, idx, _oldProp, newProp$3);
+                }
+                _newProperties = newProperties[1];
+                _oldProperties = oldProperties[1];
+                _idx = idx + 1 | 0;
+                continue ;
+              }
+              break;
+          
+        }
+      }
+      patchVNodesOnElems_PropertiesApply_RemoveAdd(callbacks, elem, idx, _oldProp, newProperties[0]);
+      _newProperties = newProperties[1];
+      _oldProperties = oldProperties[1];
+      _idx = idx + 1 | 0;
+      continue ;
+    }}
+
+  function patchVNodesOnElems_Properties(callbacks, elem, oldProperties, newProperties) {
+    return patchVNodesOnElems_PropertiesApply(callbacks, elem, 0, oldProperties, newProperties);
+  }
+
+  function patchVNodesOnElems_ReplaceNode(callbacks, elem, elems, idx, param) {
+    if (param.tag === /* Node */2) {
+      var newProperties = param[4];
+      var oldChild = caml_array_get(elems, idx);
+      var newChild = createElementNsOptional(param[0], param[1]);
+      var match = patchVNodesOnElems_Properties(callbacks, newChild, map((function (param) {
+                  return /* NoProp */0;
+                }), newProperties), newProperties);
+      if (match) {
+        var childChildren = newChild.childNodes;
+        patchVNodesOnElems(callbacks, newChild, childChildren, 0, /* [] */0, param[5]);
+        insertBefore(elem, newChild, oldChild);
+        elem.removeChild(oldChild);
+        return ;
+      }
+      throw [
+            match_failure,
+            /* tuple */[
+              "vdom.ml",
+              319,
+              30
+            ]
+          ];
+    }
+    throw [
+          failure,
+          "Node replacement should never be passed anything but a node itself"
+        ];
+  }
+
+  function patchVNodesOnElems_CreateElement(_callbacks, _s) {
+    while(true) {
+      var s = _s;
+      var callbacks = _callbacks;
+      switch (s.tag | 0) {
+        case /* CommentNode */0 :
+            var text = s[0];
+            return document.createComment(text);
+        case /* Text */1 :
+            var text$1 = s[0];
+            return document.createTextNode(text$1);
+        case /* Node */2 :
+            var newProperties = s[4];
+            var newChild = createElementNsOptional(s[0], s[1]);
+            var match = patchVNodesOnElems_Properties(callbacks, newChild, map((function (param) {
+                        return /* NoProp */0;
+                      }), newProperties), newProperties);
+            if (match) {
+              var childChildren = newChild.childNodes;
+              patchVNodesOnElems(callbacks, newChild, childChildren, 0, /* [] */0, s[5]);
+              return newChild;
+            }
+            throw [
+                  match_failure,
+                  /* tuple */[
+                    "vdom.ml",
+                    333,
+                    30
+                  ]
+                ];
+        case /* LazyGen */3 :
+            var vdom = _1(s[1], undefined);
+            s[2].contents = vdom;
+            _s = vdom;
+            continue ;
+        case /* Tagger */4 :
+            _s = s[1];
+            _callbacks = _1(s[0], callbacks);
+            continue ;
+        
+      }
+    }}
+
+  function patchVNodesOnElems_MutateNode(callbacks, elem, elems, idx, oldNode, newNode) {
+    if (oldNode.tag === /* Node */2) {
+      if (newNode.tag === /* Node */2) {
+        if (oldNode[3] !== newNode[3] || oldNode[1] !== newNode[1]) {
+          return patchVNodesOnElems_ReplaceNode(callbacks, elem, elems, idx, newNode);
+        }
+        var child = caml_array_get(elems, idx);
+        var childChildren = child.childNodes;
+        if (patchVNodesOnElems_Properties(callbacks, child, oldNode[4], newNode[4])) ; else {
+          console.log("VDom:  Failed swapping properties because the property list length changed, use `noProp` to swap properties instead, not by altering the list structure.  This is a massive inefficiency until this issue is resolved.");
+          patchVNodesOnElems_ReplaceNode(callbacks, elem, elems, idx, newNode);
+        }
+        return patchVNodesOnElems(callbacks, child, childChildren, 0, oldNode[5], newNode[5]);
+      }
+      throw [
+            failure,
+            "Non-node passed to patchVNodesOnElems_MutateNode"
+          ];
+    }
+    throw [
+          failure,
+          "Non-node passed to patchVNodesOnElems_MutateNode"
+        ];
+  }
+
+  function patchVNodesOnElems(callbacks, elem, elems, _idx, _oldVNodes, _newVNodes) {
+    while(true) {
+      var newVNodes = _newVNodes;
+      var oldVNodes = _oldVNodes;
+      var idx = _idx;
+      if (oldVNodes) {
+        var oldNode = oldVNodes[0];
+        switch (oldNode.tag | 0) {
+          case /* CommentNode */0 :
+              if (newVNodes) {
+                var newS = newVNodes[0];
+                if (!newS.tag && oldNode[0] === newS[0]) {
+                  _newVNodes = newVNodes[1];
+                  _oldVNodes = oldVNodes[1];
+                  _idx = idx + 1 | 0;
+                  continue ;
+                }
+                
+              }
+              break;
+          case /* Text */1 :
+              if (newVNodes) {
+                var newText = newVNodes[0];
+                if (newText.tag === /* Text */1) {
+                  var newText$1 = newText[0];
+                  if (oldNode[0] !== newText$1) {
+                    var child = caml_array_get(elems, idx);
+                    child.nodeValue = newText$1;
+                  }
+                  _newVNodes = newVNodes[1];
+                  _oldVNodes = oldVNodes[1];
+                  _idx = idx + 1 | 0;
+                  continue ;
+                }
+                
+              }
+              break;
+          case /* Node */2 :
+              if (newVNodes) {
+                var newNode = newVNodes[0];
+                if (newNode.tag === /* Node */2) {
+                  var newRest = newVNodes[1];
+                  var newKey = newNode[2];
+                  var newTagName = newNode[1];
+                  var newNamespace = newNode[0];
+                  var oldRest = oldVNodes[1];
+                  var oldKey = oldNode[2];
+                  var oldTagName = oldNode[1];
+                  var oldNamespace = oldNode[0];
+                  if (oldKey === newKey && oldKey !== "") {
+                    _newVNodes = newRest;
+                    _oldVNodes = oldRest;
+                    _idx = idx + 1 | 0;
+                    continue ;
+                  }
+                  if (oldKey === "" || newKey === "") {
+                    patchVNodesOnElems_MutateNode(callbacks, elem, elems, idx, oldNode, newNode);
+                    _newVNodes = newRest;
+                    _oldVNodes = oldRest;
+                    _idx = idx + 1 | 0;
+                    continue ;
+                  }
+                  var exit = 0;
+                  var exit$1 = 0;
+                  if (oldRest) {
+                    var match = oldRest[0];
+                    if (match.tag === /* Node */2) {
+                      var olderRest = oldRest[1];
+                      var olderKey = match[2];
+                      var olderTagName = match[1];
+                      var olderNamespace = match[0];
+                      var exit$2 = 0;
+                      if (newRest) {
+                        var match$1 = newRest[0];
+                        if (match$1.tag === /* Node */2) {
+                          if (olderNamespace === newNamespace && olderTagName === newTagName && olderKey === newKey && oldNamespace === match$1[0] && oldTagName === match$1[1] && oldKey === match$1[2]) {
+                            var firstChild = caml_array_get(elems, idx);
+                            var secondChild = caml_array_get(elems, idx + 1 | 0);
+                            elem.removeChild(secondChild);
+                            insertBefore(elem, secondChild, firstChild);
+                            _newVNodes = newRest[1];
+                            _oldVNodes = olderRest;
+                            _idx = idx + 2 | 0;
+                            continue ;
+                          }
+                          exit$2 = 4;
+                        } else {
+                          exit$2 = 4;
+                        }
+                      } else {
+                        exit$2 = 4;
+                      }
+                      if (exit$2 === 4) {
+                        if (olderNamespace === newNamespace && olderTagName === newTagName && olderKey === newKey) {
+                          var oldChild = caml_array_get(elems, idx);
+                          elem.removeChild(oldChild);
+                          _newVNodes = newRest;
+                          _oldVNodes = olderRest;
+                          _idx = idx + 1 | 0;
+                          continue ;
+                        }
+                        exit$1 = 3;
+                      }
+                      
+                    } else {
+                      exit$1 = 3;
+                    }
+                  } else {
+                    exit$1 = 3;
+                  }
+                  if (exit$1 === 3) {
+                    if (newRest) {
+                      var match$2 = newRest[0];
+                      if (match$2.tag === /* Node */2) {
+                        if (oldNamespace === match$2[0] && oldTagName === match$2[1] && oldKey === match$2[2]) {
+                          var oldChild$1 = caml_array_get(elems, idx);
+                          var newChild = patchVNodesOnElems_CreateElement(callbacks, newNode);
+                          insertBefore(elem, newChild, oldChild$1);
+                          _newVNodes = newRest;
+                          _idx = idx + 1 | 0;
+                          continue ;
+                        }
+                        exit = 2;
+                      } else {
+                        exit = 2;
+                      }
+                    } else {
+                      exit = 2;
+                    }
+                  }
+                  if (exit === 2) {
+                    patchVNodesOnElems_MutateNode(callbacks, elem, elems, idx, oldNode, newNode);
+                    _newVNodes = newRest;
+                    _oldVNodes = oldRest;
+                    _idx = idx + 1 | 0;
+                    continue ;
+                  }
+                  
+                }
+                
+              }
+              break;
+          case /* LazyGen */3 :
+              if (newVNodes) {
+                var match$3 = newVNodes[0];
+                if (match$3.tag === /* LazyGen */3) {
+                  var newRest$1 = newVNodes[1];
+                  var newCache = match$3[2];
+                  var newGen = match$3[1];
+                  var newKey$1 = match$3[0];
+                  var oldRest$1 = oldVNodes[1];
+                  var oldCache = oldNode[2];
+                  var oldKey$1 = oldNode[0];
+                  if (oldKey$1 === newKey$1) {
+                    newCache.contents = oldCache.contents;
+                    _newVNodes = newRest$1;
+                    _oldVNodes = oldRest$1;
+                    _idx = idx + 1 | 0;
+                    continue ;
+                  }
+                  var exit$3 = 0;
+                  var exit$4 = 0;
+                  if (oldRest$1) {
+                    var match$4 = oldRest$1[0];
+                    if (match$4.tag === /* LazyGen */3) {
+                      var olderRest$1 = oldRest$1[1];
+                      var olderKey$1 = match$4[0];
+                      var exit$5 = 0;
+                      if (newRest$1) {
+                        var match$5 = newRest$1[0];
+                        if (match$5.tag === /* LazyGen */3) {
+                          if (olderKey$1 === newKey$1 && oldKey$1 === match$5[0]) {
+                            var firstChild$1 = caml_array_get(elems, idx);
+                            var secondChild$1 = caml_array_get(elems, idx + 1 | 0);
+                            elem.removeChild(secondChild$1);
+                            insertBefore(elem, secondChild$1, firstChild$1);
+                            _newVNodes = newRest$1[1];
+                            _oldVNodes = olderRest$1;
+                            _idx = idx + 2 | 0;
+                            continue ;
+                          }
+                          exit$5 = 4;
+                        } else {
+                          exit$5 = 4;
+                        }
+                      } else {
+                        exit$5 = 4;
+                      }
+                      if (exit$5 === 4) {
+                        if (olderKey$1 === newKey$1) {
+                          var oldChild$2 = caml_array_get(elems, idx);
+                          elem.removeChild(oldChild$2);
+                          var oldVdom = match$4[2].contents;
+                          newCache.contents = oldVdom;
+                          _newVNodes = newRest$1;
+                          _oldVNodes = olderRest$1;
+                          _idx = idx + 1 | 0;
+                          continue ;
+                        }
+                        exit$4 = 3;
+                      }
+                      
+                    } else {
+                      exit$4 = 3;
+                    }
+                  } else {
+                    exit$4 = 3;
+                  }
+                  if (exit$4 === 3) {
+                    if (newRest$1) {
+                      var match$6 = newRest$1[0];
+                      if (match$6.tag === /* LazyGen */3) {
+                        if (match$6[0] === oldKey$1) {
+                          var oldChild$3 = caml_array_get(elems, idx);
+                          var newVdom = _1(newGen, undefined);
+                          newCache.contents = newVdom;
+                          var newChild$1 = patchVNodesOnElems_CreateElement(callbacks, newVdom);
+                          insertBefore(elem, newChild$1, oldChild$3);
+                          _newVNodes = newRest$1;
+                          _idx = idx + 1 | 0;
+                          continue ;
+                        }
+                        exit$3 = 2;
+                      } else {
+                        exit$3 = 2;
+                      }
+                    } else {
+                      exit$3 = 2;
+                    }
+                  }
+                  if (exit$3 === 2) {
+                    var oldVdom$1 = oldCache.contents;
+                    var newVdom$1 = _1(newGen, undefined);
+                    newCache.contents = newVdom$1;
+                    _newVNodes = /* :: */[
+                      newVdom$1,
+                      newRest$1
+                    ];
+                    _oldVNodes = /* :: */[
+                      oldVdom$1,
+                      oldRest$1
+                    ];
+                    continue ;
+                  }
+                  
+                }
+                
+              }
+              break;
+          case /* Tagger */4 :
+              _oldVNodes = /* :: */[
+                oldNode[1],
+                oldVNodes[1]
+              ];
+              continue ;
+          
+        }
+        var oldRest$2 = oldVNodes[1];
+        if (newVNodes) {
+          var newNode$1 = newVNodes[0];
+          if (newNode$1.tag === /* Tagger */4) {
+            patchVNodesOnElems(_1(newNode$1[0], callbacks), elem, elems, idx, /* :: */[
+                  oldNode,
+                  /* [] */0
+                ], /* :: */[
+                  newNode$1[1],
+                  /* [] */0
+                ]);
+            _newVNodes = newVNodes[1];
+            _oldVNodes = oldRest$2;
+            _idx = idx + 1 | 0;
+            continue ;
+          }
+          var oldChild$4 = caml_array_get(elems, idx);
+          var newChild$2 = patchVNodesOnElems_CreateElement(callbacks, newNode$1);
+          insertBefore(elem, newChild$2, oldChild$4);
+          elem.removeChild(oldChild$4);
+          _newVNodes = newVNodes[1];
+          _oldVNodes = oldRest$2;
+          _idx = idx + 1 | 0;
+          continue ;
+        }
+        var child$1 = caml_array_get(elems, idx);
+        elem.removeChild(child$1);
+        _newVNodes = /* [] */0;
+        _oldVNodes = oldRest$2;
+        continue ;
+      }
+      if (!newVNodes) {
+        return ;
+      }
+      var newChild$3 = patchVNodesOnElems_CreateElement(callbacks, newVNodes[0]);
+      elem.appendChild(newChild$3);
+      _newVNodes = newVNodes[1];
+      _oldVNodes = /* [] */0;
+      _idx = idx + 1 | 0;
+      continue ;
+    }}
+
+  function patchVNodesIntoElement(callbacks, elem, oldVNodes, newVNodes) {
+    var elems = elem.childNodes;
+    patchVNodesOnElems(callbacks, elem, elems, 0, oldVNodes, newVNodes);
+    return newVNodes;
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function run(callbacks, tagger) {
+    if (typeof tagger === "number") {
+      return ;
+    }
+    switch (tagger.tag | 0) {
+      case /* Batch */1 :
+          return fold_left((function (param, cmd) {
+                        return run(callbacks, cmd);
+                      }), undefined, tagger[0]);
+      case /* Tagger */0 :
+      case /* EnqueueCall */2 :
+          return _1(tagger[0], callbacks);
+      
+    }
+  }
+
+  var none = /* NoCmd */0;
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function registration(key, enableCall) {
+    return /* Registration */__(1, [
+              key,
+              (function (callbacks) {
+                  return _1(enableCall, callbacks.contents);
+                }),
+              {
+                contents: undefined
+              }
+            ]);
+  }
+
+  function run$1(oldCallbacks, newCallbacks, oldSub, newSub) {
+    var enable = function (_callbacks, _subs) {
+      while(true) {
+        var subs = _subs;
+        var callbacks = _callbacks;
+        if (typeof subs === "number") {
+          return ;
+        }
+        switch (subs.tag | 0) {
+          case /* Batch */0 :
+              var subs$1 = subs[0];
+              if (subs$1) {
+                return iter((function(callbacks){
+                          return function (param) {
+                            return enable(callbacks, param);
+                          }
+                          }(callbacks)), subs$1);
+              } else {
+                return ;
+              }
+          case /* Registration */1 :
+              subs[2].contents = _1(subs[1], callbacks);
+              return ;
+          case /* Mapper */2 :
+              var subCallbacks = _1(subs[0], callbacks);
+              _subs = subs[1];
+              _callbacks = subCallbacks;
+              continue ;
+          
+        }
+      }  };
+    var disable = function (_callbacks, _subs) {
+      while(true) {
+        var subs = _subs;
+        var callbacks = _callbacks;
+        if (typeof subs === "number") {
+          return ;
+        }
+        switch (subs.tag | 0) {
+          case /* Batch */0 :
+              var subs$1 = subs[0];
+              if (subs$1) {
+                return iter((function(callbacks){
+                          return function (param) {
+                            return disable(callbacks, param);
+                          }
+                          }(callbacks)), subs$1);
+              } else {
+                return ;
+              }
+          case /* Registration */1 :
+              var diCB = subs[2];
+              var cb = diCB.contents;
+              if (cb !== undefined) {
+                diCB.contents = undefined;
+                return _1(cb, undefined);
+              } else {
+                return ;
+              }
+          case /* Mapper */2 :
+              var subCallbacks = _1(subs[0], callbacks);
+              _subs = subs[1];
+              _callbacks = subCallbacks;
+              continue ;
+          
+        }
+      }  };
+    if (typeof oldSub === "number") {
+      if (typeof newSub === "number") {
+        return newSub;
+      }
+      
+    } else {
+      switch (oldSub.tag | 0) {
+        case /* Batch */0 :
+            if (typeof newSub !== "number" && !newSub.tag) {
+              var aux = function (_oldList, _newList) {
+                while(true) {
+                  var newList = _newList;
+                  var oldList = _oldList;
+                  if (oldList) {
+                    var oldRest = oldList[1];
+                    var oldSubSub = oldList[0];
+                    if (newList) {
+                      run$1(oldCallbacks, newCallbacks, oldSubSub, newList[0]);
+                      _newList = newList[1];
+                      _oldList = oldRest;
+                      continue ;
+                    }
+                    disable(oldCallbacks, oldSubSub);
+                    _newList = /* [] */0;
+                    _oldList = oldRest;
+                    continue ;
+                  }
+                  if (!newList) {
+                    return ;
+                  }
+                  enable(newCallbacks, newList[0]);
+                  _newList = newList[1];
+                  _oldList = /* [] */0;
+                  continue ;
+                }            };
+              aux(oldSub[0], newSub[0]);
+              return newSub;
+            }
+            break;
+        case /* Registration */1 :
+            if (typeof newSub !== "number" && newSub.tag === /* Registration */1 && oldSub[0] === newSub[0]) {
+              newSub[2].contents = oldSub[2].contents;
+              return newSub;
+            }
+            break;
+        case /* Mapper */2 :
+            if (typeof newSub !== "number" && newSub.tag === /* Mapper */2) {
+              var olderCallbacks = _1(oldSub[0], oldCallbacks);
+              var newerCallbacks = _1(newSub[0], newCallbacks);
+              run$1(olderCallbacks, newerCallbacks, oldSub[1], newSub[1]);
+              return newSub;
+            }
+            break;
+        
+      }
+    }
+    disable(oldCallbacks, oldSub);
+    enable(newCallbacks, newSub);
+    return newSub;
+  }
+
+  var none$1 = /* NoSub */0;
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+
+  var examples = /* :: */[
+    {
+      name: "GreaterThan",
+      rules: /* :: */[
+        "GreaterThan(?first, ?second) when GreaterThan_(?first, ?second).",
+        /* :: */[
+          "GreaterThan(?first, ?second) when GreaterThan_(?first, ?middle) and GreaterThan(?middle, ?second).",
+          /* :: */[
+            "GreaterThan_(Seven, Six).",
+            /* :: */[
+              "GreaterThan_(Six, Five).",
+              /* :: */[
+                "GreaterThan_(Five, Four).",
+                /* :: */[
+                  "GreaterThan_(Four, Three).",
+                  /* :: */[
+                    "GreaterThan_(Three, Two).",
+                    /* :: */[
+                      "GreaterThan_(Two, One).",
+                      /* :: */[
+                        "GreaterThan_(One, Zero).",
+                        /* [] */0
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      queries: /* :: */[
+        "GreaterThan(Three, Two)",
+        /* :: */[
+          "GreaterThan(Four, ?LessThanFour)",
+          /* :: */[
+            "GreaterThan(?GreaterThanOne, Three)",
+            /* :: */[
+              "GreaterThan(?GreaterThanOne, One)",
+              /* :: */[
+                "GreaterThan(?Greater, ?Lesser)",
+                /* [] */0
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    /* :: */[
+      {
+        name: "Sums",
+        rules: /* :: */[
+          "Sum(?left, ?right, ?result) when Sum_(?left, ?right, ?result).",
+          /* :: */[
+            "Sum(?left, ?right, ?result) when Sum_(?right, ?left, ?result).",
+            /* :: */[
+              "Sum_(?left, Zero, ?left).",
+              /* :: */[
+                "Sum_(One, One, Two).",
+                /* :: */[
+                  "Sum_(One, Two, Three).",
+                  /* :: */[
+                    "Sum_(One, Three, Four).",
+                    /* :: */[
+                      "Sum_(One, Four, Five).",
+                      /* :: */[
+                        "Sum_(One, Five, Six).",
+                        /* :: */[
+                          "Sum_(One, Six, Seven).",
+                          /* :: */[
+                            "Sum_(Two, Two, Four).",
+                            /* :: */[
+                              "Sum_(Two, Three, Five).",
+                              /* :: */[
+                                "Sum_(Two, Four, Six).",
+                                /* :: */[
+                                  "Sum_(Two, Five, Seven).",
+                                  /* :: */[
+                                    "Sum_(Two, Six, Eight).",
+                                    /* :: */[
+                                      "Sum_(Three, Three, Six).",
+                                      /* :: */[
+                                        "Sum_(Three, Four, Seven).",
+                                        /* :: */[
+                                          "Sum_(Three, Five, Eight).",
+                                          /* :: */[
+                                            "Sum_(Three, Six, Nine).",
+                                            /* :: */[
+                                              "Sum_(Four, Four, Eight).",
+                                              /* :: */[
+                                                "Sum_(Four, Five, Nine).",
+                                                /* :: */[
+                                                  "Sum_(Four, Six, Ten).",
+                                                  /* :: */[
+                                                    "Sum_(Five, Five, Ten).",
+                                                    /* :: */[
+                                                      "Sum_(Five, Six, Eleven).",
+                                                      /* :: */[
+                                                        "Sum_(Six, Six, Twelve).",
+                                                        /* [] */0
+                                                      ]
+                                                    ]
+                                                  ]
+                                                ]
+                                              ]
+                                            ]
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ],
+        queries: /* [] */0
+      },
+      /* :: */[
+        {
+          name: "Genealogy",
+          rules: /* :: */[
+            "ParentOf(?Mother, ?Child) when MotherOf(?Mother, ?Child).",
+            /* :: */[
+              "ParentOf(?Mother, ?Child) when FatherOf(?Mother, ?Child).",
+              /* :: */[
+                "Siblings(?One, ?Other) when ParentOf(?Parent, ?One) and ParentOf(?Parent, ?Two).",
+                /* :: */[
+                  "AncestorOf(?Ancestor, ?Descendant) when ParentOf(?Ancestor, ?Descendant).",
+                  /* :: */[
+                    "AncestorOf(?Ancestor, ?Descendant) when ParentOf(?ParentOfDescendant, ?Descendant) and AncestorOf(?Ancestor, ?ParentOfDescendant).",
+                    /* :: */[
+                      "MotherOf(Erica, Bob).",
+                      /* :: */[
+                        "FatherOf(Bob, Jane).",
+                        /* :: */[
+                          "FatherOf(Bob, Jim).",
+                          /* :: */[
+                            "MotherOf(Sally, Jane).",
+                            /* [] */0
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          queries: /* [] */0
+        },
+        /* [] */0
+      ]
+    ]
+  ];
+  /* No side effect */
+
+  function create$1(n) {
+    var n$1 = n < 1 ? 1 : n;
+    var s = caml_create_bytes(n$1);
+    return {
+            buffer: s,
+            position: 0,
+            length: n$1,
+            initial_buffer: s
+          };
+  }
+
+  function contents(b) {
+    return sub_string(b.buffer, 0, b.position);
+  }
+
+  function resize(b, more) {
+    var len = b.length;
+    var new_len = len;
+    while((b.position + more | 0) > new_len) {
+      new_len = (new_len << 1);
+    }  var new_buffer = caml_create_bytes(new_len);
+    blit(b.buffer, 0, new_buffer, 0, b.position);
+    b.buffer = new_buffer;
+    b.length = new_len;
+    
+  }
+
+  function add_char(b, c) {
+    var pos = b.position;
+    if (pos >= b.length) {
+      resize(b, 1);
+    }
+    b.buffer[pos] = c;
+    b.position = pos + 1 | 0;
+    
+  }
+
+  function add_string(b, s) {
+    var len = s.length;
+    var new_position = b.position + len | 0;
+    if (new_position > b.length) {
+      resize(b, len);
+    }
+    blit_string(s, 0, b.buffer, b.position, len);
+    b.position = new_position;
+    
+  }
+  /* No side effect */
+
+  function buffer_check_size(buf, overhead) {
+    var len = buf.bytes.length;
+    var min_len = buf.ind + overhead | 0;
+    if (min_len <= len) {
+      return ;
+    }
+    var new_len = caml_int_max((len << 1), min_len);
+    var new_str = caml_create_bytes(new_len);
+    blit(buf.bytes, 0, new_str, 0, len);
+    buf.bytes = new_str;
+    
+  }
+
+  function buffer_add_char(buf, c) {
+    buffer_check_size(buf, 1);
+    buf.bytes[buf.ind] = c;
+    buf.ind = buf.ind + 1 | 0;
+    
+  }
+
+  function buffer_add_string(buf, s) {
+    var str_len = s.length;
+    buffer_check_size(buf, str_len);
+    blit$1(s, 0, buf.bytes, buf.ind, str_len);
+    buf.ind = buf.ind + str_len | 0;
+    
+  }
+
+  function buffer_contents(buf) {
+    return sub_string(buf.bytes, 0, buf.ind);
+  }
+
+  function char_of_fconv(fconv) {
+    switch (fconv) {
+      case /* Float_f */0 :
+      case /* Float_pf */1 :
+      case /* Float_sf */2 :
+          return /* "f" */102;
+      case /* Float_e */3 :
+      case /* Float_pe */4 :
+      case /* Float_se */5 :
+          return /* "e" */101;
+      case /* Float_E */6 :
+      case /* Float_pE */7 :
+      case /* Float_sE */8 :
+          return /* "E" */69;
+      case /* Float_g */9 :
+      case /* Float_pg */10 :
+      case /* Float_sg */11 :
+          return /* "g" */103;
+      case /* Float_G */12 :
+      case /* Float_pG */13 :
+      case /* Float_sG */14 :
+          return /* "G" */71;
+      case /* Float_F */15 :
+          return /* "F" */70;
+      case /* Float_h */16 :
+      case /* Float_ph */17 :
+      case /* Float_sh */18 :
+          return /* "h" */104;
+      case /* Float_H */19 :
+      case /* Float_pH */20 :
+      case /* Float_sH */21 :
+          return /* "H" */72;
+      
+    }
+  }
+
+  function bprint_fconv_flag(buf, fconv) {
+    switch (fconv) {
+      case /* Float_f */0 :
+      case /* Float_e */3 :
+      case /* Float_E */6 :
+      case /* Float_g */9 :
+      case /* Float_G */12 :
+      case /* Float_F */15 :
+      case /* Float_h */16 :
+      case /* Float_H */19 :
+          return ;
+      case /* Float_pf */1 :
+      case /* Float_pe */4 :
+      case /* Float_pE */7 :
+      case /* Float_pg */10 :
+      case /* Float_pG */13 :
+      case /* Float_ph */17 :
+      case /* Float_pH */20 :
+          return buffer_add_char(buf, /* "+" */43);
+      case /* Float_sf */2 :
+      case /* Float_se */5 :
+      case /* Float_sE */8 :
+      case /* Float_sg */11 :
+      case /* Float_sG */14 :
+      case /* Float_sh */18 :
+      case /* Float_sH */21 :
+          return buffer_add_char(buf, /* " " */32);
+      
+    }
+  }
+
+  function string_of_formatting_lit(formatting_lit) {
+    if (typeof formatting_lit === "number") {
+      switch (formatting_lit) {
+        case /* Close_box */0 :
+            return "@]";
+        case /* Close_tag */1 :
+            return "@}";
+        case /* FFlush */2 :
+            return "@?";
+        case /* Force_newline */3 :
+            return "@\n";
+        case /* Flush_newline */4 :
+            return "@.";
+        case /* Escaped_at */5 :
+            return "@@";
+        case /* Escaped_percent */6 :
+            return "@%";
+        
+      }
+    } else {
+      switch (formatting_lit.tag | 0) {
+        case /* Break */0 :
+        case /* Magic_size */1 :
+            return formatting_lit[0];
+        case /* Scan_indic */2 :
+            return "@" + bytes_to_string(make(1, formatting_lit[0]));
+        
+      }
+    }
+  }
+
+  function bprint_fmtty(buf, _fmtty) {
+    while(true) {
+      var fmtty = _fmtty;
+      if (typeof fmtty === "number") {
+        return ;
+      }
+      switch (fmtty.tag | 0) {
+        case /* Char_ty */0 :
+            buffer_add_string(buf, "%c");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* String_ty */1 :
+            buffer_add_string(buf, "%s");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Int_ty */2 :
+            buffer_add_string(buf, "%i");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Int32_ty */3 :
+            buffer_add_string(buf, "%li");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Nativeint_ty */4 :
+            buffer_add_string(buf, "%ni");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Int64_ty */5 :
+            buffer_add_string(buf, "%Li");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Float_ty */6 :
+            buffer_add_string(buf, "%f");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Bool_ty */7 :
+            buffer_add_string(buf, "%B");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Format_arg_ty */8 :
+            buffer_add_string(buf, "%{");
+            bprint_fmtty(buf, fmtty[0]);
+            buffer_add_string(buf, "%}");
+            _fmtty = fmtty[1];
+            continue ;
+        case /* Format_subst_ty */9 :
+            buffer_add_string(buf, "%(");
+            bprint_fmtty(buf, fmtty[0]);
+            buffer_add_string(buf, "%)");
+            _fmtty = fmtty[2];
+            continue ;
+        case /* Alpha_ty */10 :
+            buffer_add_string(buf, "%a");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Theta_ty */11 :
+            buffer_add_string(buf, "%t");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Any_ty */12 :
+            buffer_add_string(buf, "%?");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Reader_ty */13 :
+            buffer_add_string(buf, "%r");
+            _fmtty = fmtty[0];
+            continue ;
+        case /* Ignored_reader_ty */14 :
+            buffer_add_string(buf, "%_r");
+            _fmtty = fmtty[0];
+            continue ;
+        
+      }
+    }}
+
+  function symm(rest) {
+    if (typeof rest === "number") {
+      return /* End_of_fmtty */0;
+    }
+    switch (rest.tag | 0) {
+      case /* Char_ty */0 :
+          return /* Char_ty */__(0, [symm(rest[0])]);
+      case /* String_ty */1 :
+          return /* String_ty */__(1, [symm(rest[0])]);
+      case /* Int_ty */2 :
+          return /* Int_ty */__(2, [symm(rest[0])]);
+      case /* Int32_ty */3 :
+          return /* Int32_ty */__(3, [symm(rest[0])]);
+      case /* Nativeint_ty */4 :
+          return /* Nativeint_ty */__(4, [symm(rest[0])]);
+      case /* Int64_ty */5 :
+          return /* Int64_ty */__(5, [symm(rest[0])]);
+      case /* Float_ty */6 :
+          return /* Float_ty */__(6, [symm(rest[0])]);
+      case /* Bool_ty */7 :
+          return /* Bool_ty */__(7, [symm(rest[0])]);
+      case /* Format_arg_ty */8 :
+          return /* Format_arg_ty */__(8, [
+                    rest[0],
+                    symm(rest[1])
+                  ]);
+      case /* Format_subst_ty */9 :
+          return /* Format_subst_ty */__(9, [
+                    rest[1],
+                    rest[0],
+                    symm(rest[2])
+                  ]);
+      case /* Alpha_ty */10 :
+          return /* Alpha_ty */__(10, [symm(rest[0])]);
+      case /* Theta_ty */11 :
+          return /* Theta_ty */__(11, [symm(rest[0])]);
+      case /* Any_ty */12 :
+          return /* Any_ty */__(12, [symm(rest[0])]);
+      case /* Reader_ty */13 :
+          return /* Reader_ty */__(13, [symm(rest[0])]);
+      case /* Ignored_reader_ty */14 :
+          return /* Ignored_reader_ty */__(14, [symm(rest[0])]);
+      
+    }
+  }
+
+  function fmtty_rel_det(rest) {
+    if (typeof rest === "number") {
+      return /* tuple */[
+              (function (param) {
+                  return /* Refl */0;
+                }),
+              (function (param) {
+                  return /* Refl */0;
+                }),
+              (function (param) {
+                  return /* Refl */0;
+                }),
+              (function (param) {
+                  return /* Refl */0;
+                })
+            ];
+    }
+    switch (rest.tag | 0) {
+      case /* Char_ty */0 :
+          var match = fmtty_rel_det(rest[0]);
+          var af = match[1];
+          var fa = match[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match[2],
+                  match[3]
+                ];
+      case /* String_ty */1 :
+          var match$1 = fmtty_rel_det(rest[0]);
+          var af$1 = match$1[1];
+          var fa$1 = match$1[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$1, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$1, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$1[2],
+                  match$1[3]
+                ];
+      case /* Int_ty */2 :
+          var match$2 = fmtty_rel_det(rest[0]);
+          var af$2 = match$2[1];
+          var fa$2 = match$2[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$2, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$2, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$2[2],
+                  match$2[3]
+                ];
+      case /* Int32_ty */3 :
+          var match$3 = fmtty_rel_det(rest[0]);
+          var af$3 = match$3[1];
+          var fa$3 = match$3[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$3, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$3, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$3[2],
+                  match$3[3]
+                ];
+      case /* Nativeint_ty */4 :
+          var match$4 = fmtty_rel_det(rest[0]);
+          var af$4 = match$4[1];
+          var fa$4 = match$4[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$4, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$4, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$4[2],
+                  match$4[3]
+                ];
+      case /* Int64_ty */5 :
+          var match$5 = fmtty_rel_det(rest[0]);
+          var af$5 = match$5[1];
+          var fa$5 = match$5[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$5, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$5, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$5[2],
+                  match$5[3]
+                ];
+      case /* Float_ty */6 :
+          var match$6 = fmtty_rel_det(rest[0]);
+          var af$6 = match$6[1];
+          var fa$6 = match$6[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$6, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$6, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$6[2],
+                  match$6[3]
+                ];
+      case /* Bool_ty */7 :
+          var match$7 = fmtty_rel_det(rest[0]);
+          var af$7 = match$7[1];
+          var fa$7 = match$7[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$7, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$7, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$7[2],
+                  match$7[3]
+                ];
+      case /* Format_arg_ty */8 :
+          var match$8 = fmtty_rel_det(rest[1]);
+          var af$8 = match$8[1];
+          var fa$8 = match$8[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$8, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$8, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$8[2],
+                  match$8[3]
+                ];
+      case /* Format_subst_ty */9 :
+          var match$9 = fmtty_rel_det(rest[2]);
+          var de = match$9[3];
+          var ed = match$9[2];
+          var af$9 = match$9[1];
+          var fa$9 = match$9[0];
+          var ty = trans(symm(rest[0]), rest[1]);
+          var match$10 = fmtty_rel_det(ty);
+          var jd = match$10[3];
+          var dj = match$10[2];
+          var ga = match$10[1];
+          var ag = match$10[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$9, /* Refl */0);
+                      _1(ag, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(ga, /* Refl */0);
+                      _1(af$9, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(ed, /* Refl */0);
+                      _1(dj, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(jd, /* Refl */0);
+                      _1(de, /* Refl */0);
+                      return /* Refl */0;
+                    })
+                ];
+      case /* Alpha_ty */10 :
+          var match$11 = fmtty_rel_det(rest[0]);
+          var af$10 = match$11[1];
+          var fa$10 = match$11[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$10, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$10, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$11[2],
+                  match$11[3]
+                ];
+      case /* Theta_ty */11 :
+          var match$12 = fmtty_rel_det(rest[0]);
+          var af$11 = match$12[1];
+          var fa$11 = match$12[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$11, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$11, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$12[2],
+                  match$12[3]
+                ];
+      case /* Any_ty */12 :
+          var match$13 = fmtty_rel_det(rest[0]);
+          var af$12 = match$13[1];
+          var fa$12 = match$13[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$12, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$12, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  match$13[2],
+                  match$13[3]
+                ];
+      case /* Reader_ty */13 :
+          var match$14 = fmtty_rel_det(rest[0]);
+          var de$1 = match$14[3];
+          var ed$1 = match$14[2];
+          var af$13 = match$14[1];
+          var fa$13 = match$14[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$13, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$13, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(ed$1, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(de$1, /* Refl */0);
+                      return /* Refl */0;
+                    })
+                ];
+      case /* Ignored_reader_ty */14 :
+          var match$15 = fmtty_rel_det(rest[0]);
+          var de$2 = match$15[3];
+          var ed$2 = match$15[2];
+          var af$14 = match$15[1];
+          var fa$14 = match$15[0];
+          return /* tuple */[
+                  (function (param) {
+                      _1(fa$14, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(af$14, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(ed$2, /* Refl */0);
+                      return /* Refl */0;
+                    }),
+                  (function (param) {
+                      _1(de$2, /* Refl */0);
+                      return /* Refl */0;
+                    })
+                ];
+      
+    }
+  }
+
+  function trans(ty1, ty2) {
+    var exit = 0;
+    if (typeof ty1 === "number") {
+      if (typeof ty2 === "number") {
+        return /* End_of_fmtty */0;
+      }
+      switch (ty2.tag | 0) {
+        case /* Format_arg_ty */8 :
+            exit = 6;
+            break;
+        case /* Format_subst_ty */9 :
+            exit = 7;
+            break;
+        case /* Alpha_ty */10 :
+            exit = 1;
+            break;
+        case /* Theta_ty */11 :
+            exit = 2;
+            break;
+        case /* Any_ty */12 :
+            exit = 3;
+            break;
+        case /* Reader_ty */13 :
+            exit = 4;
+            break;
+        case /* Ignored_reader_ty */14 :
+            exit = 5;
+            break;
+        default:
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  846,
+                  23
+                ]
+              ];
+      }
+    } else {
+      switch (ty1.tag | 0) {
+        case /* Char_ty */0 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Char_ty */0 :
+                    return /* Char_ty */__(0, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* String_ty */1 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* String_ty */1 :
+                    return /* String_ty */__(1, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Int_ty */2 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Int_ty */2 :
+                    return /* Int_ty */__(2, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Int32_ty */3 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Int32_ty */3 :
+                    return /* Int32_ty */__(3, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Nativeint_ty */4 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Nativeint_ty */4 :
+                    return /* Nativeint_ty */__(4, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Int64_ty */5 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Int64_ty */5 :
+                    return /* Int64_ty */__(5, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Float_ty */6 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Float_ty */6 :
+                    return /* Float_ty */__(6, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Bool_ty */7 :
+            if (typeof ty2 === "number") {
+              exit = 8;
+            } else {
+              switch (ty2.tag | 0) {
+                case /* Bool_ty */7 :
+                    return /* Bool_ty */__(7, [trans(ty1[0], ty2[0])]);
+                case /* Format_arg_ty */8 :
+                    exit = 6;
+                    break;
+                case /* Format_subst_ty */9 :
+                    exit = 7;
+                    break;
+                case /* Alpha_ty */10 :
+                    exit = 1;
+                    break;
+                case /* Theta_ty */11 :
+                    exit = 2;
+                    break;
+                case /* Any_ty */12 :
+                    exit = 3;
+                    break;
+                case /* Reader_ty */13 :
+                    exit = 4;
+                    break;
+                case /* Ignored_reader_ty */14 :
+                    exit = 5;
+                    break;
+                
+              }
+            }
+            break;
+        case /* Format_arg_ty */8 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      832,
+                      26
+                    ]
+                  ];
+            }
+            switch (ty2.tag | 0) {
+              case /* Format_arg_ty */8 :
+                  return /* Format_arg_ty */__(8, [
+                            trans(ty1[0], ty2[0]),
+                            trans(ty1[1], ty2[1])
+                          ]);
+              case /* Alpha_ty */10 :
+                  exit = 1;
+                  break;
+              case /* Theta_ty */11 :
+                  exit = 2;
+                  break;
+              case /* Any_ty */12 :
+                  exit = 3;
+                  break;
+              case /* Reader_ty */13 :
+                  exit = 4;
+                  break;
+              case /* Ignored_reader_ty */14 :
+                  exit = 5;
+                  break;
+              default:
+                throw [
+                      assert_failure,
+                      /* tuple */[
+                        "camlinternalFormat.ml",
+                        832,
+                        26
+                      ]
+                    ];
+            }
+            break;
+        case /* Format_subst_ty */9 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      842,
+                      28
+                    ]
+                  ];
+            }
+            switch (ty2.tag | 0) {
+              case /* Format_arg_ty */8 :
+                  exit = 6;
+                  break;
+              case /* Format_subst_ty */9 :
+                  var ty = trans(symm(ty1[1]), ty2[0]);
+                  var match = fmtty_rel_det(ty);
+                  _1(match[1], /* Refl */0);
+                  _1(match[3], /* Refl */0);
+                  return /* Format_subst_ty */__(9, [
+                            ty1[0],
+                            ty2[1],
+                            trans(ty1[2], ty2[2])
+                          ]);
+              case /* Alpha_ty */10 :
+                  exit = 1;
+                  break;
+              case /* Theta_ty */11 :
+                  exit = 2;
+                  break;
+              case /* Any_ty */12 :
+                  exit = 3;
+                  break;
+              case /* Reader_ty */13 :
+                  exit = 4;
+                  break;
+              case /* Ignored_reader_ty */14 :
+                  exit = 5;
+                  break;
+              default:
+                throw [
+                      assert_failure,
+                      /* tuple */[
+                        "camlinternalFormat.ml",
+                        842,
+                        28
+                      ]
+                    ];
+            }
+            break;
+        case /* Alpha_ty */10 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      810,
+                      21
+                    ]
+                  ];
+            }
+            if (ty2.tag === /* Alpha_ty */10) {
+              return /* Alpha_ty */__(10, [trans(ty1[0], ty2[0])]);
+            }
+            throw [
+                  assert_failure,
+                  /* tuple */[
+                    "camlinternalFormat.ml",
+                    810,
+                    21
+                  ]
+                ];
+        case /* Theta_ty */11 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      814,
+                      21
+                    ]
+                  ];
+            }
+            switch (ty2.tag | 0) {
+              case /* Alpha_ty */10 :
+                  exit = 1;
+                  break;
+              case /* Theta_ty */11 :
+                  return /* Theta_ty */__(11, [trans(ty1[0], ty2[0])]);
+              default:
+                throw [
+                      assert_failure,
+                      /* tuple */[
+                        "camlinternalFormat.ml",
+                        814,
+                        21
+                      ]
+                    ];
+            }
+            break;
+        case /* Any_ty */12 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      818,
+                      19
+                    ]
+                  ];
+            }
+            switch (ty2.tag | 0) {
+              case /* Alpha_ty */10 :
+                  exit = 1;
+                  break;
+              case /* Theta_ty */11 :
+                  exit = 2;
+                  break;
+              case /* Any_ty */12 :
+                  return /* Any_ty */__(12, [trans(ty1[0], ty2[0])]);
+              default:
+                throw [
+                      assert_failure,
+                      /* tuple */[
+                        "camlinternalFormat.ml",
+                        818,
+                        19
+                      ]
+                    ];
+            }
+            break;
+        case /* Reader_ty */13 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      822,
+                      22
+                    ]
+                  ];
+            }
+            switch (ty2.tag | 0) {
+              case /* Alpha_ty */10 :
+                  exit = 1;
+                  break;
+              case /* Theta_ty */11 :
+                  exit = 2;
+                  break;
+              case /* Any_ty */12 :
+                  exit = 3;
+                  break;
+              case /* Reader_ty */13 :
+                  return /* Reader_ty */__(13, [trans(ty1[0], ty2[0])]);
+              default:
+                throw [
+                      assert_failure,
+                      /* tuple */[
+                        "camlinternalFormat.ml",
+                        822,
+                        22
+                      ]
+                    ];
+            }
+            break;
+        case /* Ignored_reader_ty */14 :
+            if (typeof ty2 === "number") {
+              throw [
+                    assert_failure,
+                    /* tuple */[
+                      "camlinternalFormat.ml",
+                      827,
+                      30
+                    ]
+                  ];
+            }
+            switch (ty2.tag | 0) {
+              case /* Alpha_ty */10 :
+                  exit = 1;
+                  break;
+              case /* Theta_ty */11 :
+                  exit = 2;
+                  break;
+              case /* Any_ty */12 :
+                  exit = 3;
+                  break;
+              case /* Reader_ty */13 :
+                  exit = 4;
+                  break;
+              case /* Ignored_reader_ty */14 :
+                  return /* Ignored_reader_ty */__(14, [trans(ty1[0], ty2[0])]);
+              default:
+                throw [
+                      assert_failure,
+                      /* tuple */[
+                        "camlinternalFormat.ml",
+                        827,
+                        30
+                      ]
+                    ];
+            }
+            break;
+        
+      }
+    }
+    switch (exit) {
+      case 1 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  811,
+                  21
+                ]
+              ];
+      case 2 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  815,
+                  21
+                ]
+              ];
+      case 3 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  819,
+                  19
+                ]
+              ];
+      case 4 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  823,
+                  22
+                ]
+              ];
+      case 5 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  828,
+                  30
+                ]
+              ];
+      case 6 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  833,
+                  26
+                ]
+              ];
+      case 7 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  843,
+                  28
+                ]
+              ];
+      case 8 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  847,
+                  23
+                ]
+              ];
+      
+    }
+  }
+
+  var Type_mismatch = create("CamlinternalFormat.Type_mismatch");
+
+  function type_padding(pad, fmtty) {
+    if (typeof pad === "number") {
+      return /* Padding_fmtty_EBB */[
+              /* No_padding */0,
+              fmtty
+            ];
+    }
+    if (!pad.tag) {
+      return /* Padding_fmtty_EBB */[
+              /* Lit_padding */__(0, [
+                  pad[0],
+                  pad[1]
+                ]),
+              fmtty
+            ];
+    }
+    if (typeof fmtty === "number") {
+      throw Type_mismatch;
+    }
+    if (fmtty.tag === /* Int_ty */2) {
+      return /* Padding_fmtty_EBB */[
+              /* Arg_padding */__(1, [pad[0]]),
+              fmtty[0]
+            ];
+    }
+    throw Type_mismatch;
+  }
+
+  function type_padprec(pad, prec, fmtty) {
+    var match = type_padding(pad, fmtty);
+    if (typeof prec !== "number") {
+      return /* Padprec_fmtty_EBB */[
+              match[0],
+              /* Lit_precision */[prec[0]],
+              match[1]
+            ];
+    }
+    if (prec === 0) {
+      return /* Padprec_fmtty_EBB */[
+              match[0],
+              /* No_precision */0,
+              match[1]
+            ];
+    }
+    var rest = match[1];
+    if (typeof rest === "number") {
+      throw Type_mismatch;
+    }
+    if (rest.tag === /* Int_ty */2) {
+      return /* Padprec_fmtty_EBB */[
+              match[0],
+              /* Arg_precision */1,
+              rest[0]
+            ];
+    }
+    throw Type_mismatch;
+  }
+
+  function type_ignored_format_substitution(sub_fmtty, fmt, fmtty) {
+    if (typeof sub_fmtty === "number") {
+      return /* Fmtty_fmt_EBB */[
+              /* End_of_fmtty */0,
+              type_format_gen(fmt, fmtty)
+            ];
+    }
+    switch (sub_fmtty.tag | 0) {
+      case /* Char_ty */0 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag) {
+            throw Type_mismatch;
+          }
+          var match = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+          return /* Fmtty_fmt_EBB */[
+                  /* Char_ty */__(0, [match[0]]),
+                  match[1]
+                ];
+      case /* String_ty */1 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* String_ty */1) {
+            var match$1 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* String_ty */__(1, [match$1[0]]),
+                    match$1[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Int_ty */2 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Int_ty */2) {
+            var match$2 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Int_ty */__(2, [match$2[0]]),
+                    match$2[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Int32_ty */3 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Int32_ty */3) {
+            var match$3 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Int32_ty */__(3, [match$3[0]]),
+                    match$3[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Nativeint_ty */4 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Nativeint_ty */4) {
+            var match$4 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Nativeint_ty */__(4, [match$4[0]]),
+                    match$4[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Int64_ty */5 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Int64_ty */5) {
+            var match$5 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Int64_ty */__(5, [match$5[0]]),
+                    match$5[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Float_ty */6 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Float_ty */6) {
+            var match$6 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Float_ty */__(6, [match$6[0]]),
+                    match$6[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Bool_ty */7 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Bool_ty */7) {
+            var match$7 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Bool_ty */__(7, [match$7[0]]),
+                    match$7[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Format_arg_ty */8 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Format_arg_ty */8) {
+            var sub2_fmtty$prime = fmtty[0];
+            if (caml_notequal(/* Fmtty_EBB */[sub_fmtty[0]], /* Fmtty_EBB */[sub2_fmtty$prime])) {
+              throw Type_mismatch;
+            }
+            var match$8 = type_ignored_format_substitution(sub_fmtty[1], fmt, fmtty[1]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Format_arg_ty */__(8, [
+                        sub2_fmtty$prime,
+                        match$8[0]
+                      ]),
+                    match$8[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Format_subst_ty */9 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Format_subst_ty */9) {
+            var sub2_fmtty$prime$1 = fmtty[1];
+            var sub1_fmtty$prime = fmtty[0];
+            if (caml_notequal(/* Fmtty_EBB */[erase_rel(sub_fmtty[0])], /* Fmtty_EBB */[erase_rel(sub1_fmtty$prime)])) {
+              throw Type_mismatch;
+            }
+            if (caml_notequal(/* Fmtty_EBB */[erase_rel(sub_fmtty[1])], /* Fmtty_EBB */[erase_rel(sub2_fmtty$prime$1)])) {
+              throw Type_mismatch;
+            }
+            var sub_fmtty$prime = trans(symm(sub1_fmtty$prime), sub2_fmtty$prime$1);
+            var match$9 = fmtty_rel_det(sub_fmtty$prime);
+            _1(match$9[1], /* Refl */0);
+            _1(match$9[3], /* Refl */0);
+            var match$10 = type_ignored_format_substitution(erase_rel(sub_fmtty[2]), fmt, fmtty[2]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Format_subst_ty */__(9, [
+                        sub1_fmtty$prime,
+                        sub2_fmtty$prime$1,
+                        symm(match$10[0])
+                      ]),
+                    match$10[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Alpha_ty */10 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Alpha_ty */10) {
+            var match$11 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Alpha_ty */__(10, [match$11[0]]),
+                    match$11[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Theta_ty */11 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Theta_ty */11) {
+            var match$12 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Theta_ty */__(11, [match$12[0]]),
+                    match$12[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Any_ty */12 :
+          throw Type_mismatch;
+      case /* Reader_ty */13 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Reader_ty */13) {
+            var match$13 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Reader_ty */__(13, [match$13[0]]),
+                    match$13[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Ignored_reader_ty */14 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Ignored_reader_ty */14) {
+            var match$14 = type_ignored_format_substitution(sub_fmtty[0], fmt, fmtty[0]);
+            return /* Fmtty_fmt_EBB */[
+                    /* Ignored_reader_ty */__(14, [match$14[0]]),
+                    match$14[1]
+                  ];
+          }
+          throw Type_mismatch;
+      
+    }
+  }
+
+  function type_format_gen(fmt, fmtty) {
+    if (typeof fmt === "number") {
+      return /* Fmt_fmtty_EBB */[
+              /* End_of_format */0,
+              fmtty
+            ];
+    }
+    switch (fmt.tag | 0) {
+      case /* Char */0 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag) {
+            throw Type_mismatch;
+          }
+          var match = type_format_gen(fmt[0], fmtty[0]);
+          return /* Fmt_fmtty_EBB */[
+                  /* Char */__(0, [match[0]]),
+                  match[1]
+                ];
+      case /* Caml_char */1 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag) {
+            throw Type_mismatch;
+          }
+          var match$1 = type_format_gen(fmt[0], fmtty[0]);
+          return /* Fmt_fmtty_EBB */[
+                  /* Caml_char */__(1, [match$1[0]]),
+                  match$1[1]
+                ];
+      case /* String */2 :
+          var match$2 = type_padding(fmt[0], fmtty);
+          var fmtty_rest = match$2[1];
+          if (typeof fmtty_rest === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest.tag === /* String_ty */1) {
+            var match$3 = type_format_gen(fmt[1], fmtty_rest[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* String */__(2, [
+                        match$2[0],
+                        match$3[0]
+                      ]),
+                    match$3[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Caml_string */3 :
+          var match$4 = type_padding(fmt[0], fmtty);
+          var fmtty_rest$1 = match$4[1];
+          if (typeof fmtty_rest$1 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$1.tag === /* String_ty */1) {
+            var match$5 = type_format_gen(fmt[1], fmtty_rest$1[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Caml_string */__(3, [
+                        match$4[0],
+                        match$5[0]
+                      ]),
+                    match$5[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Int */4 :
+          var match$6 = type_padprec(fmt[1], fmt[2], fmtty);
+          var fmtty_rest$2 = match$6[2];
+          if (typeof fmtty_rest$2 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$2.tag === /* Int_ty */2) {
+            var match$7 = type_format_gen(fmt[3], fmtty_rest$2[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Int */__(4, [
+                        fmt[0],
+                        match$6[0],
+                        match$6[1],
+                        match$7[0]
+                      ]),
+                    match$7[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Int32 */5 :
+          var match$8 = type_padprec(fmt[1], fmt[2], fmtty);
+          var fmtty_rest$3 = match$8[2];
+          if (typeof fmtty_rest$3 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$3.tag === /* Int32_ty */3) {
+            var match$9 = type_format_gen(fmt[3], fmtty_rest$3[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Int32 */__(5, [
+                        fmt[0],
+                        match$8[0],
+                        match$8[1],
+                        match$9[0]
+                      ]),
+                    match$9[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Nativeint */6 :
+          var match$10 = type_padprec(fmt[1], fmt[2], fmtty);
+          var fmtty_rest$4 = match$10[2];
+          if (typeof fmtty_rest$4 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$4.tag === /* Nativeint_ty */4) {
+            var match$11 = type_format_gen(fmt[3], fmtty_rest$4[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Nativeint */__(6, [
+                        fmt[0],
+                        match$10[0],
+                        match$10[1],
+                        match$11[0]
+                      ]),
+                    match$11[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Int64 */7 :
+          var match$12 = type_padprec(fmt[1], fmt[2], fmtty);
+          var fmtty_rest$5 = match$12[2];
+          if (typeof fmtty_rest$5 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$5.tag === /* Int64_ty */5) {
+            var match$13 = type_format_gen(fmt[3], fmtty_rest$5[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Int64 */__(7, [
+                        fmt[0],
+                        match$12[0],
+                        match$12[1],
+                        match$13[0]
+                      ]),
+                    match$13[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Float */8 :
+          var match$14 = type_padprec(fmt[1], fmt[2], fmtty);
+          var fmtty_rest$6 = match$14[2];
+          if (typeof fmtty_rest$6 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$6.tag === /* Float_ty */6) {
+            var match$15 = type_format_gen(fmt[3], fmtty_rest$6[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Float */__(8, [
+                        fmt[0],
+                        match$14[0],
+                        match$14[1],
+                        match$15[0]
+                      ]),
+                    match$15[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Bool */9 :
+          var match$16 = type_padding(fmt[0], fmtty);
+          var fmtty_rest$7 = match$16[1];
+          if (typeof fmtty_rest$7 === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty_rest$7.tag === /* Bool_ty */7) {
+            var match$17 = type_format_gen(fmt[1], fmtty_rest$7[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Bool */__(9, [
+                        match$16[0],
+                        match$17[0]
+                      ]),
+                    match$17[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Flush */10 :
+          var match$18 = type_format_gen(fmt[0], fmtty);
+          return /* Fmt_fmtty_EBB */[
+                  /* Flush */__(10, [match$18[0]]),
+                  match$18[1]
+                ];
+      case /* String_literal */11 :
+          var match$19 = type_format_gen(fmt[1], fmtty);
+          return /* Fmt_fmtty_EBB */[
+                  /* String_literal */__(11, [
+                      fmt[0],
+                      match$19[0]
+                    ]),
+                  match$19[1]
+                ];
+      case /* Char_literal */12 :
+          var match$20 = type_format_gen(fmt[1], fmtty);
+          return /* Fmt_fmtty_EBB */[
+                  /* Char_literal */__(12, [
+                      fmt[0],
+                      match$20[0]
+                    ]),
+                  match$20[1]
+                ];
+      case /* Format_arg */13 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Format_arg_ty */8) {
+            var sub_fmtty$prime = fmtty[0];
+            if (caml_notequal(/* Fmtty_EBB */[fmt[1]], /* Fmtty_EBB */[sub_fmtty$prime])) {
+              throw Type_mismatch;
+            }
+            var match$21 = type_format_gen(fmt[2], fmtty[1]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Format_arg */__(13, [
+                        fmt[0],
+                        sub_fmtty$prime,
+                        match$21[0]
+                      ]),
+                    match$21[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Format_subst */14 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Format_subst_ty */9) {
+            var sub_fmtty1 = fmtty[0];
+            if (caml_notequal(/* Fmtty_EBB */[erase_rel(fmt[1])], /* Fmtty_EBB */[erase_rel(sub_fmtty1)])) {
+              throw Type_mismatch;
+            }
+            var match$22 = type_format_gen(fmt[2], erase_rel(fmtty[2]));
+            return /* Fmt_fmtty_EBB */[
+                    /* Format_subst */__(14, [
+                        fmt[0],
+                        sub_fmtty1,
+                        match$22[0]
+                      ]),
+                    match$22[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Alpha */15 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Alpha_ty */10) {
+            var match$23 = type_format_gen(fmt[0], fmtty[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Alpha */__(15, [match$23[0]]),
+                    match$23[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Theta */16 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Theta_ty */11) {
+            var match$24 = type_format_gen(fmt[0], fmtty[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Theta */__(16, [match$24[0]]),
+                    match$24[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Formatting_lit */17 :
+          var match$25 = type_format_gen(fmt[1], fmtty);
+          return /* Fmt_fmtty_EBB */[
+                  /* Formatting_lit */__(17, [
+                      fmt[0],
+                      match$25[0]
+                    ]),
+                  match$25[1]
+                ];
+      case /* Formatting_gen */18 :
+          var formatting_gen = fmt[0];
+          var fmt0 = fmt[1];
+          if (formatting_gen.tag) {
+            var match$26 = formatting_gen[0];
+            var match$27 = type_format_gen(match$26[0], fmtty);
+            var match$28 = type_format_gen(fmt0, match$27[1]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Formatting_gen */__(18, [
+                        /* Open_box */__(1, [/* Format */[
+                              match$27[0],
+                              match$26[1]
+                            ]]),
+                        match$28[0]
+                      ]),
+                    match$28[1]
+                  ];
+          }
+          var match$29 = formatting_gen[0];
+          var match$30 = type_format_gen(match$29[0], fmtty);
+          var match$31 = type_format_gen(fmt0, match$30[1]);
+          return /* Fmt_fmtty_EBB */[
+                  /* Formatting_gen */__(18, [
+                      /* Open_tag */__(0, [/* Format */[
+                            match$30[0],
+                            match$29[1]
+                          ]]),
+                      match$31[0]
+                    ]),
+                  match$31[1]
+                ];
+      case /* Reader */19 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Reader_ty */13) {
+            var match$32 = type_format_gen(fmt[0], fmtty[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Reader */__(19, [match$32[0]]),
+                    match$32[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Scan_char_set */20 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* String_ty */1) {
+            var match$33 = type_format_gen(fmt[2], fmtty[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Scan_char_set */__(20, [
+                        fmt[0],
+                        fmt[1],
+                        match$33[0]
+                      ]),
+                    match$33[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Scan_get_counter */21 :
+          if (typeof fmtty === "number") {
+            throw Type_mismatch;
+          }
+          if (fmtty.tag === /* Int_ty */2) {
+            var match$34 = type_format_gen(fmt[1], fmtty[0]);
+            return /* Fmt_fmtty_EBB */[
+                    /* Scan_get_counter */__(21, [
+                        fmt[0],
+                        match$34[0]
+                      ]),
+                    match$34[1]
+                  ];
+          }
+          throw Type_mismatch;
+      case /* Ignored_param */23 :
+          var ign = fmt[0];
+          var fmt$1 = fmt[1];
+          if (typeof ign === "number") {
+            if (ign !== /* Ignored_reader */2) {
+              return type_ignored_param_one(ign, fmt$1, fmtty);
+            }
+            if (typeof fmtty === "number") {
+              throw Type_mismatch;
+            }
+            if (fmtty.tag === /* Ignored_reader_ty */14) {
+              var match$35 = type_format_gen(fmt$1, fmtty[0]);
+              return /* Fmt_fmtty_EBB */[
+                      /* Ignored_param */__(23, [
+                          /* Ignored_reader */2,
+                          match$35[0]
+                        ]),
+                      match$35[1]
+                    ];
+            }
+            throw Type_mismatch;
+          } else {
+            switch (ign.tag | 0) {
+              case /* Ignored_format_arg */8 :
+                  return type_ignored_param_one(/* Ignored_format_arg */__(8, [
+                                ign[0],
+                                ign[1]
+                              ]), fmt$1, fmtty);
+              case /* Ignored_format_subst */9 :
+                  var match$36 = type_ignored_format_substitution(ign[1], fmt$1, fmtty);
+                  var match$37 = match$36[1];
+                  return /* Fmt_fmtty_EBB */[
+                          /* Ignored_param */__(23, [
+                              /* Ignored_format_subst */__(9, [
+                                  ign[0],
+                                  match$36[0]
+                                ]),
+                              match$37[0]
+                            ]),
+                          match$37[1]
+                        ];
+              default:
+                return type_ignored_param_one(ign, fmt$1, fmtty);
+            }
+          }
+      case /* Scan_next_char */22 :
+      case /* Custom */24 :
+          throw Type_mismatch;
+      
+    }
+  }
+
+  function type_ignored_param_one(ign, fmt, fmtty) {
+    var match = type_format_gen(fmt, fmtty);
+    return /* Fmt_fmtty_EBB */[
+            /* Ignored_param */__(23, [
+                ign,
+                match[0]
+              ]),
+            match[1]
+          ];
+  }
+
+  function type_format(fmt, fmtty) {
+    var match = type_format_gen(fmt, fmtty);
+    if (typeof match[1] === "number") {
+      return match[0];
+    }
+    throw Type_mismatch;
+  }
+
+  function recast(fmt, fmtty) {
+    return type_format(fmt, erase_rel(symm(fmtty)));
+  }
+
+  function fix_padding(padty, width, str) {
+    var len = str.length;
+    var width$1 = abs(width);
+    var padty$1 = width < 0 ? /* Left */0 : padty;
+    if (width$1 <= len) {
+      return str;
+    }
+    var res = make(width$1, padty$1 === /* Zeros */2 ? /* "0" */48 : /* " " */32);
+    switch (padty$1) {
+      case /* Left */0 :
+          blit$1(str, 0, res, 0, len);
+          break;
+      case /* Right */1 :
+          blit$1(str, 0, res, width$1 - len | 0, len);
+          break;
+      case /* Zeros */2 :
+          if (len > 0 && (get(str, 0) === /* "+" */43 || get(str, 0) === /* "-" */45 || get(str, 0) === /* " " */32)) {
+            res[0] = get(str, 0);
+            blit$1(str, 1, res, (width$1 - len | 0) + 1 | 0, len - 1 | 0);
+          } else if (len > 1 && get(str, 0) === /* "0" */48 && (get(str, 1) === /* "x" */120 || get(str, 1) === /* "X" */88)) {
+            res[1] = get(str, 1);
+            blit$1(str, 2, res, (width$1 - len | 0) + 2 | 0, len - 2 | 0);
+          } else {
+            blit$1(str, 0, res, width$1 - len | 0, len);
+          }
+          break;
+      
+    }
+    return bytes_to_string(res);
+  }
+
+  function fix_int_precision(prec, str) {
+    var prec$1 = abs(prec);
+    var len = str.length;
+    var c = get(str, 0);
+    var exit = 0;
+    if (c >= 58) {
+      if (c >= 71) {
+        if (c > 102 || c < 97) {
+          return str;
+        }
+        exit = 2;
+      } else {
+        if (c < 65) {
+          return str;
+        }
+        exit = 2;
+      }
+    } else if (c !== 32) {
+      if (c < 43) {
+        return str;
+      }
+      switch (c - 43 | 0) {
+        case 0 :
+        case 2 :
+            exit = 1;
+            break;
+        case 1 :
+        case 3 :
+        case 4 :
+            return str;
+        case 5 :
+            if ((prec$1 + 2 | 0) > len && len > 1 && (get(str, 1) === /* "x" */120 || get(str, 1) === /* "X" */88)) {
+              var res = make(prec$1 + 2 | 0, /* "0" */48);
+              res[1] = get(str, 1);
+              blit$1(str, 2, res, (prec$1 - len | 0) + 4 | 0, len - 2 | 0);
+              return bytes_to_string(res);
+            }
+            exit = 2;
+            break;
+        case 6 :
+        case 7 :
+        case 8 :
+        case 9 :
+        case 10 :
+        case 11 :
+        case 12 :
+        case 13 :
+        case 14 :
+            exit = 2;
+            break;
+        
+      }
+    } else {
+      exit = 1;
+    }
+    switch (exit) {
+      case 1 :
+          if ((prec$1 + 1 | 0) <= len) {
+            return str;
+          }
+          var res$1 = make(prec$1 + 1 | 0, /* "0" */48);
+          res$1[0] = c;
+          blit$1(str, 1, res$1, (prec$1 - len | 0) + 2 | 0, len - 1 | 0);
+          return bytes_to_string(res$1);
+      case 2 :
+          if (prec$1 <= len) {
+            return str;
+          }
+          var res$2 = make(prec$1, /* "0" */48);
+          blit$1(str, 0, res$2, prec$1 - len | 0, len);
+          return bytes_to_string(res$2);
+      
+    }
+  }
+
+  function string_to_caml_string(str) {
+    var str$1 = escaped$2(str);
+    var l = str$1.length;
+    var res = make(l + 2 | 0, /* "\"" */34);
+    caml_blit_string(str$1, 0, res, 1, l);
+    return bytes_to_string(res);
+  }
+
+  function format_of_iconv(param) {
+    switch (param) {
+      case /* Int_d */0 :
+          return "%d";
+      case /* Int_pd */1 :
+          return "%+d";
+      case /* Int_sd */2 :
+          return "% d";
+      case /* Int_i */3 :
+          return "%i";
+      case /* Int_pi */4 :
+          return "%+i";
+      case /* Int_si */5 :
+          return "% i";
+      case /* Int_x */6 :
+          return "%x";
+      case /* Int_Cx */7 :
+          return "%#x";
+      case /* Int_X */8 :
+          return "%X";
+      case /* Int_CX */9 :
+          return "%#X";
+      case /* Int_o */10 :
+          return "%o";
+      case /* Int_Co */11 :
+          return "%#o";
+      case /* Int_u */12 :
+          return "%u";
+      
+    }
+  }
+
+  function format_of_iconvL(param) {
+    switch (param) {
+      case /* Int_d */0 :
+          return "%Ld";
+      case /* Int_pd */1 :
+          return "%+Ld";
+      case /* Int_sd */2 :
+          return "% Ld";
+      case /* Int_i */3 :
+          return "%Li";
+      case /* Int_pi */4 :
+          return "%+Li";
+      case /* Int_si */5 :
+          return "% Li";
+      case /* Int_x */6 :
+          return "%Lx";
+      case /* Int_Cx */7 :
+          return "%#Lx";
+      case /* Int_X */8 :
+          return "%LX";
+      case /* Int_CX */9 :
+          return "%#LX";
+      case /* Int_o */10 :
+          return "%Lo";
+      case /* Int_Co */11 :
+          return "%#Lo";
+      case /* Int_u */12 :
+          return "%Lu";
+      
+    }
+  }
+
+  function format_of_iconvl(param) {
+    switch (param) {
+      case /* Int_d */0 :
+          return "%ld";
+      case /* Int_pd */1 :
+          return "%+ld";
+      case /* Int_sd */2 :
+          return "% ld";
+      case /* Int_i */3 :
+          return "%li";
+      case /* Int_pi */4 :
+          return "%+li";
+      case /* Int_si */5 :
+          return "% li";
+      case /* Int_x */6 :
+          return "%lx";
+      case /* Int_Cx */7 :
+          return "%#lx";
+      case /* Int_X */8 :
+          return "%lX";
+      case /* Int_CX */9 :
+          return "%#lX";
+      case /* Int_o */10 :
+          return "%lo";
+      case /* Int_Co */11 :
+          return "%#lo";
+      case /* Int_u */12 :
+          return "%lu";
+      
+    }
+  }
+
+  function format_of_iconvn(param) {
+    switch (param) {
+      case /* Int_d */0 :
+          return "%nd";
+      case /* Int_pd */1 :
+          return "%+nd";
+      case /* Int_sd */2 :
+          return "% nd";
+      case /* Int_i */3 :
+          return "%ni";
+      case /* Int_pi */4 :
+          return "%+ni";
+      case /* Int_si */5 :
+          return "% ni";
+      case /* Int_x */6 :
+          return "%nx";
+      case /* Int_Cx */7 :
+          return "%#nx";
+      case /* Int_X */8 :
+          return "%nX";
+      case /* Int_CX */9 :
+          return "%#nX";
+      case /* Int_o */10 :
+          return "%no";
+      case /* Int_Co */11 :
+          return "%#no";
+      case /* Int_u */12 :
+          return "%nu";
+      
+    }
+  }
+
+  function format_of_fconv(fconv, prec) {
+    if (fconv === /* Float_F */15) {
+      return "%.12g";
+    }
+    var prec$1 = abs(prec);
+    var symb = char_of_fconv(fconv);
+    var buf = {
+      ind: 0,
+      bytes: caml_create_bytes(16)
+    };
+    buffer_add_char(buf, /* "%" */37);
+    bprint_fconv_flag(buf, fconv);
+    buffer_add_char(buf, /* "." */46);
+    buffer_add_string(buf, String(prec$1));
+    buffer_add_char(buf, symb);
+    return buffer_contents(buf);
+  }
+
+  function convert_int(iconv, n) {
+    return caml_format_int(format_of_iconv(iconv), n);
+  }
+
+  function convert_int32(iconv, n) {
+    return caml_int32_format(format_of_iconvl(iconv), n);
+  }
+
+  function convert_nativeint(iconv, n) {
+    return caml_nativeint_format(format_of_iconvn(iconv), n);
+  }
+
+  function convert_int64(iconv, n) {
+    return caml_int64_format(format_of_iconvL(iconv), n);
+  }
+
+  function convert_float(fconv, prec, x) {
+    if (fconv >= 16) {
+      var sign;
+      if (fconv >= 17) {
+        switch (fconv - 17 | 0) {
+          case /* Float_sf */2 :
+              sign = /* "-" */45;
+              break;
+          case /* Float_f */0 :
+          case /* Float_e */3 :
+              sign = /* "+" */43;
+              break;
+          case /* Float_pf */1 :
+          case /* Float_pe */4 :
+              sign = /* " " */32;
+              break;
+          
+        }
+      } else {
+        sign = /* "-" */45;
+      }
+      var str = caml_hexstring_of_float(x, prec, sign);
+      if (fconv >= 19) {
+        return bytes_to_string(uppercase_ascii$1(bytes_of_string(str)));
+      } else {
+        return str;
+      }
+    }
+    var str$1 = caml_format_float(format_of_fconv(fconv, prec), x);
+    if (fconv !== /* Float_F */15) {
+      return str$1;
+    }
+    var len = str$1.length;
+    var is_valid = function (_i) {
+      while(true) {
+        var i = _i;
+        if (i === len) {
+          return false;
+        }
+        var match = get(str$1, i);
+        var switcher = match - 46 | 0;
+        if (switcher > 23 || switcher < 0) {
+          if (switcher === 55) {
+            return true;
+          }
+          _i = i + 1 | 0;
+          continue ;
+        }
+        if (switcher > 22 || switcher < 1) {
+          return true;
+        }
+        _i = i + 1 | 0;
+        continue ;
+      }  };
+    var match = classify_float(x);
+    if (match !== 3) {
+      if (match >= 4) {
+        return "nan";
+      } else if (is_valid(0)) {
+        return str$1;
+      } else {
+        return str$1 + ".";
+      }
+    } else if (x < 0.0) {
+      return "neg_infinity";
+    } else {
+      return "infinity";
+    }
+  }
+
+  function format_caml_char(c) {
+    var str = escaped(c);
+    var l = str.length;
+    var res = make(l + 2 | 0, /* "'" */39);
+    caml_blit_string(str, 0, res, 1, l);
+    return bytes_to_string(res);
+  }
+
+  function string_of_fmtty(fmtty) {
+    var buf = {
+      ind: 0,
+      bytes: caml_create_bytes(16)
+    };
+    bprint_fmtty(buf, fmtty);
+    return buffer_contents(buf);
+  }
+
+  function make_printf(_k, o, _acc, _fmt) {
+    while(true) {
+      var fmt = _fmt;
+      var acc = _acc;
+      var k = _k;
+      if (typeof fmt === "number") {
+        return _2(k, o, acc);
+      }
+      switch (fmt.tag | 0) {
+        case /* Char */0 :
+            var rest = fmt[0];
+            return (function(k,acc,rest){
+            return function (c) {
+              var new_acc = /* Acc_data_char */__(5, [
+                  acc,
+                  c
+                ]);
+              return make_printf(k, o, new_acc, rest);
+            }
+            }(k,acc,rest));
+        case /* Caml_char */1 :
+            var rest$1 = fmt[0];
+            return (function(k,acc,rest$1){
+            return function (c) {
+              var new_acc_001 = format_caml_char(c);
+              var new_acc = /* Acc_data_string */__(4, [
+                  acc,
+                  new_acc_001
+                ]);
+              return make_printf(k, o, new_acc, rest$1);
+            }
+            }(k,acc,rest$1));
+        case /* String */2 :
+            return make_padding(k, o, acc, fmt[1], fmt[0], (function (str) {
+                          return str;
+                        }));
+        case /* Caml_string */3 :
+            return make_padding(k, o, acc, fmt[1], fmt[0], string_to_caml_string);
+        case /* Int */4 :
+            return make_int_padding_precision(k, o, acc, fmt[3], fmt[1], fmt[2], convert_int, fmt[0]);
+        case /* Int32 */5 :
+            return make_int_padding_precision(k, o, acc, fmt[3], fmt[1], fmt[2], convert_int32, fmt[0]);
+        case /* Nativeint */6 :
+            return make_int_padding_precision(k, o, acc, fmt[3], fmt[1], fmt[2], convert_nativeint, fmt[0]);
+        case /* Int64 */7 :
+            return make_int_padding_precision(k, o, acc, fmt[3], fmt[1], fmt[2], convert_int64, fmt[0]);
+        case /* Float */8 :
+            var fmt$1 = fmt[3];
+            var pad = fmt[1];
+            var prec = fmt[2];
+            var fconv = fmt[0];
+            if (typeof pad === "number") {
+              if (typeof prec === "number") {
+                if (prec !== 0) {
+                  return (function(k,acc,fmt$1,fconv){
+                  return function (p, x) {
+                    var str = convert_float(fconv, p, x);
+                    return make_printf(k, o, /* Acc_data_string */__(4, [
+                                  acc,
+                                  str
+                                ]), fmt$1);
+                  }
+                  }(k,acc,fmt$1,fconv));
+                } else {
+                  return (function(k,acc,fmt$1,fconv){
+                  return function (x) {
+                    var str = convert_float(fconv, -6, x);
+                    return make_printf(k, o, /* Acc_data_string */__(4, [
+                                  acc,
+                                  str
+                                ]), fmt$1);
+                  }
+                  }(k,acc,fmt$1,fconv));
+                }
+              }
+              var p = prec[0];
+              return (function(k,acc,fmt$1,fconv,p){
+              return function (x) {
+                var str = convert_float(fconv, p, x);
+                return make_printf(k, o, /* Acc_data_string */__(4, [
+                              acc,
+                              str
+                            ]), fmt$1);
+              }
+              }(k,acc,fmt$1,fconv,p));
+            }
+            if (pad.tag) {
+              var padty = pad[0];
+              if (typeof prec === "number") {
+                if (prec !== 0) {
+                  return (function(k,acc,fmt$1,fconv,padty){
+                  return function (w, p, x) {
+                    var str = fix_padding(padty, w, convert_float(fconv, p, x));
+                    return make_printf(k, o, /* Acc_data_string */__(4, [
+                                  acc,
+                                  str
+                                ]), fmt$1);
+                  }
+                  }(k,acc,fmt$1,fconv,padty));
+                } else {
+                  return (function(k,acc,fmt$1,fconv,padty){
+                  return function (w, x) {
+                    var str = convert_float(fconv, -6, x);
+                    var str$prime = fix_padding(padty, w, str);
+                    return make_printf(k, o, /* Acc_data_string */__(4, [
+                                  acc,
+                                  str$prime
+                                ]), fmt$1);
+                  }
+                  }(k,acc,fmt$1,fconv,padty));
+                }
+              }
+              var p$1 = prec[0];
+              return (function(k,acc,fmt$1,fconv,padty,p$1){
+              return function (w, x) {
+                var str = fix_padding(padty, w, convert_float(fconv, p$1, x));
+                return make_printf(k, o, /* Acc_data_string */__(4, [
+                              acc,
+                              str
+                            ]), fmt$1);
+              }
+              }(k,acc,fmt$1,fconv,padty,p$1));
+            }
+            var w = pad[1];
+            var padty$1 = pad[0];
+            if (typeof prec === "number") {
+              if (prec !== 0) {
+                return (function(k,acc,fmt$1,fconv,padty$1,w){
+                return function (p, x) {
+                  var str = fix_padding(padty$1, w, convert_float(fconv, p, x));
+                  return make_printf(k, o, /* Acc_data_string */__(4, [
+                                acc,
+                                str
+                              ]), fmt$1);
+                }
+                }(k,acc,fmt$1,fconv,padty$1,w));
+              } else {
+                return (function(k,acc,fmt$1,fconv,padty$1,w){
+                return function (x) {
+                  var str = convert_float(fconv, -6, x);
+                  var str$prime = fix_padding(padty$1, w, str);
+                  return make_printf(k, o, /* Acc_data_string */__(4, [
+                                acc,
+                                str$prime
+                              ]), fmt$1);
+                }
+                }(k,acc,fmt$1,fconv,padty$1,w));
+              }
+            }
+            var p$2 = prec[0];
+            return (function(k,acc,fmt$1,fconv,padty$1,w,p$2){
+            return function (x) {
+              var str = fix_padding(padty$1, w, convert_float(fconv, p$2, x));
+              return make_printf(k, o, /* Acc_data_string */__(4, [
+                            acc,
+                            str
+                          ]), fmt$1);
+            }
+            }(k,acc,fmt$1,fconv,padty$1,w,p$2));
+        case /* Bool */9 :
+            return make_padding(k, o, acc, fmt[1], fmt[0], string_of_bool);
+        case /* Flush */10 :
+            _fmt = fmt[0];
+            _acc = /* Acc_flush */__(7, [acc]);
+            continue ;
+        case /* String_literal */11 :
+            _fmt = fmt[1];
+            _acc = /* Acc_string_literal */__(2, [
+                acc,
+                fmt[0]
+              ]);
+            continue ;
+        case /* Char_literal */12 :
+            _fmt = fmt[1];
+            _acc = /* Acc_char_literal */__(3, [
+                acc,
+                fmt[0]
+              ]);
+            continue ;
+        case /* Format_arg */13 :
+            var rest$2 = fmt[2];
+            var ty = string_of_fmtty(fmt[1]);
+            return (function(k,acc,rest$2,ty){
+            return function (str) {
+              return make_printf(k, o, /* Acc_data_string */__(4, [
+                            acc,
+                            ty
+                          ]), rest$2);
+            }
+            }(k,acc,rest$2,ty));
+        case /* Format_subst */14 :
+            var rest$3 = fmt[2];
+            var fmtty = fmt[1];
+            return (function(k,acc,fmtty,rest$3){
+            return function (param) {
+              return make_printf(k, o, acc, concat_fmt(recast(param[0], fmtty), rest$3));
+            }
+            }(k,acc,fmtty,rest$3));
+        case /* Alpha */15 :
+            var rest$4 = fmt[0];
+            return (function(k,acc,rest$4){
+            return function (f, x) {
+              return make_printf(k, o, /* Acc_delay */__(6, [
+                            acc,
+                            (function (o) {
+                                return _2(f, o, x);
+                              })
+                          ]), rest$4);
+            }
+            }(k,acc,rest$4));
+        case /* Theta */16 :
+            var rest$5 = fmt[0];
+            return (function(k,acc,rest$5){
+            return function (f) {
+              return make_printf(k, o, /* Acc_delay */__(6, [
+                            acc,
+                            f
+                          ]), rest$5);
+            }
+            }(k,acc,rest$5));
+        case /* Formatting_lit */17 :
+            _fmt = fmt[1];
+            _acc = /* Acc_formatting_lit */__(0, [
+                acc,
+                fmt[0]
+              ]);
+            continue ;
+        case /* Formatting_gen */18 :
+            var match = fmt[0];
+            if (match.tag) {
+              var rest$6 = fmt[1];
+              var k$prime = (function(k,acc,rest$6){
+              return function k$prime(koc, kacc) {
+                return make_printf(k, koc, /* Acc_formatting_gen */__(1, [
+                              acc,
+                              /* Acc_open_box */__(1, [kacc])
+                            ]), rest$6);
+              }
+              }(k,acc,rest$6));
+              _fmt = match[0][0];
+              _acc = /* End_of_acc */0;
+              _k = k$prime;
+              continue ;
+            }
+            var rest$7 = fmt[1];
+            var k$prime$1 = (function(k,acc,rest$7){
+            return function k$prime$1(koc, kacc) {
+              return make_printf(k, koc, /* Acc_formatting_gen */__(1, [
+                            acc,
+                            /* Acc_open_tag */__(0, [kacc])
+                          ]), rest$7);
+            }
+            }(k,acc,rest$7));
+            _fmt = match[0][0];
+            _acc = /* End_of_acc */0;
+            _k = k$prime$1;
+            continue ;
+        case /* Reader */19 :
+            throw [
+                  assert_failure,
+                  /* tuple */[
+                    "camlinternalFormat.ml",
+                    1525,
+                    4
+                  ]
+                ];
+        case /* Scan_char_set */20 :
+            var rest$8 = fmt[2];
+            var new_acc = /* Acc_invalid_arg */__(8, [
+                acc,
+                "Printf: bad conversion %["
+              ]);
+            return (function(k,rest$8,new_acc){
+            return function (param) {
+              return make_printf(k, o, new_acc, rest$8);
+            }
+            }(k,rest$8,new_acc));
+        case /* Scan_get_counter */21 :
+            var rest$9 = fmt[1];
+            return (function(k,acc,rest$9){
+            return function (n) {
+              var new_acc_001 = caml_format_int("%u", n);
+              var new_acc = /* Acc_data_string */__(4, [
+                  acc,
+                  new_acc_001
+                ]);
+              return make_printf(k, o, new_acc, rest$9);
+            }
+            }(k,acc,rest$9));
+        case /* Scan_next_char */22 :
+            var rest$10 = fmt[0];
+            return (function(k,acc,rest$10){
+            return function (c) {
+              var new_acc = /* Acc_data_char */__(5, [
+                  acc,
+                  c
+                ]);
+              return make_printf(k, o, new_acc, rest$10);
+            }
+            }(k,acc,rest$10));
+        case /* Ignored_param */23 :
+            return make_ignored_param(k, o, acc, fmt[0], fmt[1]);
+        case /* Custom */24 :
+            return make_custom(k, o, acc, fmt[2], fmt[0], _1(fmt[1], undefined));
+        
+      }
+    }}
+
+  function make_ignored_param(k, o, acc, ign, fmt) {
+    if (typeof ign !== "number") {
+      if (ign.tag === /* Ignored_format_subst */9) {
+        return make_from_fmtty(k, o, acc, ign[1], fmt);
+      } else {
+        return make_invalid_arg(k, o, acc, fmt);
+      }
+    }
+    if (ign !== /* Ignored_reader */2) {
+      return make_invalid_arg(k, o, acc, fmt);
+    }
+    throw [
+          assert_failure,
+          /* tuple */[
+            "camlinternalFormat.ml",
+            1593,
+            39
+          ]
+        ];
+  }
+
+  function make_from_fmtty(k, o, acc, fmtty, fmt) {
+    if (typeof fmtty === "number") {
+      return make_invalid_arg(k, o, acc, fmt);
+    }
+    switch (fmtty.tag | 0) {
+      case /* Char_ty */0 :
+          var rest = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest, fmt);
+            });
+      case /* String_ty */1 :
+          var rest$1 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$1, fmt);
+            });
+      case /* Int_ty */2 :
+          var rest$2 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$2, fmt);
+            });
+      case /* Int32_ty */3 :
+          var rest$3 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$3, fmt);
+            });
+      case /* Nativeint_ty */4 :
+          var rest$4 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$4, fmt);
+            });
+      case /* Int64_ty */5 :
+          var rest$5 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$5, fmt);
+            });
+      case /* Float_ty */6 :
+          var rest$6 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$6, fmt);
+            });
+      case /* Bool_ty */7 :
+          var rest$7 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$7, fmt);
+            });
+      case /* Format_arg_ty */8 :
+          var rest$8 = fmtty[1];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$8, fmt);
+            });
+      case /* Format_subst_ty */9 :
+          var rest$9 = fmtty[2];
+          var ty = trans(symm(fmtty[0]), fmtty[1]);
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, concat_fmtty(ty, rest$9), fmt);
+            });
+      case /* Alpha_ty */10 :
+          var rest$10 = fmtty[0];
+          return (function (param, param$1) {
+              return make_from_fmtty(k, o, acc, rest$10, fmt);
+            });
+      case /* Theta_ty */11 :
+          var rest$11 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$11, fmt);
+            });
+      case /* Any_ty */12 :
+          var rest$12 = fmtty[0];
+          return (function (param) {
+              return make_from_fmtty(k, o, acc, rest$12, fmt);
+            });
+      case /* Reader_ty */13 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  1616,
+                  31
+                ]
+              ];
+      case /* Ignored_reader_ty */14 :
+          throw [
+                assert_failure,
+                /* tuple */[
+                  "camlinternalFormat.ml",
+                  1617,
+                  31
+                ]
+              ];
+      
+    }
+  }
+
+  function make_invalid_arg(k, o, acc, fmt) {
+    return make_printf(k, o, /* Acc_invalid_arg */__(8, [
+                  acc,
+                  "Printf: bad conversion %_"
+                ]), fmt);
+  }
+
+  function make_padding(k, o, acc, fmt, pad, trans) {
+    if (typeof pad === "number") {
+      return (function (x) {
+          var new_acc_001 = _1(trans, x);
+          var new_acc = /* Acc_data_string */__(4, [
+              acc,
+              new_acc_001
+            ]);
+          return make_printf(k, o, new_acc, fmt);
+        });
+    }
+    if (pad.tag) {
+      var padty = pad[0];
+      return (function (w, x) {
+          var new_acc_001 = fix_padding(padty, w, _1(trans, x));
+          var new_acc = /* Acc_data_string */__(4, [
+              acc,
+              new_acc_001
+            ]);
+          return make_printf(k, o, new_acc, fmt);
+        });
+    }
+    var width = pad[1];
+    var padty$1 = pad[0];
+    return (function (x) {
+        var new_acc_001 = fix_padding(padty$1, width, _1(trans, x));
+        var new_acc = /* Acc_data_string */__(4, [
+            acc,
+            new_acc_001
+          ]);
+        return make_printf(k, o, new_acc, fmt);
+      });
+  }
+
+  function make_int_padding_precision(k, o, acc, fmt, pad, prec, trans, iconv) {
+    if (typeof pad === "number") {
+      if (typeof prec === "number") {
+        if (prec !== 0) {
+          return (function (p, x) {
+              var str = fix_int_precision(p, _2(trans, iconv, x));
+              return make_printf(k, o, /* Acc_data_string */__(4, [
+                            acc,
+                            str
+                          ]), fmt);
+            });
+        } else {
+          return (function (x) {
+              var str = _2(trans, iconv, x);
+              return make_printf(k, o, /* Acc_data_string */__(4, [
+                            acc,
+                            str
+                          ]), fmt);
+            });
+        }
+      }
+      var p = prec[0];
+      return (function (x) {
+          var str = fix_int_precision(p, _2(trans, iconv, x));
+          return make_printf(k, o, /* Acc_data_string */__(4, [
+                        acc,
+                        str
+                      ]), fmt);
+        });
+    }
+    if (pad.tag) {
+      var padty = pad[0];
+      if (typeof prec === "number") {
+        if (prec !== 0) {
+          return (function (w, p, x) {
+              var str = fix_padding(padty, w, fix_int_precision(p, _2(trans, iconv, x)));
+              return make_printf(k, o, /* Acc_data_string */__(4, [
+                            acc,
+                            str
+                          ]), fmt);
+            });
+        } else {
+          return (function (w, x) {
+              var str = fix_padding(padty, w, _2(trans, iconv, x));
+              return make_printf(k, o, /* Acc_data_string */__(4, [
+                            acc,
+                            str
+                          ]), fmt);
+            });
+        }
+      }
+      var p$1 = prec[0];
+      return (function (w, x) {
+          var str = fix_padding(padty, w, fix_int_precision(p$1, _2(trans, iconv, x)));
+          return make_printf(k, o, /* Acc_data_string */__(4, [
+                        acc,
+                        str
+                      ]), fmt);
+        });
+    }
+    var w = pad[1];
+    var padty$1 = pad[0];
+    if (typeof prec === "number") {
+      if (prec !== 0) {
+        return (function (p, x) {
+            var str = fix_padding(padty$1, w, fix_int_precision(p, _2(trans, iconv, x)));
+            return make_printf(k, o, /* Acc_data_string */__(4, [
+                          acc,
+                          str
+                        ]), fmt);
+          });
+      } else {
+        return (function (x) {
+            var str = fix_padding(padty$1, w, _2(trans, iconv, x));
+            return make_printf(k, o, /* Acc_data_string */__(4, [
+                          acc,
+                          str
+                        ]), fmt);
+          });
+      }
+    }
+    var p$2 = prec[0];
+    return (function (x) {
+        var str = fix_padding(padty$1, w, fix_int_precision(p$2, _2(trans, iconv, x)));
+        return make_printf(k, o, /* Acc_data_string */__(4, [
+                      acc,
+                      str
+                    ]), fmt);
+      });
+  }
+
+  function make_custom(k, o, acc, rest, arity, f) {
+    if (!arity) {
+      return make_printf(k, o, /* Acc_data_string */__(4, [
+                    acc,
+                    f
+                  ]), rest);
+    }
+    var arity$1 = arity[0];
+    return (function (x) {
+        return make_custom(k, o, acc, rest, arity$1, _1(f, x));
+      });
+  }
+
+  function strput_acc(b, _acc) {
+    while(true) {
+      var acc = _acc;
+      var exit = 0;
+      if (typeof acc === "number") {
+        return ;
+      }
+      switch (acc.tag | 0) {
+        case /* Acc_formatting_lit */0 :
+            var s = string_of_formatting_lit(acc[1]);
+            strput_acc(b, acc[0]);
+            return add_string(b, s);
+        case /* Acc_formatting_gen */1 :
+            var acc$prime = acc[1];
+            var p = acc[0];
+            if (acc$prime.tag) {
+              strput_acc(b, p);
+              add_string(b, "@[");
+              _acc = acc$prime[0];
+              continue ;
+            }
+            strput_acc(b, p);
+            add_string(b, "@{");
+            _acc = acc$prime[0];
+            continue ;
+        case /* Acc_string_literal */2 :
+        case /* Acc_data_string */4 :
+            exit = 1;
+            break;
+        case /* Acc_char_literal */3 :
+        case /* Acc_data_char */5 :
+            exit = 2;
+            break;
+        case /* Acc_delay */6 :
+            strput_acc(b, acc[0]);
+            return add_string(b, _1(acc[1], undefined));
+        case /* Acc_flush */7 :
+            _acc = acc[0];
+            continue ;
+        case /* Acc_invalid_arg */8 :
+            strput_acc(b, acc[0]);
+            throw [
+                  invalid_argument,
+                  acc[1]
+                ];
+        
+      }
+      switch (exit) {
+        case 1 :
+            strput_acc(b, acc[0]);
+            return add_string(b, acc[1]);
+        case 2 :
+            strput_acc(b, acc[0]);
+            return add_char(b, acc[1]);
+        
+      }
+    }}
+  /* No side effect */
+
+  function ksprintf(k, param) {
+    var k$prime = function (param, acc) {
+      var buf = create$1(64);
+      strput_acc(buf, acc);
+      return _1(k, contents(buf));
+    };
+    return make_printf(k$prime, undefined, /* End_of_acc */0, param[0]);
+  }
+
+  function sprintf(fmt) {
+    return ksprintf((function (s) {
+                  return s;
+                }), fmt);
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function chars_of_string(s) {
+    var len = s.length;
+    var build = function (_acc, _index) {
+      while(true) {
+        var index = _index;
+        var acc = _acc;
+        if (index === len) {
+          return acc;
+        }
+        _index = index + 1 | 0;
+        _acc = /* :: */[
+          get(s, index),
+          acc
+        ];
+        continue ;
+      }  };
+    return rev(build(/* [] */0, 0));
+  }
+
+  function location_compare(left, right) {
+    if (left.line === right.line) {
+      return caml_int_compare(right.column, left.column);
+    } else {
+      return caml_int_compare(right.line, left.line);
+    }
+  }
+
+  function string_of_location(param) {
+    return _2(sprintf(/* Format */[
+                    /* String_literal */__(11, [
+                        "Ln ",
+                        /* Int */__(4, [
+                            /* Int_d */0,
+                            /* No_padding */0,
+                            /* No_precision */0,
+                            /* String_literal */__(11, [
+                                ", Col ",
+                                /* Int */__(4, [
+                                    /* Int_d */0,
+                                    /* No_padding */0,
+                                    /* No_precision */0,
+                                    /* End_of_format */0
+                                  ])
+                              ])
+                          ])
+                      ]),
+                    "Ln %d, Col %d"
+                  ]), param.line, param.column);
+  }
+
+  function parse_error_compare(left, right) {
+    return location_compare(left.location, right.location);
+  }
+
+  function string_of_parse_error(param) {
+    return _3(sprintf(/* Format */[
+                    /* String_literal */__(11, [
+                        "At ",
+                        /* String */__(2, [
+                            /* No_padding */0,
+                            /* String_literal */__(11, [
+                                "; Expecting ",
+                                /* String */__(2, [
+                                    /* No_padding */0,
+                                    /* String_literal */__(11, [
+                                        " but actual ",
+                                        /* String */__(2, [
+                                            /* No_padding */0,
+                                            /* End_of_format */0
+                                          ])
+                                      ])
+                                  ])
+                              ])
+                          ])
+                      ]),
+                    "At %s; Expecting %s but actual %s"
+                  ]), string_of_location(param.location), param.expecting, param.actual);
+  }
+
+  function bind(original_parser, new_parser, input) {
+    var success = _1(original_parser, input);
+    if (success.tag) {
+      return /* Error */__(1, [success[0]]);
+    }
+    var success$1 = success[0];
+    return _2(new_parser, success$1.result, {
+                location: success$1.location,
+                input_chars: success$1.remaining_chars
+              });
+  }
+
+  function bind_with(original_parser, next_parser, failure_return, input) {
+    var success = _1(original_parser, input);
+    if (success.tag) {
+      return /* Ok */__(0, [{
+                  result: failure_return,
+                  location: input.location,
+                  remaining_chars: input.input_chars
+                }]);
+    }
+    var success$1 = success[0];
+    return _2(next_parser, success$1.result, {
+                location: success$1.location,
+                input_chars: success$1.remaining_chars
+              });
+  }
+
+  function succeed_with(result, input) {
+    return /* Ok */__(0, [{
+                result: result,
+                location: input.location,
+                remaining_chars: input.input_chars
+              }]);
+  }
+
+  function concatenate_error_messages(new_message, parser, input) {
+    var err_list = _1(parser, input);
+    if (!err_list.tag) {
+      return err_list;
+    }
+    var err_list$1 = err_list[0];
+    if (!err_list$1) {
+      return /* Error */__(1, [/* :: */[
+                  {
+                    expecting: _1(new_message, ""),
+                    actual: "No input",
+                    location: input.location
+                  },
+                  /* [] */0
+                ]]);
+    }
+    var messages = concat$1(" OR ", map((function (err) {
+                return err.expecting;
+              }), err_list$1));
+    return /* Error */__(1, [/* :: */[
+                {
+                  expecting: _1(new_message, messages),
+                  actual: err_list$1[0].actual,
+                  location: input.location
+                },
+                /* [] */0
+              ]]);
+  }
+
+  function change_last_failure_message(expecting, parser, input) {
+    var err_list = _1(parser, input);
+    if (!err_list.tag) {
+      return err_list;
+    }
+    var err_list$1 = err_list[0];
+    if (err_list$1) {
+      return /* Error */__(1, [/* :: */[
+                  {
+                    expecting: expecting,
+                    actual: err_list$1[0].actual,
+                    location: input.location
+                  },
+                  err_list$1[1]
+                ]]);
+    } else {
+      return /* Error */__(1, [/* :: */[
+                  {
+                    expecting: expecting,
+                    actual: "",
+                    location: input.location
+                  },
+                  /* [] */0
+                ]]);
+    }
+  }
+
+  function map$2(fn, parser) {
+    return (function (param) {
+        return bind(parser, (function (result) {
+                      var partial_arg = _1(fn, result);
+                      return (function (param) {
+                          return succeed_with(partial_arg, param);
+                        });
+                    }), param);
+      });
+  }
+
+  function try_first_then_second(first_parser, second_parser, tokens) {
+    var ret = _1(first_parser, tokens);
+    if (!ret.tag) {
+      return ret;
+    }
+    var ret$1 = _1(second_parser, tokens);
+    if (ret$1.tag) {
+      return /* Error */__(1, [concat(/* :: */[
+                      ret[0],
+                      /* :: */[
+                        ret$1[0],
+                        /* [] */0
+                      ]
+                    ])]);
+    } else {
+      return ret$1;
+    }
+  }
+
+  function attempt_in_order(parsers) {
+    if (!parsers) {
+      return (function (param) {
+          return /* Error */__(1, [/* [] */0]);
+        });
+    }
+    var head_parser = parsers[0];
+    var partial_arg = attempt_in_order(parsers[1]);
+    return (function (param) {
+        return try_first_then_second(head_parser, partial_arg, param);
+      });
+  }
+
+  function right(left_parser, right_parser) {
+    return (function (param) {
+        return bind(left_parser, (function (param) {
+                      return right_parser;
+                    }), param);
+      });
+  }
+
+  function left(left_parser, right_parser) {
+    return (function (param) {
+        return bind(left_parser, (function (left) {
+                      return (function (param) {
+                          return bind(right_parser, (function (_right) {
+                                        return (function (param) {
+                                            return succeed_with(left, param);
+                                          });
+                                      }), param);
+                        });
+                    }), param);
+      });
+  }
+
+  function cons(head_parser, tail_parser) {
+    return (function (param) {
+        return bind(head_parser, (function (head) {
+                      return (function (param) {
+                          return bind(tail_parser, (function (tail) {
+                                        var partial_arg = /* :: */[
+                                          head,
+                                          tail
+                                        ];
+                                        return (function (param) {
+                                            return succeed_with(partial_arg, param);
+                                          });
+                                      }), param);
+                        });
+                    }), param);
+      });
+  }
+
+  function skip_zero_to_many(skip_parser) {
+    var parser = function (param) {
+      return bind(skip_parser, (function (param) {
+                    return skip_zero_to_many(skip_parser);
+                  }), param);
+    };
+    return (function (param) {
+        return try_first_then_second(parser, (function (param) {
+                      return succeed_with(undefined, param);
+                    }), param);
+      });
+  }
+
+  function zero_to_many(item_parser) {
+    var parser = function (param) {
+      return bind(item_parser, (function (item) {
+                    var partial_arg = zero_to_many(item_parser);
+                    return (function (param) {
+                        return bind(partial_arg, (function (remaining) {
+                                      var partial_arg = /* :: */[
+                                        item,
+                                        remaining
+                                      ];
+                                      return (function (param) {
+                                          return succeed_with(partial_arg, param);
+                                        });
+                                    }), param);
+                      });
+                  }), param);
+    };
+    return (function (param) {
+        return try_first_then_second(parser, (function (param) {
+                      return succeed_with(/* [] */0, param);
+                    }), param);
+      });
+  }
+
+  function prefix_parser(prefix_parser$1, item_parser) {
+    var aux = function (lst) {
+      var partial_arg = rev(lst);
+      return (function (param) {
+          return bind_with(prefix_parser$1, (function (param) {
+                        return (function (param) {
+                            return bind(item_parser, (function (item) {
+                                          return aux(/* :: */[
+                                                      item,
+                                                      lst
+                                                    ]);
+                                        }), param);
+                          });
+                      }), partial_arg, param);
+        });
+    };
+    return aux(/* [] */0);
+  }
+
+  function one_to_many_delimited(item_parser, delimiter_parser) {
+    return cons(item_parser, prefix_parser(delimiter_parser, item_parser));
+  }
+
+  function update_location(param, ch) {
+    var line = param.line;
+    if (ch !== 10 && ch !== 13) {
+      return {
+              column: param.column + 1 | 0,
+              line: line
+            };
+    } else {
+      return {
+              column: 1,
+              line: line + 1 | 0
+            };
+    }
+  }
+
+  function succeed_if(predicate, expecting, input) {
+    var match = input.input_chars;
+    if (!match) {
+      return /* Error */__(1, [/* :: */[
+                  {
+                    expecting: expecting,
+                    actual: "Ran out of characters",
+                    location: input.location
+                  },
+                  /* [] */0
+                ]]);
+    }
+    var head_char = match[0];
+    if (_1(predicate, head_char)) {
+      return /* Ok */__(0, [{
+                  result: head_char,
+                  location: update_location(input.location, head_char),
+                  remaining_chars: match[1]
+                }]);
+    } else {
+      return /* Error */__(1, [/* :: */[
+                  {
+                    expecting: expecting,
+                    actual: _1(sprintf(/* Format */[
+                              /* Char_literal */__(12, [
+                                  /* "'" */39,
+                                  /* Char */__(0, [/* Char_literal */__(12, [
+                                          /* "'" */39,
+                                          /* End_of_format */0
+                                        ])])
+                                ]),
+                              "'%c'"
+                            ]), head_char),
+                    location: input.location
+                  },
+                  /* [] */0
+                ]]);
+    }
+  }
+
+  function equals(this_value) {
+    var partial_arg = _1(sprintf(/* Format */[
+              /* Char */__(0, [/* End_of_format */0]),
+              "%c"
+            ]), this_value);
+    return (function (param) {
+        return succeed_if((function (param) {
+                      return this_value === param;
+                    }), partial_arg, param);
+      });
+  }
+
+  function one_of(valid_options) {
+    var partial_arg = _1(sprintf(/* Format */[
+              /* String_literal */__(11, [
+                  "One of: ",
+                  /* String */__(2, [
+                      /* No_padding */0,
+                      /* End_of_format */0
+                    ])
+                ]),
+              "One of: %s"
+            ]), concat$1(", ", map((function (param) {
+                    return make$1(1, param);
+                  }), valid_options)));
+    return (function (param) {
+        return succeed_if((function (token) {
+                      return mem(token, valid_options);
+                    }), partial_arg, param);
+      });
+  }
+
+  function in_range(start_inclusive, end_inclusive) {
+    var partial_arg = _2(sprintf(/* Format */[
+              /* String_literal */__(11, [
+                  "A character between ",
+                  /* Char */__(0, [/* String_literal */__(11, [
+                          " and ",
+                          /* Char */__(0, [/* End_of_format */0])
+                        ])])
+                ]),
+              "A character between %c and %c"
+            ]), start_inclusive, end_inclusive);
+    return (function (param) {
+        return succeed_if((function (token) {
+                      if (token >= start_inclusive) {
+                        return token <= end_inclusive;
+                      } else {
+                        return false;
+                      }
+                    }), partial_arg, param);
+      });
+  }
+
+  var space = one_of(/* :: */[
+        /* " " */32,
+        /* :: */[
+          /* "\t" */9,
+          /* :: */[
+            /* "\r" */13,
+            /* :: */[
+              /* "\n" */10,
+              /* [] */0
+            ]
+          ]
+        ]
+      ]);
+
+  var newline = equals(/* "\n" */10);
+
+  var tab = equals(/* "\t" */9);
+
+  var upper = in_range(/* "A" */65, /* "Z" */90);
+
+  var lower = in_range(/* "a" */97, /* "z" */122);
+
+  var digit = in_range(/* "0" */48, /* "9" */57);
+
+  var partial_arg = sprintf(/* Format */[
+        /* String */__(2, [
+            /* No_padding */0,
+            /* End_of_format */0
+          ]),
+        "%s"
+      ]);
+
+  function letter(param) {
+    return concatenate_error_messages(partial_arg, (function (param) {
+                  return try_first_then_second(lower, upper, param);
+                }), param);
+  }
+
+  var hex_digit = attempt_in_order(/* :: */[
+        in_range(/* "a" */97, /* "f" */102),
+        /* :: */[
+          in_range(/* "A" */65, /* "F" */70),
+          /* :: */[
+            digit,
+            /* [] */0
+          ]
+        ]
+      ]);
+
+  var skip_whitespace = skip_zero_to_many(space);
+
+  var oct_digit = in_range(/* "0" */48, /* "7" */55);
+
+  function token(str) {
+    var len = str.length;
+    var match_character_index = function (index) {
+      if (index >= len) {
+        return (function (param) {
+            return succeed_with(str, param);
+          });
+      }
+      var right_parser = match_character_index(index + 1 | 0);
+      var left_parser = equals(get(str, index));
+      return (function (param) {
+          return bind(left_parser, (function (param) {
+                        return right_parser;
+                      }), param);
+        });
+    };
+    if (len <= 0) {
+      return failwith("token must be a non-empty string");
+    }
+    var right_parser = match_character_index(0);
+    var partial_arg = function (param) {
+      return bind(skip_whitespace, (function (param) {
+                    return right_parser;
+                  }), param);
+    };
+    return (function (param) {
+        return change_last_failure_message(str, partial_arg, param);
+      });
+  }
+
+  function parse(parser, s) {
+    return _1(parser, {
+                location: {
+                  column: 1,
+                  line: 1
+                },
+                input_chars: chars_of_string(trim$1(s))
+              });
+  }
+
+  function parse_require_all(parser, s) {
+    var errors = parse(parser, s);
+    if (errors.tag) {
+      return /* Error */__(1, [errors[0]]);
+    }
+    var match = errors[0];
+    var remaining_chars = match.remaining_chars;
+    var $$location = match.location;
+    if (remaining_chars) {
+      return /* Error */__(1, [/* :: */[
+                  {
+                    expecting: "End of input",
+                    actual: _1(sprintf(/* Format */[
+                              /* String_literal */__(11, [
+                                  "Characters remaining: ",
+                                  /* String */__(2, [
+                                      /* No_padding */0,
+                                      /* End_of_format */0
+                                    ])
+                                ]),
+                              "Characters remaining: %s"
+                            ]), concat$1("", map((function (param) {
+                                    return make$1(1, param);
+                                  }), remaining_chars))),
+                    location: $$location
+                  },
+                  /* [] */0
+                ]]);
+    } else {
+      return /* Ok */__(0, [{
+                  result: match.result,
+                  location: $$location,
+                  remaining_chars: remaining_chars
+                }]);
+    }
+  }
+
+  var $great$great$eq = bind;
+
+  var $less$pipe$great = try_first_then_second;
+
+  var $great$great = right;
+
+  var $less$less = left;
+  /* space Not a pure module */
+
+  function Make(funarg) {
+    var height = function (param) {
+      if (param) {
+        return param[/* h */4];
+      } else {
+        return 0;
+      }
+    };
+    var create = function (l, x, d, r) {
+      var hl = height(l);
+      var hr = height(r);
+      return /* Node */[
+              /* l */l,
+              /* v */x,
+              /* d */d,
+              /* r */r,
+              /* h */hl >= hr ? hl + 1 | 0 : hr + 1 | 0
+            ];
+    };
+    var singleton = function (x, d) {
+      return /* Node */[
+              /* l : Empty */0,
+              /* v */x,
+              /* d */d,
+              /* r : Empty */0,
+              /* h */1
+            ];
+    };
+    var bal = function (l, x, d, r) {
+      var hl = l ? l[/* h */4] : 0;
+      var hr = r ? r[/* h */4] : 0;
+      if (hl > (hr + 2 | 0)) {
+        if (l) {
+          var lr = l[/* r */3];
+          var ld = l[/* d */2];
+          var lv = l[/* v */1];
+          var ll = l[/* l */0];
+          if (height(ll) >= height(lr)) {
+            return create(ll, lv, ld, create(lr, x, d, r));
+          }
+          if (lr) {
+            return create(create(ll, lv, ld, lr[/* l */0]), lr[/* v */1], lr[/* d */2], create(lr[/* r */3], x, d, r));
+          }
+          throw [
+                invalid_argument,
+                "Map.bal"
+              ];
+        }
+        throw [
+              invalid_argument,
+              "Map.bal"
+            ];
+      }
+      if (hr <= (hl + 2 | 0)) {
+        return /* Node */[
+                /* l */l,
+                /* v */x,
+                /* d */d,
+                /* r */r,
+                /* h */hl >= hr ? hl + 1 | 0 : hr + 1 | 0
+              ];
+      }
+      if (r) {
+        var rr = r[/* r */3];
+        var rd = r[/* d */2];
+        var rv = r[/* v */1];
+        var rl = r[/* l */0];
+        if (height(rr) >= height(rl)) {
+          return create(create(l, x, d, rl), rv, rd, rr);
+        }
+        if (rl) {
+          return create(create(l, x, d, rl[/* l */0]), rl[/* v */1], rl[/* d */2], create(rl[/* r */3], rv, rd, rr));
+        }
+        throw [
+              invalid_argument,
+              "Map.bal"
+            ];
+      }
+      throw [
+            invalid_argument,
+            "Map.bal"
+          ];
+    };
+    var is_empty = function (param) {
+      if (param) {
+        return false;
+      } else {
+        return true;
+      }
+    };
+    var add = function (x, data, m) {
+      if (!m) {
+        return /* Node */[
+                /* l : Empty */0,
+                /* v */x,
+                /* d */data,
+                /* r : Empty */0,
+                /* h */1
+              ];
+      }
+      var r = m[/* r */3];
+      var d = m[/* d */2];
+      var v = m[/* v */1];
+      var l = m[/* l */0];
+      var c = _2(funarg.compare, x, v);
+      if (c === 0) {
+        if (d === data) {
+          return m;
+        } else {
+          return /* Node */[
+                  /* l */l,
+                  /* v */x,
+                  /* d */data,
+                  /* r */r,
+                  /* h */m[/* h */4]
+                ];
+        }
+      }
+      if (c < 0) {
+        var ll = add(x, data, l);
+        if (l === ll) {
+          return m;
+        } else {
+          return bal(ll, v, d, r);
+        }
+      }
+      var rr = add(x, data, r);
+      if (r === rr) {
+        return m;
+      } else {
+        return bal(l, v, d, rr);
+      }
+    };
+    var find = function (x, _param) {
+      while(true) {
+        var param = _param;
+        if (param) {
+          var c = _2(funarg.compare, x, param[/* v */1]);
+          if (c === 0) {
+            return param[/* d */2];
+          }
+          _param = c < 0 ? param[/* l */0] : param[/* r */3];
+          continue ;
+        }
+        throw not_found;
+      }  };
+    var find_first = function (f, _param) {
+      while(true) {
+        var param = _param;
+        if (param) {
+          var v = param[/* v */1];
+          if (_1(f, v)) {
+            var _v0 = v;
+            var _d0 = param[/* d */2];
+            var _param$1 = param[/* l */0];
+            while(true) {
+              var param$1 = _param$1;
+              var d0 = _d0;
+              var v0 = _v0;
+              if (!param$1) {
+                return /* tuple */[
+                        v0,
+                        d0
+                      ];
+              }
+              var v$1 = param$1[/* v */1];
+              if (_1(f, v$1)) {
+                _param$1 = param$1[/* l */0];
+                _d0 = param$1[/* d */2];
+                _v0 = v$1;
+                continue ;
+              }
+              _param$1 = param$1[/* r */3];
+              continue ;
+            }        }
+          _param = param[/* r */3];
+          continue ;
+        }
+        throw not_found;
+      }  };
+    var find_first_opt = function (f, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return ;
+        }
+        var v = param[/* v */1];
+        if (_1(f, v)) {
+          var _v0 = v;
+          var _d0 = param[/* d */2];
+          var _param$1 = param[/* l */0];
+          while(true) {
+            var param$1 = _param$1;
+            var d0 = _d0;
+            var v0 = _v0;
+            if (!param$1) {
+              return /* tuple */[
+                      v0,
+                      d0
+                    ];
+            }
+            var v$1 = param$1[/* v */1];
+            if (_1(f, v$1)) {
+              _param$1 = param$1[/* l */0];
+              _d0 = param$1[/* d */2];
+              _v0 = v$1;
+              continue ;
+            }
+            _param$1 = param$1[/* r */3];
+            continue ;
+          }      }
+        _param = param[/* r */3];
+        continue ;
+      }  };
+    var find_last = function (f, _param) {
+      while(true) {
+        var param = _param;
+        if (param) {
+          var v = param[/* v */1];
+          if (_1(f, v)) {
+            var _v0 = v;
+            var _d0 = param[/* d */2];
+            var _param$1 = param[/* r */3];
+            while(true) {
+              var param$1 = _param$1;
+              var d0 = _d0;
+              var v0 = _v0;
+              if (!param$1) {
+                return /* tuple */[
+                        v0,
+                        d0
+                      ];
+              }
+              var v$1 = param$1[/* v */1];
+              if (_1(f, v$1)) {
+                _param$1 = param$1[/* r */3];
+                _d0 = param$1[/* d */2];
+                _v0 = v$1;
+                continue ;
+              }
+              _param$1 = param$1[/* l */0];
+              continue ;
+            }        }
+          _param = param[/* l */0];
+          continue ;
+        }
+        throw not_found;
+      }  };
+    var find_last_opt = function (f, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return ;
+        }
+        var v = param[/* v */1];
+        if (_1(f, v)) {
+          var _v0 = v;
+          var _d0 = param[/* d */2];
+          var _param$1 = param[/* r */3];
+          while(true) {
+            var param$1 = _param$1;
+            var d0 = _d0;
+            var v0 = _v0;
+            if (!param$1) {
+              return /* tuple */[
+                      v0,
+                      d0
+                    ];
+            }
+            var v$1 = param$1[/* v */1];
+            if (_1(f, v$1)) {
+              _param$1 = param$1[/* r */3];
+              _d0 = param$1[/* d */2];
+              _v0 = v$1;
+              continue ;
+            }
+            _param$1 = param$1[/* l */0];
+            continue ;
+          }      }
+        _param = param[/* l */0];
+        continue ;
+      }  };
+    var find_opt = function (x, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return ;
+        }
+        var c = _2(funarg.compare, x, param[/* v */1]);
+        if (c === 0) {
+          return some(param[/* d */2]);
+        }
+        _param = c < 0 ? param[/* l */0] : param[/* r */3];
+        continue ;
+      }  };
+    var mem = function (x, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return false;
+        }
+        var c = _2(funarg.compare, x, param[/* v */1]);
+        if (c === 0) {
+          return true;
+        }
+        _param = c < 0 ? param[/* l */0] : param[/* r */3];
+        continue ;
+      }  };
+    var min_binding = function (_param) {
+      while(true) {
+        var param = _param;
+        if (param) {
+          var l = param[/* l */0];
+          if (!l) {
+            return /* tuple */[
+                    param[/* v */1],
+                    param[/* d */2]
+                  ];
+          }
+          _param = l;
+          continue ;
+        }
+        throw not_found;
+      }  };
+    var min_binding_opt = function (_param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return ;
+        }
+        var l = param[/* l */0];
+        if (!l) {
+          return /* tuple */[
+                  param[/* v */1],
+                  param[/* d */2]
+                ];
+        }
+        _param = l;
+        continue ;
+      }  };
+    var max_binding = function (_param) {
+      while(true) {
+        var param = _param;
+        if (param) {
+          var r = param[/* r */3];
+          if (!r) {
+            return /* tuple */[
+                    param[/* v */1],
+                    param[/* d */2]
+                  ];
+          }
+          _param = r;
+          continue ;
+        }
+        throw not_found;
+      }  };
+    var max_binding_opt = function (_param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return ;
+        }
+        var r = param[/* r */3];
+        if (!r) {
+          return /* tuple */[
+                  param[/* v */1],
+                  param[/* d */2]
+                ];
+        }
+        _param = r;
+        continue ;
+      }  };
+    var remove_min_binding = function (param) {
+      if (param) {
+        var l = param[/* l */0];
+        if (l) {
+          return bal(remove_min_binding(l), param[/* v */1], param[/* d */2], param[/* r */3]);
+        } else {
+          return param[/* r */3];
+        }
+      }
+      throw [
+            invalid_argument,
+            "Map.remove_min_elt"
+          ];
+    };
+    var merge = function (t1, t2) {
+      if (!t1) {
+        return t2;
+      }
+      if (!t2) {
+        return t1;
+      }
+      var match = min_binding(t2);
+      return bal(t1, match[0], match[1], remove_min_binding(t2));
+    };
+    var remove = function (x, m) {
+      if (!m) {
+        return /* Empty */0;
+      }
+      var r = m[/* r */3];
+      var d = m[/* d */2];
+      var v = m[/* v */1];
+      var l = m[/* l */0];
+      var c = _2(funarg.compare, x, v);
+      if (c === 0) {
+        return merge(l, r);
+      }
+      if (c < 0) {
+        var ll = remove(x, l);
+        if (l === ll) {
+          return m;
+        } else {
+          return bal(ll, v, d, r);
+        }
+      }
+      var rr = remove(x, r);
+      if (r === rr) {
+        return m;
+      } else {
+        return bal(l, v, d, rr);
+      }
+    };
+    var update = function (x, f, m) {
+      if (m) {
+        var r = m[/* r */3];
+        var d = m[/* d */2];
+        var v = m[/* v */1];
+        var l = m[/* l */0];
+        var c = _2(funarg.compare, x, v);
+        if (c === 0) {
+          var data = _1(f, some(d));
+          if (data === undefined) {
+            return merge(l, r);
+          }
+          var data$1 = valFromOption(data);
+          if (d === data$1) {
+            return m;
+          } else {
+            return /* Node */[
+                    /* l */l,
+                    /* v */x,
+                    /* d */data$1,
+                    /* r */r,
+                    /* h */m[/* h */4]
+                  ];
+          }
+        }
+        if (c < 0) {
+          var ll = update(x, f, l);
+          if (l === ll) {
+            return m;
+          } else {
+            return bal(ll, v, d, r);
+          }
+        }
+        var rr = update(x, f, r);
+        if (r === rr) {
+          return m;
+        } else {
+          return bal(l, v, d, rr);
+        }
+      }
+      var data$2 = _1(f, undefined);
+      if (data$2 !== undefined) {
+        return /* Node */[
+                /* l : Empty */0,
+                /* v */x,
+                /* d */valFromOption(data$2),
+                /* r : Empty */0,
+                /* h */1
+              ];
+      } else {
+        return /* Empty */0;
+      }
+    };
+    var iter = function (f, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return ;
+        }
+        iter(f, param[/* l */0]);
+        _2(f, param[/* v */1], param[/* d */2]);
+        _param = param[/* r */3];
+        continue ;
+      }  };
+    var map = function (f, param) {
+      if (!param) {
+        return /* Empty */0;
+      }
+      var l$prime = map(f, param[/* l */0]);
+      var d$prime = _1(f, param[/* d */2]);
+      var r$prime = map(f, param[/* r */3]);
+      return /* Node */[
+              /* l */l$prime,
+              /* v */param[/* v */1],
+              /* d */d$prime,
+              /* r */r$prime,
+              /* h */param[/* h */4]
+            ];
+    };
+    var mapi = function (f, param) {
+      if (!param) {
+        return /* Empty */0;
+      }
+      var v = param[/* v */1];
+      var l$prime = mapi(f, param[/* l */0]);
+      var d$prime = _2(f, v, param[/* d */2]);
+      var r$prime = mapi(f, param[/* r */3]);
+      return /* Node */[
+              /* l */l$prime,
+              /* v */v,
+              /* d */d$prime,
+              /* r */r$prime,
+              /* h */param[/* h */4]
+            ];
+    };
+    var fold = function (f, _m, _accu) {
+      while(true) {
+        var accu = _accu;
+        var m = _m;
+        if (!m) {
+          return accu;
+        }
+        _accu = _3(f, m[/* v */1], m[/* d */2], fold(f, m[/* l */0], accu));
+        _m = m[/* r */3];
+        continue ;
+      }  };
+    var for_all = function (p, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return true;
+        }
+        if (!_2(p, param[/* v */1], param[/* d */2])) {
+          return false;
+        }
+        if (!for_all(p, param[/* l */0])) {
+          return false;
+        }
+        _param = param[/* r */3];
+        continue ;
+      }  };
+    var exists = function (p, _param) {
+      while(true) {
+        var param = _param;
+        if (!param) {
+          return false;
+        }
+        if (_2(p, param[/* v */1], param[/* d */2])) {
+          return true;
+        }
+        if (exists(p, param[/* l */0])) {
+          return true;
+        }
+        _param = param[/* r */3];
+        continue ;
+      }  };
+    var add_min_binding = function (k, x, param) {
+      if (param) {
+        return bal(add_min_binding(k, x, param[/* l */0]), param[/* v */1], param[/* d */2], param[/* r */3]);
+      } else {
+        return singleton(k, x);
+      }
+    };
+    var add_max_binding = function (k, x, param) {
+      if (param) {
+        return bal(param[/* l */0], param[/* v */1], param[/* d */2], add_max_binding(k, x, param[/* r */3]));
+      } else {
+        return singleton(k, x);
+      }
+    };
+    var join = function (l, v, d, r) {
+      if (!l) {
+        return add_min_binding(v, d, r);
+      }
+      if (!r) {
+        return add_max_binding(v, d, l);
+      }
+      var rh = r[/* h */4];
+      var lh = l[/* h */4];
+      if (lh > (rh + 2 | 0)) {
+        return bal(l[/* l */0], l[/* v */1], l[/* d */2], join(l[/* r */3], v, d, r));
+      } else if (rh > (lh + 2 | 0)) {
+        return bal(join(l, v, d, r[/* l */0]), r[/* v */1], r[/* d */2], r[/* r */3]);
+      } else {
+        return create(l, v, d, r);
+      }
+    };
+    var concat = function (t1, t2) {
+      if (!t1) {
+        return t2;
+      }
+      if (!t2) {
+        return t1;
+      }
+      var match = min_binding(t2);
+      return join(t1, match[0], match[1], remove_min_binding(t2));
+    };
+    var concat_or_join = function (t1, v, d, t2) {
+      if (d !== undefined) {
+        return join(t1, v, valFromOption(d), t2);
+      } else {
+        return concat(t1, t2);
+      }
+    };
+    var split = function (x, param) {
+      if (!param) {
+        return /* tuple */[
+                /* Empty */0,
+                undefined,
+                /* Empty */0
+              ];
+      }
+      var r = param[/* r */3];
+      var d = param[/* d */2];
+      var v = param[/* v */1];
+      var l = param[/* l */0];
+      var c = _2(funarg.compare, x, v);
+      if (c === 0) {
+        return /* tuple */[
+                l,
+                some(d),
+                r
+              ];
+      }
+      if (c < 0) {
+        var match = split(x, l);
+        return /* tuple */[
+                match[0],
+                match[1],
+                join(match[2], v, d, r)
+              ];
+      }
+      var match$1 = split(x, r);
+      return /* tuple */[
+              join(l, v, d, match$1[0]),
+              match$1[1],
+              match$1[2]
+            ];
+    };
+    var merge$1 = function (f, s1, s2) {
+      if (s1) {
+        var v1 = s1[/* v */1];
+        if (s1[/* h */4] >= height(s2)) {
+          var match = split(v1, s2);
+          return concat_or_join(merge$1(f, s1[/* l */0], match[0]), v1, _3(f, v1, some(s1[/* d */2]), match[1]), merge$1(f, s1[/* r */3], match[2]));
+        }
+        
+      } else if (!s2) {
+        return /* Empty */0;
+      }
+      if (s2) {
+        var v2 = s2[/* v */1];
+        var match$1 = split(v2, s1);
+        return concat_or_join(merge$1(f, match$1[0], s2[/* l */0]), v2, _3(f, v2, match$1[1], some(s2[/* d */2])), merge$1(f, match$1[2], s2[/* r */3]));
+      }
+      throw [
+            assert_failure,
+            /* tuple */[
+              "map.ml",
+              393,
+              10
+            ]
+          ];
+    };
+    var union = function (f, s1, s2) {
+      if (!s1) {
+        return s2;
+      }
+      if (!s2) {
+        return s1;
+      }
+      var d2 = s2[/* d */2];
+      var v2 = s2[/* v */1];
+      var d1 = s1[/* d */2];
+      var v1 = s1[/* v */1];
+      if (s1[/* h */4] >= s2[/* h */4]) {
+        var match = split(v1, s2);
+        var d2$1 = match[1];
+        var l = union(f, s1[/* l */0], match[0]);
+        var r = union(f, s1[/* r */3], match[2]);
+        if (d2$1 !== undefined) {
+          return concat_or_join(l, v1, _3(f, v1, d1, valFromOption(d2$1)), r);
+        } else {
+          return join(l, v1, d1, r);
+        }
+      }
+      var match$1 = split(v2, s1);
+      var d1$1 = match$1[1];
+      var l$1 = union(f, match$1[0], s2[/* l */0]);
+      var r$1 = union(f, match$1[2], s2[/* r */3]);
+      if (d1$1 !== undefined) {
+        return concat_or_join(l$1, v2, _3(f, v2, valFromOption(d1$1), d2), r$1);
+      } else {
+        return join(l$1, v2, d2, r$1);
+      }
+    };
+    var filter = function (p, m) {
+      if (!m) {
+        return /* Empty */0;
+      }
+      var r = m[/* r */3];
+      var d = m[/* d */2];
+      var v = m[/* v */1];
+      var l = m[/* l */0];
+      var l$prime = filter(p, l);
+      var pvd = _2(p, v, d);
+      var r$prime = filter(p, r);
+      if (pvd) {
+        if (l === l$prime && r === r$prime) {
+          return m;
+        } else {
+          return join(l$prime, v, d, r$prime);
+        }
+      } else {
+        return concat(l$prime, r$prime);
+      }
+    };
+    var partition = function (p, param) {
+      if (!param) {
+        return /* tuple */[
+                /* Empty */0,
+                /* Empty */0
+              ];
+      }
+      var d = param[/* d */2];
+      var v = param[/* v */1];
+      var match = partition(p, param[/* l */0]);
+      var lf = match[1];
+      var lt = match[0];
+      var pvd = _2(p, v, d);
+      var match$1 = partition(p, param[/* r */3]);
+      var rf = match$1[1];
+      var rt = match$1[0];
+      if (pvd) {
+        return /* tuple */[
+                join(lt, v, d, rt),
+                concat(lf, rf)
+              ];
+      } else {
+        return /* tuple */[
+                concat(lt, rt),
+                join(lf, v, d, rf)
+              ];
+      }
+    };
+    var cons_enum = function (_m, _e) {
+      while(true) {
+        var e = _e;
+        var m = _m;
+        if (!m) {
+          return e;
+        }
+        _e = /* More */[
+          m[/* v */1],
+          m[/* d */2],
+          m[/* r */3],
+          e
+        ];
+        _m = m[/* l */0];
+        continue ;
+      }  };
+    var compare = function (cmp, m1, m2) {
+      var _e1 = cons_enum(m1, /* End */0);
+      var _e2 = cons_enum(m2, /* End */0);
+      while(true) {
+        var e2 = _e2;
+        var e1 = _e1;
+        if (!e1) {
+          if (e2) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }
+        if (!e2) {
+          return 1;
+        }
+        var c = _2(funarg.compare, e1[0], e2[0]);
+        if (c !== 0) {
+          return c;
+        }
+        var c$1 = _2(cmp, e1[1], e2[1]);
+        if (c$1 !== 0) {
+          return c$1;
+        }
+        _e2 = cons_enum(e2[2], e2[3]);
+        _e1 = cons_enum(e1[2], e1[3]);
+        continue ;
+      }  };
+    var equal = function (cmp, m1, m2) {
+      var _e1 = cons_enum(m1, /* End */0);
+      var _e2 = cons_enum(m2, /* End */0);
+      while(true) {
+        var e2 = _e2;
+        var e1 = _e1;
+        if (!e1) {
+          if (e2) {
+            return false;
+          } else {
+            return true;
+          }
+        }
+        if (!e2) {
+          return false;
+        }
+        if (_2(funarg.compare, e1[0], e2[0]) !== 0) {
+          return false;
+        }
+        if (!_2(cmp, e1[1], e2[1])) {
+          return false;
+        }
+        _e2 = cons_enum(e2[2], e2[3]);
+        _e1 = cons_enum(e1[2], e1[3]);
+        continue ;
+      }  };
+    var cardinal = function (param) {
+      if (param) {
+        return (cardinal(param[/* l */0]) + 1 | 0) + cardinal(param[/* r */3]) | 0;
+      } else {
+        return 0;
+      }
+    };
+    var bindings_aux = function (_accu, _param) {
+      while(true) {
+        var param = _param;
+        var accu = _accu;
+        if (!param) {
+          return accu;
+        }
+        _param = param[/* l */0];
+        _accu = /* :: */[
+          /* tuple */[
+            param[/* v */1],
+            param[/* d */2]
+          ],
+          bindings_aux(accu, param[/* r */3])
+        ];
+        continue ;
+      }  };
+    var bindings = function (s) {
+      return bindings_aux(/* [] */0, s);
+    };
+    return {
+            empty: /* Empty */0,
+            is_empty: is_empty,
+            mem: mem,
+            add: add,
+            update: update,
+            singleton: singleton,
+            remove: remove,
+            merge: merge$1,
+            union: union,
+            compare: compare,
+            equal: equal,
+            iter: iter,
+            fold: fold,
+            for_all: for_all,
+            exists: exists,
+            filter: filter,
+            partition: partition,
+            cardinal: cardinal,
+            bindings: bindings,
+            min_binding: min_binding,
+            min_binding_opt: min_binding_opt,
+            max_binding: max_binding,
+            max_binding_opt: max_binding_opt,
+            choose: min_binding,
+            choose_opt: min_binding_opt,
+            split: split,
+            find: find,
+            find_opt: find_opt,
+            find_first: find_first,
+            find_first_opt: find_first_opt,
+            find_last: find_last,
+            find_last_opt: find_last_opt,
+            map: map,
+            mapi: mapi
+          };
+  }
+  /* No side effect */
+
+  function map$3(f, a) {
+    var l = a.length;
+    if (l === 0) {
+      return [];
+    }
+    var r = caml_make_vect(l, _1(f, a[0]));
+    for(var i = 1; i < l; ++i){
+      r[i] = _1(f, a[i]);
+    }
+    return r;
+  }
+
+  function to_list(a) {
+    var _i = a.length - 1 | 0;
+    var _res = /* [] */0;
+    while(true) {
+      var res = _res;
+      var i = _i;
+      if (i < 0) {
+        return res;
+      }
+      _res = /* :: */[
+        a[i],
+        res
+      ];
+      _i = i - 1 | 0;
+      continue ;
+    }}
+
+  function fold_right$1(f, a, x) {
+    var r = x;
+    for(var i = a.length - 1 | 0; i >= 0; --i){
+      r = _2(f, a[i], r);
+    }
+    return r;
+  }
+
+  var Bottom = create("Array.Bottom");
+  /* No side effect */
+
+  function get$1(dict, k) {
+    if ((k in dict)) {
+      return some(dict[k]);
+    }
+    
+  }
+  /* No side effect */
+
+  function classify(x) {
+    var ty = typeof x;
+    if (ty === "string") {
+      return /* JSONString */__(0, [x]);
+    } else if (ty === "number") {
+      return /* JSONNumber */__(1, [x]);
+    } else if (ty === "boolean") {
+      if (x === true) {
+        return /* JSONTrue */1;
+      } else {
+        return /* JSONFalse */0;
+      }
+    } else if (x === null) {
+      return /* JSONNull */2;
+    } else if (Array.isArray(x)) {
+      return /* JSONArray */__(3, [x]);
+    } else {
+      return /* JSONObject */__(2, [x]);
+    }
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  var classify$1 = classify;
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function result_to_option(a) {
+    if (a.tag) {
+      return ;
+    } else {
+      return some(a[0]);
+    }
+  }
+
+  function error(e) {
+    if (e.tag) {
+      return some(e[0]);
+    }
+    
+  }
+
+  function first(fst, e) {
+    if (e.tag) {
+      return e;
+    } else {
+      return fst;
+    }
+  }
+
+  function error_of_first(fst, e) {
+    if (e.tag) {
+      return some(e[0]);
+    } else {
+      return error(fst);
+    }
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function height(param) {
+    if (param) {
+      return param[/* h */4];
+    } else {
+      return 0;
+    }
+  }
+
+  function create$2(l, x, d, r) {
+    var hl = height(l);
+    var hr = height(r);
+    return /* Node */[
+            /* l */l,
+            /* v */x,
+            /* d */d,
+            /* r */r,
+            /* h */hl >= hr ? hl + 1 | 0 : hr + 1 | 0
+          ];
+  }
+
+  function singleton(x, d) {
+    return /* Node */[
+            /* l : Empty */0,
+            /* v */x,
+            /* d */d,
+            /* r : Empty */0,
+            /* h */1
+          ];
+  }
+
+  function bal(l, x, d, r) {
+    var hl = l ? l[/* h */4] : 0;
+    var hr = r ? r[/* h */4] : 0;
+    if (hl > (hr + 2 | 0)) {
+      if (l) {
+        var lr = l[/* r */3];
+        var ld = l[/* d */2];
+        var lv = l[/* v */1];
+        var ll = l[/* l */0];
+        if (height(ll) >= height(lr)) {
+          return create$2(ll, lv, ld, create$2(lr, x, d, r));
+        }
+        if (lr) {
+          return create$2(create$2(ll, lv, ld, lr[/* l */0]), lr[/* v */1], lr[/* d */2], create$2(lr[/* r */3], x, d, r));
+        }
+        throw [
+              invalid_argument,
+              "Map.bal"
+            ];
+      }
+      throw [
+            invalid_argument,
+            "Map.bal"
+          ];
+    }
+    if (hr <= (hl + 2 | 0)) {
+      return /* Node */[
+              /* l */l,
+              /* v */x,
+              /* d */d,
+              /* r */r,
+              /* h */hl >= hr ? hl + 1 | 0 : hr + 1 | 0
+            ];
+    }
+    if (r) {
+      var rr = r[/* r */3];
+      var rd = r[/* d */2];
+      var rv = r[/* v */1];
+      var rl = r[/* l */0];
+      if (height(rr) >= height(rl)) {
+        return create$2(create$2(l, x, d, rl), rv, rd, rr);
+      }
+      if (rl) {
+        return create$2(create$2(l, x, d, rl[/* l */0]), rl[/* v */1], rl[/* d */2], create$2(rl[/* r */3], rv, rd, rr));
+      }
+      throw [
+            invalid_argument,
+            "Map.bal"
+          ];
+    }
+    throw [
+          invalid_argument,
+          "Map.bal"
+        ];
+  }
+
+  function is_empty(param) {
+    if (param) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function add$1(x, data, m) {
+    if (!m) {
+      return /* Node */[
+              /* l : Empty */0,
+              /* v */x,
+              /* d */data,
+              /* r : Empty */0,
+              /* h */1
+            ];
+    }
+    var r = m[/* r */3];
+    var d = m[/* d */2];
+    var v = m[/* v */1];
+    var l = m[/* l */0];
+    var c = caml_string_compare(x, v);
+    if (c === 0) {
+      if (d === data) {
+        return m;
+      } else {
+        return /* Node */[
+                /* l */l,
+                /* v */x,
+                /* d */data,
+                /* r */r,
+                /* h */m[/* h */4]
+              ];
+      }
+    }
+    if (c < 0) {
+      var ll = add$1(x, data, l);
+      if (l === ll) {
+        return m;
+      } else {
+        return bal(ll, v, d, r);
+      }
+    }
+    var rr = add$1(x, data, r);
+    if (r === rr) {
+      return m;
+    } else {
+      return bal(l, v, d, rr);
+    }
+  }
+
+  function find(x, _param) {
+    while(true) {
+      var param = _param;
+      if (param) {
+        var c = caml_string_compare(x, param[/* v */1]);
+        if (c === 0) {
+          return param[/* d */2];
+        }
+        _param = c < 0 ? param[/* l */0] : param[/* r */3];
+        continue ;
+      }
+      throw not_found;
+    }}
+
+  function find_first(f, _param) {
+    while(true) {
+      var param = _param;
+      if (param) {
+        var v = param[/* v */1];
+        if (_1(f, v)) {
+          var _v0 = v;
+          var _d0 = param[/* d */2];
+          var _param$1 = param[/* l */0];
+          while(true) {
+            var param$1 = _param$1;
+            var d0 = _d0;
+            var v0 = _v0;
+            if (!param$1) {
+              return /* tuple */[
+                      v0,
+                      d0
+                    ];
+            }
+            var v$1 = param$1[/* v */1];
+            if (_1(f, v$1)) {
+              _param$1 = param$1[/* l */0];
+              _d0 = param$1[/* d */2];
+              _v0 = v$1;
+              continue ;
+            }
+            _param$1 = param$1[/* r */3];
+            continue ;
+          }      }
+        _param = param[/* r */3];
+        continue ;
+      }
+      throw not_found;
+    }}
+
+  function find_first_opt(f, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      var v = param[/* v */1];
+      if (_1(f, v)) {
+        var _v0 = v;
+        var _d0 = param[/* d */2];
+        var _param$1 = param[/* l */0];
+        while(true) {
+          var param$1 = _param$1;
+          var d0 = _d0;
+          var v0 = _v0;
+          if (!param$1) {
+            return /* tuple */[
+                    v0,
+                    d0
+                  ];
+          }
+          var v$1 = param$1[/* v */1];
+          if (_1(f, v$1)) {
+            _param$1 = param$1[/* l */0];
+            _d0 = param$1[/* d */2];
+            _v0 = v$1;
+            continue ;
+          }
+          _param$1 = param$1[/* r */3];
+          continue ;
+        }    }
+      _param = param[/* r */3];
+      continue ;
+    }}
+
+  function find_last(f, _param) {
+    while(true) {
+      var param = _param;
+      if (param) {
+        var v = param[/* v */1];
+        if (_1(f, v)) {
+          var _v0 = v;
+          var _d0 = param[/* d */2];
+          var _param$1 = param[/* r */3];
+          while(true) {
+            var param$1 = _param$1;
+            var d0 = _d0;
+            var v0 = _v0;
+            if (!param$1) {
+              return /* tuple */[
+                      v0,
+                      d0
+                    ];
+            }
+            var v$1 = param$1[/* v */1];
+            if (_1(f, v$1)) {
+              _param$1 = param$1[/* r */3];
+              _d0 = param$1[/* d */2];
+              _v0 = v$1;
+              continue ;
+            }
+            _param$1 = param$1[/* l */0];
+            continue ;
+          }      }
+        _param = param[/* l */0];
+        continue ;
+      }
+      throw not_found;
+    }}
+
+  function find_last_opt(f, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      var v = param[/* v */1];
+      if (_1(f, v)) {
+        var _v0 = v;
+        var _d0 = param[/* d */2];
+        var _param$1 = param[/* r */3];
+        while(true) {
+          var param$1 = _param$1;
+          var d0 = _d0;
+          var v0 = _v0;
+          if (!param$1) {
+            return /* tuple */[
+                    v0,
+                    d0
+                  ];
+          }
+          var v$1 = param$1[/* v */1];
+          if (_1(f, v$1)) {
+            _param$1 = param$1[/* r */3];
+            _d0 = param$1[/* d */2];
+            _v0 = v$1;
+            continue ;
+          }
+          _param$1 = param$1[/* l */0];
+          continue ;
+        }    }
+      _param = param[/* l */0];
+      continue ;
+    }}
+
+  function find_opt(x, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      var c = caml_string_compare(x, param[/* v */1]);
+      if (c === 0) {
+        return some(param[/* d */2]);
+      }
+      _param = c < 0 ? param[/* l */0] : param[/* r */3];
+      continue ;
+    }}
+
+  function mem$1(x, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return false;
+      }
+      var c = caml_string_compare(x, param[/* v */1]);
+      if (c === 0) {
+        return true;
+      }
+      _param = c < 0 ? param[/* l */0] : param[/* r */3];
+      continue ;
+    }}
+
+  function min_binding(_param) {
+    while(true) {
+      var param = _param;
+      if (param) {
+        var l = param[/* l */0];
+        if (!l) {
+          return /* tuple */[
+                  param[/* v */1],
+                  param[/* d */2]
+                ];
+        }
+        _param = l;
+        continue ;
+      }
+      throw not_found;
+    }}
+
+  function min_binding_opt(_param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      var l = param[/* l */0];
+      if (!l) {
+        return /* tuple */[
+                param[/* v */1],
+                param[/* d */2]
+              ];
+      }
+      _param = l;
+      continue ;
+    }}
+
+  function max_binding(_param) {
+    while(true) {
+      var param = _param;
+      if (param) {
+        var r = param[/* r */3];
+        if (!r) {
+          return /* tuple */[
+                  param[/* v */1],
+                  param[/* d */2]
+                ];
+        }
+        _param = r;
+        continue ;
+      }
+      throw not_found;
+    }}
+
+  function max_binding_opt(_param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      var r = param[/* r */3];
+      if (!r) {
+        return /* tuple */[
+                param[/* v */1],
+                param[/* d */2]
+              ];
+      }
+      _param = r;
+      continue ;
+    }}
+
+  function remove_min_binding(param) {
+    if (param) {
+      var l = param[/* l */0];
+      if (l) {
+        return bal(remove_min_binding(l), param[/* v */1], param[/* d */2], param[/* r */3]);
+      } else {
+        return param[/* r */3];
+      }
+    }
+    throw [
+          invalid_argument,
+          "Map.remove_min_elt"
+        ];
+  }
+
+  function merge(t1, t2) {
+    if (!t1) {
+      return t2;
+    }
+    if (!t2) {
+      return t1;
+    }
+    var match = min_binding(t2);
+    return bal(t1, match[0], match[1], remove_min_binding(t2));
+  }
+
+  function remove(x, m) {
+    if (!m) {
+      return /* Empty */0;
+    }
+    var r = m[/* r */3];
+    var d = m[/* d */2];
+    var v = m[/* v */1];
+    var l = m[/* l */0];
+    var c = caml_string_compare(x, v);
+    if (c === 0) {
+      return merge(l, r);
+    }
+    if (c < 0) {
+      var ll = remove(x, l);
+      if (l === ll) {
+        return m;
+      } else {
+        return bal(ll, v, d, r);
+      }
+    }
+    var rr = remove(x, r);
+    if (r === rr) {
+      return m;
+    } else {
+      return bal(l, v, d, rr);
+    }
+  }
+
+  function update(x, f, m) {
+    if (m) {
+      var r = m[/* r */3];
+      var d = m[/* d */2];
+      var v = m[/* v */1];
+      var l = m[/* l */0];
+      var c = caml_string_compare(x, v);
+      if (c === 0) {
+        var data = _1(f, some(d));
+        if (data === undefined) {
+          return merge(l, r);
+        }
+        var data$1 = valFromOption(data);
+        if (d === data$1) {
+          return m;
+        } else {
+          return /* Node */[
+                  /* l */l,
+                  /* v */x,
+                  /* d */data$1,
+                  /* r */r,
+                  /* h */m[/* h */4]
+                ];
+        }
+      }
+      if (c < 0) {
+        var ll = update(x, f, l);
+        if (l === ll) {
+          return m;
+        } else {
+          return bal(ll, v, d, r);
+        }
+      }
+      var rr = update(x, f, r);
+      if (r === rr) {
+        return m;
+      } else {
+        return bal(l, v, d, rr);
+      }
+    }
+    var data$2 = _1(f, undefined);
+    if (data$2 !== undefined) {
+      return /* Node */[
+              /* l : Empty */0,
+              /* v */x,
+              /* d */valFromOption(data$2),
+              /* r : Empty */0,
+              /* h */1
+            ];
+    } else {
+      return /* Empty */0;
+    }
+  }
+
+  function iter$1(f, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return ;
+      }
+      iter$1(f, param[/* l */0]);
+      _2(f, param[/* v */1], param[/* d */2]);
+      _param = param[/* r */3];
+      continue ;
+    }}
+
+  function map$4(f, param) {
+    if (!param) {
+      return /* Empty */0;
+    }
+    var l$prime = map$4(f, param[/* l */0]);
+    var d$prime = _1(f, param[/* d */2]);
+    var r$prime = map$4(f, param[/* r */3]);
+    return /* Node */[
+            /* l */l$prime,
+            /* v */param[/* v */1],
+            /* d */d$prime,
+            /* r */r$prime,
+            /* h */param[/* h */4]
+          ];
+  }
+
+  function mapi(f, param) {
+    if (!param) {
+      return /* Empty */0;
+    }
+    var v = param[/* v */1];
+    var l$prime = mapi(f, param[/* l */0]);
+    var d$prime = _2(f, v, param[/* d */2]);
+    var r$prime = mapi(f, param[/* r */3]);
+    return /* Node */[
+            /* l */l$prime,
+            /* v */v,
+            /* d */d$prime,
+            /* r */r$prime,
+            /* h */param[/* h */4]
+          ];
+  }
+
+  function fold(f, _m, _accu) {
+    while(true) {
+      var accu = _accu;
+      var m = _m;
+      if (!m) {
+        return accu;
+      }
+      _accu = _3(f, m[/* v */1], m[/* d */2], fold(f, m[/* l */0], accu));
+      _m = m[/* r */3];
+      continue ;
+    }}
+
+  function for_all(p, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return true;
+      }
+      if (!_2(p, param[/* v */1], param[/* d */2])) {
+        return false;
+      }
+      if (!for_all(p, param[/* l */0])) {
+        return false;
+      }
+      _param = param[/* r */3];
+      continue ;
+    }}
+
+  function exists$1(p, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return false;
+      }
+      if (_2(p, param[/* v */1], param[/* d */2])) {
+        return true;
+      }
+      if (exists$1(p, param[/* l */0])) {
+        return true;
+      }
+      _param = param[/* r */3];
+      continue ;
+    }}
+
+  function add_min_binding(k, x, param) {
+    if (param) {
+      return bal(add_min_binding(k, x, param[/* l */0]), param[/* v */1], param[/* d */2], param[/* r */3]);
+    } else {
+      return singleton(k, x);
+    }
+  }
+
+  function add_max_binding(k, x, param) {
+    if (param) {
+      return bal(param[/* l */0], param[/* v */1], param[/* d */2], add_max_binding(k, x, param[/* r */3]));
+    } else {
+      return singleton(k, x);
+    }
+  }
+
+  function join(l, v, d, r) {
+    if (!l) {
+      return add_min_binding(v, d, r);
+    }
+    if (!r) {
+      return add_max_binding(v, d, l);
+    }
+    var rh = r[/* h */4];
+    var lh = l[/* h */4];
+    if (lh > (rh + 2 | 0)) {
+      return bal(l[/* l */0], l[/* v */1], l[/* d */2], join(l[/* r */3], v, d, r));
+    } else if (rh > (lh + 2 | 0)) {
+      return bal(join(l, v, d, r[/* l */0]), r[/* v */1], r[/* d */2], r[/* r */3]);
+    } else {
+      return create$2(l, v, d, r);
+    }
+  }
+
+  function concat$2(t1, t2) {
+    if (!t1) {
+      return t2;
+    }
+    if (!t2) {
+      return t1;
+    }
+    var match = min_binding(t2);
+    return join(t1, match[0], match[1], remove_min_binding(t2));
+  }
+
+  function concat_or_join(t1, v, d, t2) {
+    if (d !== undefined) {
+      return join(t1, v, valFromOption(d), t2);
+    } else {
+      return concat$2(t1, t2);
+    }
+  }
+
+  function split(x, param) {
+    if (!param) {
+      return /* tuple */[
+              /* Empty */0,
+              undefined,
+              /* Empty */0
+            ];
+    }
+    var r = param[/* r */3];
+    var d = param[/* d */2];
+    var v = param[/* v */1];
+    var l = param[/* l */0];
+    var c = caml_string_compare(x, v);
+    if (c === 0) {
+      return /* tuple */[
+              l,
+              some(d),
+              r
+            ];
+    }
+    if (c < 0) {
+      var match = split(x, l);
+      return /* tuple */[
+              match[0],
+              match[1],
+              join(match[2], v, d, r)
+            ];
+    }
+    var match$1 = split(x, r);
+    return /* tuple */[
+            join(l, v, d, match$1[0]),
+            match$1[1],
+            match$1[2]
+          ];
+  }
+
+  function merge$1(f, s1, s2) {
+    if (s1) {
+      var v1 = s1[/* v */1];
+      if (s1[/* h */4] >= height(s2)) {
+        var match = split(v1, s2);
+        return concat_or_join(merge$1(f, s1[/* l */0], match[0]), v1, _3(f, v1, some(s1[/* d */2]), match[1]), merge$1(f, s1[/* r */3], match[2]));
+      }
+      
+    } else if (!s2) {
+      return /* Empty */0;
+    }
+    if (s2) {
+      var v2 = s2[/* v */1];
+      var match$1 = split(v2, s1);
+      return concat_or_join(merge$1(f, match$1[0], s2[/* l */0]), v2, _3(f, v2, match$1[1], some(s2[/* d */2])), merge$1(f, match$1[2], s2[/* r */3]));
+    }
+    throw [
+          assert_failure,
+          /* tuple */[
+            "map.ml",
+            393,
+            10
+          ]
+        ];
+  }
+
+  function union(f, s1, s2) {
+    if (!s1) {
+      return s2;
+    }
+    if (!s2) {
+      return s1;
+    }
+    var d2 = s2[/* d */2];
+    var v2 = s2[/* v */1];
+    var d1 = s1[/* d */2];
+    var v1 = s1[/* v */1];
+    if (s1[/* h */4] >= s2[/* h */4]) {
+      var match = split(v1, s2);
+      var d2$1 = match[1];
+      var l = union(f, s1[/* l */0], match[0]);
+      var r = union(f, s1[/* r */3], match[2]);
+      if (d2$1 !== undefined) {
+        return concat_or_join(l, v1, _3(f, v1, d1, valFromOption(d2$1)), r);
+      } else {
+        return join(l, v1, d1, r);
+      }
+    }
+    var match$1 = split(v2, s1);
+    var d1$1 = match$1[1];
+    var l$1 = union(f, match$1[0], s2[/* l */0]);
+    var r$1 = union(f, match$1[2], s2[/* r */3]);
+    if (d1$1 !== undefined) {
+      return concat_or_join(l$1, v2, _3(f, v2, valFromOption(d1$1), d2), r$1);
+    } else {
+      return join(l$1, v2, d2, r$1);
+    }
+  }
+
+  function filter$1(p, m) {
+    if (!m) {
+      return /* Empty */0;
+    }
+    var r = m[/* r */3];
+    var d = m[/* d */2];
+    var v = m[/* v */1];
+    var l = m[/* l */0];
+    var l$prime = filter$1(p, l);
+    var pvd = _2(p, v, d);
+    var r$prime = filter$1(p, r);
+    if (pvd) {
+      if (l === l$prime && r === r$prime) {
+        return m;
+      } else {
+        return join(l$prime, v, d, r$prime);
+      }
+    } else {
+      return concat$2(l$prime, r$prime);
+    }
+  }
+
+  function partition$1(p, param) {
+    if (!param) {
+      return /* tuple */[
+              /* Empty */0,
+              /* Empty */0
+            ];
+    }
+    var d = param[/* d */2];
+    var v = param[/* v */1];
+    var match = partition$1(p, param[/* l */0]);
+    var lf = match[1];
+    var lt = match[0];
+    var pvd = _2(p, v, d);
+    var match$1 = partition$1(p, param[/* r */3]);
+    var rf = match$1[1];
+    var rt = match$1[0];
+    if (pvd) {
+      return /* tuple */[
+              join(lt, v, d, rt),
+              concat$2(lf, rf)
+            ];
+    } else {
+      return /* tuple */[
+              concat$2(lt, rt),
+              join(lf, v, d, rf)
+            ];
+    }
+  }
+
+  function cons_enum(_m, _e) {
+    while(true) {
+      var e = _e;
+      var m = _m;
+      if (!m) {
+        return e;
+      }
+      _e = /* More */[
+        m[/* v */1],
+        m[/* d */2],
+        m[/* r */3],
+        e
+      ];
+      _m = m[/* l */0];
+      continue ;
+    }}
+
+  function compare$1(cmp, m1, m2) {
+    var _e1 = cons_enum(m1, /* End */0);
+    var _e2 = cons_enum(m2, /* End */0);
+    while(true) {
+      var e2 = _e2;
+      var e1 = _e1;
+      if (!e1) {
+        if (e2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+      if (!e2) {
+        return 1;
+      }
+      var c = caml_string_compare(e1[0], e2[0]);
+      if (c !== 0) {
+        return c;
+      }
+      var c$1 = _2(cmp, e1[1], e2[1]);
+      if (c$1 !== 0) {
+        return c$1;
+      }
+      _e2 = cons_enum(e2[2], e2[3]);
+      _e1 = cons_enum(e1[2], e1[3]);
+      continue ;
+    }}
+
+  function equal(cmp, m1, m2) {
+    var _e1 = cons_enum(m1, /* End */0);
+    var _e2 = cons_enum(m2, /* End */0);
+    while(true) {
+      var e2 = _e2;
+      var e1 = _e1;
+      if (!e1) {
+        if (e2) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+      if (!e2) {
+        return false;
+      }
+      if (caml_string_compare(e1[0], e2[0]) !== 0) {
+        return false;
+      }
+      if (!_2(cmp, e1[1], e2[1])) {
+        return false;
+      }
+      _e2 = cons_enum(e2[2], e2[3]);
+      _e1 = cons_enum(e1[2], e1[3]);
+      continue ;
+    }}
+
+  function cardinal(param) {
+    if (param) {
+      return (cardinal(param[/* l */0]) + 1 | 0) + cardinal(param[/* r */3]) | 0;
+    } else {
+      return 0;
+    }
+  }
+
+  function bindings_aux(_accu, _param) {
+    while(true) {
+      var param = _param;
+      var accu = _accu;
+      if (!param) {
+        return accu;
+      }
+      _param = param[/* l */0];
+      _accu = /* :: */[
+        /* tuple */[
+          param[/* v */1],
+          param[/* d */2]
+        ],
+        bindings_aux(accu, param[/* r */3])
+      ];
+      continue ;
+    }}
+
+  function bindings(s) {
+    return bindings_aux(/* [] */0, s);
+  }
+
+  var ObjectDict = {
+    empty: /* Empty */0,
+    is_empty: is_empty,
+    mem: mem$1,
+    add: add$1,
+    update: update,
+    singleton: singleton,
+    remove: remove,
+    merge: merge$1,
+    union: union,
+    compare: compare$1,
+    equal: equal,
+    iter: iter$1,
+    fold: fold,
+    for_all: for_all,
+    exists: exists$1,
+    filter: filter$1,
+    partition: partition$1,
+    cardinal: cardinal,
+    bindings: bindings,
+    min_binding: min_binding,
+    min_binding_opt: min_binding_opt,
+    max_binding: max_binding,
+    max_binding_opt: max_binding_opt,
+    choose: min_binding,
+    choose_opt: min_binding_opt,
+    split: split,
+    find: find,
+    find_opt: find_opt,
+    find_first: find_first,
+    find_first_opt: find_first_opt,
+    find_last: find_last,
+    find_last_opt: find_last_opt,
+    map: map$4,
+    mapi: mapi
+  };
+
+  var ParseFail = create("Tea_json.Decoder.ParseFail");
+
+  var string = /* Decoder */[(function (value) {
+        var s = classify$1(value);
+        if (typeof s === "number" || s.tag) {
+          return /* Error */__(1, ["Non-string value"]);
+        } else {
+          return /* Ok */__(0, [s[0]]);
+        }
+      })];
+
+  var $$int = /* Decoder */[(function (value) {
+        var n = classify$1(value);
+        if (typeof n === "number") {
+          return /* Error */__(1, ["Non-int value"]);
+        }
+        if (n.tag !== /* JSONNumber */1) {
+          return /* Error */__(1, ["Non-int value"]);
+        }
+        var n$1 = n[0];
+        if (n$1 > min_int$1 && n$1 < max_int$1) {
+          return /* Ok */__(0, [n$1 | 0]);
+        } else {
+          return /* Error */__(1, ["number out of int range"]);
+        }
+      })];
+
+  var $$float = /* Decoder */[(function (value) {
+        var n = classify$1(value);
+        if (typeof n === "number" || n.tag !== /* JSONNumber */1) {
+          return /* Error */__(1, ["Non-float-value"]);
+        } else {
+          return /* Ok */__(0, [n[0]]);
+        }
+      })];
+
+  var bool = /* Decoder */[(function (value) {
+        var match = classify$1(value);
+        if (typeof match !== "number") {
+          return /* Error */__(1, ["Non-boolean value"]);
+        }
+        switch (match) {
+          case /* JSONFalse */0 :
+              return /* Ok */__(0, [false]);
+          case /* JSONTrue */1 :
+              return /* Ok */__(0, [true]);
+          case /* JSONNull */2 :
+              return /* Error */__(1, ["Non-boolean value"]);
+          
+        }
+      })];
+
+  function $$null(v) {
+    return /* Decoder */[(function (value) {
+                var match = classify$1(value);
+                if (typeof match === "number" && match >= 2) {
+                  return /* Ok */__(0, [v]);
+                } else {
+                  return /* Error */__(1, ["Non-null value"]);
+                }
+              })];
+  }
+
+  function list(decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var a = classify$1(value);
+                if (typeof a === "number") {
+                  return /* Error */__(1, ["Non-list value"]);
+                }
+                if (a.tag !== /* JSONArray */3) {
+                  return /* Error */__(1, ["Non-list value"]);
+                }
+                var parse = function (v) {
+                  var r = _1(decoder$1, v);
+                  if (!r.tag) {
+                    return r[0];
+                  }
+                  throw [
+                        ParseFail,
+                        r[0]
+                      ];
+                };
+                try {
+                  return /* Ok */__(0, [map(parse, to_list(a[0]))]);
+                }
+                catch (raw_e){
+                  var e = internalToOCamlException(raw_e);
+                  if (e[0] === ParseFail) {
+                    return /* Error */__(1, ["list -> " + e[1]]);
+                  }
+                  throw e;
+                }
+              })];
+  }
+
+  function array(decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var a = classify$1(value);
+                if (typeof a === "number") {
+                  return /* Error */__(1, ["Non-array value"]);
+                }
+                if (a.tag !== /* JSONArray */3) {
+                  return /* Error */__(1, ["Non-array value"]);
+                }
+                var parse = function (v) {
+                  var r = _1(decoder$1, v);
+                  if (!r.tag) {
+                    return r[0];
+                  }
+                  throw [
+                        ParseFail,
+                        r[0]
+                      ];
+                };
+                try {
+                  return /* Ok */__(0, [map$3(parse, a[0])]);
+                }
+                catch (raw_e){
+                  var e = internalToOCamlException(raw_e);
+                  if (e[0] === ParseFail) {
+                    return /* Error */__(1, ["array -> " + e[1]]);
+                  }
+                  throw e;
+                }
+              })];
+  }
+
+  function keyValuePairs(decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var o = classify$1(value);
+                if (typeof o === "number") {
+                  return /* Error */__(1, ["Non-keyValuePair value"]);
+                }
+                if (o.tag !== /* JSONObject */2) {
+                  return /* Error */__(1, ["Non-keyValuePair value"]);
+                }
+                var o$1 = o[0];
+                var keys = Object.keys(o$1);
+                var parse = function (k, l) {
+                  var v = get$1(o$1, k);
+                  if (v !== undefined) {
+                    var r = _1(decoder$1, valFromOption(v));
+                    if (!r.tag) {
+                      return /* :: */[
+                              /* tuple */[
+                                k,
+                                r[0]
+                              ],
+                              l
+                            ];
+                    }
+                    throw [
+                          ParseFail,
+                          r[0]
+                        ];
+                  }
+                  throw [
+                        ParseFail,
+                        "Key is undefined: " + k
+                      ];
+                };
+                try {
+                  return /* Ok */__(0, [fold_right$1(parse, keys, /* [] */0)]);
+                }
+                catch (raw_e){
+                  var e = internalToOCamlException(raw_e);
+                  if (e[0] === ParseFail) {
+                    return /* Error */__(1, ["Invalid keyValuePair parsing: " + e[1]]);
+                  }
+                  throw e;
+                }
+              })];
+  }
+
+  function dict(decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var o = classify$1(value);
+                if (typeof o === "number") {
+                  return /* Error */__(1, ["Non-dict value"]);
+                }
+                if (o.tag !== /* JSONObject */2) {
+                  return /* Error */__(1, ["Non-dict value"]);
+                }
+                var o$1 = o[0];
+                var keys = Object.keys(o$1);
+                var parse = function (k, d) {
+                  var v = get$1(o$1, k);
+                  if (v !== undefined) {
+                    var r = _1(decoder$1, valFromOption(v));
+                    if (!r.tag) {
+                      return add$1(k, r[0], d);
+                    }
+                    throw [
+                          ParseFail,
+                          r[0]
+                        ];
+                  }
+                  throw [
+                        ParseFail,
+                        "Key is undefined: " + k
+                      ];
+                };
+                try {
+                  return /* Ok */__(0, [fold_right$1(parse, keys, /* Empty */0)]);
+                }
+                catch (raw_e){
+                  var e = internalToOCamlException(raw_e);
+                  if (e[0] === ParseFail) {
+                    return /* Error */__(1, ["Invalid dict parsing: " + e[1]]);
+                  }
+                  throw e;
+                }
+              })];
+  }
+
+  function field(key, decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var o = classify$1(value);
+                if (typeof o === "number") {
+                  return /* Error */__(1, ["Non-fieldable value"]);
+                }
+                if (o.tag !== /* JSONObject */2) {
+                  return /* Error */__(1, ["Non-fieldable value"]);
+                }
+                var v = get$1(o[0], key);
+                if (v === undefined) {
+                  return /* Error */__(1, ["Field Value is undefined: " + key]);
+                }
+                var o$1 = _1(decoder$1, valFromOption(v));
+                if (o$1.tag) {
+                  return /* Error */__(1, ["field `" + (key + ("` -> " + o$1[0]))]);
+                } else {
+                  return o$1;
+                }
+              })];
+  }
+
+  function at(fields, dec) {
+    return fold_right(field, fields, dec);
+  }
+
+  function index(idx, decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var a = classify$1(value);
+                if (typeof a === "number") {
+                  return /* Error */__(1, ["Non-array value"]);
+                }
+                if (a.tag !== /* JSONArray */3) {
+                  return /* Error */__(1, ["Non-array value"]);
+                }
+                var a$1 = a[0];
+                if (idx < 0 || idx > a$1.length) {
+                  return /* Error */__(1, ["Array index out of range: " + String(idx)]);
+                } else {
+                  return _1(decoder$1, caml_array_get(a$1, idx));
+                }
+              })];
+  }
+
+  function maybe(decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var r = _1(decoder$1, value);
+                if (r.tag) {
+                  return /* Ok */__(0, [undefined]);
+                } else {
+                  return /* Ok */__(0, [some(r[0])]);
+                }
+              })];
+  }
+
+  function oneOf(decoders) {
+    return /* Decoder */[(function (value) {
+                var parse = function (v, _param) {
+                  while(true) {
+                    var param = _param;
+                    if (!param) {
+                      return /* Error */__(1, ["No one-of's matched"]);
+                    }
+                    var rest = param[1];
+                    try {
+                      var ok = _1(param[0][0], v);
+                      if (ok.tag) {
+                        return parse(v, rest);
+                      } else {
+                        return ok;
+                      }
+                    }
+                    catch (exn){
+                      _param = rest;
+                      continue ;
+                    }
+                  }              };
+                return parse(value, decoders);
+              })];
+  }
+
+  function map$1$1(mapper, decoder1) {
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var v1 = _1(decoder1$1, value);
+                if (v1.tag) {
+                  return /* Error */__(1, ["map " + v1[0]]);
+                } else {
+                  return /* Ok */__(0, [_1(mapper, v1[0])]);
+                }
+              })];
+  }
+
+  function map2(mapper, decoder1, decoder2) {
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                if (!match.tag && !match$1.tag) {
+                  return /* Ok */__(0, [_2(mapper, match[0], match$1[0])]);
+                }
+                var e = error_of_first(match, match$1);
+                if (e !== undefined) {
+                  return /* Error */__(1, ["map2 -> " + e]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function map3(mapper, decoder1, decoder2, decoder3) {
+    var decoder3$1 = decoder3[0];
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                var match$2 = _1(decoder3$1, value);
+                if (!match.tag && !match$1.tag && !match$2.tag) {
+                  return /* Ok */__(0, [_3(mapper, match[0], match$1[0], match$2[0])]);
+                }
+                var e = first(match$2, first(match$1, match));
+                if (e.tag) {
+                  return /* Error */__(1, ["map3 -> " + e[0]]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function map4(mapper, decoder1, decoder2, decoder3, decoder4) {
+    var decoder4$1 = decoder4[0];
+    var decoder3$1 = decoder3[0];
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                var match$2 = _1(decoder3$1, value);
+                var match$3 = _1(decoder4$1, value);
+                if (!match.tag && !match$1.tag && !match$2.tag && !match$3.tag) {
+                  return /* Ok */__(0, [_4(mapper, match[0], match$1[0], match$2[0], match$3[0])]);
+                }
+                var e = first(match$3, first(match$2, first(match$1, match)));
+                if (e.tag) {
+                  return /* Error */__(1, ["map4 -> " + e[0]]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function map5(mapper, decoder1, decoder2, decoder3, decoder4, decoder5) {
+    var decoder5$1 = decoder5[0];
+    var decoder4$1 = decoder4[0];
+    var decoder3$1 = decoder3[0];
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                var match$2 = _1(decoder3$1, value);
+                var match$3 = _1(decoder4$1, value);
+                var match$4 = _1(decoder5$1, value);
+                if (!match.tag && !match$1.tag && !match$2.tag && !match$3.tag && !match$4.tag) {
+                  return /* Ok */__(0, [_5(mapper, match[0], match$1[0], match$2[0], match$3[0], match$4[0])]);
+                }
+                var e = first(match$4, first(match$3, first(match$2, first(match$1, match))));
+                if (e.tag) {
+                  return /* Error */__(1, ["map5 -> " + e[0]]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function map6(mapper, decoder1, decoder2, decoder3, decoder4, decoder5, decoder6) {
+    var decoder6$1 = decoder6[0];
+    var decoder5$1 = decoder5[0];
+    var decoder4$1 = decoder4[0];
+    var decoder3$1 = decoder3[0];
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                var match$2 = _1(decoder3$1, value);
+                var match$3 = _1(decoder4$1, value);
+                var match$4 = _1(decoder5$1, value);
+                var match$5 = _1(decoder6$1, value);
+                if (!match.tag && !match$1.tag && !match$2.tag && !match$3.tag && !match$4.tag && !match$5.tag) {
+                  return /* Ok */__(0, [_6(mapper, match[0], match$1[0], match$2[0], match$3[0], match$4[0], match$5[0])]);
+                }
+                var e = first(match$5, first(match$4, first(match$3, first(match$2, first(match$1, match)))));
+                if (e.tag) {
+                  return /* Error */__(1, ["map6 -> " + e[0]]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function map7(mapper, decoder1, decoder2, decoder3, decoder4, decoder5, decoder6, decoder7) {
+    var decoder7$1 = decoder7[0];
+    var decoder6$1 = decoder6[0];
+    var decoder5$1 = decoder5[0];
+    var decoder4$1 = decoder4[0];
+    var decoder3$1 = decoder3[0];
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                var match$2 = _1(decoder3$1, value);
+                var match$3 = _1(decoder4$1, value);
+                var match$4 = _1(decoder5$1, value);
+                var match$5 = _1(decoder6$1, value);
+                var match$6 = _1(decoder7$1, value);
+                if (!match.tag && !match$1.tag && !match$2.tag && !match$3.tag && !match$4.tag && !match$5.tag && !match$6.tag) {
+                  return /* Ok */__(0, [_7(mapper, match[0], match$1[0], match$2[0], match$3[0], match$4[0], match$5[0], match$6[0])]);
+                }
+                var e = first(match$6, first(match$5, first(match$4, first(match$3, first(match$2, first(match$1, match))))));
+                if (e.tag) {
+                  return /* Error */__(1, ["map7 -> " + e[0]]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function map8(mapper, decoder1, decoder2, decoder3, decoder4, decoder5, decoder6, decoder7, decoder8) {
+    var decoder8$1 = decoder8[0];
+    var decoder7$1 = decoder7[0];
+    var decoder6$1 = decoder6[0];
+    var decoder5$1 = decoder5[0];
+    var decoder4$1 = decoder4[0];
+    var decoder3$1 = decoder3[0];
+    var decoder2$1 = decoder2[0];
+    var decoder1$1 = decoder1[0];
+    return /* Decoder */[(function (value) {
+                var match = _1(decoder1$1, value);
+                var match$1 = _1(decoder2$1, value);
+                var match$2 = _1(decoder3$1, value);
+                var match$3 = _1(decoder4$1, value);
+                var match$4 = _1(decoder5$1, value);
+                var match$5 = _1(decoder6$1, value);
+                var match$6 = _1(decoder7$1, value);
+                var match$7 = _1(decoder8$1, value);
+                if (!match.tag && !match$1.tag && !match$2.tag && !match$3.tag && !match$4.tag && !match$5.tag && !match$6.tag && !match$7.tag) {
+                  return /* Ok */__(0, [_8(mapper, match[0], match$1[0], match$2[0], match$3[0], match$4[0], match$5[0], match$6[0], match$7[0])]);
+                }
+                var e = first(match$7, first(match$6, first(match$5, first(match$4, first(match$3, first(match$2, first(match$1, match)))))));
+                if (e.tag) {
+                  return /* Error */__(1, ["map8 -> " + e[0]]);
+                }
+                throw [
+                      failure,
+                      "Impossible case"
+                    ];
+              })];
+  }
+
+  function succeed(v) {
+    return /* Decoder */[(function (_value) {
+                return /* Ok */__(0, [v]);
+              })];
+  }
+
+  function fail(e) {
+    return /* Decoder */[(function (_value) {
+                return /* Error */__(1, [e]);
+              })];
+  }
+
+  var value = /* Decoder */[(function (value) {
+        return /* Ok */__(0, [value]);
+      })];
+
+  function andThen(func, decoder) {
+    var decoder$1 = decoder[0];
+    return /* Decoder */[(function (value) {
+                var r = _1(decoder$1, value);
+                if (r.tag) {
+                  return r;
+                }
+                var andThenDecoder = _1(func, r[0]);
+                return _1(andThenDecoder[0], value);
+              })];
+  }
+
+  function lazy_(func) {
+    return andThen(func, /* Decoder */[(function (_value) {
+                    return /* Ok */__(0, [undefined]);
+                  })]);
+  }
+
+  function nullable(decoder) {
+    return oneOf(/* :: */[
+                $$null(undefined),
+                /* :: */[
+                  map$1$1((function (v) {
+                          return some(v);
+                        }), decoder),
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  function decodeValue(decoder, value) {
+    try {
+      return _1(decoder[0], value);
+    }
+    catch (raw_e){
+      var e = internalToOCamlException(raw_e);
+      if (e[0] === ParseFail) {
+        return /* Error */__(1, [e[1]]);
+      } else {
+        return /* Error */__(1, ["Unknown JSON parsing error"]);
+      }
+    }
+  }
+
+  function decodeEvent(decoder, value) {
+    try {
+      return _1(decoder[0], value);
+    }
+    catch (raw_e){
+      var e = internalToOCamlException(raw_e);
+      if (e[0] === ParseFail) {
+        return /* Error */__(1, [e[1]]);
+      } else {
+        return /* Error */__(1, ["Unknown JSON parsing error"]);
+      }
+    }
+  }
+
+  function decodeString(decoder, string) {
+    try {
+      var value = JSON.parse(string);
+      return decodeValue(decoder, value);
+    }
+    catch (exn){
+      return /* Error */__(1, ["Invalid JSON string"]);
+    }
+  }
+
+  var Decoder = {
+    ObjectDict: ObjectDict,
+    ParseFail: ParseFail,
+    string: string,
+    $$int: $$int,
+    $$float: $$float,
+    bool: bool,
+    $$null: $$null,
+    list: list,
+    array: array,
+    keyValuePairs: keyValuePairs,
+    dict: dict,
+    field: field,
+    at: at,
+    index: index,
+    maybe: maybe,
+    oneOf: oneOf,
+    map: map$1$1,
+    map2: map2,
+    map3: map3,
+    map4: map4,
+    map5: map5,
+    map6: map6,
+    map7: map7,
+    map8: map8,
+    succeed: succeed,
+    fail: fail,
+    value: value,
+    andThen: andThen,
+    lazy_: lazy_,
+    nullable: nullable,
+    decodeValue: decodeValue,
+    decodeEvent: decodeEvent,
+    decodeString: decodeString
+  };
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function text(str) {
+    return /* Text */__(1, [str]);
+  }
+
+  function div$1(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "div", key, unique, props, nodes);
+  }
+
+  function span(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "span", key, unique, props, nodes);
+  }
+
+  function p(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "p", key, unique, props, nodes);
+  }
+
+  function a(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "a", key, unique, props, nodes);
+  }
+
+  function h3(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "h3", key, unique, props, nodes);
+  }
+
+  function button(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "button", key, unique, props, nodes);
+  }
+
+  function textarea(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "textarea", key, unique, props, nodes);
+  }
+
+  function label(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "label", key, unique, props, nodes);
+  }
+
+  function ul(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "ul", key, unique, props, nodes);
+  }
+
+  function li(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "li", key, unique, props, nodes);
+  }
+
+  function hr(keyOpt, uniqueOpt, props, nodes) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    var unique = uniqueOpt !== undefined ? uniqueOpt : "";
+    return fullnode("", "hr", key, unique, props, nodes);
+  }
+
+  function class$prime(name) {
+    return /* RawProp */__(0, [
+              "className",
+              name
+            ]);
+  }
+
+  function classList(classes) {
+    return /* RawProp */__(0, [
+              "className",
+              concat$1(" ", map((function (param) {
+                          return param[0];
+                        }), filter((function (param) {
+                                return param[1];
+                              }))(classes)))
+            ]);
+  }
+
+  function placeholder(str) {
+    return /* RawProp */__(0, [
+              "placeholder",
+              str
+            ]);
+  }
+
+  function value$1(str) {
+    return /* RawProp */__(0, [
+              "value",
+              str
+            ]);
+  }
+
+  var onCB$1 = onCB;
+
+  function onInputOpt(keyOpt, msg) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    return onCB("input", key, (function (ev) {
+                  var target = ev.target;
+                  if (target === undefined) {
+                    return ;
+                  }
+                  var value = target.value;
+                  if (value !== undefined) {
+                    return _1(msg, value);
+                  }
+                  
+                }));
+  }
+
+  function onInput(keyOpt, msg) {
+    var key = keyOpt !== undefined ? keyOpt : "";
+    return onInputOpt(key, (function (ev) {
+                  return some(_1(msg, ev));
+                }));
+  }
+
+  function onClick(msg) {
+    return onMsg("click", msg);
+  }
+
+  var defaultOptions = {
+    stopPropagation: false,
+    preventDefault: false
+  };
+
+  var targetValue = Decoder.at(/* :: */[
+        "target",
+        /* :: */[
+          "value",
+          /* [] */0
+        ]
+      ], Decoder.string);
+
+  var targetChecked = Decoder.at(/* :: */[
+        "target",
+        /* :: */[
+          "checked",
+          /* [] */0
+        ]
+      ], Decoder.bool);
+
+  var keyCode = Decoder.field("keyCode", Decoder.$$int);
+
+  function max(value) {
+    return /* Attribute */__(1, [
+              "",
+              "max",
+              value
+            ]);
+  }
+
+  function min(value) {
+    return /* Attribute */__(1, [
+              "",
+              "min",
+              value
+            ]);
+  }
+
+  function step(value) {
+    return /* Attribute */__(1, [
+              "",
+              "step",
+              value
+            ]);
+  }
+
+  function disabled(b) {
+    if (b) {
+      return /* Attribute */__(1, [
+                "",
+                "disabled",
+                "true"
+              ]);
+    } else {
+      return /* NoProp */0;
+    }
+  }
+
+  function selected(b) {
+    if (b) {
+      return /* Attribute */__(1, [
+                "",
+                "selected",
+                "true"
+              ]);
+    } else {
+      return /* NoProp */0;
+    }
+  }
+
+  function acceptCharset(c) {
+    return /* Attribute */__(1, [
+              "",
+              "accept-charset",
+              c
+            ]);
+  }
+
+  function rel(value) {
+    return /* Attribute */__(1, [
+              "",
+              "rel",
+              value
+            ]);
+  }
+
+  var Attributes = {
+    max: max,
+    min: min,
+    step: step,
+    disabled: disabled,
+    selected: selected,
+    acceptCharset: acceptCharset,
+    rel: rel
+  };
+
+  var noNode$1 = noNode;
+
+  var noProp = /* NoProp */0;
+  /* targetValue Not a pure module */
+
+  var lazy_tag = 246;
+
+  var forward_tag = 250;
+  /* No side effect */
+
+  var Undefined = create("CamlinternalLazy.Undefined");
+
+  function raise_undefined(param) {
+    throw Undefined;
+  }
+
+  function force_lazy_block(blk) {
+    var closure = blk[0];
+    blk[0] = raise_undefined;
+    try {
+      var result = _1(closure, undefined);
+      blk[0] = result;
+      caml_obj_set_tag(blk, forward_tag);
+      return result;
+    }
+    catch (e){
+      blk[0] = (function (param) {
+          throw e;
+        });
+      throw e;
+    }
+  }
+
+  function force(lzv) {
+    var t = lzv.tag | 0;
+    if (t === forward_tag) {
+      return lzv[0];
+    } else if (t !== lazy_tag) {
+      return lzv;
+    } else {
+      return force_lazy_block(lzv);
+    }
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function take(n, lst) {
+    var recur = function (_acc, _list_remaining, _num_remaining) {
+      while(true) {
+        var num_remaining = _num_remaining;
+        var list_remaining = _list_remaining;
+        var acc = _acc;
+        if (num_remaining === 0) {
+          return /* tuple */[
+                  acc,
+                  list_remaining
+                ];
+        }
+        if (!list_remaining) {
+          return /* tuple */[
+                  acc,
+                  /* [] */0
+                ];
+        }
+        _num_remaining = num_remaining - 1 | 0;
+        _list_remaining = list_remaining[1];
+        _acc = /* :: */[
+          list_remaining[0],
+          acc
+        ];
+        continue ;
+      }  };
+    var match = recur(/* [] */0, lst, n);
+    return /* tuple */[
+            rev(match[0]),
+            match[1]
+          ];
+  }
+
+  function apply(v, fn) {
+    return _1(fn, v);
+  }
+
+  function bind$1(lst, fn) {
+    return concat(map(fn, lst));
+  }
+
+  function concat_map(fn, lst) {
+    return concat(map(fn, lst));
+  }
+
+  function list_from_option(item) {
+    if (item !== undefined) {
+      return /* :: */[
+              valFromOption(item),
+              /* [] */0
+            ];
+    } else {
+      return /* [] */0;
+    }
+  }
+
+  function first_inconsistent_opt(lst, fn) {
+    if (lst) {
+      var _last = _1(fn, lst[0]);
+      var _param = lst[1];
+      while(true) {
+        var param = _param;
+        var last = _last;
+        if (!param) {
+          return ;
+        }
+        var current = _1(fn, param[0]);
+        if (!caml_equal(current, last)) {
+          return /* tuple */[
+                  last,
+                  current
+                ];
+        }
+        _param = param[1];
+        _last = current;
+        continue ;
+      }  }
+    
+  }
+
+  var ListEx = {
+    take: take,
+    apply: apply,
+    bind: bind$1,
+    concat_map: concat_map,
+    $great$great$eq: bind$1,
+    list_from_option: list_from_option,
+    first_inconsistent_opt: first_inconsistent_opt
+  };
+
+  function AggregateMap(Ord) {
+    var $$Map$1 = Make(Ord);
+    var make = function (key_of, lst) {
+      return fold_left((function (map, item) {
+                    return _3($$Map$1.update, _1(key_of, item), (function (param) {
+                                  if (param !== undefined) {
+                                    return /* :: */[
+                                            item,
+                                            param
+                                          ];
+                                  } else {
+                                    return /* :: */[
+                                            item,
+                                            /* [] */0
+                                          ];
+                                  }
+                                }), map);
+                  }), $$Map$1.empty, lst);
+    };
+    var keys = function (map$1) {
+      return map((function (prim) {
+                    return prim[0];
+                  }), _1($$Map$1.bindings, map$1));
+    };
+    var find_opt = function (key, map) {
+      return _2($$Map$1.find_opt, key, map);
+    };
+    return {
+            $$Map: $$Map$1,
+            make: make,
+            keys: keys,
+            find_opt: find_opt
+          };
+  }
+
+  function on_keyed(eventName, key, decoder) {
+    return onCB$1(eventName, key, (function ($$event) {
+                  if (defaultOptions.stopPropagation) {
+                    $$event.stopPropagation();
+                  }
+                  if (defaultOptions.preventDefault) {
+                    $$event.preventDefault();
+                  }
+                  return result_to_option(Decoder.decodeEvent(decoder, $$event));
+                }));
+  }
+
+  function keydown(key, msg, keydown_predicate) {
+    var ctrlKey = Decoder.field("ctrlKey", Decoder.bool);
+    var decode_keydown_info = Decoder.map2((function (keyCode, ctrlKey) {
+            return {
+                    ctrlKey: ctrlKey,
+                    keyCode: keyCode
+                  };
+          }), keyCode, ctrlKey);
+    var keydown_to_message = function (info) {
+      if (_1(keydown_predicate, info)) {
+        return Decoder.succeed(msg);
+      } else {
+        return Decoder.fail("Incorrect keys");
+      }
+    };
+    return on_keyed("keydown", key, Decoder.andThen(keydown_to_message, decode_keydown_info));
+  }
+
+  var Keydown = {
+    keydown: keydown
+  };
+
+  var TeaHtmlEx = {
+    on_keyed: on_keyed,
+    Keydown: Keydown
+  };
+
+  function map$5(fn, ret) {
+    if (ret.tag) {
+      return ret;
+    } else {
+      return /* Ok */__(0, [_1(fn, ret[0])]);
+    }
+  }
+
+  function map_error(fn, err) {
+    if (err.tag) {
+      return /* Error */__(1, [_1(fn, err[0])]);
+    } else {
+      return err;
+    }
+  }
+
+  function flatten$1(ret) {
+    if (ret.tag) {
+      return ret;
+    } else {
+      return ret[0];
+    }
+  }
+
+  function flat_map(fn, result) {
+    return flatten$1(map$5(fn, result));
+  }
+
+  function bind$1$1(result, fn) {
+    return flatten$1(map$5(fn, result));
+  }
+
+  var ResultEx = {
+    map: map$5,
+    map_error: map_error,
+    flatten: flatten$1,
+    flat_map: flat_map,
+    bind: bind$1$1,
+    $great$great$eq: bind$1$1
+  };
+
+  function $$return(v) {
+    return /* LCons */[
+            v,
+            /* EndOfStream */0
+          ];
+  }
+
+  function push(value, stream) {
+    return /* LCons */[
+            value,
+            stream
+          ];
+  }
+
+  function map$1$2(fn, param) {
+    if (!param) {
+      return /* EndOfStream */0;
+    }
+    var delayed_stream = param[1];
+    return /* LCons */[
+            _1(fn, param[0]),
+            caml_lazy_make((function (param) {
+                    return map$1$2(fn, force(delayed_stream));
+                  }))
+          ];
+  }
+
+  function filter$2(pred, _param) {
+    while(true) {
+      var param = _param;
+      if (!param) {
+        return /* EndOfStream */0;
+      }
+      var delayed_stream = param[1];
+      var value = param[0];
+      if (_1(pred, value)) {
+        return /* LCons */[
+                value,
+                caml_lazy_make((function(delayed_stream){
+                    return function (param) {
+                      return filter$2(pred, force(delayed_stream));
+                    }
+                    }(delayed_stream)))
+              ];
+      }
+      _param = force(delayed_stream);
+      continue ;
+    }}
+
+  function interleave_delayed(s1, delayed_s2) {
+    if (!s1) {
+      return force(delayed_s2);
+    }
+    var delayed_tail_s1 = s1[1];
+    return /* LCons */[
+            s1[0],
+            caml_lazy_make((function (param) {
+                    return interleave_delayed(force(delayed_s2), delayed_tail_s1);
+                  }))
+          ];
+  }
+
+  function append_delayed(s1, delayed_s2) {
+    if (!s1) {
+      return force(delayed_s2);
+    }
+    var delayed_tail_s1 = s1[1];
+    return /* LCons */[
+            s1[0],
+            caml_lazy_make((function (param) {
+                    return append_delayed(force(delayed_tail_s1), delayed_s2);
+                  }))
+          ];
+  }
+
+  function flatten$1$1(param) {
+    if (!param) {
+      return /* EndOfStream */0;
+    }
+    var delayed_stream = param[1];
+    return interleave_delayed(param[0], caml_lazy_make((function (param) {
+                      return flatten$1$1(force(delayed_stream));
+                    })));
+  }
+
+  function bind$2(stream, fn) {
+    return flatten$1$1(map$1$2(fn, stream));
+  }
+
+  function from_list(param) {
+    if (!param) {
+      return /* EndOfStream */0;
+    }
+    var cdr = param[1];
+    return /* LCons */[
+            param[0],
+            caml_lazy_make((function (param) {
+                    return from_list(cdr);
+                  }))
+          ];
+  }
+
+  function from_option(v) {
+    if (v !== undefined) {
+      return /* LCons */[
+              valFromOption(v),
+              /* EndOfStream */0
+            ];
+    } else {
+      return /* EndOfStream */0;
+    }
+  }
+
+  var LazyStream = {
+    $$return: $$return,
+    unit: $$return,
+    push: push,
+    map: map$1$2,
+    filter: filter$2,
+    interleave_delayed: interleave_delayed,
+    append_delayed: append_delayed,
+    flatten: flatten$1$1,
+    bind: bind$2,
+    $great$great$eq: bind$2,
+    from_list: from_list,
+    from_option: from_option
+  };
+  /* Tea_html Not a pure module */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function compare$2(left, right) {
+    return caml_string_compare(left[0], right[0]);
+  }
+
+  function make$2(name) {
+    return /* VariableName */[name];
+  }
+
+  function make_numbered(variable, num) {
+    return /* VariableName */[_2(sprintf(/* Format */[
+                      /* String */__(2, [
+                          /* No_padding */0,
+                          /* Int */__(4, [
+                              /* Int_d */0,
+                              /* No_padding */0,
+                              /* No_precision */0,
+                              /* End_of_format */0
+                            ])
+                        ]),
+                      "%s%d"
+                    ]), variable[0], num)];
+  }
+
+  function to_string$1(name) {
+    return _1(sprintf(/* Format */[
+                    /* Char_literal */__(12, [
+                        /* "?" */63,
+                        /* String */__(2, [
+                            /* No_padding */0,
+                            /* End_of_format */0
+                          ])
+                      ]),
+                    "?%s"
+                  ]), name[0]);
+  }
+
+  var VariableName = {
+    compare: compare$2,
+    make: make$2,
+    make_numbered: make_numbered,
+    to_string: to_string$1
+  };
+
+  function make$1$1(name) {
+    return /* RelationName */[name];
+  }
+
+  function compare$1$1(left, right) {
+    return caml_string_compare(left[0], right[0]);
+  }
+
+  function equals$1(left, right) {
+    return left[0] === right[0];
+  }
+
+  function to_string$1$1(name) {
+    return name[0];
+  }
+
+  var RelationName = {
+    make: make$1$1,
+    compare: compare$1$1,
+    equals: equals$1,
+    to_string: to_string$1$1
+  };
+
+  function make_relation(name, related_terms) {
+    return /* Relation */__(1, [{
+                relation_name: /* RelationName */[name],
+                related_terms: related_terms
+              }]);
+  }
+
+  function make_variable(name) {
+    return /* Variable */__(0, [/* VariableName */[name]]);
+  }
+
+  function to_string$2(variable) {
+    if (!variable.tag) {
+      return to_string$1(variable[0]);
+    }
+    var match = variable[0];
+    var related_terms = match.related_terms;
+    var name = match.relation_name[0];
+    if (related_terms) {
+      return _2(sprintf(/* Format */[
+                      /* String */__(2, [
+                          /* No_padding */0,
+                          /* Char_literal */__(12, [
+                              /* "(" */40,
+                              /* String */__(2, [
+                                  /* No_padding */0,
+                                  /* Char_literal */__(12, [
+                                      /* ")" */41,
+                                      /* End_of_format */0
+                                    ])
+                                ])
+                            ])
+                        ]),
+                      "%s(%s)"
+                    ]), name, concat$1(", ", map(to_string$2, related_terms)));
+    } else {
+      return name;
+    }
+  }
+
+  function relation_arities(param) {
+    if (!param.tag) {
+      return /* [] */0;
+    }
+    var match = param[0];
+    var related_terms = match.related_terms;
+    return /* :: */[
+            /* tuple */[
+              match.relation_name,
+              length(related_terms)
+            ],
+            ListEx.concat_map(relation_arities, related_terms)
+          ];
+  }
+
+  var Term = {
+    make_relation: make_relation,
+    make_variable: make_variable,
+    to_string: to_string$2,
+    relation_arities: relation_arities
+  };
+
+  function to_string$3(term) {
+    switch (term.tag | 0) {
+      case /* Term */0 :
+          return to_string$2(term[0]);
+      case /* EqualityAssertion */1 :
+          return _2(sprintf(/* Format */[
+                          /* Char_literal */__(12, [
+                              /* "<" */60,
+                              /* String */__(2, [
+                                  /* No_padding */0,
+                                  /* String_literal */__(11, [
+                                      " = ",
+                                      /* String */__(2, [
+                                          /* No_padding */0,
+                                          /* Char_literal */__(12, [
+                                              /* ">" */62,
+                                              /* End_of_format */0
+                                            ])
+                                        ])
+                                    ])
+                                ])
+                            ]),
+                          "<%s = %s>"
+                        ]), to_string$2(term[0]), to_string$2(term[1]));
+      case /* InequalityAssert */2 :
+          return _2(sprintf(/* Format */[
+                          /* Char_literal */__(12, [
+                              /* "<" */60,
+                              /* String */__(2, [
+                                  /* No_padding */0,
+                                  /* String_literal */__(11, [
+                                      " /= ",
+                                      /* String */__(2, [
+                                          /* No_padding */0,
+                                          /* Char_literal */__(12, [
+                                              /* ">" */62,
+                                              /* End_of_format */0
+                                            ])
+                                        ])
+                                    ])
+                                ])
+                            ]),
+                          "<%s /= %s>"
+                        ]), to_string$2(term[0]), to_string$2(term[1]));
+      
+    }
+  }
+
+  function relation_arities$1(term) {
+    switch (term.tag | 0) {
+      case /* Term */0 :
+          return relation_arities(term[0]);
+      
+    }
+    return concat(/* :: */[
+                relation_arities(term[0]),
+                /* :: */[
+                  relation_arities(term[1]),
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  var ComplexTerm = {
+    to_string: to_string$3,
+    relation_arities: relation_arities$1
+  };
+
+  var FrameMap = Make(VariableName);
+
+  var empty$1 = FrameMap.empty;
+
+  function extend(param, map) {
+    return _3(FrameMap.add, param[0], param[1], map);
+  }
+
+  function lookup(key, map) {
+    var term = _2(FrameMap.find_opt, key, map);
+    if (term === undefined) {
+      return ;
+    }
+    if (term.tag) {
+      return term;
+    }
+    var term$prime = lookup(term[0], map);
+    if (term$prime !== undefined) {
+      return term$prime;
+    } else {
+      return term;
+    }
+  }
+
+  function instantiate(frame) {
+    var resolve_term = function ($$var) {
+      if (!$$var.tag) {
+        var variable_name = $$var[0];
+        var bound_to_variable = lookup(variable_name, frame);
+        if (bound_to_variable !== undefined) {
+          return resolve_term(bound_to_variable);
+        } else {
+          return /* Variable */__(0, [/* VariableName */["?"]]);
+        }
+      }
+      var match = $$var[0];
+      return /* Relation */__(1, [{
+                  relation_name: match.relation_name,
+                  related_terms: map(resolve_term, match.related_terms)
+                }]);
+    };
+    return resolve_term;
+  }
+
+  function variable_bindings_in_query(query, frame) {
+    var resolve_variable_name = function (variable_name) {
+      var bound_to_variable = lookup(variable_name, frame);
+      if (bound_to_variable !== undefined) {
+        return resolve_term(bound_to_variable);
+      } else {
+        return /* Variable */__(0, [/* VariableName */["?"]]);
+      }
+    };
+    var visit_term = function (map, $$var) {
+      if ($$var.tag) {
+        return fold_left(visit_term, map, $$var[0].related_terms);
+      }
+      var $$var$1 = $$var[0];
+      return extend(/* tuple */[
+                  $$var$1,
+                  resolve_variable_name($$var$1)
+                ], map);
+    };
+    var resolve_term = function ($$var) {
+      if (!$$var.tag) {
+        return resolve_variable_name($$var[0]);
+      }
+      var match = $$var[0];
+      return /* Relation */__(1, [{
+                  relation_name: match.relation_name,
+                  related_terms: map(resolve_term, match.related_terms)
+                }]);
+    };
+    var visit_complex = function (map, term) {
+      switch (term.tag | 0) {
+        case /* Term */0 :
+            return visit_term(map, term[0]);
+        
+      }
+      return visit_term(visit_term(map, term[0]), term[1]);
+    };
+    return _1(FrameMap.bindings, fold_left(visit_complex, empty$1, query));
+  }
+
+  function to_strings(query, frame) {
+    var bindings = variable_bindings_in_query(query, frame);
+    if (bindings) {
+      return map((function (param) {
+                    return _2(sprintf(/* Format */[
+                                    /* String */__(2, [
+                                        /* No_padding */0,
+                                        /* String_literal */__(11, [
+                                            " := ",
+                                            /* String */__(2, [
+                                                /* No_padding */0,
+                                                /* End_of_format */0
+                                              ])
+                                          ])
+                                      ]),
+                                    "%s := %s"
+                                  ]), to_string$1(param[0]), to_string$2(param[1]));
+                  }), bindings);
+    } else {
+      return /* [] */0;
+    }
+  }
+
+  function term_depends_on_variable(term, depends_on_variable, frame) {
+    var recurse = function (_var$prime) {
+      while(true) {
+        var var$prime = _var$prime;
+        if (var$prime.tag) {
+          return exists(recurse, var$prime[0].related_terms);
+        }
+        var var$prime$1 = var$prime[0];
+        if (caml_equal(var$prime$1, depends_on_variable)) {
+          return true;
+        }
+        var value_of_var = lookup(var$prime$1, frame);
+        if (value_of_var === undefined) {
+          return false;
+        }
+        _var$prime = value_of_var;
+        continue ;
+      }  };
+    return recurse(term);
+  }
+
+  var Frame = {
+    FrameMap: FrameMap,
+    empty: empty$1,
+    extend: extend,
+    lookup: lookup,
+    instantiate: instantiate,
+    variable_bindings_in_query: variable_bindings_in_query,
+    to_strings: to_strings,
+    term_depends_on_variable: term_depends_on_variable
+  };
+
+  function to_string$4(param) {
+    var antecedents = param.antecedents;
+    var consequent_string = to_string$2(param.consequent);
+    var tmp;
+    if (antecedents) {
+      var antecedents_string = concat$1(" and ", map(to_string$3, antecedents));
+      tmp = _2(sprintf(/* Format */[
+                /* String */__(2, [
+                    /* No_padding */0,
+                    /* String_literal */__(11, [
+                        " when ",
+                        /* String */__(2, [
+                            /* No_padding */0,
+                            /* End_of_format */0
+                          ])
+                      ])
+                  ]),
+                "%s when %s"
+              ]), consequent_string, antecedents_string);
+    } else {
+      tmp = consequent_string;
+    }
+    return _1(sprintf(/* Format */[
+                    /* String */__(2, [
+                        /* No_padding */0,
+                        /* Char_literal */__(12, [
+                            /* "." */46,
+                            /* End_of_format */0
+                          ])
+                      ]),
+                    "%s."
+                  ]), tmp);
+  }
+
+  function relation_arities$2(param) {
+    return concat(/* :: */[
+                flatten(map(relation_arities$1, param.antecedents)),
+                /* :: */[
+                  relation_arities(param.consequent),
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  var rule_counter = {
+    contents: 0
+  };
+
+  function rename_complex_term_variables(assertion) {
+    switch (assertion.tag | 0) {
+      case /* Term */0 :
+          return /* Term */__(0, [rename_term_variables(assertion[0])]);
+      case /* EqualityAssertion */1 :
+          var left$prime = rename_term_variables(assertion[0]);
+          return /* EqualityAssertion */__(1, [
+                    left$prime,
+                    rename_term_variables(assertion[1])
+                  ]);
+      case /* InequalityAssert */2 :
+          var left$prime$1 = rename_term_variables(assertion[0]);
+          return /* InequalityAssert */__(2, [
+                    left$prime$1,
+                    rename_term_variables(assertion[1])
+                  ]);
+      
+    }
+  }
+
+  function rename_term_variables(assertion) {
+    if (!assertion.tag) {
+      return /* Variable */__(0, [make_numbered(assertion[0], rule_counter.contents)]);
+    }
+    var match = assertion[0];
+    var new_related_terms = map(rename_term_variables, match.related_terms);
+    return /* Relation */__(1, [{
+                relation_name: match.relation_name,
+                related_terms: new_related_terms
+              }]);
+  }
+
+  function rename(rule) {
+    rule_counter.contents = rule_counter.contents + 1 | 0;
+    var antecedents$prime = map(rename_complex_term_variables, rule.antecedents);
+    return {
+            antecedents: antecedents$prime,
+            consequent: rename_term_variables(rule.consequent)
+          };
+  }
+
+  var Rule = {
+    to_string: to_string$4,
+    relation_arities: relation_arities$2,
+    rename_rule_variables: rename
+  };
+
+  var RuleIndex = Make({
+        compare: compare
+      });
+
+  function rule_from_entry(param) {
+    return param.rule;
+  }
+
+  function identifier_of_rule_entry(param) {
+    return _1(sprintf(/* Format */[
+                    /* Int */__(4, [
+                        /* Int_d */0,
+                        /* No_padding */0,
+                        /* No_precision */0,
+                        /* End_of_format */0
+                      ]),
+                    "%d"
+                  ]), param.id);
+  }
+
+  function is_same(left, right) {
+    return left.id === right.id;
+  }
+
+  function update_rule_entry(entry, rule) {
+    console.log(_1(sprintf(/* Format */[
+                  /* String_literal */__(11, [
+                      "Update rule entry: ",
+                      /* String */__(2, [
+                          /* No_padding */0,
+                          /* End_of_format */0
+                        ])
+                    ]),
+                  "Update rule entry: %s"
+                ]), to_string$4(rule)));
+    return {
+            id: entry.id,
+            rule: rule
+          };
+  }
+
+  var empty_indexed_by_consequent_relation = RuleIndex.empty;
+
+  var empty$1$1 = {
+    all_rules: /* [] */0,
+    indexed_by_consequent_relation: empty_indexed_by_consequent_relation
+  };
+
+  function fetch_for_query(db, query) {
+    var tmp;
+    if (query.tag) {
+      var rules = _2(RuleIndex.find_opt, query[0].relation_name[0], db.indexed_by_consequent_relation);
+      tmp = rules !== undefined ? rules : /* [] */0;
+    } else {
+      tmp = db.all_rules;
+    }
+    return LazyStream.from_list(rev(tmp));
+  }
+
+  function all_rules(param) {
+    return rev(param.all_rules);
+  }
+
+  var current_id = {
+    contents: 1
+  };
+
+  function new_id(param) {
+    current_id.contents = current_id.contents + 1 | 0;
+    return current_id.contents;
+  }
+
+  function remove_rule(db, param) {
+    var id = param.id;
+    var filter$1 = filter((function (entry) {
+            return entry.id !== id;
+          }));
+    var all_rules = _1(filter$1, db.all_rules);
+    var remove = function (rules$prime) {
+      if (rules$prime !== undefined) {
+        return _1(filter$1, rules$prime);
+      } else {
+        return /* [] */0;
+      }
+    };
+    var match = param.rule.consequent;
+    if (match.tag) {
+      return {
+              all_rules: all_rules,
+              indexed_by_consequent_relation: _3(RuleIndex.update, match[0].relation_name[0], remove, db.indexed_by_consequent_relation)
+            };
+    } else {
+      return {
+              all_rules: all_rules,
+              indexed_by_consequent_relation: db.indexed_by_consequent_relation
+            };
+    }
+  }
+
+  function update_rule(db, updated_rule_entry) {
+    var update_rule_entries = function (rule_entries) {
+      return map((function (rule_entry) {
+                    if (rule_entry.id === updated_rule_entry.id) {
+                      return updated_rule_entry;
+                    } else {
+                      return rule_entry;
+                    }
+                  }), rule_entries);
+    };
+    var all_rules = update_rule_entries(db.all_rules);
+    var update_for_key = function (rules$prime) {
+      if (rules$prime !== undefined) {
+        return update_rule_entries(rules$prime);
+      } else {
+        return /* :: */[
+                updated_rule_entry,
+                /* [] */0
+              ];
+      }
+    };
+    console.log(_1(sprintf(/* Format */[
+                  /* String_literal */__(11, [
+                      "Updating rule in database: ",
+                      /* String */__(2, [
+                          /* No_padding */0,
+                          /* End_of_format */0
+                        ])
+                    ]),
+                  "Updating rule in database: %s"
+                ]), to_string$4(updated_rule_entry.rule)));
+    var match = updated_rule_entry.rule.consequent;
+    if (match.tag) {
+      return {
+              all_rules: all_rules,
+              indexed_by_consequent_relation: _3(RuleIndex.update, match[0].relation_name[0], update_for_key, db.indexed_by_consequent_relation)
+            };
+    } else {
+      return {
+              all_rules: all_rules,
+              indexed_by_consequent_relation: db.indexed_by_consequent_relation
+            };
+    }
+  }
+
+  function add_rule(db, rule) {
+    var entry_id = new_id();
+    var entry = {
+      id: entry_id,
+      rule: rule
+    };
+    var update_rule = function (rules$prime) {
+      if (rules$prime !== undefined) {
+        return /* :: */[
+                entry,
+                rules$prime
+              ];
+      } else {
+        return /* :: */[
+                entry,
+                /* [] */0
+              ];
+      }
+    };
+    var match = rule.consequent;
+    if (match.tag) {
+      return {
+              all_rules: /* :: */[
+                entry,
+                db.all_rules
+              ],
+              indexed_by_consequent_relation: _3(RuleIndex.update, match[0].relation_name[0], update_rule, db.indexed_by_consequent_relation)
+            };
+    } else {
+      return {
+              all_rules: /* :: */[
+                entry,
+                db.all_rules
+              ],
+              indexed_by_consequent_relation: db.indexed_by_consequent_relation
+            };
+    }
+  }
+
+  var RuleDatabase = {
+    empty: empty$1$1,
+    rule_from_entry: rule_from_entry,
+    identifier_of_rule_entry: identifier_of_rule_entry,
+    update_rule_entry: update_rule_entry,
+    is_same: is_same,
+    remove_rule: remove_rule,
+    add_rule: add_rule,
+    update_rule: update_rule,
+    fetch_for_query: fetch_for_query,
+    all_rules: all_rules
+  };
+
+  var Types = {
+    VariableName: VariableName,
+    RelationName: RelationName,
+    Term: Term,
+    ComplexTerm: ComplexTerm,
+    Frame: Frame,
+    Rule: Rule,
+    RuleDatabase: RuleDatabase
+  };
+
+  var RelationMap = AggregateMap({
+        compare: compare$1$1
+      });
+
+  var rule_database_snapshot = all_rules;
+
+  function arity_mismatch_messages(relation_arities_opt, relation_names) {
+    return fold_left((function (messages, relation_name) {
+                  var relation_arities = _1(relation_arities_opt, relation_name);
+                  if (relation_arities === undefined) {
+                    return messages;
+                  }
+                  var match = ListEx.first_inconsistent_opt(relation_arities, (function (prim) {
+                          return prim[1];
+                        }));
+                  if (match !== undefined) {
+                    return /* :: */[
+                            _3(sprintf(/* Format */[
+                                      /* String_literal */__(11, [
+                                          "Relation '",
+                                          /* String */__(2, [
+                                              /* No_padding */0,
+                                              /* String_literal */__(11, [
+                                                  "' has inconsistent number of terms applied of ",
+                                                  /* Int */__(4, [
+                                                      /* Int_d */0,
+                                                      /* No_padding */0,
+                                                      /* No_precision */0,
+                                                      /* String_literal */__(11, [
+                                                          " and ",
+                                                          /* Int */__(4, [
+                                                              /* Int_d */0,
+                                                              /* No_padding */0,
+                                                              /* No_precision */0,
+                                                              /* End_of_format */0
+                                                            ])
+                                                        ])
+                                                    ])
+                                                ])
+                                            ])
+                                        ]),
+                                      "Relation '%s' has inconsistent number of terms applied of %d and %d"
+                                    ]), relation_name[0], match[0], match[1]),
+                            messages
+                          ];
+                  } else {
+                    return messages;
+                  }
+                }), /* [] */0, relation_names);
+  }
+
+  function relation_map_of_rules(rules) {
+    return _2(RelationMap.make, (function (prim) {
+                  return prim[0];
+                }), ListEx.concat_map(relation_arities$2, rules));
+  }
+
+  function unique_relation_names_of_rule(rule) {
+    return _1(RelationMap.keys, _2(RelationMap.make, (function (prim) {
+                      return prim[0];
+                    }), relation_arities$2(rule)));
+  }
+
+  function issues_in_existing_rule(rule_database_snapshot, rule_entry_to_validate) {
+    var rule_map = relation_map_of_rules(map(rule_from_entry, /* :: */[
+              rule_entry_to_validate,
+              filter((function (entry) {
+                        return !is_same(entry, rule_entry_to_validate);
+                      }))(rule_database_snapshot)
+            ]));
+    return arity_mismatch_messages((function (relation_name) {
+                  return _2(RelationMap.find_opt, relation_name, rule_map);
+                }), unique_relation_names_of_rule(rule_from_entry(rule_entry_to_validate)));
+  }
+
+  function issues_in_new_rule(rule_database_snapshot, rule_to_validate) {
+    var rule_map = relation_map_of_rules(/* :: */[
+          rule_to_validate,
+          map(rule_from_entry, rule_database_snapshot)
+        ]);
+    return arity_mismatch_messages((function (relation_name) {
+                  return _2(RelationMap.find_opt, relation_name, rule_map);
+                }), unique_relation_names_of_rule(rule_to_validate));
+  }
+
+  function issues_in_query(rule_database_snapshot, query_to_validate) {
+    var query_relation_arities = ListEx.concat_map(relation_arities$1, query_to_validate);
+    var rule_map = _2(RelationMap.make, (function (prim) {
+            return prim[0];
+          }), concat(/* :: */[
+              query_relation_arities,
+              /* :: */[
+                ListEx.concat_map(relation_arities$2, map(rule_from_entry, rule_database_snapshot)),
+                /* [] */0
+              ]
+            ]));
+    return arity_mismatch_messages((function (relation_name) {
+                  return _2(RelationMap.find_opt, relation_name, rule_map);
+                }), _1(RelationMap.keys, _2(RelationMap.make, (function (prim) {
+                          return prim[0];
+                        }), query_relation_arities)));
+  }
+
+  var Validator = {
+    rule_database_snapshot: rule_database_snapshot,
+    issues_in_existing_rule: issues_in_existing_rule,
+    issues_in_new_rule: issues_in_new_rule,
+    issues_in_query: issues_in_query
+  };
+
+  function name_parser(purpose) {
+    var partial_arg = equals(/* "_" */95);
+    var partial_arg$1 = function (param) {
+      return $less$pipe$great(letter, partial_arg, param);
+    };
+    var partial_arg$2 = _1(sprintf(/* Format */[
+              /* String */__(2, [
+                  /* No_padding */0,
+                  /* String_literal */__(11, [
+                      " requires ",
+                      /* String */__(2, [
+                          /* No_padding */0,
+                          /* End_of_format */0
+                        ])
+                    ])
+                ]),
+              "%s requires %s"
+            ]), purpose);
+    var partial_arg$3 = function (param) {
+      return concatenate_error_messages(partial_arg$2, partial_arg$1, param);
+    };
+    return (function (param) {
+        return $great$great$eq(partial_arg$3, (function (first_letter) {
+                      return map$2((function (char_list) {
+                                    return concat$1("", map((function (param) {
+                                                      return make$1(1, param);
+                                                    }), /* :: */[
+                                                    first_letter,
+                                                    char_list
+                                                  ]));
+                                  }), zero_to_many(attempt_in_order(/* :: */[
+                                          letter,
+                                          /* :: */[
+                                            digit,
+                                            /* :: */[
+                                              equals(/* "_" */95),
+                                              /* :: */[
+                                                equals(/* "-" */45),
+                                                /* [] */0
+                                              ]
+                                            ]
+                                          ]
+                                        ])));
+                    }), param);
+      });
+  }
+
+  var partial_arg$1 = $great$great(equals(/* "?" */63), map$2((function (str) {
+              return /* Variable */__(0, [/* VariableName */[str]]);
+            }), name_parser("Variable")));
+
+  function variable_parser(param) {
+    return change_last_failure_message("Variable starting with ?", partial_arg$1, param);
+  }
+
+  var is_equal_parser = $great$great(token("= "), (function (param) {
+          return succeed_with(true, param);
+        }));
+
+  var is_inequal_parser = $great$great(token("/= "), (function (param) {
+          return succeed_with(false, param);
+        }));
+
+  function inequality_parser(param) {
+    return $less$pipe$great(is_equal_parser, is_inequal_parser, param);
+  }
+
+  function conjunction_parser(item_parser) {
+    return one_to_many_delimited(item_parser, $great$great($great$great(skip_whitespace, token("and")), skip_whitespace));
+  }
+
+  function simple_term_parser(input) {
+    return $less$pipe$great(variable_parser, relational_term_parser, input);
+  }
+
+  function comparison_parser(input) {
+    return $great$great$eq($great$great(equals(/* "<" */60), simple_term_parser), (function (left_term) {
+                  return (function (param) {
+                      return $great$great$eq(inequality_parser, (function (is_equal) {
+                                    var partial_arg = $less$less(simple_term_parser, equals(/* ">" */62));
+                                    return (function (param) {
+                                        return $great$great$eq(partial_arg, (function (right_term) {
+                                                      var partial_arg = is_equal ? /* EqualityAssertion */__(1, [
+                                                            left_term,
+                                                            right_term
+                                                          ]) : /* InequalityAssert */__(2, [
+                                                            left_term,
+                                                            right_term
+                                                          ]);
+                                                      return (function (param) {
+                                                          return succeed_with(partial_arg, param);
+                                                        });
+                                                    }), param);
+                                      });
+                                  }), param);
+                    });
+                }), input);
+  }
+
+  function complex_term_parser(input) {
+    return $less$pipe$great(map$2((function (term) {
+                      return /* Term */__(0, [term]);
+                    }), simple_term_parser), comparison_parser, input);
+  }
+
+  function simple_terms_parser(input) {
+    return one_to_many_delimited($less$less(simple_term_parser, skip_whitespace), $great$great(equals(/* "," */44), skip_whitespace))(input);
+  }
+
+  function relational_term_parser(input) {
+    return $great$great$eq($less$less(name_parser("Relation"), skip_whitespace), (function (name) {
+                  var relation_name = /* RelationName */[name];
+                  var partial_arg = /* Relation */__(1, [{
+                        relation_name: relation_name,
+                        related_terms: /* [] */0
+                      }]);
+                  var partial_arg$1 = $less$less(equals(/* "(" */40), skip_whitespace);
+                  return (function (param) {
+                      return bind_with(partial_arg$1, (function (param) {
+                                    return map$2((function (related_terms) {
+                                                  return /* Relation */__(1, [{
+                                                              relation_name: relation_name,
+                                                              related_terms: related_terms
+                                                            }]);
+                                                }), $less$less($less$less(simple_terms_parser, skip_whitespace), equals(/* ")" */41)));
+                                  }), partial_arg, param);
+                    });
+                }), input);
+  }
+
+  function complex_terms_parser(input) {
+    return conjunction_parser(complex_term_parser)(input);
+  }
+
+  function query_parser(input) {
+    return conjunction_parser(complex_term_parser)(input);
+  }
+
+  function rule_parser(input) {
+    return $less$less((function (param) {
+                    return $great$great$eq(simple_term_parser, (function (consequent) {
+                                  var partial_arg = {
+                                    antecedents: /* [] */0,
+                                    consequent: consequent
+                                  };
+                                  var partial_arg$1 = function (param) {
+                                    return succeed_with(partial_arg, param);
+                                  };
+                                  var partial_arg$2 = map$2((function (antecedents) {
+                                          return {
+                                                  antecedents: antecedents,
+                                                  consequent: consequent
+                                                };
+                                        }), $great$great($great$great($great$great(skip_whitespace, token("when")), skip_whitespace), complex_terms_parser));
+                                  return (function (param) {
+                                      return $less$pipe$great(partial_arg$2, partial_arg$1, param);
+                                    });
+                                }), param);
+                  }), equals(/* "." */46))(input);
+  }
+
+  function rule_database_result_from_rule_strings(rule_strings) {
+    return fold_left((function (rule_database_result, rule) {
+                  return ResultEx.flat_map((function (rule_database) {
+                                return ResultEx.flat_map((function (param) {
+                                              var result = param.result;
+                                              var issues = issues_in_new_rule(all_rules(rule_database), result);
+                                              if (length(issues) > 0) {
+                                                return /* Error */__(1, [issues]);
+                                              } else {
+                                                return /* Ok */__(0, [add_rule(rule_database, result)]);
+                                              }
+                                            }), ResultEx.map_error((function (err) {
+                                                  return map(string_of_parse_error, err);
+                                                }), parse_require_all(rule_parser, rule)));
+                              }), rule_database_result);
+                }), /* Ok */__(0, [empty$1$1]), rule_strings);
+  }
+
+  var Parser = {
+    rule_parser: rule_parser,
+    query_parser: query_parser,
+    rule_database_result_from_rule_strings: rule_database_result_from_rule_strings
+  };
+
+  function put_negations_at_end(terms) {
+    var is_negation = function (param) {
+      switch (param.tag | 0) {
+        case /* Term */0 :
+        case /* EqualityAssertion */1 :
+            return false;
+        case /* InequalityAssert */2 :
+            return true;
+        
+      }
+    };
+    var match = partition(is_negation, terms);
+    return concat(/* :: */[
+                match[1],
+                /* :: */[
+                  match[0],
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  function query_complex_terms(db, terms) {
+    var solution_stream_from_complex_term_list = function (_complex_term_list, _solution_stream) {
+      while(true) {
+        var solution_stream = _solution_stream;
+        var complex_term_list = _complex_term_list;
+        if (!complex_term_list) {
+          return solution_stream;
+        }
+        _solution_stream = solution_stream_from_complex_term(complex_term_list[0], solution_stream);
+        _complex_term_list = complex_term_list[1];
+        continue ;
+      }  };
+    var solution_stream_from_complex_term = function (complex_term, solution_stream) {
+      switch (complex_term.tag | 0) {
+        case /* Term */0 :
+            var term = complex_term[0];
+            return LazyStream.$great$great$eq(solution_stream, (function (param) {
+                          return LazyStream.$great$great$eq(fetch_for_query(db, term), (function (param$1) {
+                                        var rule = rule_from_entry(param$1);
+                                        var clean_rule = rename(rule);
+                                        var solution$prime = solution_opt_by_unification(term, clean_rule.consequent, param);
+                                        if (solution$prime !== undefined) {
+                                          return solution_stream_from_complex_term_list(clean_rule.antecedents, LazyStream.$$return({
+                                                          frame: solution$prime.frame,
+                                                          rules_applied: /* :: */[
+                                                            param$1,
+                                                            solution$prime.rules_applied
+                                                          ]
+                                                        }));
+                                        } else {
+                                          return /* EndOfStream */0;
+                                        }
+                                      }));
+                        }));
+        case /* EqualityAssertion */1 :
+            var right = complex_term[1];
+            var left = complex_term[0];
+            return LazyStream.$great$great$eq(solution_stream, (function (solution) {
+                          return LazyStream.from_option(solution_opt_by_unification(left, right, solution));
+                        }));
+        case /* InequalityAssert */2 :
+            var right$1 = complex_term[1];
+            var left$1 = complex_term[0];
+            var solution_stream_where_no_unification = function (solution) {
+              var match = solution_opt_by_unification(left$1, right$1, solution);
+              if (match !== undefined) {
+                return /* EndOfStream */0;
+              } else {
+                return LazyStream.$$return(solution);
+              }
+            };
+            return LazyStream.$great$great$eq(solution_stream, solution_stream_where_no_unification);
+        
+      }
+    };
+    var solution_opt_by_unification = function (left_term, right_term, solution) {
+      if (caml_equal(left_term, right_term)) {
+        return solution;
+      }
+      if (!left_term.tag) {
+        return solution_opt_by_unification_or_extension_of_variable(left_term[0], right_term, solution);
+      }
+      var left_relation = left_term[0];
+      if (!right_term.tag) {
+        return solution_opt_by_unification_or_extension_of_variable(right_term[0], left_term, solution);
+      }
+      var right_relation = right_term[0];
+      if (equals$1(left_relation.relation_name, right_relation.relation_name)) {
+        var left_terms = left_relation.related_terms;
+        var right_terms = right_relation.related_terms;
+        return fold_left((function (solution_opt, param) {
+                      if (solution_opt !== undefined) {
+                        return solution_opt_by_unification(param[0], param[1], solution_opt);
+                      }
+                      
+                    }), solution, combine(left_terms, right_terms));
+      }
+      
+    };
+    var solution_opt_by_unification_or_extension_of_variable = function (variable_name, value_term, solution) {
+      var term_bound_to_variable = lookup(variable_name, solution.frame);
+      if (term_bound_to_variable !== undefined) {
+        return solution_opt_by_unification(term_bound_to_variable, value_term, solution);
+      }
+      if (value_term.tag) {
+        if (term_depends_on_variable(value_term, variable_name, solution.frame)) {
+          return ;
+        } else {
+          return {
+                  frame: extend(/* tuple */[
+                        variable_name,
+                        value_term
+                      ], solution.frame),
+                  rules_applied: solution.rules_applied
+                };
+        }
+      }
+      var term_bound_to_value = lookup(value_term[0], solution.frame);
+      if (term_bound_to_value !== undefined) {
+        return solution_opt_by_unification(/* Variable */__(0, [variable_name]), term_bound_to_value, solution);
+      } else {
+        return {
+                frame: extend(/* tuple */[
+                      variable_name,
+                      value_term
+                    ], solution.frame),
+                rules_applied: solution.rules_applied
+              };
+      }
+    };
+    var partial_arg = put_negations_at_end(terms);
+    return (function (param) {
+        return solution_stream_from_complex_term_list(partial_arg, param);
+      });
+  }
+
+  function query(db, query$1) {
+    return query_complex_terms(db, query$1)(LazyStream.$$return({
+                    frame: empty$1,
+                    rules_applied: /* [] */0
+                  }));
+  }
+
+  var Evaluator = {
+    query: query
+  };
+  /* FrameMap Not a pure module */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function empty$2(param) {
+    return {
+            text: "",
+            compilation_result: /* Error */__(1, [/* [] */0])
+          };
+  }
+
+  function edit(string_of_item, item) {
+    return {
+            text: _1(string_of_item, item),
+            compilation_result: /* Ok */__(0, [item])
+          };
+  }
+
+  function make$3(text, parser, validator) {
+    var errors = parse_require_all(parser, text);
+    var tmp;
+    if (errors.tag) {
+      var match = sort(parse_error_compare, errors[0]);
+      if (match) {
+        var first_error = match[0];
+        var errors$prime_001 = filter((function (err) {
+                  return parse_error_compare(err, first_error) <= 0;
+                }))(match[1]);
+        var errors$prime = /* :: */[
+          first_error,
+          errors$prime_001
+        ];
+        tmp = /* Error */__(1, [map(string_of_parse_error, errors$prime)]);
+      } else {
+        tmp = /* Error */__(1, [/* [] */0]);
+      }
+    } else {
+      var result = errors[0].result;
+      var validation_messages = _1(validator, result);
+      tmp = validation_messages ? /* Error */__(1, [validation_messages]) : /* Ok */__(0, [result]);
+    }
+    return {
+            text: text,
+            compilation_result: tmp
+          };
+  }
+
+  var CompiledTextEditing = {
+    empty: empty$2,
+    edit: edit,
+    make: make$3
+  };
+
+  function next_solution(info) {
+    var match = info.solution_stream;
+    if (match) {
+      return {
+              initiating_query: info.initiating_query,
+              solution_stream: force(match[1]),
+              displayed_solutions: /* :: */[
+                match[0],
+                info.displayed_solutions
+              ]
+            };
+    } else {
+      return info;
+    }
+  }
+
+  var ExecutingQueryInfo = {
+    next_solution: next_solution
+  };
+
+  function init(param) {
+    return {
+            rule_database: Types.RuleDatabase.empty,
+            interaction_mode: /* ViewingRules */0
+          };
+  }
+
+  var ApplicationModel = {
+    CompiledTextEditing: CompiledTextEditing,
+    ExecutingQueryInfo: ExecutingQueryInfo,
+    init: init
+  };
+
+  function initiateEditRule(param_0) {
+    return /* InitiateEditRule */__(0, [param_0]);
+  }
+
+  function chooseExample(param_0) {
+    return /* ChooseExample */__(1, [param_0]);
+  }
+
+  function updateText(param_0) {
+    return /* UpdateText */__(2, [param_0]);
+  }
+
+  function addRule(param_0) {
+    return /* AddRule */__(3, [param_0]);
+  }
+
+  function editRuleEntry(param_0) {
+    return /* EditRuleEntry */__(4, [param_0]);
+  }
+
+  function deleteRule(param_0) {
+    return /* DeleteRule */__(5, [param_0]);
+  }
+
+  function executeQuery(param_0) {
+    return /* ExecuteQuery */__(6, [param_0]);
+  }
+
+  var Message = {
+    viewRules: /* ViewRules */0,
+    initiateChooseExample: /* InitiateChooseExample */1,
+    initiateAddRule: /* InitiateAddRule */2,
+    initiateEditRule: initiateEditRule,
+    initiateEditQuery: /* InitiateEditQuery */3,
+    chooseExample: chooseExample,
+    updateText: updateText,
+    addRule: addRule,
+    editRuleEntry: editRuleEntry,
+    deleteRule: deleteRule,
+    executeQuery: executeQuery,
+    nextFrame: /* NextFrame */4
+  };
+
+  function update$1(param, msg) {
+    var interaction_mode = param.interaction_mode;
+    var rule_database = param.rule_database;
+    var tmp;
+    if (typeof msg === "number") {
+      switch (msg) {
+        case /* ViewRules */0 :
+            tmp = {
+              rule_database: rule_database,
+              interaction_mode: /* ViewingRules */0
+            };
+            break;
+        case /* InitiateChooseExample */1 :
+            tmp = {
+              rule_database: rule_database,
+              interaction_mode: /* ChoosingExample */__(0, [examples])
+            };
+            break;
+        case /* InitiateAddRule */2 :
+            tmp = {
+              rule_database: rule_database,
+              interaction_mode: /* AddingRule */__(1, [{
+                    text: "",
+                    compilation_result: /* Error */__(1, [/* [] */0])
+                  }])
+            };
+            break;
+        case /* InitiateEditQuery */3 :
+            tmp = {
+              rule_database: rule_database,
+              interaction_mode: /* EditingQuery */__(3, [{
+                    text: "",
+                    compilation_result: /* Error */__(1, [/* [] */0])
+                  }])
+            };
+            break;
+        case /* NextFrame */4 :
+            tmp = typeof interaction_mode === "number" || interaction_mode.tag !== /* ExecutingQuery */4 ? ({
+                  rule_database: rule_database,
+                  interaction_mode: interaction_mode
+                }) : ({
+                  rule_database: rule_database,
+                  interaction_mode: /* ExecutingQuery */__(4, [next_solution(interaction_mode[0])])
+                });
+            break;
+        
+      }
+    } else {
+      switch (msg.tag | 0) {
+        case /* InitiateEditRule */0 :
+            var rule_entry = msg[0];
+            var rule = _1(Types.RuleDatabase.rule_from_entry, rule_entry);
+            tmp = {
+              rule_database: rule_database,
+              interaction_mode: /* EditingRule */__(2, [
+                  rule_entry,
+                  edit(Types.Rule.to_string, rule)
+                ])
+            };
+            break;
+        case /* ChooseExample */1 :
+            var rule_database$prime = Parser.rule_database_result_from_rule_strings(msg[0].rules);
+            var tmp$1;
+            tmp$1 = rule_database$prime.tag ? rule_database : rule_database$prime[0];
+            tmp = {
+              rule_database: tmp$1,
+              interaction_mode: /* ViewingRules */0
+            };
+            break;
+        case /* UpdateText */2 :
+            var text = msg[0];
+            var snapshot = Validator.rule_database_snapshot(rule_database);
+            if (typeof interaction_mode === "number") {
+              tmp = {
+                rule_database: rule_database,
+                interaction_mode: interaction_mode
+              };
+            } else {
+              switch (interaction_mode.tag | 0) {
+                case /* AddingRule */1 :
+                    tmp = {
+                      rule_database: rule_database,
+                      interaction_mode: /* AddingRule */__(1, [make$3(text, Parser.rule_parser, (function (param) {
+                                  return Validator.issues_in_new_rule(snapshot, param);
+                                }))])
+                    };
+                    break;
+                case /* EditingRule */2 :
+                    var rule_entry$1 = interaction_mode[0];
+                    var validator = function (rule) {
+                      return Validator.issues_in_existing_rule(snapshot, _2(Types.RuleDatabase.update_rule_entry, rule_entry$1, rule));
+                    };
+                    tmp = {
+                      rule_database: rule_database,
+                      interaction_mode: /* EditingRule */__(2, [
+                          rule_entry$1,
+                          make$3(text, Parser.rule_parser, validator)
+                        ])
+                    };
+                    break;
+                case /* EditingQuery */3 :
+                    tmp = {
+                      rule_database: rule_database,
+                      interaction_mode: /* EditingQuery */__(3, [make$3(text, Parser.query_parser, (function (param) {
+                                  return Validator.issues_in_query(snapshot, param);
+                                }))])
+                    };
+                    break;
+                default:
+                  tmp = {
+                    rule_database: rule_database,
+                    interaction_mode: interaction_mode
+                  };
+              }
+            }
+            break;
+        case /* AddRule */3 :
+            tmp = {
+              rule_database: _2(Types.RuleDatabase.add_rule, rule_database, msg[0]),
+              interaction_mode: /* AddingRule */__(1, [{
+                    text: "",
+                    compilation_result: /* Error */__(1, [/* [] */0])
+                  }])
+            };
+            break;
+        case /* EditRuleEntry */4 :
+            tmp = {
+              rule_database: _2(Types.RuleDatabase.update_rule, rule_database, msg[0]),
+              interaction_mode: /* ViewingRules */0
+            };
+            break;
+        case /* DeleteRule */5 :
+            tmp = {
+              rule_database: _2(Types.RuleDatabase.remove_rule, rule_database, msg[0]),
+              interaction_mode: interaction_mode
+            };
+            break;
+        case /* ExecuteQuery */6 :
+            var initiating_query = msg[0];
+            var solution_stream = Evaluator.query(rule_database, initiating_query);
+            tmp = {
+              rule_database: rule_database,
+              interaction_mode: /* ExecutingQuery */__(4, [{
+                    initiating_query: initiating_query,
+                    solution_stream: solution_stream,
+                    displayed_solutions: /* [] */0
+                  }])
+            };
+            break;
+        
+      }
+    }
+    return /* tuple */[
+            tmp,
+            /* NoCmd */0
+          ];
+  }
+  /* ParserM Not a pure module */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function addEventListener$1(typ, listener, options) {
+    return window.addEventListener(typ, listener, options);
+  }
+
+  function removeEventListener$1(typ, listener, options) {
+    return window.removeEventListener(typ, listener, options);
+  }
+
+  function requestAnimationFrame_polyfill(param) {
+    return (// requestAnimationFrame polyfill
+    (function() {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+            window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                       || window[vendors[x]+'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame)
+            window.requestAnimationFrame = function(callback, element) {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                  timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+
+        if (!window.cancelAnimationFrame)
+            window.cancelAnimationFrame = function(id) {
+                clearTimeout(id);
+            };
+    }()));
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function polyfills(param) {
+    remove_polyfill();
+    requestAnimationFrame_polyfill();
+    
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function programStateWrapper(initModel, pump, shutdown) {
+    var model = {
+      contents: initModel
+    };
+    var callbacks = {
+      contents: {
+        enqueue: (function (_msg) {
+            console.log("INVALID enqueue CALL!");
+            
+          })
+      }
+    };
+    var pumperInterface = _1(pump, callbacks);
+    var pending = {
+      contents: undefined
+    };
+    var handler = function (msg) {
+      var msgs = pending.contents;
+      if (msgs !== undefined) {
+        pending.contents = /* :: */[
+          msg,
+          msgs
+        ];
+        return ;
+      }
+      pending.contents = /* [] */0;
+      var newModel = _2(pumperInterface.handleMsg, model.contents, msg);
+      model.contents = newModel;
+      var msgs$1 = pending.contents;
+      if (msgs$1 !== undefined) {
+        if (msgs$1) {
+          pending.contents = undefined;
+          return iter(handler, rev(msgs$1));
+        } else {
+          pending.contents = undefined;
+          return ;
+        }
+      }
+      throw [
+            failure,
+            "INVALID message queue state, should never be None during message processing!"
+          ];
+    };
+    var finalizedCBs = {
+      enqueue: handler
+    };
+    callbacks.contents = finalizedCBs;
+    var pi_requestShutdown = function (param) {
+      callbacks.contents = {
+        enqueue: (function (_msg) {
+            console.log("INVALID message enqueued when shut down");
+            
+          })
+      };
+      var cmd = _1(shutdown, model.contents);
+      _1(pumperInterface.shutdown, cmd);
+      
+    };
+    var render_string = function (param) {
+      return _1(pumperInterface.render_string, model.contents);
+    };
+    _1(pumperInterface.startup, undefined);
+    return {
+            pushMsg: handler,
+            shutdown: pi_requestShutdown,
+            getHtmlString: render_string
+          };
+  }
+
+  function programLoop(update, view, subscriptions, initModel, initCmd, parentNode) {
+    if (parentNode === undefined) {
+      return (function (callbacks) {
+          var oldSub = {
+            contents: /* NoSub */0
+          };
+          var handleSubscriptionChange = function (model) {
+            var newSub = _1(subscriptions, model);
+            oldSub.contents = run$1(callbacks, callbacks, oldSub.contents, newSub);
+            
+          };
+          return {
+                  startup: (function (param) {
+                      run(callbacks, initCmd);
+                      handleSubscriptionChange(initModel);
+                      
+                    }),
+                  render_string: (function (model) {
+                      return renderToHtmlString(_1(view, model));
+                    }),
+                  handleMsg: (function (model, msg) {
+                      var match = _2(update, model, msg);
+                      var newModel = match[0];
+                      run(callbacks, match[1]);
+                      handleSubscriptionChange(newModel);
+                      return newModel;
+                    }),
+                  shutdown: (function (cmd) {
+                      run(callbacks, cmd);
+                      oldSub.contents = run$1(callbacks, callbacks, oldSub.contents, /* NoSub */0);
+                      
+                    })
+                };
+        });
+    }
+    var parentNode$1 = valFromOption(parentNode);
+    return (function (callbacks) {
+        var priorRenderedVdom = {
+          contents: /* [] */0
+        };
+        var latestModel = {
+          contents: initModel
+        };
+        var nextFrameID = {
+          contents: undefined
+        };
+        var doRender = function (_delta) {
+          var _id = nextFrameID.contents;
+          if (_id === undefined) {
+            return ;
+          }
+          var newVdom_000 = _1(view, latestModel.contents);
+          var newVdom = /* :: */[
+            newVdom_000,
+            /* [] */0
+          ];
+          var justRenderedVdom = patchVNodesIntoElement(callbacks, parentNode$1, priorRenderedVdom.contents, newVdom);
+          priorRenderedVdom.contents = justRenderedVdom;
+          nextFrameID.contents = undefined;
+          
+        };
+        var scheduleRender = function (param) {
+          var match = nextFrameID.contents;
+          if (match !== undefined) {
+            return ;
+          } else {
+            nextFrameID.contents = -1;
+            return doRender();
+          }
+        };
+        var clearPnode = function (param) {
+          while(parentNode$1.childNodes.length > 0) {
+            var firstChild = parentNode$1.firstChild;
+            if (firstChild !== null) {
+              parentNode$1.removeChild(firstChild);
+            }
+            
+          }        
+        };
+        var oldSub = {
+          contents: /* NoSub */0
+        };
+        var handleSubscriptionChange = function (model) {
+          var newSub = _1(subscriptions, model);
+          oldSub.contents = run$1(callbacks, callbacks, oldSub.contents, newSub);
+          
+        };
+        var handlerStartup = function (param) {
+          clearPnode();
+          run(callbacks, initCmd);
+          handleSubscriptionChange(latestModel.contents);
+          nextFrameID.contents = -1;
+          doRender();
+          
+        };
+        var render_string = function (model) {
+          return renderToHtmlString(_1(view, model));
+        };
+        var handler = function (model, msg) {
+          var match = _2(update, model, msg);
+          var newModel = match[0];
+          latestModel.contents = newModel;
+          run(callbacks, match[1]);
+          scheduleRender();
+          handleSubscriptionChange(newModel);
+          return newModel;
+        };
+        var handlerShutdown = function (cmd) {
+          nextFrameID.contents = undefined;
+          run(callbacks, cmd);
+          oldSub.contents = run$1(callbacks, callbacks, oldSub.contents, /* NoSub */0);
+          priorRenderedVdom.contents = /* [] */0;
+          clearPnode();
+          
+        };
+        return {
+                startup: handlerStartup,
+                render_string: render_string,
+                handleMsg: handler,
+                shutdown: handlerShutdown
+              };
+      });
+  }
+
+  function program(param, pnode, flags) {
+    polyfills();
+    var match = _1(param.init, flags);
+    var initModel = match[0];
+    var opnode = (pnode == null) ? undefined : some(pnode);
+    var pumpInterface = programLoop(param.update, param.view, param.subscriptions, initModel, match[1], opnode);
+    return programStateWrapper(initModel, pumpInterface, param.shutdown);
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  function asRecord($$location) {
+    return {
+            href: $$location.href,
+            protocol: $$location.protocol,
+            host: $$location.host,
+            hostname: $$location.hostname,
+            port: $$location.port,
+            pathname: $$location.pathname,
+            search: $$location.search,
+            hash: $$location.hash,
+            username: $$location.username,
+            password: $$location.password,
+            origin: $$location.origin
+          };
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  var notifier = {
+    contents: undefined
+  };
+
+  function notifyUrlChange(param) {
+    var cb = notifier.contents;
+    if (cb === undefined) {
+      return ;
+    }
+    var $$location = asRecord(document.location);
+    _1(cb, $$location);
+    
+  }
+
+  function subscribe(tagger) {
+    var enableCall = function (callbacks) {
+      var notifyHandler = function ($$location) {
+        return _1(callbacks.enqueue, _1(tagger, $$location));
+      };
+      notifier.contents = notifyHandler;
+      var handler = function (_event) {
+        return notifyUrlChange();
+      };
+      addEventListener$1("popstate", handler, false);
+      return (function (param) {
+          return removeEventListener$1("popstate", handler, false);
+        });
+    };
+    return registration("navigation", enableCall);
+  }
+
+  function navigationProgram(locationToMessage, stuff) {
+    var init = function (flag) {
+      return _2(stuff.init, flag, asRecord(document.location));
+    };
+    var subscriptions = function (model) {
+      return /* Batch */__(0, [/* :: */[
+                  subscribe(locationToMessage),
+                  /* :: */[
+                    _1(stuff.subscriptions, model),
+                    /* [] */0
+                  ]
+                ]]);
+    };
+    var partial_arg_update = stuff.update;
+    var partial_arg_view = stuff.view;
+    var partial_arg_shutdown = stuff.shutdown;
+    var partial_arg = {
+      init: init,
+      update: partial_arg_update,
+      view: partial_arg_view,
+      subscriptions: subscriptions,
+      shutdown: partial_arg_shutdown
+    };
+    return (function (param, param$1) {
+        return program(partial_arg, param, param$1);
+      });
+  }
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  var style = "\n        html {\n            height: 100%\n        }\n\n        body {\n            height: 100%;\n            background-color: #eee;\n            display: flex;\n            flex-direction: column;\n            font-family: sans-serif;\n            padding: 0;\n            margin: 0;\n        }\n\n        p {\n            font-size: 14px;\n        }\n\n        h3 {\n            margin-bottom: 3px;\n        }\n    ";
+
+  var button_bar_class = "button-bar";
+
+  var delete_class = "delete";
+
+  function delete_button(msg) {
+    return button(undefined, undefined, /* :: */[
+                onClick(msg),
+                /* :: */[
+                  class$prime(delete_class),
+                  /* [] */0
+                ]
+              ], /* :: */[
+                text("X"),
+                /* [] */0
+              ]);
+  }
+
+  function button$1(enabledOpt, title, msg) {
+    var enabled = enabledOpt !== undefined ? enabledOpt : true;
+    return button(undefined, undefined, /* :: */[
+                onClick(msg),
+                /* :: */[
+                  Attributes.disabled(!enabled),
+                  /* [] */0
+                ]
+              ], /* :: */[
+                text(title),
+                /* [] */0
+              ]);
+  }
+
+  function button_bar(buttons) {
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(button_bar_class),
+                /* [] */0
+              ], buttons);
+  }
+
+  var blue_color = "#48a9dc";
+
+  var style$1 = "\n\n        ." + (String(button_bar_class) + (" {\n            padding-top: 5px; \n            padding-bottom: 5px;\n        }\n\n        button {\n            background-color: white;\n            color: #555;\n            box-shadow: 0 0 0 1px " + (String(blue_color) + (";\n            border: none;\n            border-radius: 4px;\n            padding: 6px;\n            margin-right: 8px;\n            font-size: 14px;\n        }\n\n        button." + (String(delete_class) + (" {\n            background-color: #f00;\n            box-shadow: 0 0 2px 2px rgba(127,0,0,.5);\n            font-weight: bold;\n            color: #fff;\n            padding-left: 8px;\n            padding-right: 8px;\n            border-radius: 4px;\n            display: inline-block;\n        }\n\n        button:active {\n            background-color: " + (String(blue_color) + (";\n            color: white;\n        }\n\n        button:disabled {\n            background-color: #ddd;\n            color: #90adbd;\n        }\n\n        a, a:active, a:visited {\n            display: inline-block;\n            color: " + (String(blue_color) + ("\n        }\n\n        a, a:active, a:visited {\n            display: inline-block;\n            color: " + (String(blue_color) + "\n        }\n    ")))))))))));
+
+  var panels_class = "panels";
+
+  var panel_class = "panel";
+
+  var panel_header_class = "panel-header";
+
+  var panel_body_class = "panel-body";
+
+  function panel_view(header, body) {
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(panel_class),
+                /* [] */0
+              ], /* :: */[
+                div$1(undefined, undefined, /* :: */[
+                      class$prime(panel_header_class),
+                      /* [] */0
+                    ], /* :: */[
+                      text(header),
+                      /* [] */0
+                    ]),
+                /* :: */[
+                  div$1(undefined, undefined, /* :: */[
+                        class$prime(panel_body_class),
+                        /* [] */0
+                      ], body),
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  function panels_container_view(panels) {
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(panels_class),
+                /* [] */0
+              ], panels);
+  }
+
+  var style$2 = "\n        div." + (String(panels_class) + (" {\n            height: 98%;\n        }\n\n        div." + (String(panel_header_class) + (" {\n            background-color: #248;\n            color: white;\n            font-weight: bold;\n            padding: 4px;\n        }   \n\n        div." + (String(panel_class) + (" {\n            overflow-y: auto;\n            background-color: white;\n            margin-top: 5px;\n        }     \n        \n\n        @media screen and (max-width: 1023px) {\n            div." + (String(panel_class) + (" {\n                float: left;\n                width: 99%;\n                margin-top: 10px;\n                border: solid 1px #aaa;\n            }\n        }\n\n        @media screen and (min-width: 1024px) {\n            div." + (String(panel_class) + (" {\n                float: left;\n                margin-left: 5px;\n                margin-right: 5px;\n                width: 48%;\n                height: 98%;\n                border: solid 1px #aaa;\n            }\n        }\n\n        div." + (String(panel_body_class) + " {\n            padding: 6px;\n        }\n    ")))))))))));
+
+  var variable_class = "variable";
+
+  var fact_name_class = "fact";
+
+  var relation_name_class = "relation";
+
+  var punctuation_class = "punctuation";
+
+  var rule_item_class = "rule-item";
+
+  var rule_used_class = "rule-used";
+
+  var rule_display_class = "rule-display";
+
+  var style$3 = "\n        ." + (String(variable_class) + (" {\n            color: #ff0; \n            display: inline-block;\n        }\n\n        ." + (String(fact_name_class) + (" {\n            color: #0f0;\n            display: inline-block;\n        }\n        \n        ." + (String(relation_name_class) + (" {\n            color: #6af;\n            font-weight: bold;\n            display: inline-block;\n        }\n\n        ." + (String(punctuation_class) + (" {\n            color: white;\n            font-weight: bold;\n        }\n\n        ." + (String(rule_display_class) + (" {\n            background-color: black;\n            font-family: Consolas, monospace;\n            padding: 4px;\n        }\n\n        ." + (String(rule_item_class) + (" {\n            color: black;\n            background-color: black;\n\n            display: flex;\n            align-items: center;            \n\n            border-radius: 6px;\n            padding: 6px;\n            box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);\n\n            margin-bottom: 12px;\n        }\n\n        ." + (String(rule_item_class) + ("." + (String(rule_used_class) + " {\n            box-shadow: 0 0 2px 4px #f44;\n        }\n\n        ul {\n            list-style: none;\n            margin-block-start: 0;\n            margin-block-end: 0;\n        }\n    ")))))))))))))));
+
+  function punctuation_view(str) {
+    return span(undefined, undefined, /* :: */[
+                class$prime(punctuation_class),
+                /* [] */0
+              ], /* :: */[
+                text(str),
+                /* [] */0
+              ]);
+  }
+
+  function term_view(param) {
+    if (!param.tag) {
+      return span(undefined, undefined, /* :: */[
+                  class$prime(variable_class),
+                  /* [] */0
+                ], /* :: */[
+                  text(_1(sprintf(/* Format */[
+                                /* Char_literal */__(12, [
+                                    /* "?" */63,
+                                    /* String */__(2, [
+                                        /* No_padding */0,
+                                        /* End_of_format */0
+                                      ])
+                                  ]),
+                                "?%s"
+                              ]), param[0][0])),
+                  /* [] */0
+                ]);
+    }
+    var match = param[0];
+    var related_terms = match.related_terms;
+    var name = match.relation_name[0];
+    if (related_terms) {
+      return span(undefined, undefined, /* [] */0, /* :: */[
+                  span(undefined, undefined, /* :: */[
+                        class$prime(relation_name_class),
+                        /* [] */0
+                      ], /* :: */[
+                        text(name),
+                        /* [] */0
+                      ]),
+                  /* :: */[
+                    punctuation_view("("),
+                    /* :: */[
+                      term_view(related_terms[0]),
+                      /* :: */[
+                        span(undefined, undefined, /* [] */0, map((function (term) {
+                                    return span(undefined, undefined, /* [] */0, /* :: */[
+                                                punctuation_view(", "),
+                                                /* :: */[
+                                                  term_view(term),
+                                                  /* [] */0
+                                                ]
+                                              ]);
+                                  }), related_terms[1])),
+                        /* :: */[
+                          punctuation_view(")"),
+                          /* [] */0
+                        ]
+                      ]
+                    ]
+                  ]
+                ]);
+    } else {
+      return span(undefined, undefined, /* :: */[
+                  class$prime(fact_name_class),
+                  /* [] */0
+                ], /* :: */[
+                  text(name),
+                  /* [] */0
+                ]);
+    }
+  }
+
+  function complex_term_view(term) {
+    switch (term.tag | 0) {
+      case /* Term */0 :
+          return term_view(term[0]);
+      case /* EqualityAssertion */1 :
+          return span(undefined, undefined, /* [] */0, /* :: */[
+                      term_view(term[0]),
+                      /* :: */[
+                        punctuation_view("="),
+                        /* :: */[
+                          term_view(term[1]),
+                          /* [] */0
+                        ]
+                      ]
+                    ]);
+      case /* InequalityAssert */2 :
+          return span(undefined, undefined, /* [] */0, /* :: */[
+                      term_view(term[0]),
+                      /* :: */[
+                        punctuation_view("/="),
+                        /* :: */[
+                          term_view(term[1]),
+                          /* [] */0
+                        ]
+                      ]
+                    ]);
+      
+    }
+  }
+
+  function rule_display(rule) {
+    var antecedents = rule.antecedents;
+    var introduced_complex = function (introducer, term) {
+      return li(undefined, undefined, /* [] */0, /* :: */[
+                  punctuation_view(introducer),
+                  /* :: */[
+                    complex_term_view(term),
+                    /* [] */0
+                  ]
+                ]);
+    };
+    var tmp;
+    if (antecedents) {
+      var first = antecedents[0];
+      var match = rev(antecedents[1]);
+      tmp = match ? ul(undefined, undefined, /* [] */0, concat(/* :: */[
+                  /* :: */[
+                    introduced_complex("when ", first),
+                    /* [] */0
+                  ],
+                  /* :: */[
+                    map((function (param) {
+                            return introduced_complex("and ", param);
+                          }), rev(match[1])),
+                    /* :: */[
+                      /* :: */[
+                        li(undefined, undefined, /* [] */0, /* :: */[
+                              punctuation_view("and "),
+                              /* :: */[
+                                complex_term_view(match[0]),
+                                /* :: */[
+                                  punctuation_view("."),
+                                  /* [] */0
+                                ]
+                              ]
+                            ]),
+                        /* [] */0
+                      ],
+                      /* [] */0
+                    ]
+                  ]
+                ])) : span(undefined, undefined, /* [] */0, /* :: */[
+              punctuation_view(" when "),
+              /* :: */[
+                complex_term_view(first),
+                /* :: */[
+                  punctuation_view("."),
+                  /* [] */0
+                ]
+              ]
+            ]);
+    } else {
+      tmp = punctuation_view(".");
+    }
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(rule_display_class),
+                /* [] */0
+              ], /* :: */[
+                term_view(rule.consequent),
+                /* :: */[
+                  tmp,
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  function query_display(complex_terms) {
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(rule_display_class),
+                /* [] */0
+              ], /* :: */[
+                ul(undefined, undefined, /* [] */0, map((function (complex_term) {
+                            return li(undefined, undefined, /* [] */0, /* :: */[
+                                        complex_term_view(complex_term),
+                                        /* [] */0
+                                      ]);
+                          }), complex_terms)),
+                /* [] */0
+              ]);
+  }
+
+  function editable(rule_entry) {
+    var rule = _1(Types.RuleDatabase.rule_from_entry, rule_entry);
+    return div$1(undefined, undefined, /* :: */[
+                classList(/* :: */[
+                      /* tuple */[
+                        rule_item_class,
+                        true
+                      ],
+                      /* :: */[
+                        /* tuple */[
+                          rule_used_class,
+                          false
+                        ],
+                        /* [] */0
+                      ]
+                    ]),
+                /* [] */0
+              ], /* :: */[
+                delete_button(Message.deleteRule(rule_entry)),
+                /* :: */[
+                  a(undefined, undefined, /* :: */[
+                        onClick(Message.initiateEditRule(rule_entry)),
+                        /* [] */0
+                      ], /* :: */[
+                        rule_display(rule),
+                        /* [] */0
+                      ]),
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  function readonly(rule_entries_applied, rule_entry) {
+    var should_highlight = exists((function (applied) {
+            return _2(Types.RuleDatabase.is_same, applied, rule_entry);
+          }), rule_entries_applied);
+    return div$1(undefined, undefined, /* :: */[
+                classList(/* :: */[
+                      /* tuple */[
+                        rule_item_class,
+                        true
+                      ],
+                      /* :: */[
+                        /* tuple */[
+                          rule_used_class,
+                          should_highlight
+                        ],
+                        /* [] */0
+                      ]
+                    ]),
+                /* [] */0
+              ], /* :: */[
+                rule_display(_1(Types.RuleDatabase.rule_from_entry, rule_entry)),
+                /* [] */0
+              ]);
+  }
+
+  var language_editing_class = "language-editing";
+
+  var errors_container_class = "errors-container";
+
+  var editing_container_class = "editing-container";
+
+  var style$4 = "\n        input {\n            margin-left: 6px;\n        }          \n        \n        ." + (String(language_editing_class) + (" {\n            width: 96%;\n            font-family: Consolas, monospace;\n            background-color: black;\n            color: white;\n        }\n\n        ." + (String(errors_container_class) + (" ul {\n            padding-left: 20px;\n            list-style: square;\n        }\n\n        ." + (String(editing_container_class) + (" {\n            margin-bottom: 16px;\n        }\n\n        ." + (String(errors_container_class) + " li {\n            color: #800;\n            font-size: 14px;\n        }\n    ")))))));
+
+  function view(editing, header, result_button_caption, message_of_result, cancel_message, placeholder_text) {
+    var parse_error_result_view = function (errors) {
+      if (errors) {
+        return div$1(undefined, undefined, /* :: */[
+                    class$prime(errors_container_class),
+                    /* [] */0
+                  ], /* :: */[
+                    ul(undefined, undefined, /* [] */0, map((function (err) {
+                                return li(undefined, undefined, /* [] */0, /* :: */[
+                                            text(err),
+                                            /* [] */0
+                                          ]);
+                              }), errors)),
+                    /* [] */0
+                  ]);
+      } else {
+        return noNode$1;
+      }
+    };
+    var result = editing.compilation_result;
+    if (result.tag) {
+      return div$1(undefined, undefined, /* :: */[
+                  class$prime(editing_container_class),
+                  /* [] */0
+                ], /* :: */[
+                  label(undefined, undefined, /* [] */0, /* :: */[
+                        text(header),
+                        /* [] */0
+                      ]),
+                  /* :: */[
+                    textarea(undefined, undefined, /* :: */[
+                          onInput(undefined, Message.updateText),
+                          /* :: */[
+                            class$prime(language_editing_class),
+                            /* :: */[
+                              placeholder(placeholder_text),
+                              /* :: */[
+                                value$1(editing.text),
+                                /* :: */[
+                                  noProp,
+                                  /* [] */0
+                                ]
+                              ]
+                            ]
+                          ]
+                        ], /* [] */0),
+                    /* :: */[
+                      noNode$1,
+                      /* :: */[
+                        button_bar(/* :: */[
+                              parse_error_result_view(result[0]),
+                              /* :: */[
+                                button$1(undefined, "Cancel", cancel_message),
+                                /* [] */0
+                              ]
+                            ]),
+                        /* [] */0
+                      ]
+                    ]
+                  ]
+                ]);
+    }
+    var msg = _1(message_of_result, result[0]);
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(editing_container_class),
+                /* [] */0
+              ], /* :: */[
+                label(undefined, undefined, /* [] */0, /* :: */[
+                      text(header),
+                      /* [] */0
+                    ]),
+                /* :: */[
+                  textarea(undefined, undefined, /* :: */[
+                        onInput(undefined, Message.updateText),
+                        /* :: */[
+                          class$prime(language_editing_class),
+                          /* :: */[
+                            placeholder(placeholder_text),
+                            /* :: */[
+                              value$1(editing.text),
+                              /* :: */[
+                                _3(TeaHtmlEx.Keydown.keydown, editing.text, msg, (function (keydown_info) {
+                                        if (keydown_info.keyCode === 13) {
+                                          return keydown_info.ctrlKey;
+                                        } else {
+                                          return false;
+                                        }
+                                      })),
+                                /* [] */0
+                              ]
+                            ]
+                          ]
+                        ]
+                      ], /* [] */0),
+                  /* :: */[
+                    div$1(undefined, undefined, /* [] */0, /* :: */[
+                          text(_1(sprintf(/* Format */[
+                                        /* String_literal */__(11, [
+                                            "(ctrl+enter to ",
+                                            /* String */__(2, [
+                                                /* No_padding */0,
+                                                /* Char_literal */__(12, [
+                                                    /* ")" */41,
+                                                    /* End_of_format */0
+                                                  ])
+                                              ])
+                                          ]),
+                                        "(ctrl+enter to %s)"
+                                      ]), result_button_caption)),
+                          /* [] */0
+                        ]),
+                    /* :: */[
+                      button_bar(/* :: */[
+                            button$1(undefined, result_button_caption, msg),
+                            /* :: */[
+                              button$1(undefined, "Cancel", cancel_message),
+                              /* [] */0
+                            ]
+                          ]),
+                      /* [] */0
+                    ]
+                  ]
+                ]
+              ]);
+  }
+
+  var style$5 = "";
+
+  function view$1(model) {
+    var rules = _1(Types.RuleDatabase.all_rules, model.rule_database);
+    var readonly_rules_view = function (rules_applied) {
+      return div$1(undefined, undefined, /* [] */0, map((function (param) {
+                        return readonly(rules_applied, param);
+                      }), rules));
+    };
+    var editable_rules_view = function (param) {
+      return div$1(undefined, "editable_rules", /* [] */0, /* :: */[
+                  p(undefined, undefined, /* [] */0, /* :: */[
+                        text(rules ? "Click the rule text of any rule to edit/update that rule. Clicking X removes the rule from the database WITHOUT a prompt." : "Click <Add Rule/Fact> to start adding rules to the database."),
+                        /* [] */0
+                      ]),
+                  /* :: */[
+                    div$1(undefined, undefined, /* [] */0, map(editable, rules)),
+                    /* [] */0
+                  ]
+                ]);
+    };
+    var match = model.interaction_mode;
+    var header;
+    header = typeof match === "number" || match.tag ? "Rules and Facts" : "Select an Example";
+    var examples = model.interaction_mode;
+    var tmp;
+    if (typeof examples === "number") {
+      tmp = div$1(undefined, "viewing_rules", /* [] */0, /* :: */[
+            button_bar(/* :: */[
+                  button$1(undefined, "Add Rule / Fact", /* InitiateAddRule */2),
+                  /* :: */[
+                    rules ? button$1(undefined, "Query", /* InitiateEditQuery */3) : noNode$1,
+                    /* :: */[
+                      button$1(undefined, "Select Example", /* InitiateChooseExample */1),
+                      /* [] */0
+                    ]
+                  ]
+                ]),
+            /* :: */[
+              hr(undefined, undefined, /* [] */0, /* [] */0),
+              /* :: */[
+                editable_rules_view(),
+                /* [] */0
+              ]
+            ]
+          ]);
+    } else {
+      switch (examples.tag | 0) {
+        case /* ChoosingExample */0 :
+            var example_button = function (example) {
+              return button$1(undefined, example.name, /* ChooseExample */__(1, [example]));
+            };
+            tmp = div$1(undefined, "choosing_example", /* [] */0, /* :: */[
+                  p(undefined, undefined, /* [] */0, /* :: */[
+                        text("Select an example to load rules and example queries"),
+                        /* [] */0
+                      ]),
+                  /* :: */[
+                    button_bar(map(example_button, examples[0])),
+                    /* :: */[
+                      button$1(undefined, "Cancel", /* ViewRules */0),
+                      /* [] */0
+                    ]
+                  ]
+                ]);
+            break;
+        case /* AddingRule */1 :
+            tmp = div$1(undefined, "adding_rule", /* [] */0, /* :: */[
+                  view(examples[0], "New Rule", "Add Rule", Message.addRule, /* ViewRules */0, "New rule..."),
+                  /* :: */[
+                    hr(undefined, undefined, /* [] */0, /* [] */0),
+                    /* :: */[
+                      readonly_rules_view(/* [] */0),
+                      /* [] */0
+                    ]
+                  ]
+                ]);
+            break;
+        case /* EditingRule */2 :
+            var rule_entry = examples[0];
+            tmp = div$1(undefined, "editing_rule", /* [] */0, /* :: */[
+                  view(examples[1], "Editing Rule", "Update Rule", (function (updated_rule) {
+                          return Message.editRuleEntry(_2(Types.RuleDatabase.update_rule_entry, rule_entry, updated_rule));
+                        }), /* ViewRules */0, "Edit rule..."),
+                  /* :: */[
+                    hr(undefined, undefined, /* [] */0, /* [] */0),
+                    /* :: */[
+                      readonly_rules_view(/* :: */[
+                            rule_entry,
+                            /* [] */0
+                          ]),
+                      /* [] */0
+                    ]
+                  ]
+                ]);
+            break;
+        case /* EditingQuery */3 :
+            tmp = readonly_rules_view(/* [] */0);
+            break;
+        case /* ExecutingQuery */4 :
+            var solution_stream = examples[0].solution_stream;
+            tmp = readonly_rules_view(solution_stream ? solution_stream[0].rules_applied : /* [] */0);
+            break;
+        
+      }
+    }
+    return panel_view(header, /* :: */[
+                tmp,
+                /* [] */0
+              ]);
+  }
+
+  var solution_frame_class = "solution-frame";
+
+  var no_solution_class = "no-solution";
+
+  var style$6 = " \n\n    div." + (String(no_solution_class) + (" {\n        margin: 4px;\n        padding: 6px;\n        border-radius: 3px;\n        border-color: #aaa;\n        border-width: 1px;\n        border-style: solid;\n        background-color: #fcc;\n    }\n\n    div." + (String(solution_frame_class) + (" {\n        margin: 4px;\n        padding: 4px;\n        border-radius: 3px;\n        border-color: #aaa;\n        border-width: 1px;\n        border-style: solid;\n        background-color: #cfc;\n    }\n\n    div." + (String(solution_frame_class) + " > h3 {\n        font-size: 16px;\n        font-weight: bold;\n        margin: 4px;\n    }\n    \n    ")))));
+
+  function executing_query_view(param) {
+    var displayed_solutions = param.displayed_solutions;
+    var solution_stream = param.solution_stream;
+    var initiating_query = param.initiating_query;
+    var query_view = function (param) {
+      return div$1(undefined, undefined, /* [] */0, /* :: */[
+                  h3(undefined, undefined, /* [] */0, /* :: */[
+                        text("Query"),
+                        /* [] */0
+                      ]),
+                  /* :: */[
+                    query_display(initiating_query),
+                    /* [] */0
+                  ]
+                ]);
+    };
+    var solution_view = function (solution) {
+      var bindings = _2(Types.Frame.to_strings, initiating_query, solution.frame);
+      if (bindings) {
+        return div$1(undefined, undefined, /* :: */[
+                    class$prime(solution_frame_class),
+                    /* [] */0
+                  ], /* :: */[
+                    h3(undefined, undefined, /* [] */0, /* :: */[
+                          text("Satisfied With Variable Substitution(s)"),
+                          /* [] */0
+                        ]),
+                    /* :: */[
+                      ul(undefined, undefined, /* [] */0, map((function (txt) {
+                                  return li(undefined, undefined, /* [] */0, /* :: */[
+                                              text(txt),
+                                              /* [] */0
+                                            ]);
+                                }), bindings)),
+                      /* [] */0
+                    ]
+                  ]);
+      } else {
+        return div$1(undefined, undefined, /* :: */[
+                    class$prime(solution_frame_class),
+                    /* [] */0
+                  ], /* :: */[
+                    h3(undefined, undefined, /* [] */0, /* :: */[
+                          text("Satisfied Without Variable Sustitution"),
+                          /* [] */0
+                        ]),
+                    /* :: */[
+                      ul(undefined, undefined, /* [] */0, /* [] */0),
+                      /* [] */0
+                    ]
+                  ]);
+      }
+    };
+    return div$1(undefined, "executing_query", /* [] */0, /* :: */[
+                solution_stream ? div$1(undefined, "solutions_remaining", /* [] */0, /* :: */[
+                        button_bar(/* :: */[
+                              button$1(undefined, "Next Solution", /* NextFrame */4),
+                              /* :: */[
+                                button$1(undefined, "New Query", /* InitiateEditQuery */3),
+                                /* :: */[
+                                  button$1(undefined, "Cancel", /* ViewRules */0),
+                                  /* [] */0
+                                ]
+                              ]
+                            ]),
+                        /* :: */[
+                          query_view(),
+                          /* :: */[
+                            solution_view(solution_stream[0]),
+                            /* [] */0
+                          ]
+                        ]
+                      ]) : div$1(undefined, "end_of_stream", /* [] */0, /* :: */[
+                        button_bar(/* :: */[
+                              button$1(undefined, "New Query", /* InitiateEditQuery */3),
+                              /* [] */0
+                            ]),
+                        /* :: */[
+                          query_view(),
+                          /* :: */[
+                            displayed_solutions ? noNode$1 : div$1(undefined, undefined, /* :: */[
+                                    class$prime(no_solution_class),
+                                    /* [] */0
+                                  ], /* :: */[
+                                    text("No Solution"),
+                                    /* [] */0
+                                  ]),
+                            /* [] */0
+                          ]
+                        ]
+                      ]),
+                /* :: */[
+                  displayed_solutions ? div$1(undefined, undefined, /* [] */0, /* :: */[
+                          h3(undefined, undefined, /* [] */0, /* :: */[
+                                text("Prior Solutions"),
+                                /* [] */0
+                              ]),
+                          /* :: */[
+                            hr(undefined, undefined, /* [] */0, /* [] */0),
+                            /* :: */[
+                              div$1(undefined, undefined, /* [] */0, map(solution_view, displayed_solutions)),
+                              /* [] */0
+                            ]
+                          ]
+                        ]) : noNode$1,
+                  /* [] */0
+                ]
+              ]);
+  }
+
+  function editing_query_view(editing_query) {
+    return div$1(undefined, "editing_query", /* [] */0, /* :: */[
+                view(editing_query, "Query", "Execute Query", Message.executeQuery, /* ViewRules */0, "New query..."),
+                /* [] */0
+              ]);
+  }
+
+  function instructions_view(param) {
+    var paragraph = function (txt) {
+      return p(undefined, undefined, /* [] */0, /* :: */[
+                  text(txt),
+                  /* [] */0
+                ]);
+    };
+    var relation = function (fact_name, relations) {
+      return _2(Types.Term.make_relation, fact_name, relations);
+    };
+    var rule = function (consequent, antecedent_terms) {
+      return {
+              antecedents: map((function (term) {
+                      return /* Term */__(0, [term]);
+                    }), antecedent_terms),
+              consequent: consequent
+            };
+    };
+    var consequent = relation("OrangesAreSpherical", /* [] */0);
+    var consequent$1 = relation("oranges_are_spherical", /* [] */0);
+    var consequent$2 = relation("Spherical", /* :: */[
+          relation("Oranges", /* [] */0),
+          /* [] */0
+        ]);
+    var consequent$3 = relation("Spherical", /* :: */[
+          relation("SoccerBalls", /* [] */0),
+          /* [] */0
+        ]);
+    var consequent$4 = relation("Spherical", /* :: */[
+          relation("BasketBalls", /* [] */0),
+          /* [] */0
+        ]);
+    var consequent$5 = relation("MotherOf", /* :: */[
+          relation("Sally", /* [] */0),
+          /* :: */[
+            relation("Bob", /* [] */0),
+            /* [] */0
+          ]
+        ]);
+    var consequent$6 = relation("SumOf", /* :: */[
+          relation("Two", /* [] */0),
+          /* :: */[
+            relation("Two", /* [] */0),
+            /* :: */[
+              relation("Four", /* [] */0),
+              /* [] */0
+            ]
+          ]
+        ]);
+    return div$1(undefined, "instructions", /* [] */0, /* :: */[
+                paragraph("LitLog, short for Literate Logic programming, is a subset of Prolog with a simpler syntax and an on-line editor. \n                The goal of LitLog is offer a path to quickly learning the basics of declarative logic programming in three lunch breaks or less."),
+                /* :: */[
+                  paragraph("When Logic Programming fits the problem space, it beats other programming paradigms by orders of magnitude so it is a helpful tool to\n            have in your mental toolbox (even if an applicable problem may only arise once in a decade). It is also just neat and that alone is worth a few lunch periods."),
+                  /* :: */[
+                    paragraph("The act of declarative logic programming is building a knowledge database that can be queried. It is the query powers that are surprising and interesting."),
+                    /* :: */[
+                      paragraph("Rules & Facts are the two forms of knowledge representation."),
+                      /* :: */[
+                        paragraph("FACTs are unconditionally true statements. As soon as a fact is entered into the database it is known to be true. \n            A Fact can relate other terms together or it can stand on its own. An example of a Fact that stands on its own without any relationships might be"),
+                        /* :: */[
+                          rule_display({
+                                antecedents: /* [] */0,
+                                consequent: consequent
+                              }),
+                          /* :: */[
+                            paragraph("A Fact is represented as an identifier written in any case. Spaces cannot be used inside Fact names but underscores can be. The above fact could have also been written"),
+                            /* :: */[
+                              rule_display({
+                                    antecedents: /* [] */0,
+                                    consequent: consequent$1
+                                  }),
+                              /* :: */[
+                                paragraph("Facts can also express the truth of a _relationship_ between things. A Fact that expresses a relationship with a single term can be viewed as a declaration of \n            inclusion in a Set (a Predicate). For example, the Fact above could be represented, more usefully, as"),
+                                /* :: */[
+                                  rule_display({
+                                        antecedents: /* [] */0,
+                                        consequent: consequent$2
+                                      }),
+                                  /* :: */[
+                                    paragraph("The form above now expresses that Oranges are in the set of spherical things. The knowledge database could list other spherical things"),
+                                    /* :: */[
+                                      rule_display({
+                                            antecedents: /* [] */0,
+                                            consequent: consequent$3
+                                          }),
+                                      /* :: */[
+                                        rule_display({
+                                              antecedents: /* [] */0,
+                                              consequent: consequent$4
+                                            }),
+                                        /* :: */[
+                                          paragraph("Facts can express relationships between multiple things. For example, a fact which expresses a Mother-Child relationship between Sally and Bob"),
+                                          /* :: */[
+                                            rule_display({
+                                                  antecedents: /* [] */0,
+                                                  consequent: consequent$5
+                                                }),
+                                            /* :: */[
+                                              paragraph("Another example might be a relation named 'SumOf' that expresses that two and two relate to four "),
+                                              /* :: */[
+                                                rule_display({
+                                                      antecedents: /* [] */0,
+                                                      consequent: consequent$6
+                                                    }),
+                                                /* :: */[
+                                                  paragraph("While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, we might instruct the logic database that \n            Sally being the Mother of Bob also means that Sally is a Parent of Bob."),
+                                                  /* :: */[
+                                                    rule_display(rule(relation("ParentOf", /* :: */[
+                                                                  relation("Sally", /* [] */0),
+                                                                  /* :: */[
+                                                                    relation("Bob", /* [] */0),
+                                                                    /* [] */0
+                                                                  ]
+                                                                ]), /* :: */[
+                                                              relation("MotherOf", /* :: */[
+                                                                    relation("Sally", /* [] */0),
+                                                                    /* :: */[
+                                                                      relation("Bob", /* [] */0),
+                                                                      /* [] */0
+                                                                    ]
+                                                                  ]),
+                                                              /* [] */0
+                                                            ])),
+                                                    /* :: */[
+                                                      paragraph("Observe that the rule above is unfortunately specific. It is not a general statement about all mothers and sons but rather a specific statement about two specific individuals.\n            In order to get the power of generalization (abstraction) we need to introduce variables."),
+                                                      /* :: */[
+                                                        paragraph("Variables are written with a ? prefix. To make a general statement about all mothers also being parents we would write"),
+                                                        /* :: */[
+                                                          rule_display(rule(relation("ParentOf", /* :: */[
+                                                                        /* Variable */__(0, [/* VariableName */["Mother"]]),
+                                                                        /* :: */[
+                                                                          /* Variable */__(0, [/* VariableName */["Child"]]),
+                                                                          /* [] */0
+                                                                        ]
+                                                                      ]), /* :: */[
+                                                                    relation("MotherOf", /* :: */[
+                                                                          /* Variable */__(0, [/* VariableName */["Mother"]]),
+                                                                          /* :: */[
+                                                                            /* Variable */__(0, [/* VariableName */["Child"]]),
+                                                                            /* [] */0
+                                                                          ]
+                                                                        ]),
+                                                                    /* [] */0
+                                                                  ])),
+                                                          /* :: */[
+                                                            paragraph("Rules can state multiple conditions that must be true for the rule to be true. To encode the transitive property of the GreaterThan relationship we might write"),
+                                                            /* :: */[
+                                                              rule_display(rule(relation("GreaterThan", /* :: */[
+                                                                            /* Variable */__(0, [/* VariableName */["A"]]),
+                                                                            /* :: */[
+                                                                              /* Variable */__(0, [/* VariableName */["C"]]),
+                                                                              /* [] */0
+                                                                            ]
+                                                                          ]), /* :: */[
+                                                                        relation("GreaterThan", /* :: */[
+                                                                              /* Variable */__(0, [/* VariableName */["A"]]),
+                                                                              /* :: */[
+                                                                                /* Variable */__(0, [/* VariableName */["B"]]),
+                                                                                /* [] */0
+                                                                              ]
+                                                                            ]),
+                                                                        /* :: */[
+                                                                          relation("GreaterThan", /* :: */[
+                                                                                /* Variable */__(0, [/* VariableName */["B"]]),
+                                                                                /* :: */[
+                                                                                  /* Variable */__(0, [/* VariableName */["C"]]),
+                                                                                  /* [] */0
+                                                                                ]
+                                                                              ]),
+                                                                          /* [] */0
+                                                                        ]
+                                                                      ])),
+                                                              /* :: */[
+                                                                paragraph("Facts, Rules, and Variables are nearly the extent of how knowledge is represented in LitLog. Now we turn to the truly fun part QUERIES!!!\n            "),
+                                                                /* [] */0
+                                                              ]
+                                                            ]
+                                                          ]
+                                                        ]
+                                                      ]
+                                                    ]
+                                                  ]
+                                                ]
+                                              ]
+                                            ]
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]);
+  }
+
+  function view$2(model) {
+    var query_panel = function (header, content) {
+      return panel_view(header, /* :: */[
+                  content,
+                  /* [] */0
+                ]);
+    };
+    var editing_query = model.interaction_mode;
+    if (typeof editing_query === "number") {
+      return query_panel("Instructions", instructions_view());
+    }
+    switch (editing_query.tag | 0) {
+      case /* EditingQuery */3 :
+          return query_panel("Query", editing_query_view(editing_query[0]));
+      case /* ExecutingQuery */4 :
+          return query_panel("Query", executing_query_view(editing_query[0]));
+      default:
+        return query_panel("Instructions", instructions_view());
+    }
+  }
+
+  var style$7 = concat$1(" ", /* :: */[
+        style,
+        /* :: */[
+          style$1,
+          /* :: */[
+            style$2,
+            /* :: */[
+              style$3,
+              /* :: */[
+                style$4,
+                /* :: */[
+                  style$5,
+                  /* :: */[
+                    style$6,
+                    /* [] */0
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]);
+
+  function view$3(model) {
+    return panels_container_view(/* :: */[
+                view$1(model),
+                /* :: */[
+                  view$2(model),
+                  /* [] */0
+                ]
+              ]);
+  }
+  /* style Not a pure module */
+
+  // Generated by BUCKLESCRIPT, PLEASE EDIT WITH CARE
+
+  var program$1 = navigationProgram((function (_location) {
+          return Message.viewRules;
+        }), {
+        init: (function (param, param$1) {
+            return /* tuple */[
+                    ApplicationModel.init(undefined),
+                    /* NoCmd */0
+                  ];
+          }),
+        update: update$1,
+        view: view$3,
+        subscriptions: (function (param) {
+            return none$1;
+          }),
+        shutdown: (function (param) {
+            return none;
+          })
+      });
+
+  function main(web_node, param) {
+    var style = document.createElement("style");
+    document.head.appendChild(style);
+    style.innerHTML = style$7;
+    return _2(program$1, web_node, undefined);
+  }
+  /* program Not a pure module */
+
+  exports.main = main;
+
+  return exports;
+
+}({}));

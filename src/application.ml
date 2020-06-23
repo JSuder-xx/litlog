@@ -67,6 +67,7 @@ module ApplicationModel = struct
 
     type interaction_mode = 
         | ViewingRules 
+        | ChoosingExample of Example.t list
         | AddingRule of Rule.t CompiledTextEditing.t
         | EditingRule of RuleDatabase.rule_entry * Rule.t CompiledTextEditing.t
 
@@ -88,9 +89,12 @@ module Message = struct
 
     type t =              
         | ViewRules
+        | InitiateChooseExample
         | InitiateAddRule
         | InitiateEditRule of RuleDatabase.rule_entry
         | InitiateEditQuery
+
+        | ChooseExample of Example.t
 
         | UpdateText of string
 
@@ -146,6 +150,20 @@ let update ({ rule_database; interaction_mode }: ApplicationModel.t) msg =
                     rule_entry
                     , (ApplicationModel.CompiledTextEditing.edit Language.Types.Rule.to_string rule)
                 ) 
+            }
+
+        | InitiateChooseExample ->
+            { rule_database; interaction_mode = ChoosingExample Example.examples }
+
+        | ChooseExample example ->
+            { rule_database = (
+                match (Language.Parser.rule_database_result_from_rule_strings example.rules) with
+                | Tea.Result.Ok rule_database' -> rule_database'
+                | Tea.Result.Error _ -> 
+                    (** TODO: HANDLE THIS ERROR!!! *)
+                    rule_database
+            )
+            ; interaction_mode = ViewingRules
             }
 
         | InitiateAddRule ->

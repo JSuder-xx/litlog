@@ -261,7 +261,7 @@ let prefix_parser prefix_parser item_parser =
     let rec aux lst =
         bind_with 
             ~parser: prefix_parser
-            ~failure_return: lst
+            ~failure_return: (lst |> List.rev)
             ~next_parser: (fun _ -> 
                 item_parser
                 >>= fun item -> aux (item::lst)

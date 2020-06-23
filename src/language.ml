@@ -206,14 +206,17 @@ module Types = struct
 
         let to_string { consequent; antecedents } =
             let consequent_string = Term.to_string consequent in
-            match antecedents with
-            | [] -> 
-                consequent_string
-            | _ -> 
-                let antecedents_string = antecedents
-                    |> List.map ComplexTerm.to_string
-                    |> String.concat " and " in
-                Printf.sprintf "%s when %s" consequent_string antecedents_string 
+            (
+                match antecedents with
+                | [] -> 
+                    consequent_string
+                | _ -> 
+                    let antecedents_string = antecedents
+                        |> List.map ComplexTerm.to_string
+                        |> String.concat " and " in
+                    Printf.sprintf "%s when %s" consequent_string antecedents_string 
+            )
+            |> Printf.sprintf "%s."
 
         let relation_arities { consequent; antecedents } = 
             List.concat 
@@ -286,6 +289,7 @@ module Types = struct
         val empty: t
 
         val rule_from_entry: rule_entry -> Rule.t
+        val identifier_of_rule_entry: rule_entry -> string
         val update_rule_entry: rule_entry -> Rule.t -> rule_entry
         val is_same: rule_entry -> rule_entry -> bool
 
@@ -314,10 +318,11 @@ module Types = struct
             }
 
         let rule_from_entry { rule } = rule
-
+        let identifier_of_rule_entry { id } = Printf.sprintf "%d" id
         let is_same left right = left.id = right.id
 
         let update_rule_entry entry rule = 
+            Js.Console.log (rule |> Rule.to_string |> Printf.sprintf "Update rule entry: %s");
             { id = entry.id
             ; rule 
             }
@@ -342,7 +347,7 @@ module Types = struct
             |> List.rev  
             |> LazyStream.from_list
 
-        let all_rules { all_rules } = all_rules
+        let all_rules { all_rules } = all_rules |> List.rev
 
         let current_id = ref 1
 
@@ -376,6 +381,7 @@ module Types = struct
             let update_for_key = function
                 | None -> Some [updated_rule_entry]
                 | Some rules' -> Some (update_rule_entries rules') in
+            updated_rule_entry.rule |> Rule.to_string |> Printf.sprintf "Updating rule in database: %s" |> Js.Console.log; 
             match updated_rule_entry.rule.consequent with
             | Term.Variable _ ->
                 { db with all_rules }
@@ -400,10 +406,110 @@ module Types = struct
     end 
 end
 
+module Validator 
+    : sig
+
+    type rule_database_snapshot
+
+    val rule_database_snapshot: Types.RuleDatabase.t -> rule_database_snapshot
+
+    (** Issues found in the edited version of an existing rule in the database. *)
+    val issues_in_existing_rule: rule_database_snapshot -> Types.RuleDatabase.rule_entry -> string list
+
+    (** Issues found in a proposed new rule. *)
+    val issues_in_new_rule: rule_database_snapshot -> Types.Rule.t -> string list
+
+    (** Issues found in a query. *)
+    val issues_in_query: rule_database_snapshot -> Types.ComplexTerm.t list -> string list
+
+    end
+    = struct
+
+    module RelationMap = Utils.AggregateMap(Types.RelationName)
+
+    type rule_database_snapshot = Types.RuleDatabase.rule_entry list 
+
+    let rule_database_snapshot rule_database = 
+        rule_database
+        |> Types.RuleDatabase.all_rules
+
+    let arity_mismatch_messages relation_arities_opt relation_names = 
+        relation_names
+        |> List.fold_left 
+            (fun messages relation_name -> 
+                let Types.RelationName.RelationName relation_name' = relation_name in 
+                match relation_arities_opt relation_name with
+                | None -> 
+                    messages
+                | Some relation_arities -> 
+                    match Utils.ListEx.first_inconsistent_opt relation_arities snd with
+                    | None -> messages
+                    | Some (first, second) ->
+                        (Printf.sprintf "Relation '%s' has inconsistent number of terms applied of %d and %d" relation_name' first second)::messages
+            )
+            []        
+
+    let relation_map_of_rules rules = 
+        rules
+        |> Utils.ListEx.concat_map Types.Rule.relation_arities
+        |> RelationMap.make fst
+
+    let unique_relation_names_of_rule rule = 
+        rule
+        |> Types.Rule.relation_arities 
+        |> RelationMap.make fst 
+        |> RelationMap.keys
+
+    let issues_in_existing_rule rule_database_snapshot rule_entry_to_validate = 
+        let rule_map =             
+            (
+                rule_entry_to_validate
+                ::(
+                    rule_database_snapshot 
+                    |> List.filter (fun entry -> not (Types.RuleDatabase.is_same entry rule_entry_to_validate))
+                )
+            )
+            |> List.map Types.RuleDatabase.rule_from_entry
+            |> relation_map_of_rules in
+        rule_entry_to_validate
+        |> Types.RuleDatabase.rule_from_entry
+        |> unique_relation_names_of_rule
+        |> arity_mismatch_messages (fun relation_name -> RelationMap.find_opt relation_name rule_map)
+
+    let issues_in_new_rule rule_database_snapshot rule_to_validate = 
+        let rule_map =             
+            (
+                rule_to_validate
+                ::(rule_database_snapshot |> List.map Types.RuleDatabase.rule_from_entry)
+            )
+            |> relation_map_of_rules in
+        rule_to_validate
+        |> unique_relation_names_of_rule
+        |> arity_mismatch_messages (fun relation_name -> RelationMap.find_opt relation_name rule_map)
+
+    let issues_in_query rule_database_snapshot query_to_validate = 
+        let query_relation_arities = query_to_validate |> Utils.ListEx.concat_map Types.ComplexTerm.relation_arities in
+        let rule_map =
+            List.concat 
+                [ query_relation_arities 
+                ; rule_database_snapshot 
+                |> List.map Types.RuleDatabase.rule_from_entry
+                |> Utils.ListEx.concat_map Types.Rule.relation_arities
+                ]                    
+            |> RelationMap.make fst in
+        query_relation_arities
+        |> RelationMap.make fst
+        |> RelationMap.keys
+        |> arity_mismatch_messages (fun relation_name -> RelationMap.find_opt relation_name rule_map)
+
+end
+
 module Parser 
     : sig
         val rule_parser: Types.Rule.t ParserM.t
         val query_parser: (Types.ComplexTerm.t list) ParserM.t
+        (** Return the result of batch parsing a ton of rule strings. The rules are parsed and validated and a successful result is only returned if every rule is cool. *)
+        val rule_database_result_from_rule_strings: string list -> (Types.RuleDatabase.t, string list) Tea.Result.t
     end 
     = struct
 
@@ -502,103 +608,31 @@ module Parser
     and simple_terms_parser input =
         (one_to_many_delimited ~item_parser: (simple_term_parser << skip_whitespace) ~delimiter_parser: (equals ',' >> skip_whitespace)) input
 
+
+    (** Return the result of batch parsing a ton of rule strings. The rules are parsed and validated and a successful result is only returned if every rule is cool. *)
+    let rule_database_result_from_rule_strings rule_strings =
+        rule_strings
+        |> List.fold_left 
+            (fun rule_database_result rule ->                 
+                rule_database_result
+                |> Utils.ResultEx.flat_map (fun rule_database -> 
+                    (ParserM.parse_require_all rule_parser rule)
+                    |> Utils.ResultEx.map_error (fun err -> err |> List.map ParserM.string_of_parse_error)
+                    |> Utils.ResultEx.flat_map (fun ({ result }:(Types.Rule.t ParserM.parse_success)) ->
+                        let issues = Validator.issues_in_new_rule (Validator.rule_database_snapshot rule_database) result in
+                        if (List.length issues) > 0
+                        then Tea.Result.Error issues
+                        else Tea.Result.Ok (Types.RuleDatabase.add_rule rule_database result)
+                    )
+                )
+            ) 
+            (Tea.Result.Ok Types.RuleDatabase.empty)
+
 end
 
-module Validator 
-    : sig
 
-    type rule_database_snapshot
+module IO = struct
 
-    val rule_database_snapshot: Types.RuleDatabase.t -> rule_database_snapshot
-
-    (** Issues found in the edited version of an existing rule in the database. *)
-    val issues_in_existing_rule: rule_database_snapshot -> Types.RuleDatabase.rule_entry -> string list
-
-    (** Issues found in a proposed new rule. *)
-    val issues_in_new_rule: rule_database_snapshot -> Types.Rule.t -> string list
-
-    (** Issues found in a query. *)
-    val issues_in_query: rule_database_snapshot -> Types.ComplexTerm.t list -> string list
-
-    end
-    = struct
-
-    module RelationMap = Utils.AggregateMap(Types.RelationName)
-
-    type rule_database_snapshot = Types.RuleDatabase.rule_entry list 
-
-    let rule_database_snapshot rule_database = 
-        rule_database
-        |> Types.RuleDatabase.all_rules
-
-    let arity_mismatch_messages relation_arities_opt relation_names = 
-        relation_names
-        |> List.fold_left 
-            (fun messages relation_name -> 
-                let Types.RelationName.RelationName relation_name' = relation_name in 
-                match relation_arities_opt relation_name with
-                | None -> 
-                    messages
-                | Some relation_arities -> 
-                    match Utils.ListEx.first_inconsistent_opt relation_arities snd with
-                    | None -> messages
-                    | Some (first, second) ->
-                        (Printf.sprintf "Relation '%s' has inconsistent number of terms applied of %d and %d" relation_name' first second)::messages
-            )
-            []        
-
-    let relation_map_of_rules rules = 
-        rules
-        |> Utils.ListEx.concat_map Types.Rule.relation_arities
-        |> RelationMap.make fst
-
-    let unique_relation_names_of_rule rule = 
-        rule
-        |> Types.Rule.relation_arities 
-        |> RelationMap.make fst 
-        |> RelationMap.keys
-
-    let issues_in_existing_rule rule_database_snapshot rule_entry_to_validate = 
-        let rule_map =             
-            (
-                rule_entry_to_validate
-                ::(
-                    rule_database_snapshot 
-                    |> List.filter (fun entry -> not (Types.RuleDatabase.is_same entry rule_entry_to_validate))
-                )
-            )
-            |> List.map Types.RuleDatabase.rule_from_entry
-            |> relation_map_of_rules in
-        rule_entry_to_validate
-        |> Types.RuleDatabase.rule_from_entry
-        |> unique_relation_names_of_rule
-        |> arity_mismatch_messages (fun relation_name -> RelationMap.find_opt relation_name rule_map)
-
-    let issues_in_new_rule rule_database_snapshot rule_to_validate = 
-        let rule_map =             
-            (
-                rule_to_validate
-                ::(rule_database_snapshot |> List.map Types.RuleDatabase.rule_from_entry)
-            )
-            |> relation_map_of_rules in
-        rule_to_validate
-        |> unique_relation_names_of_rule
-        |> arity_mismatch_messages (fun relation_name -> RelationMap.find_opt relation_name rule_map)
-
-    let issues_in_query rule_database_snapshot query_to_validate = 
-        let query_relation_arities = query_to_validate |> Utils.ListEx.concat_map Types.ComplexTerm.relation_arities in
-        let rule_map =
-            List.concat 
-                [ query_relation_arities 
-                ; rule_database_snapshot 
-                |> List.map Types.RuleDatabase.rule_from_entry
-                |> Utils.ListEx.concat_map Types.Rule.relation_arities
-                ]                    
-            |> RelationMap.make fst in
-        query_relation_arities
-        |> RelationMap.make fst
-        |> RelationMap.keys
-        |> arity_mismatch_messages (fun relation_name -> RelationMap.find_opt relation_name rule_map)
 
 end
 
