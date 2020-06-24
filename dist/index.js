@@ -4171,7 +4171,7 @@ var starter = (function (exports) {
         /* :: */[
           "GreaterThan(Four, ?LessThanFour)",
           /* :: */[
-            "GreaterThan(?GreaterThanOne, Three)",
+            "GreaterThan(?GreaterThanThree, Three)",
             /* :: */[
               "GreaterThan(?GreaterThanOne, One)",
               /* :: */[
@@ -4259,7 +4259,22 @@ var starter = (function (exports) {
             ]
           ]
         ],
-        queries: /* [] */0
+        queries: /* :: */[
+          "Sum(Three, Three, Six)",
+          /* :: */[
+            "Sum(Three, ?right, Five)",
+            /* :: */[
+              "Sum(Three, Four, ?sum)",
+              /* :: */[
+                "Sum(?left, ?right, Five)",
+                /* :: */[
+                  "Sum(?double, ?double, ?result)",
+                  /* [] */0
+                ]
+              ]
+            ]
+          ]
+        ]
       },
       /* :: */[
         {
@@ -4277,12 +4292,21 @@ var starter = (function (exports) {
                     /* :: */[
                       "MotherOf(Erica, Bob).",
                       /* :: */[
-                        "FatherOf(Bob, Jane).",
+                        "FatherOf(Paul, Bob).",
                         /* :: */[
-                          "FatherOf(Bob, Jim).",
+                          "FatherOf(Bob, Jane).",
                           /* :: */[
-                            "MotherOf(Sally, Jane).",
-                            /* [] */0
+                            "FatherOf(Bob, Jim).",
+                            /* :: */[
+                              "MotherOf(Sally, Jane).",
+                              /* :: */[
+                                "MotherOf(Sally, Jim).",
+                                /* :: */[
+                                  "MotherOf(Jane, Tim).",
+                                  /* [] */0
+                                ]
+                              ]
+                            ]
                           ]
                         ]
                       ]
@@ -4292,7 +4316,22 @@ var starter = (function (exports) {
               ]
             ]
           ],
-          queries: /* [] */0
+          queries: /* :: */[
+            "ParentOf(?parent, Jim)",
+            /* :: */[
+              "ParentOf(Bob, ?child)",
+              /* :: */[
+                "ParentOf(?parent, ?child)",
+                /* :: */[
+                  "AncestorOf(?ancestor, Tim)",
+                  /* :: */[
+                    "AncestorOf(Erica, ?descendant)",
+                    /* [] */0
+                  ]
+                ]
+              ]
+            ]
+          ]
         },
         /* [] */0
       ]
@@ -7293,6 +7332,10 @@ var starter = (function (exports) {
                   ]), string_of_location(param.location), param.expecting, param.actual);
   }
 
+  function result_of_parse_success(param) {
+    return param.result;
+  }
+
   function bind(original_parser, new_parser, input) {
     var success = _1(original_parser, input);
     if (success.tag) {
@@ -8750,6 +8793,36 @@ var starter = (function (exports) {
       return some(e[0]);
     }
     
+  }
+
+  function accumulate(param) {
+    if (!param) {
+      return /* Ok */__(0, [/* [] */0]);
+    }
+    var tl = param[1];
+    var last = param[0];
+    if (!tl) {
+      if (last.tag) {
+        return last;
+      } else {
+        return /* Ok */__(0, [/* :: */[
+                    last[0],
+                    /* [] */0
+                  ]]);
+      }
+    }
+    if (last.tag) {
+      return last;
+    }
+    var e = accumulate(tl);
+    if (e.tag) {
+      return e;
+    } else {
+      return /* Ok */__(0, [/* :: */[
+                  last[0],
+                  e[0]
+                ]]);
+    }
   }
 
   function first(fst, e) {
@@ -11121,6 +11194,15 @@ var starter = (function (exports) {
     relation_arities: relation_arities$1
   };
 
+  function to_string$4(terms) {
+    return concat$1(" and ", map(to_string$3, terms));
+  }
+
+  var Query = {
+    empty: /* [] */0,
+    to_string: to_string$4
+  };
+
   var FrameMap = Make(VariableName);
 
   var empty$1 = FrameMap.empty;
@@ -11260,12 +11342,12 @@ var starter = (function (exports) {
     term_depends_on_variable: term_depends_on_variable
   };
 
-  function to_string$4(param) {
+  function to_string$5(param) {
     var antecedents = param.antecedents;
     var consequent_string = to_string$2(param.consequent);
     var tmp;
     if (antecedents) {
-      var antecedents_string = concat$1(" and ", map(to_string$3, antecedents));
+      var antecedents_string = to_string$4(antecedents);
       tmp = _2(sprintf(/* Format */[
                 /* String */__(2, [
                     /* No_padding */0,
@@ -11308,6 +11390,18 @@ var starter = (function (exports) {
     contents: 0
   };
 
+  function rename_term_variables(assertion) {
+    if (!assertion.tag) {
+      return /* Variable */__(0, [make_numbered(assertion[0], rule_counter.contents)]);
+    }
+    var match = assertion[0];
+    var new_related_terms = map(rename_term_variables, match.related_terms);
+    return /* Relation */__(1, [{
+                relation_name: match.relation_name,
+                related_terms: new_related_terms
+              }]);
+  }
+
   function rename_complex_term_variables(assertion) {
     switch (assertion.tag | 0) {
       case /* Term */0 :
@@ -11328,18 +11422,6 @@ var starter = (function (exports) {
     }
   }
 
-  function rename_term_variables(assertion) {
-    if (!assertion.tag) {
-      return /* Variable */__(0, [make_numbered(assertion[0], rule_counter.contents)]);
-    }
-    var match = assertion[0];
-    var new_related_terms = map(rename_term_variables, match.related_terms);
-    return /* Relation */__(1, [{
-                relation_name: match.relation_name,
-                related_terms: new_related_terms
-              }]);
-  }
-
   function rename(rule) {
     rule_counter.contents = rule_counter.contents + 1 | 0;
     var antecedents$prime = map(rename_complex_term_variables, rule.antecedents);
@@ -11350,7 +11432,7 @@ var starter = (function (exports) {
   }
 
   var Rule = {
-    to_string: to_string$4,
+    to_string: to_string$5,
     relation_arities: relation_arities$2,
     rename_rule_variables: rename
   };
@@ -11389,7 +11471,7 @@ var starter = (function (exports) {
                         ])
                     ]),
                   "Update rule entry: %s"
-                ]), to_string$4(rule)));
+                ]), to_string$5(rule)));
     return {
             id: entry.id,
             rule: rule
@@ -11484,7 +11566,7 @@ var starter = (function (exports) {
                         ])
                     ]),
                   "Updating rule in database: %s"
-                ]), to_string$4(updated_rule_entry.rule)));
+                ]), to_string$5(updated_rule_entry.rule)));
     var match = updated_rule_entry.rule.consequent;
     if (match.tag) {
       return {
@@ -11556,6 +11638,7 @@ var starter = (function (exports) {
     RelationName: RelationName,
     Term: Term,
     ComplexTerm: ComplexTerm,
+    Query: Query,
     Frame: Frame,
     Rule: Rule,
     RuleDatabase: RuleDatabase
@@ -11742,10 +11825,6 @@ var starter = (function (exports) {
     return one_to_many_delimited(item_parser, $great$great($great$great(skip_whitespace, token("and")), skip_whitespace));
   }
 
-  function simple_term_parser(input) {
-    return $less$pipe$great(variable_parser, relational_term_parser, input);
-  }
-
   function comparison_parser(input) {
     return $great$great$eq($great$great(equals(/* "<" */60), simple_term_parser), (function (left_term) {
                   return (function (param) {
@@ -11768,6 +11847,10 @@ var starter = (function (exports) {
                                   }), param);
                     });
                 }), input);
+  }
+
+  function simple_term_parser(input) {
+    return $less$pipe$great(variable_parser, relational_term_parser, input);
   }
 
   function complex_term_parser(input) {
@@ -12079,6 +12162,7 @@ var starter = (function (exports) {
   function init(param) {
     return {
             rule_database: Types.RuleDatabase.empty,
+            example_queries: /* [] */0,
             interaction_mode: /* ViewingRules */0
           };
   }
@@ -12093,28 +12177,32 @@ var starter = (function (exports) {
     return /* InitiateEditRule */__(0, [param_0]);
   }
 
+  function initiateEditQuery(param_0) {
+    return /* InitiateEditQuery */__(1, [param_0]);
+  }
+
   function chooseExample(param_0) {
-    return /* ChooseExample */__(1, [param_0]);
+    return /* ChooseExample */__(2, [param_0]);
   }
 
   function updateText(param_0) {
-    return /* UpdateText */__(2, [param_0]);
+    return /* UpdateText */__(3, [param_0]);
   }
 
   function addRule(param_0) {
-    return /* AddRule */__(3, [param_0]);
+    return /* AddRule */__(4, [param_0]);
   }
 
   function editRuleEntry(param_0) {
-    return /* EditRuleEntry */__(4, [param_0]);
+    return /* EditRuleEntry */__(5, [param_0]);
   }
 
   function deleteRule(param_0) {
-    return /* DeleteRule */__(5, [param_0]);
+    return /* DeleteRule */__(6, [param_0]);
   }
 
   function executeQuery(param_0) {
-    return /* ExecuteQuery */__(6, [param_0]);
+    return /* ExecuteQuery */__(7, [param_0]);
   }
 
   var Message = {
@@ -12122,18 +12210,19 @@ var starter = (function (exports) {
     initiateChooseExample: /* InitiateChooseExample */1,
     initiateAddRule: /* InitiateAddRule */2,
     initiateEditRule: initiateEditRule,
-    initiateEditQuery: /* InitiateEditQuery */3,
+    initiateEditQuery: initiateEditQuery,
     chooseExample: chooseExample,
     updateText: updateText,
     addRule: addRule,
     editRuleEntry: editRuleEntry,
     deleteRule: deleteRule,
     executeQuery: executeQuery,
-    nextFrame: /* NextFrame */4
+    nextFrame: /* NextFrame */3
   };
 
   function update$1(param, msg) {
     var interaction_mode = param.interaction_mode;
+    var example_queries = param.example_queries;
     var rule_database = param.rule_database;
     var tmp;
     if (typeof msg === "number") {
@@ -12141,39 +12230,35 @@ var starter = (function (exports) {
         case /* ViewRules */0 :
             tmp = {
               rule_database: rule_database,
+              example_queries: example_queries,
               interaction_mode: /* ViewingRules */0
             };
             break;
         case /* InitiateChooseExample */1 :
             tmp = {
               rule_database: rule_database,
+              example_queries: example_queries,
               interaction_mode: /* ChoosingExample */__(0, [examples])
             };
             break;
         case /* InitiateAddRule */2 :
             tmp = {
               rule_database: rule_database,
+              example_queries: example_queries,
               interaction_mode: /* AddingRule */__(1, [{
                     text: "",
                     compilation_result: /* Error */__(1, [/* [] */0])
                   }])
             };
             break;
-        case /* InitiateEditQuery */3 :
-            tmp = {
-              rule_database: rule_database,
-              interaction_mode: /* EditingQuery */__(3, [{
-                    text: "",
-                    compilation_result: /* Error */__(1, [/* [] */0])
-                  }])
-            };
-            break;
-        case /* NextFrame */4 :
+        case /* NextFrame */3 :
             tmp = typeof interaction_mode === "number" || interaction_mode.tag !== /* ExecutingQuery */4 ? ({
                   rule_database: rule_database,
+                  example_queries: example_queries,
                   interaction_mode: interaction_mode
                 }) : ({
                   rule_database: rule_database,
+                  example_queries: example_queries,
                   interaction_mode: /* ExecutingQuery */__(4, [next_solution(interaction_mode[0])])
                 });
             break;
@@ -12186,27 +12271,53 @@ var starter = (function (exports) {
             var rule = _1(Types.RuleDatabase.rule_from_entry, rule_entry);
             tmp = {
               rule_database: rule_database,
+              example_queries: example_queries,
               interaction_mode: /* EditingRule */__(2, [
                   rule_entry,
                   edit(Types.Rule.to_string, rule)
                 ])
             };
             break;
-        case /* ChooseExample */1 :
-            var rule_database$prime = Parser.rule_database_result_from_rule_strings(msg[0].rules);
+        case /* InitiateEditQuery */1 :
+            tmp = {
+              rule_database: rule_database,
+              example_queries: example_queries,
+              interaction_mode: /* EditingQuery */__(3, [edit(Types.Query.to_string, msg[0])])
+            };
+            break;
+        case /* ChooseExample */2 :
+            var example = msg[0];
+            var rule_database$prime = Parser.rule_database_result_from_rule_strings(example.rules);
             var tmp$1;
-            tmp$1 = rule_database$prime.tag ? rule_database : rule_database$prime[0];
+            if (rule_database$prime.tag) {
+              console.error(rule_database$prime[0]);
+              tmp$1 = rule_database;
+            } else {
+              tmp$1 = rule_database$prime[0];
+            }
+            var example_parse_successes = accumulate(map((function (param) {
+                        return parse_require_all(Parser.query_parser, param);
+                      }), example.queries));
+            var tmp$2;
+            if (example_parse_successes.tag) {
+              console.error(example_parse_successes[0]);
+              tmp$2 = /* [] */0;
+            } else {
+              tmp$2 = map(result_of_parse_success, example_parse_successes[0]);
+            }
             tmp = {
               rule_database: tmp$1,
+              example_queries: tmp$2,
               interaction_mode: /* ViewingRules */0
             };
             break;
-        case /* UpdateText */2 :
+        case /* UpdateText */3 :
             var text = msg[0];
             var snapshot = Validator.rule_database_snapshot(rule_database);
             if (typeof interaction_mode === "number") {
               tmp = {
                 rule_database: rule_database,
+                example_queries: example_queries,
                 interaction_mode: interaction_mode
               };
             } else {
@@ -12214,6 +12325,7 @@ var starter = (function (exports) {
                 case /* AddingRule */1 :
                     tmp = {
                       rule_database: rule_database,
+                      example_queries: example_queries,
                       interaction_mode: /* AddingRule */__(1, [make$3(text, Parser.rule_parser, (function (param) {
                                   return Validator.issues_in_new_rule(snapshot, param);
                                 }))])
@@ -12226,6 +12338,7 @@ var starter = (function (exports) {
                     };
                     tmp = {
                       rule_database: rule_database,
+                      example_queries: example_queries,
                       interaction_mode: /* EditingRule */__(2, [
                           rule_entry$1,
                           make$3(text, Parser.rule_parser, validator)
@@ -12235,6 +12348,7 @@ var starter = (function (exports) {
                 case /* EditingQuery */3 :
                     tmp = {
                       rule_database: rule_database,
+                      example_queries: example_queries,
                       interaction_mode: /* EditingQuery */__(3, [make$3(text, Parser.query_parser, (function (param) {
                                   return Validator.issues_in_query(snapshot, param);
                                 }))])
@@ -12243,37 +12357,42 @@ var starter = (function (exports) {
                 default:
                   tmp = {
                     rule_database: rule_database,
+                    example_queries: example_queries,
                     interaction_mode: interaction_mode
                   };
               }
             }
             break;
-        case /* AddRule */3 :
+        case /* AddRule */4 :
             tmp = {
               rule_database: _2(Types.RuleDatabase.add_rule, rule_database, msg[0]),
+              example_queries: example_queries,
               interaction_mode: /* AddingRule */__(1, [{
                     text: "",
                     compilation_result: /* Error */__(1, [/* [] */0])
                   }])
             };
             break;
-        case /* EditRuleEntry */4 :
+        case /* EditRuleEntry */5 :
             tmp = {
               rule_database: _2(Types.RuleDatabase.update_rule, rule_database, msg[0]),
+              example_queries: example_queries,
               interaction_mode: /* ViewingRules */0
             };
             break;
-        case /* DeleteRule */5 :
+        case /* DeleteRule */6 :
             tmp = {
               rule_database: _2(Types.RuleDatabase.remove_rule, rule_database, msg[0]),
+              example_queries: example_queries,
               interaction_mode: interaction_mode
             };
             break;
-        case /* ExecuteQuery */6 :
+        case /* ExecuteQuery */7 :
             var initiating_query = msg[0];
             var solution_stream = Evaluator.query(rule_database, initiating_query);
             tmp = {
               rule_database: rule_database,
+              example_queries: example_queries,
               interaction_mode: /* ExecutingQuery */__(4, [{
                     initiating_query: initiating_query,
                     solution_stream: solution_stream,
@@ -12710,6 +12829,29 @@ var starter = (function (exports) {
 
   var style$2 = "\n        div." + (String(panels_class) + (" {\n            height: 98%;\n        }\n\n        div." + (String(panel_header_class) + (" {\n            background-color: #248;\n            color: white;\n            font-weight: bold;\n            padding: 4px;\n        }   \n\n        div." + (String(panel_class) + (" {\n            overflow-y: auto;\n            background-color: white;\n            margin-top: 5px;\n        }     \n        \n\n        @media screen and (max-width: 1023px) {\n            div." + (String(panel_class) + (" {\n                float: left;\n                width: 99%;\n                margin-top: 10px;\n                border: solid 1px #aaa;\n            }\n        }\n\n        @media screen and (min-width: 1024px) {\n            div." + (String(panel_class) + (" {\n                float: left;\n                margin-left: 5px;\n                margin-right: 5px;\n                width: 48%;\n                height: 98%;\n                border: solid 1px #aaa;\n            }\n        }\n\n        div." + (String(panel_body_class) + " {\n            padding: 6px;\n        }\n    ")))))))))));
 
+  var section_class = "section";
+
+  var style$3 = "\n\n    ";
+
+  function view(title, content) {
+    return div$1(undefined, undefined, /* :: */[
+                class$prime(section_class),
+                /* [] */0
+              ], /* :: */[
+                h3(undefined, undefined, /* [] */0, /* :: */[
+                      text(title),
+                      /* [] */0
+                    ]),
+                /* :: */[
+                  hr(undefined, undefined, /* [] */0, /* [] */0),
+                  /* :: */[
+                    div$1(undefined, undefined, /* [] */0, content),
+                    /* [] */0
+                  ]
+                ]
+              ]);
+  }
+
   var variable_class = "variable";
 
   var fact_name_class = "fact";
@@ -12724,7 +12866,7 @@ var starter = (function (exports) {
 
   var rule_display_class = "rule-display";
 
-  var style$3 = "\n        ." + (String(variable_class) + (" {\n            color: #ff0; \n            display: inline-block;\n        }\n\n        ." + (String(fact_name_class) + (" {\n            color: #0f0;\n            display: inline-block;\n        }\n        \n        ." + (String(relation_name_class) + (" {\n            color: #6af;\n            font-weight: bold;\n            display: inline-block;\n        }\n\n        ." + (String(punctuation_class) + (" {\n            color: white;\n            font-weight: bold;\n        }\n\n        ." + (String(rule_display_class) + (" {\n            background-color: black;\n            font-family: Consolas, monospace;\n            padding: 4px;\n        }\n\n        ." + (String(rule_item_class) + (" {\n            color: black;\n            background-color: black;\n\n            display: flex;\n            align-items: center;            \n\n            border-radius: 6px;\n            padding: 6px;\n            box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);\n\n            margin-bottom: 12px;\n        }\n\n        ." + (String(rule_item_class) + ("." + (String(rule_used_class) + " {\n            box-shadow: 0 0 2px 4px #f44;\n        }\n\n        ul {\n            list-style: none;\n            margin-block-start: 0;\n            margin-block-end: 0;\n        }\n    ")))))))))))))));
+  var style$4 = "\n        ." + (String(variable_class) + (" {\n            color: #ff0; \n            display: inline-block;\n        }\n\n        ." + (String(fact_name_class) + (" {\n            color: #0f0;\n            display: inline-block;\n        }\n        \n        ." + (String(relation_name_class) + (" {\n            color: #6af;\n            font-weight: bold;\n            display: inline-block;\n        }\n\n        ." + (String(punctuation_class) + (" {\n            color: white;\n            font-weight: bold;\n        }\n\n        ." + (String(rule_display_class) + (" {\n            background-color: black;\n            font-family: Consolas, monospace;\n            padding: 4px;\n        }\n\n        ." + (String(rule_item_class) + (" {\n            color: black;\n            background-color: black;\n\n            display: flex;\n            align-items: center;            \n\n            border-radius: 6px;\n            padding: 6px;\n            box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);\n\n            margin-bottom: 12px;\n        }\n\n        ." + (String(rule_item_class) + ("." + (String(rule_used_class) + " {\n            box-shadow: 0 0 2px 4px #f44;\n        }\n\n        ul {\n            list-style: none;\n            margin-block-start: 0;\n            margin-block-end: 0;\n        }\n    ")))))))))))))));
 
   function punctuation_view(str) {
     return span(undefined, undefined, /* :: */[
@@ -12974,9 +13116,9 @@ var starter = (function (exports) {
 
   var editing_container_class = "editing-container";
 
-  var style$4 = "\n        input {\n            margin-left: 6px;\n        }          \n        \n        ." + (String(language_editing_class) + (" {\n            width: 96%;\n            font-family: Consolas, monospace;\n            background-color: black;\n            color: white;\n        }\n\n        ." + (String(errors_container_class) + (" ul {\n            padding-left: 20px;\n            list-style: square;\n        }\n\n        ." + (String(editing_container_class) + (" {\n            margin-bottom: 16px;\n        }\n\n        ." + (String(errors_container_class) + " li {\n            color: #800;\n            font-size: 14px;\n        }\n    ")))))));
+  var style$5 = "\n        input {\n            margin-left: 6px;\n        }          \n        \n        ." + (String(language_editing_class) + (" {\n            width: 96%;\n            font-family: Consolas, monospace;\n            background-color: black;\n            color: white;\n        }\n\n        ." + (String(errors_container_class) + (" ul {\n            padding-left: 20px;\n            list-style: square;\n        }\n\n        ." + (String(editing_container_class) + (" {\n            margin-bottom: 16px;\n        }\n\n        ." + (String(errors_container_class) + " li {\n            color: #800;\n            font-size: 14px;\n        }\n    ")))))));
 
-  function view(editing, header, result_button_caption, message_of_result, cancel_message, placeholder_text) {
+  function view$1(editing, header, result_button_caption, message_of_result, cancel_message, placeholder_text) {
     var parse_error_result_view = function (errors) {
       if (errors) {
         return div$1(undefined, undefined, /* :: */[
@@ -13102,9 +13244,9 @@ var starter = (function (exports) {
               ]);
   }
 
-  var style$5 = "";
+  var style$6 = "";
 
-  function view$1(model) {
+  function view$2(model) {
     var rules = _1(Types.RuleDatabase.all_rules, model.rule_database);
     var readonly_rules_view = function (rules_applied) {
       return div$1(undefined, undefined, /* [] */0, map((function (param) {
@@ -13133,7 +13275,7 @@ var starter = (function (exports) {
             button_bar(/* :: */[
                   button$1(undefined, "Add Rule / Fact", /* InitiateAddRule */2),
                   /* :: */[
-                    rules ? button$1(undefined, "Query", /* InitiateEditQuery */3) : noNode$1,
+                    rules ? button$1(undefined, "Query", /* InitiateEditQuery */__(1, [/* [] */0])) : noNode$1,
                     /* :: */[
                       button$1(undefined, "Select Example", /* InitiateChooseExample */1),
                       /* [] */0
@@ -13152,7 +13294,7 @@ var starter = (function (exports) {
       switch (examples.tag | 0) {
         case /* ChoosingExample */0 :
             var example_button = function (example) {
-              return button$1(undefined, example.name, /* ChooseExample */__(1, [example]));
+              return button$1(undefined, example.name, /* ChooseExample */__(2, [example]));
             };
             tmp = div$1(undefined, "choosing_example", /* [] */0, /* :: */[
                   p(undefined, undefined, /* [] */0, /* :: */[
@@ -13170,7 +13312,7 @@ var starter = (function (exports) {
             break;
         case /* AddingRule */1 :
             tmp = div$1(undefined, "adding_rule", /* [] */0, /* :: */[
-                  view(examples[0], "New Rule", "Add Rule", Message.addRule, /* ViewRules */0, "New rule..."),
+                  view$1(examples[0], "New Rule", "Add Rule", Message.addRule, /* ViewRules */0, "New rule..."),
                   /* :: */[
                     hr(undefined, undefined, /* [] */0, /* [] */0),
                     /* :: */[
@@ -13183,7 +13325,7 @@ var starter = (function (exports) {
         case /* EditingRule */2 :
             var rule_entry = examples[0];
             tmp = div$1(undefined, "editing_rule", /* [] */0, /* :: */[
-                  view(examples[1], "Editing Rule", "Update Rule", (function (updated_rule) {
+                  view$1(examples[1], "Editing Rule", "Update Rule", (function (updated_rule) {
                           return Message.editRuleEntry(_2(Types.RuleDatabase.update_rule_entry, rule_entry, updated_rule));
                         }), /* ViewRules */0, "Edit rule..."),
                   /* :: */[
@@ -13218,22 +13360,18 @@ var starter = (function (exports) {
 
   var no_solution_class = "no-solution";
 
-  var style$6 = " \n\n    div." + (String(no_solution_class) + (" {\n        margin: 4px;\n        padding: 6px;\n        border-radius: 3px;\n        border-color: #aaa;\n        border-width: 1px;\n        border-style: solid;\n        background-color: #fcc;\n    }\n\n    div." + (String(solution_frame_class) + (" {\n        margin: 4px;\n        padding: 4px;\n        border-radius: 3px;\n        border-color: #aaa;\n        border-width: 1px;\n        border-style: solid;\n        background-color: #cfc;\n    }\n\n    div." + (String(solution_frame_class) + " > h3 {\n        font-size: 16px;\n        font-weight: bold;\n        margin: 4px;\n    }\n    \n    ")))));
+  var example_query_class = "example-query";
+
+  var style$7 = " \n\n    div." + (String(example_query_class) + (" {\n        border-radius: 3px;\n        padding: 5px;\n        margin-bottom: 6px;\n        background-color: #444;\n    }\n\n    div." + (String(no_solution_class) + (" {\n        margin: 4px;\n        padding: 6px;\n        border-radius: 3px;\n        border-color: #aaa;\n        border-width: 1px;\n        border-style: solid;\n        background-color: #fcc;\n    }\n\n    div." + (String(solution_frame_class) + (" {\n        margin: 4px;\n        padding: 4px;\n        border-radius: 3px;\n        border-color: #aaa;\n        border-width: 1px;\n        border-style: solid;\n        background-color: #cfc;\n    }\n\n    div." + (String(solution_frame_class) + " > h3 {\n        font-size: 16px;\n        font-weight: bold;\n        margin: 4px;\n    }\n    \n    ")))))));
 
   function executing_query_view(param) {
     var displayed_solutions = param.displayed_solutions;
     var solution_stream = param.solution_stream;
     var initiating_query = param.initiating_query;
     var query_view = function (param) {
-      return div$1(undefined, undefined, /* [] */0, /* :: */[
-                  h3(undefined, undefined, /* [] */0, /* :: */[
-                        text("Query"),
-                        /* [] */0
-                      ]),
-                  /* :: */[
-                    query_display(initiating_query),
-                    /* [] */0
-                  ]
+      return view("Query", /* :: */[
+                  query_display(initiating_query),
+                  /* [] */0
                 ]);
     };
     var solution_view = function (solution) {
@@ -13273,12 +13411,39 @@ var starter = (function (exports) {
                   ]);
       }
     };
+    var tmp;
+    if (displayed_solutions) {
+      var count = length(displayed_solutions);
+      tmp = view(_1(sprintf(/* Format */[
+                    /* String_literal */__(11, [
+                        "Prior Solutions (",
+                        /* Int */__(4, [
+                            /* Int_d */0,
+                            /* No_padding */0,
+                            /* No_precision */0,
+                            /* Char_literal */__(12, [
+                                /* ")" */41,
+                                /* End_of_format */0
+                              ])
+                          ])
+                      ]),
+                    "Prior Solutions (%d)"
+                  ]), count), /* :: */[
+            label(undefined, undefined, /* [] */0, /* :: */[
+                  text("OBSERVE: Some solutions may appear more than once because. There can be multiple paths to reach the same solution and LitLog does not remove duplicate solutions from the display."),
+                  /* [] */0
+                ]),
+            map(solution_view, displayed_solutions)
+          ]);
+    } else {
+      tmp = noNode$1;
+    }
     return div$1(undefined, "executing_query", /* [] */0, /* :: */[
                 solution_stream ? div$1(undefined, "solutions_remaining", /* [] */0, /* :: */[
                         button_bar(/* :: */[
-                              button$1(undefined, "Next Solution", /* NextFrame */4),
+                              button$1(undefined, "Next Solution", /* NextFrame */3),
                               /* :: */[
-                                button$1(undefined, "New Query", /* InitiateEditQuery */3),
+                                button$1(undefined, "New Query", /* InitiateEditQuery */__(1, [initiating_query])),
                                 /* :: */[
                                   button$1(undefined, "Cancel", /* ViewRules */0),
                                   /* [] */0
@@ -13288,52 +13453,85 @@ var starter = (function (exports) {
                         /* :: */[
                           query_view(),
                           /* :: */[
-                            solution_view(solution_stream[0]),
+                            view("Current Solution", /* :: */[
+                                  label(undefined, undefined, /* [] */0, /* :: */[
+                                        text("OBSERVE: All rules and facts applied in the discovery of the current solution are highlighted in the Rules and Facts panel."),
+                                        /* [] */0
+                                      ]),
+                                  /* :: */[
+                                    solution_view(solution_stream[0]),
+                                    /* [] */0
+                                  ]
+                                ]),
                             /* [] */0
                           ]
                         ]
                       ]) : div$1(undefined, "end_of_stream", /* [] */0, /* :: */[
                         button_bar(/* :: */[
-                              button$1(undefined, "New Query", /* InitiateEditQuery */3),
-                              /* [] */0
+                              button$1(undefined, "New Query", /* InitiateEditQuery */__(1, [initiating_query])),
+                              /* :: */[
+                                button$1(undefined, "Manage Rules", /* ViewRules */0),
+                                /* [] */0
+                              ]
                             ]),
                         /* :: */[
                           query_view(),
                           /* :: */[
-                            displayed_solutions ? noNode$1 : div$1(undefined, undefined, /* :: */[
-                                    class$prime(no_solution_class),
-                                    /* [] */0
-                                  ], /* :: */[
-                                    text("No Solution"),
-                                    /* [] */0
-                                  ]),
-                            /* [] */0
+                            view("All Solutions Found", /* :: */[
+                                  label(undefined, undefined, /* [] */0, /* :: */[
+                                        text("All of the solutions to the query have been found."),
+                                        /* [] */0
+                                      ]),
+                                  /* [] */0
+                                ]),
+                            /* :: */[
+                              displayed_solutions ? noNode$1 : div$1(undefined, undefined, /* :: */[
+                                      class$prime(no_solution_class),
+                                      /* [] */0
+                                    ], /* :: */[
+                                      text("No Solution"),
+                                      /* [] */0
+                                    ]),
+                              /* [] */0
+                            ]
                           ]
                         ]
                       ]),
                 /* :: */[
-                  displayed_solutions ? div$1(undefined, undefined, /* [] */0, /* :: */[
-                          h3(undefined, undefined, /* [] */0, /* :: */[
-                                text("Prior Solutions"),
-                                /* [] */0
-                              ]),
-                          /* :: */[
-                            hr(undefined, undefined, /* [] */0, /* [] */0),
-                            /* :: */[
-                              div$1(undefined, undefined, /* [] */0, map(solution_view, displayed_solutions)),
-                              /* [] */0
-                            ]
-                          ]
-                        ]) : noNode$1,
+                  tmp,
                   /* [] */0
                 ]
               ]);
   }
 
-  function editing_query_view(editing_query) {
+  function editing_query_view(editing_query, query_list) {
+    var choose_query_view = function (query) {
+      return div$1(undefined, undefined, /* :: */[
+                  class$prime(example_query_class),
+                  /* :: */[
+                    onClick(Message.updateText(_1(Types.Query.to_string, query))),
+                    /* [] */0
+                  ]
+                ], /* :: */[
+                  query_display(query),
+                  /* [] */0
+                ]);
+    };
     return div$1(undefined, "editing_query", /* [] */0, /* :: */[
-                view(editing_query, "Query", "Execute Query", Message.executeQuery, /* ViewRules */0, "New query..."),
-                /* [] */0
+                view$1(editing_query, "Query", "Execute Query", Message.executeQuery, /* ViewRules */0, "New query..."),
+                /* :: */[
+                  query_list ? div$1(undefined, undefined, /* [] */0, /* :: */[
+                          label(undefined, undefined, /* [] */0, /* :: */[
+                                text("Example Queries. Click a query below to populate the query entry box with that query."),
+                                /* [] */0
+                              ]),
+                          /* :: */[
+                            div$1(undefined, undefined, /* [] */0, map(choose_query_view, query_list)),
+                            /* [] */0
+                          ]
+                        ]) : noNode$1,
+                  /* [] */0
+                ]
               ]);
   }
 
@@ -13539,7 +13737,7 @@ var starter = (function (exports) {
               ]);
   }
 
-  function view$2(model) {
+  function view$3(model) {
     var query_panel = function (header, content) {
       return panel_view(header, /* :: */[
                   content,
@@ -13552,7 +13750,7 @@ var starter = (function (exports) {
     }
     switch (editing_query.tag | 0) {
       case /* EditingQuery */3 :
-          return query_panel("Query", editing_query_view(editing_query[0]));
+          return query_panel("Query", editing_query_view(editing_query[0], model.example_queries));
       case /* ExecutingQuery */4 :
           return query_panel("Query", executing_query_view(editing_query[0]));
       default:
@@ -13560,7 +13758,7 @@ var starter = (function (exports) {
     }
   }
 
-  var style$7 = concat$1(" ", /* :: */[
+  var style$8 = concat$1(" ", /* :: */[
         style,
         /* :: */[
           style$1,
@@ -13574,7 +13772,10 @@ var starter = (function (exports) {
                   style$5,
                   /* :: */[
                     style$6,
-                    /* [] */0
+                    /* :: */[
+                      style$7,
+                      /* [] */0
+                    ]
                   ]
                 ]
               ]
@@ -13583,11 +13784,11 @@ var starter = (function (exports) {
         ]
       ]);
 
-  function view$3(model) {
+  function view$4(model) {
     return panels_container_view(/* :: */[
-                view$1(model),
+                view$2(model),
                 /* :: */[
-                  view$2(model),
+                  view$3(model),
                   /* [] */0
                 ]
               ]);
@@ -13606,7 +13807,7 @@ var starter = (function (exports) {
                   ];
           }),
         update: update$1,
-        view: view$3,
+        view: view$4,
         subscriptions: (function (param) {
             return none$1;
           }),
@@ -13618,7 +13819,7 @@ var starter = (function (exports) {
   function main(web_node, param) {
     var style = document.createElement("style");
     document.head.appendChild(style);
-    style.innerHTML = style$7;
+    style.innerHTML = style$8;
     return _2(program$1, web_node, undefined);
   }
   /* program Not a pure module */

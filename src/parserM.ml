@@ -43,6 +43,8 @@ type 'value parse_success =
     ; remaining_chars: char list
     }
 
+let result_of_parse_success ({ result }: 'a parse_success): 'a = result 
+
 type 'value parse_result = ('value parse_success, parse_error list) Tea.Result.t
 
 type parse_input = 

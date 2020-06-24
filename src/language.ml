@@ -89,6 +89,18 @@ module Types = struct
 
     end
 
+    module Query = struct
+        type t = ComplexTerm.t list
+        
+        let empty: t = []
+        
+        let to_string (terms: t) =  
+            terms
+            |> List.map ComplexTerm.to_string
+            |> String.concat " and "
+            
+    end
+
     module Frame = struct
 
         module FrameMap = Map.Make(VariableName)
@@ -211,9 +223,7 @@ module Types = struct
                 | [] -> 
                     consequent_string
                 | _ -> 
-                    let antecedents_string = antecedents
-                        |> List.map ComplexTerm.to_string
-                        |> String.concat " and " in
+                    let antecedents_string = antecedents |> Query.to_string in
                     Printf.sprintf "%s when %s" consequent_string antecedents_string 
             )
             |> Printf.sprintf "%s."

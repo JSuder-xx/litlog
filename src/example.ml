@@ -20,7 +20,7 @@ let examples: t list =
       ; queries = 
         [ "GreaterThan(Three, Two)"
         ; "GreaterThan(Four, ?LessThanFour)"
-        ; "GreaterThan(?GreaterThanOne, Three)"
+        ; "GreaterThan(?GreaterThanThree, Three)"
         ; "GreaterThan(?GreaterThanOne, One)"
         ; "GreaterThan(?Greater, ?Lesser)"
         ]
@@ -53,7 +53,12 @@ let examples: t list =
         ; "Sum_(Six, Six, Twelve)."
         ]
       ; queries = 
-        []
+        [ "Sum(Three, Three, Six)"
+        ; "Sum(Three, ?right, Five)"
+        ; "Sum(Three, Four, ?sum)"
+        ; "Sum(?left, ?right, Five)"
+        ; "Sum(?double, ?double, ?result)"
+        ]
       }
     ; { name = "Genealogy"
       ; rules = 
@@ -62,12 +67,23 @@ let examples: t list =
         ; "Siblings(?One, ?Other) when ParentOf(?Parent, ?One) and ParentOf(?Parent, ?Two)."
         ; "AncestorOf(?Ancestor, ?Descendant) when ParentOf(?Ancestor, ?Descendant)."
         ; "AncestorOf(?Ancestor, ?Descendant) when ParentOf(?ParentOfDescendant, ?Descendant) and AncestorOf(?Ancestor, ?ParentOfDescendant)."
+        
         ; "MotherOf(Erica, Bob)."
+        ; "FatherOf(Paul, Bob)."
+
         ; "FatherOf(Bob, Jane)."
         ; "FatherOf(Bob, Jim)."
         ; "MotherOf(Sally, Jane)."
+        ; "MotherOf(Sally, Jim)."
+
+        ; "MotherOf(Jane, Tim)."
         ]
       ; queries = 
-        []
+        [ "ParentOf(?parent, Jim)"
+        ; "ParentOf(Bob, ?child)"
+        ; "ParentOf(?parent, ?child)"
+        ; "AncestorOf(?ancestor, Tim)"
+        ; "AncestorOf(Erica, ?descendant)" 
+        ]
       }
     ]

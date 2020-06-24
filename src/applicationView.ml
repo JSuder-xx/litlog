@@ -111,7 +111,7 @@ module CommandView : sig
 
 end    
 
-module PanelView = struct
+module MainPanelView = struct
 
     let panels_class = "panels"
     let panel_class = "panel"
@@ -171,6 +171,24 @@ module PanelView = struct
             padding: 6px;
         }
     |j}
+
+end
+
+module SectionView = struct
+
+    let section_class = "section"
+
+    let style = {j|
+
+    |j}
+
+
+    let view title content =
+        div [ class' section_class ]
+            [ h3 [] [text title] 
+            ; hr [] []
+            ; div [] content
+            ]
 
 end
     
@@ -466,7 +484,7 @@ module RulesPanelView = struct
         let header = match model.interaction_mode with
                 | ChoosingExample _ -> "Select an Example"
                 | _ -> "Rules and Facts" in
-        PanelView.panel_view
+        MainPanelView.panel_view
             ~header: header
             [ match model.interaction_mode with
                 | ViewingRules ->
@@ -476,7 +494,7 @@ module RulesPanelView = struct
                             [ CommandView.button "Add Rule / Fact" (Message.InitiateAddRule)
                             ; (match rules with 
                                 | [] -> noNode (* Don't give the user the uption to Query until she has added some rules. *)
-                                | _ -> CommandView.button "Query" (Message.InitiateEditQuery)
+                                | _ -> CommandView.button "Query" (Message.InitiateEditQuery [])
                             )
                             ; CommandView.button "Select Example" (Message.InitiateChooseExample)
                             ]
@@ -540,8 +558,16 @@ module QueryPanelView = struct
        
     let solution_frame_class = "solution-frame"
     let no_solution_class = "no-solution"
+    let example_query_class = "example-query"
 
     let style = {j| 
+
+    div.$example_query_class {
+        border-radius: 3px;
+        padding: 5px;
+        margin-bottom: 6px;
+        background-color: #444;
+    }
 
     div.$no_solution_class {
         margin: 4px;
@@ -573,10 +599,9 @@ module QueryPanelView = struct
 
     let executing_query_view ({ initiating_query; solution_stream; displayed_solutions }: ApplicationModel.ExecutingQueryInfo.t) =
         let query_view () = 
-            div []
-                [ h3 [] [text "Query"]
-                ; RuleView.query_display initiating_query 
-                ] in
+            SectionView.view 
+                "Query"
+                [ RuleView.query_display initiating_query ] in
         let solution_view (solution: Language.Evaluator.solution) = 
             match (Frame.to_strings initiating_query solution.frame) with
             | [] -> 
@@ -600,9 +625,11 @@ module QueryPanelView = struct
                     div ~unique: "end_of_stream" 
                         []
                         [ CommandView.button_bar
-                            [ CommandView.button "New Query" Message.InitiateEditQuery
+                            [ CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
+                            ; CommandView.button "Manage Rules" (Message.ViewRules)
                             ]
                         ; query_view ()
+                        ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found." ]]
                         ; (match displayed_solutions with
                             | [] -> div [ class' no_solution_class ] [text "No Solution"]
                             | _ -> noNode
@@ -613,26 +640,33 @@ module QueryPanelView = struct
                         []
                         [ CommandView.button_bar 
                             [ CommandView.button "Next Solution" Message.NextFrame
-                            ; CommandView.button "New Query" Message.InitiateEditQuery
+                            ; CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
                             ; CommandView.button "Cancel" Message.ViewRules
                             ]
                         ; query_view ()
-                        ; solution_view current
+                        ; SectionView.view "Current Solution" 
+                            [ label [] [text "OBSERVE: All rules and facts applied in the discovery of the current solution are highlighted in the Rules and Facts panel."]
+                            ; solution_view current 
+                            ]
                         ]
             )
             ; (
                 match displayed_solutions with
                 | [] -> noNode
                 | _ -> 
-                    div []
-                        [ h3 [] [text "Prior Solutions"]
-                        ; hr [] []
-                        ; div [] (displayed_solutions |> List.map solution_view)
-                        ]            
+                    let count = List.length displayed_solutions in
+                    SectionView.view 
+                        (Printf.sprintf "Prior Solutions (%d)" count) 
+                        ((label [] [text "OBSERVE: Some solutions may appear more than once because there can be multiple paths to reach the same solution. LitLog does not remove duplicate solutions from the display in order to illustrate the paths / search process."])::(displayed_solutions |> List.map solution_view))
             )
             ] 
 
-    let editing_query_view editing_query = 
+    let editing_query_view editing_query query_list = 
+        let choose_query_view query = 
+            div [ class' example_query_class 
+                ; query |> Language.Types.Query.to_string |> Message.updateText |> onClick 
+                ]
+                [ RuleView.query_display query ] in
         div ~unique: "editing_query"
             []
             [ CompiledTextEditingView.view editing_query 
@@ -641,6 +675,15 @@ module QueryPanelView = struct
                 ~message_of_result: Message.executeQuery
                 ~placeholder_text: "New query..."
                 ~cancel_message: Message.ViewRules
+            ; (
+                match query_list with
+                | [] -> noNode
+                | _ ->
+                    div []
+                        [ label [] [text "Example Queries. Click a query below to populate the query entry box with that query."]
+                        ; div [] (query_list |> List.map choose_query_view)
+                        ]
+            )
             ]
 
     let instructions_view () = 
@@ -654,7 +697,7 @@ module QueryPanelView = struct
         div ~unique: "instructions"
             []
             [ paragraph {j|LitLog, short for Literate Logic programming, is a subset of Prolog with a simpler syntax and an on-line editor. 
-                The goal of LitLog is offer a path to quickly learning the basics of declarative logic programming in three lunch breaks or less.|j}
+                The goal of LitLog is to offer a path to quickly learning the basics of declarative logic programming in three lunch breaks or less.|j}
             ; paragraph {j|When Logic Programming fits the problem space, it beats other programming paradigms by orders of magnitude so it is a helpful tool to
             have in your mental toolbox (even if an applicable problem may only arise once in a decade). It is also just neat and that alone is worth a few lunch periods.|j}
             ; paragraph "The act of declarative logic programming is building a knowledge database that can be queried. It is the query powers that are surprising and interesting."
@@ -700,10 +743,10 @@ module QueryPanelView = struct
             
     (* A panel displayed on the right side of the screen which presents query editing and execution. *)
     let view (model: ApplicationModel.t) =
-        let query_panel header content = PanelView.panel_view ~header: header [content] in
+        let query_panel header content = MainPanelView.panel_view ~header: header [content] in
         match model.interaction_mode with
         | EditingQuery editing_query ->
-            editing_query |> editing_query_view |> query_panel "Query";
+            query_panel "Query" (editing_query_view editing_query model.example_queries);
         | ExecutingQuery executing_query ->
             executing_query |> executing_query_view |> query_panel "Query";
         | _ ->             
@@ -714,7 +757,8 @@ end
 let style = 
     [ ContainersView.style
     ; CommandView.style
-    ; PanelView.style
+    ; MainPanelView.style
+    ; SectionView.style
     ; RuleView.style
     ; CompiledTextEditingView.style
     ; RulesPanelView.style
@@ -723,7 +767,7 @@ let style =
     |> String.concat " "
 
 let view (model: ApplicationModel.t) =
-    PanelView.panels_container_view
+    MainPanelView.panels_container_view
         [ RulesPanelView.view model
         ; QueryPanelView.view model       
         ]
