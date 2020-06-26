@@ -67,7 +67,6 @@ module ApplicationModel = struct
 
     type interaction_mode = 
         | ViewingRules 
-        | ChoosingExample of Example.t list
         | AddingRule of Rule.t CompiledTextEditing.t
         | EditingRule of RuleDatabase.rule_entry * Rule.t CompiledTextEditing.t
 
@@ -76,13 +75,15 @@ module ApplicationModel = struct
 
     type t = 
         { rule_database: RuleDatabase.t
-        ; example_queries: Query.t list
+        ; available_chapters: Documentation.chapter list
+        ; chapter_opt: Documentation.chapter option
         ; interaction_mode: interaction_mode
         }
     
     let init () : t = 
         { rule_database = RuleDatabase.empty
-        ; example_queries = []
+        ; available_chapters = Documentation.chapters
+        ; chapter_opt = None
         ; interaction_mode = ViewingRules
         }
 end
@@ -91,13 +92,12 @@ module Message = struct
 
     type t =              
         | ViewRules
-        | InitiateChooseExample
         | InitiateAddRule
         | InitiateEditRule of RuleDatabase.rule_entry
         | InitiateEditQuery of Language.Types.ComplexTerm.t list
 
-        | ChooseExample of Example.t
-
+        | ChooseChapter of Documentation.chapter option
+        | NextChapter
         | UpdateText of string
 
         | AddRule of Rule.t
@@ -110,110 +110,108 @@ module Message = struct
 
 end
 
-let update ({ rule_database; example_queries; interaction_mode }: ApplicationModel.t) msg = 
+let update (model: ApplicationModel.t) msg = 
     let open Message in
-    let open ApplicationModel in 
+    let open ApplicationModel in
+    let rule_database_from_chapter rule_database (chapter: Documentation.chapter) = (
+        match (Language.Parser.rule_database_result_from_rule_strings chapter.rules) with
+        | Tea.Result.Ok rule_database' -> rule_database'
+        | Tea.Result.Error err -> 
+            Js.Console.error err;
+            rule_database
+    ) in
+    let { rule_database; interaction_mode } = model in 
     (
         match msg with                
         | UpdateText text -> (
             let snapshot = rule_database |> Language.Validator.rule_database_snapshot in
             match interaction_mode with 
             | AddingRule _ ->
-                { rule_database
-                ; example_queries
-                ; interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.make text Language.Parser.rule_parser (Language.Validator.issues_in_new_rule snapshot))
+                { model with 
+                  interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.make text Language.Parser.rule_parser (Language.Validator.issues_in_new_rule snapshot))
                 }
             | EditingRule (rule_entry, _) ->
                 let validator rule = 
                     Language.Types.RuleDatabase.update_rule_entry rule_entry rule
                     |> Language.Validator.issues_in_existing_rule snapshot in
-                { rule_database
-                ; example_queries
-                ; interaction_mode = EditingRule 
+                { model with 
+                  interaction_mode = EditingRule 
                     (
                         rule_entry
                         , ApplicationModel.CompiledTextEditing.make text Language.Parser.rule_parser validator
                     )                    
                 }
             | EditingQuery _ ->
-                { rule_database
-                ; example_queries
-                ; interaction_mode = EditingQuery (ApplicationModel.CompiledTextEditing.make text Language.Parser.query_parser (Language.Validator.issues_in_query snapshot))
+                { model with
+                  interaction_mode = EditingQuery (ApplicationModel.CompiledTextEditing.make text Language.Parser.query_parser (Language.Validator.issues_in_query snapshot))
                 }
             | _ ->
-                { rule_database; example_queries; interaction_mode }
+                model
         )         
 
         | ViewRules ->
-            { rule_database; example_queries; interaction_mode = ViewingRules }
+            { model with interaction_mode = ViewingRules }
 
         | InitiateEditRule rule_entry ->            
             let rule = Language.Types.RuleDatabase.rule_from_entry rule_entry in
-            { rule_database
-            ; example_queries
-            ; interaction_mode = EditingRule
+            { model with
+              interaction_mode = EditingRule
                 (
                     rule_entry
                     , (ApplicationModel.CompiledTextEditing.edit Language.Types.Rule.to_string rule)
                 ) 
             }
 
-        | InitiateChooseExample ->
-            { rule_database; example_queries; interaction_mode = ChoosingExample Example.examples }
-
-        | ChooseExample example ->
-            { rule_database = (
-                match (Language.Parser.rule_database_result_from_rule_strings example.rules) with
-                | Tea.Result.Ok rule_database' -> rule_database'
-                | Tea.Result.Error err -> 
-                    Js.Console.error err;
-                    rule_database
-            )
-            ; example_queries = (
-                match example.queries
-                    |> List.map (ParserM.parse_require_all Language.Parser.query_parser) 
-                    |> Tea.Result.accumulate with
-                | Tea.Result.Ok example_parse_successes -> 
-                    example_parse_successes |> List.map ParserM.result_of_parse_success
-                | Tea.Result.Error err ->
-                    Js.Console.error err;
-                    []
-            )
+        | NextChapter -> 
+            let chapter = match model.chapter_opt with
+                | Some chapter -> Documentation.next_chapter chapter
+                | None -> List.hd Documentation.chapters in
+            { model with
+              interaction_mode = ViewingRules
+              ; rule_database = rule_database_from_chapter rule_database chapter
+              ; chapter_opt = Some (chapter)
+            }
+        
+        | ChooseChapter chapter_opt ->
+            { model with
+              rule_database = (
+                  match chapter_opt with
+                    | Some chapter -> rule_database_from_chapter rule_database chapter
+                    | None -> Language.Types.RuleDatabase.empty
+              )
+            ; chapter_opt 
             ; interaction_mode = ViewingRules
             }
 
         | InitiateAddRule ->
-            { rule_database; example_queries; interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.empty ()) }
+            { model with interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.empty ()) }
 
         | InitiateEditQuery query ->
-            { rule_database
-            ; example_queries
-            ; interaction_mode = EditingQuery (ApplicationModel.CompiledTextEditing.edit Language.Types.Query.to_string query) 
+            { model with
+              interaction_mode = EditingQuery (ApplicationModel.CompiledTextEditing.edit Language.Types.Query.to_string query) 
             }
 
         | AddRule rule -> 
-            { rule_database = (RuleDatabase.add_rule rule_database rule)
-            ; example_queries
+            { model with
+            rule_database = (RuleDatabase.add_rule rule_database rule)
             ; interaction_mode = AddingRule (ApplicationModel.CompiledTextEditing.empty ())
             }
 
         | EditRuleEntry rule_entry ->
-            { rule_database = (RuleDatabase.update_rule rule_database rule_entry)
-            ; example_queries
+            { model with 
+            rule_database = (RuleDatabase.update_rule rule_database rule_entry)
             ; interaction_mode = ViewingRules 
             }
 
         | DeleteRule rule_entry ->
-            { rule_database = (RuleDatabase.remove_rule rule_database rule_entry)
-            ; example_queries
-            ; interaction_mode                    
+            { model with
+            rule_database = (RuleDatabase.remove_rule rule_database rule_entry)
             }
 
         | ExecuteQuery initiating_query ->
             let solution_stream = Language.Evaluator.query rule_database initiating_query in
-            { rule_database
-            ; example_queries
-            ; interaction_mode = ExecutingQuery 
+            { model with
+              interaction_mode = ExecutingQuery 
                 { initiating_query
                 ; solution_stream 
                 ; displayed_solutions = []
@@ -223,12 +221,11 @@ let update ({ rule_database; example_queries; interaction_mode }: ApplicationMod
         | NextFrame ->
             match interaction_mode with
             | ExecutingQuery executing_query_info ->
-                { rule_database
-                ; example_queries
-                ; interaction_mode =  ExecutingQuery (ApplicationModel.ExecutingQueryInfo.next_solution executing_query_info)
+                { model with 
+                  interaction_mode =  ExecutingQuery (ApplicationModel.ExecutingQueryInfo.next_solution executing_query_info)
                 }
             | _ ->
-                { rule_database; example_queries; interaction_mode }
+                model
     )
     |> (fun model -> (model, Tea.Cmd.NoCmd))
 

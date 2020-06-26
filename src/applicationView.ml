@@ -10,6 +10,13 @@ module ContainersView = struct
             height: 100%
         }
 
+        select {
+            font-size: 16px;
+            color: #444;
+            margin-left: 4px;
+            margin-right: 16px;
+        }
+
         body {
             height: 100%;
             background-color: #eee;
@@ -199,6 +206,10 @@ module RuleView = struct
     let relation_name_class = "relation"
     let punctuation_class = "punctuation"
     
+    let query_comment_class = "query-comment"
+    let rule_application_count_class = "rule-application-count"
+    let rule_application_count_visible_class = "rule-application-count-visible"
+    let relation_class = "relation"
     let rule_item_class = "rule-item"
     let rule_used_class = "rule-used"
     let rule_display_class = "rule-display"
@@ -209,11 +220,21 @@ module RuleView = struct
             display: inline-block;
         }
 
+        .$relation_class {
+            display: inline-block;
+        }
+
         .$fact_name_class {
             color: #0f0;
             display: inline-block;
         }
         
+        .$query_comment_class {
+            color: #ccc;
+            padding: 4px;
+            margin-bottom: 8px;
+        }
+
         .$relation_name_class {
             color: #6af;
             font-weight: bold;
@@ -243,10 +264,30 @@ module RuleView = struct
             box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
 
             margin-bottom: 12px;
+            font-size: 14px;
         }
 
         .$rule_item_class.$rule_used_class {
             box-shadow: 0 0 2px 4px #f44;
+        }
+
+        .$rule_application_count_class {
+            display: inline-block;
+            visibility: hidden;
+            padding-left: 6px;
+            padding-right: 6px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 9px;
+            border: solid 1px #884;
+            color: black;
+            background-color: #ff8;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .$rule_application_count_class.$rule_application_count_visible_class {
+            visibility: visible;
         }
 
         ul {
@@ -266,7 +307,7 @@ module RuleView = struct
             | [] -> 
                 span [class' fact_name_class] [text name]
             | first::rest -> 
-                span [] 
+                span [ class' relation_class ] 
                     [ span [class' relation_name_class] [text name]
                     ; punctuation_view "("
                     ; term_view first
@@ -313,11 +354,13 @@ module RuleView = struct
                 | first::after_first ->
                     match after_first |> List.rev with
                     | [] -> 
-                        span []
-                            [ punctuation_view " when " 
-                            ; complex_term_view first
-                            ; punctuation_view "."
-                            ]
+                        ul []
+                           [ li [] 
+                                [ punctuation_view " when " 
+                                ; complex_term_view first
+                                ; punctuation_view "."
+                                ]
+                           ]
                     | last::everything_but_last ->
                         ul []
                            (List.concat 
@@ -335,9 +378,10 @@ module RuleView = struct
             )
             ]    
 
-    let query_display (complex_terms: Language.Types.ComplexTerm.t list) =
+    let query_display (complex_terms: Language.Types.ComplexTerm.t list) comment =
         div [class' rule_display_class]
-            [ ul []
+            [ (if String.length comment > 0 then div [ class' query_comment_class ] [text comment] else noNode)
+            ; ul []
                  (
                      complex_terms
                     |> List.map (fun complex_term ->
@@ -353,9 +397,12 @@ module RuleView = struct
             ] 
     
     let readonly rule_entries_applied (rule_entry: RuleDatabase.rule_entry) =        
-        let should_highlight = rule_entries_applied |> List.exists (fun applied -> RuleDatabase.is_same applied rule_entry) in
+        let count = rule_entries_applied |> Utils.ListEx.count (fun applied -> RuleDatabase.is_same applied rule_entry) in
+        let should_highlight = count > 0 in
         div [ classList [(rule_item_class, true); (rule_used_class, should_highlight)] ]
-            [ rule_entry |> RuleDatabase.rule_from_entry |> rule_display ]
+            [ span [classList [(rule_application_count_class, true); (rule_application_count_visible_class, count > 0)]] [Printf.sprintf "%d" count |> text] 
+            ; rule_entry |> RuleDatabase.rule_from_entry |> rule_display 
+            ]
 
 end
 
@@ -428,7 +475,8 @@ module CompiledTextEditingView :
                     [ onInput Message.updateText
                     ; class' language_editing_class
                     ; placeholder placeholder_text
-                    ; value editing.text                
+                    ; value editing.text
+                    
                     ; TeaHtmlEx.Keydown.keydown 
                         ~key: editing.text 
                         ~msg: msg
@@ -481,35 +529,30 @@ module RulesPanelView = struct
                     ]
                 ; div [] (rules |> List.map RuleView.editable)
                 ] in
-        let header = match model.interaction_mode with
-                | ChoosingExample _ -> "Select an Example"
-                | _ -> "Rules and Facts" in
         MainPanelView.panel_view
-            ~header: header
+            ~header: "Rules and Facts"
             [ match model.interaction_mode with
                 | ViewingRules ->
                     div ~unique: "viewing_rules"
                         []
                         [ CommandView.button_bar 
-                            [ CommandView.button "Add Rule / Fact" (Message.InitiateAddRule)
+                            [ label [] [text "Chapter:"]
+                            ; (
+                                option' [ Attributes.selected (model.chapter_opt = None)] [text "(select chapter)"]
+                                ::(model.available_chapters |> List.map (fun chapter -> option' [ Attributes.selected (model.chapter_opt = Some chapter)] [text chapter.name]))
+                              )
+                              |> select [ onChange (fun selection ->  
+                                model.available_chapters |> List.find_opt (fun (chap: Documentation.chapter) -> chap.name = selection) |> Message.chooseChapter)]                                
+                            ; CommandView.button "Add Rule / Fact" (Message.InitiateAddRule)
                             ; (match rules with 
                                 | [] -> noNode (* Don't give the user the uption to Query until she has added some rules. *)
                                 | _ -> CommandView.button "Query" (Message.InitiateEditQuery [])
                             )
-                            ; CommandView.button "Select Example" (Message.InitiateChooseExample)
                             ]
                         ; hr [] []
                         ; editable_rules_view ()
                         ]                    
                 
-                | ChoosingExample examples ->
-                    let example_button (example: Example.t) = CommandView.button example.name (Message.ChooseExample example) in
-                    div ~unique: "choosing_example"
-                        [] [ p [] [text "Select an example to load rules and example queries"]
-                        ; examples |> List.map example_button |> CommandView.button_bar 
-                        ; CommandView.button "Cancel" Message.ViewRules
-                        ]
-
                 | EditingRule (rule_entry, editing) ->
                     div ~unique: "editing_rule"
                         [] 
@@ -601,7 +644,7 @@ module QueryPanelView = struct
         let query_view () = 
             SectionView.view 
                 "Query"
-                [ RuleView.query_display initiating_query ] in
+                [ RuleView.query_display initiating_query ""] in
         let solution_view (solution: Language.Evaluator.solution) = 
             match (Frame.to_strings initiating_query solution.frame) with
             | [] -> 
@@ -627,9 +670,10 @@ module QueryPanelView = struct
                         [ CommandView.button_bar
                             [ CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
                             ; CommandView.button "Manage Rules" (Message.ViewRules)
+                            ; CommandView.button "Next Chapter" Message.NextChapter
                             ]
                         ; query_view ()
-                        ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found." ]]
+                        ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found. Click New Query to keep experimenting in this chapter or <Next Chapter> to move on." ]]
                         ; (match displayed_solutions with
                             | [] -> div [ class' no_solution_class ] [text "No Solution"]
                             | _ -> noNode
@@ -645,7 +689,7 @@ module QueryPanelView = struct
                             ]
                         ; query_view ()
                         ; SectionView.view "Current Solution" 
-                            [ label [] [text "OBSERVE: All rules and facts applied in the discovery of the current solution are highlighted in the Rules and Facts panel."]
+                            [ label [] [text "OBSERVE: All rules and facts applied in the discovery of the current solution are highlighted in the Rules and Facts panel with a count of the number of times the Rule/Fact was applied in the discovery of the solution."]
                             ; solution_view current 
                             ]
                         ]
@@ -661,12 +705,15 @@ module QueryPanelView = struct
             )
             ] 
 
-    let editing_query_view editing_query query_list = 
-        let choose_query_view query = 
+    let editing_query_view editing_query chapter_opt = 
+        let query_list = match chapter_opt with
+            | Some chapter -> Documentation.queries chapter
+            | None -> [] in
+        let choose_query_view (query, Documentation.Comment comment) = 
             div [ class' example_query_class 
                 ; query |> Language.Types.Query.to_string |> Message.updateText |> onClick 
                 ]
-                [ RuleView.query_display query ] in
+                [ RuleView.query_display query comment] in
         div ~unique: "editing_query"
             []
             [ CompiledTextEditingView.view editing_query 
@@ -686,72 +733,26 @@ module QueryPanelView = struct
             )
             ]
 
-    let instructions_view () = 
+    let instructions_view (parts: string list) = 
         let paragraph txt = Tea.Html.p [] [text txt] in
-        let relation fact_name relations = Term.make_relation fact_name relations in
-        let variable name = Term.Variable (VariableName name) in
-        let fact fact_name = relation fact_name [] in
-        let rule consequent antecedent_terms = 
-            { Language.Types.Rule.consequent; antecedents = antecedent_terms |> List.map (fun term -> Language.Types.ComplexTerm.Term term) } in
-        let fact_view consequent = RuleView.rule_display { Language.Types.Rule.consequent; antecedents = [] } in
         div ~unique: "instructions"
             []
-            [ paragraph {j|LitLog, short for Literate Logic programming, is a subset of Prolog with a simpler syntax and an on-line editor. 
-                The goal of LitLog is to offer a path to quickly learning the basics of declarative logic programming in three lunch breaks or less.|j}
-            ; paragraph {j|When Logic Programming fits the problem space, it beats other programming paradigms by orders of magnitude so it is a helpful tool to
-            have in your mental toolbox (even if an applicable problem may only arise once in a decade). It is also just neat and that alone is worth a few lunch periods.|j}
-            ; paragraph "The act of declarative logic programming is building a knowledge database that can be queried. It is the query powers that are surprising and interesting."
-            ; paragraph "Rules & Facts are the two forms of knowledge representation."
-            ; paragraph {j|FACTs are unconditionally true statements. As soon as a fact is entered into the database it is known to be true. 
-            A Fact can relate other terms together or it can stand on its own. An example of a Fact that stands on its own without any relationships might be|j}
-            ; fact_view (fact "OrangesAreSpherical")
-            ; paragraph {j|A Fact is represented as an identifier written in any case. Spaces cannot be used inside Fact names but underscores can be. The above fact could have also been written|j}
-            ; fact_view (fact "oranges_are_spherical")
-            ; paragraph {j|Facts can also express the truth of a _relationship_ between things. A Fact that expresses a relationship with a single term can be viewed as a declaration of 
-            inclusion in a Set (a Predicate). For example, the Fact above could be represented, more usefully, as|j}
-            ; fact_view (relation "Spherical" [fact "Oranges"])
-            ; paragraph {j|The form above now expresses that Oranges are in the set of spherical things. The knowledge database could list other spherical things|j}
-            ; fact_view (relation "Spherical" [fact "SoccerBalls"])
-            ; fact_view (relation "Spherical" [fact "BasketBalls"])
-            ; paragraph "Facts can express relationships between multiple things. For example, a fact which expresses a Mother-Child relationship between Sally and Bob"
-            ; fact_view (relation "MotherOf" [fact "Sally"; fact "Bob"])
-            ; paragraph "Another example might be a relation named 'SumOf' that expresses that two and two relate to four "
-            ; fact_view (relation "SumOf" [fact "Two"; fact "Two"; fact "Four"])
-            ; paragraph {j|While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, we might instruct the logic database that 
-            Sally being the Mother of Bob also means that Sally is a Parent of Bob.|j}
-            ; RuleView.rule_display (rule 
-                (relation "ParentOf" [fact "Sally"; fact "Bob"]) 
-                [ relation "MotherOf" [fact "Sally"; fact "Bob"] ]
-            )                
-            ; paragraph {j|Observe that the rule above is unfortunately specific. It is not a general statement about all mothers and sons but rather a specific statement about two specific individuals.
-            In order to get the power of generalization (abstraction) we need to introduce variables.|j}
-            ; paragraph {j|Variables are written with a ? prefix. To make a general statement about all mothers also being parents we would write|j}
-            ; RuleView.rule_display (rule 
-                (relation "ParentOf" [variable "Mother"; variable "Child"]) 
-                [ relation "MotherOf" [variable "Mother"; variable "Child"] ]
-            )
-            ; paragraph {j|Rules can state multiple conditions that must be true for the rule to be true. To encode the transitive property of the GreaterThan relationship we might write|j}
-            ; RuleView.rule_display (rule 
-                (relation "GreaterThan" [variable "A"; variable "C"]) 
-                [ relation "GreaterThan" [variable "A"; variable "B"] 
-                ; relation "GreaterThan" [variable "B"; variable "C"] 
-                ]
-            )
-            ; paragraph {j|Facts, Rules, and Variables are nearly the extent of how knowledge is represented in LitLog. Now we turn to the truly fun part QUERIES!!!
-            |j}
-            ]       
+            (parts |> List.map paragraph)
             
     (* A panel displayed on the right side of the screen which presents query editing and execution. *)
     let view (model: ApplicationModel.t) =
         let query_panel header content = MainPanelView.panel_view ~header: header [content] in
+        let instruction_parts = match model.chapter_opt with
+            | Some chapter -> chapter.rule_instructions
+            | None -> Documentation.overview in
         match model.interaction_mode with
         | EditingQuery editing_query ->
-            query_panel "Query" (editing_query_view editing_query model.example_queries);
+            query_panel "Query" (editing_query_view editing_query model.chapter_opt);
         | ExecutingQuery executing_query ->
             executing_query |> executing_query_view |> query_panel "Query";
-        | _ ->             
-            instructions_view () |> query_panel "Instructions"             
-
+        | _ -> (             
+            instructions_view instruction_parts |> query_panel "Instructions"             
+        )
 end
 
 let style = 

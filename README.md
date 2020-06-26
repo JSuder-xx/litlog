@@ -4,8 +4,6 @@ This is an initial commit of the project. It is not primetime.
 
 # Development To Do Items
 
-- Selection of example queries
-- Support for comment as metadata for every rule and query.
 - Recursion check: Do not allow max call stack failures. Fail descriptively before then by limiting recursive solution exploration a depth of N.
 - Provide a validation WARNING (not error) when a rule or query references an atom not in the database.
 - Provide a validation WARNING when a variable name appears once unless the variable name starts with an underscore.

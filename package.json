@@ -28,8 +28,9 @@
     "merlin": "0.0.1-0",
     "moduleserve": "^0.9.1",
     "npm-run-all": "^4.1.5",
-    "rollup": "^2.13.1",
+    "rollup": "^2.18.0",
     "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "serve": "^11.3.2"
   },
   "dependencies": {

@@ -29,6 +29,30 @@ module ListEx = struct
 
     let (>>=) = bind
 
+    (** Returns the next item in the list if there is one, otherwise just returns the original item. *)
+    let next_or_this_item item lst = 
+        let rec aux = function
+        | [] -> item
+        | head::tail ->
+            if item = head
+            then (
+                match tail with
+                | [] -> item
+                | next::_ -> next
+            )
+            else aux tail in
+        aux lst 
+            
+
+    let count pred list = 
+        let rec aux total = function
+        | [] -> total
+        | head::tail ->
+            if pred head
+            then aux (total + 1) tail
+            else aux total tail in
+        aux 0 list        
+
     let list_from_option = function
     | None -> []
     | Some item -> [item]
