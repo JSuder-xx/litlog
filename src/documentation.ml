@@ -156,6 +156,46 @@ let chapters: chapter list =
         [ ("Siblings(?sibling, Debrah)", Comment "Now we should only get other terms that have the same parent but which are not Debrah herself.")
         ]
       }
+    ; { name = "Unification: Part 3"
+      ; rule_instructions =
+        [ {j|.|j}
+        ]
+      ; rules = 
+        [ "Job(Cindy, QualityEngineer)."
+        ; "Smart(Cindy)."
+        ; "GetsThingsDone(Cindy)."
+        ; "Salary(Cindy, Moderate)."
+
+        ; "Job(Swathi, QualityEngineer)."
+        ; "Smart(Swathi)."
+        ; "GetsThingsDone(Swathi)."
+        ; "Salary(Swathi, High)."        
+
+        ; "Job(William, QualityEngineer)."
+        ; "GetsThingsDone(William)."
+        ; "Salary(William, Low)."        
+
+        ; "Job(Janet, QualityEngineer)."
+        ; "Smart(Janet)."
+        ; "Salary(Janet, Low)."        
+
+        ; "Job(Alice, SoftwareEngineer)."
+        ; "Smart(Alice)."
+        ; "GetsThingsDone(Alice)."
+        ; "Salary(Alice, Low)."
+
+        ; "Job(Beatrice, Marketing)."
+        ; "Smart(Beatrice)."
+        ; "GetsThingsDone(Beatrice)."
+        ; "Salary(Beatrice, High)."
+        ]
+      ; queries = 
+        [ ("Job(?person, QualityEngineer)", Comment "Simply find all the persons who are quality engineers.")
+        ; ("Job(?person, QualityEngineer) and Smart(?person) and GetsThingsDone(?person)", Comment "Now find all the quality engineers who are both smart and get things done.")
+        ; ("Job(?person, ?jobRole) and Smart(?person) and GetsThingsDone(?person)", Comment "Just find the smart industrious people and report on their job role.")
+        ; ("Job(?person, QualityEngineer) and Smart(?person) and GetsThingsDone(?person) and Salary(?person, ?salary) and <?salary /= High>", Comment "Now find all the smart, industrious quality engineers who do not get paid a high salary.")
+        ]
+      }
     ; { name = "Recursion (Genealogy)"
       ; rule_instructions = 
         [ {j|A rule can depend upon itself recursively! This chapter demonstrates a recursive declaration for proving that something is an ancestor of another.|j}
@@ -204,6 +244,20 @@ let chapters: chapter list =
         ; ("Append(?left, ?right, N(a, N(b, N(c, N(d, Empty)))))", Comment "This is even crazier. We are now asking for all combinations of input that might produce the output.")
         ]
       }
+      ; { name = "Linked List: Reverse"
+        ; rule_instructions = 
+          []
+        ; rules = 
+          [ {j|ReverseList(Empty, Empty).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, Empty, ?accumulator).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, N(?head, ?tail), ?reversed) when ReverseListWithAccumulator(N(?head, ?accumulator), ?tail, ?reversed).|j}
+          ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(Empty, ?List, ?ReversedList).|j}
+          ]
+        ; queries = 
+          [ ("ReverseList(N(a, N(b, N(c, N(d, Empty)))), ?reversed)", Comment "")
+          ]         
+
+      }
       ; { name = "Linked List: Remove"
         ; rule_instructions = 
           [ {j|This chapter illustrates how one might implement removal of all instances of an element from a list.|j}
@@ -229,27 +283,37 @@ let chapters: chapter list =
       }
       ; { name = "Numbers: Summation"
         ; rule_instructions = 
-          [ "Peano numbers" ]
+          [ {j|Real Prolog natively understands how to work with numbers. LitLog does not. HOWEVER, there is enough expressive power in pattern matching, unification and recursive rules
+          to define numbers and numeric behaviors for cardinal numbers (counting numbers).|j}
+          ; {j|The representation in the example is based off the Peano Axioms (internet search). It is based on Zero and a Succ(?number) operation which simply means Successor or ?number + 1.|j}
+          ; {j|In this system, Zero is... well Zero. The number one is represented by simply taking the successor of Zero so Succ(Zero). Naturally, two is the successor or one so Succ(Succ(Zero)). 
+          This technique should feel very similar to what we did in the Linked List example.|j}
+          ; {j|In fact, the SumOf operation looks a lot like Appending two linked lists and so the Append operations are included here for comparison.|j}
+          ]
         ; rules = 
           [ "SumOf(Zero, ?Number, ?Number)."
           ; "SumOf(Succ(?InnerLeft), ?Right, Succ(?SumOfRightAndInnerLeft)) when SumOf(?InnerLeft, ?Right, ?SumOfRightAndInnerLeft)."
-          ]
+          ; "Append(Empty, ?List, ?List)."
+          ; "Append(N(?Head, ?Tail), ?RightList, N(?Head, ?Result)) when Append(?Tail, ?RightList, ?Result)."
+          ]          
         ; queries = 
-          [ ("SumOf(Zero, Zero, ?sum)", Comment "0 + 0")
+          [ ("SumOf(Zero, Zero, ?sum)", Comment "Query for the result of 0 + 0")
           ; ("SumOf(Zero, Succ(Succ(Zero)), ?sum)", Comment "0 + 2")
           ; ("SumOf(Succ(Zero), Succ(Succ(Zero)), ?sum)", Comment "1 + 2")
           ; ("SumOf(Succ(Succ(Zero)), Succ(Succ(Zero)), ?sum)", Comment "2 + 2")
-          ; ("SumOf(Succ(Succ(Succ(Zero))), Succ(Succ(Zero)), ?sum)", Comment "3 + 2")
+          ; ("SumOf(Succ(Succ(Succ(Zero))), Succ(Succ(Zero)), ?sum)", Comment "3 + 2. Not only is this tedious to write but it is also difficult to decipher the output. We will clean that up in the next Chapter.")
           ]
-      }
+        }
       ; { name = "Numbers: Pretty Summation"
         ; rule_instructions = 
-          [ "Using aliasing to clean up summation."]
+          [ "The SumOf operation works by pattern matching on the structure of Succ. Therefore, the nesting structure, which is so difficult to read, as at the heart of what makes it works. We have to keep the nesting structure."
+          ; "However, we can alias the structured representation of numbers and define a pretty sum that relates terms at the level of the aliases."
+          ; "Observe that the code defines aliases for zero thru ten."
+          ; "It then defines SumOf identical to the definition from the prior chapter."
+          ; "PrettySum works by 1) solving for the structured representation of the left number, 2) solving for the structured representation of the right number, 3) solving for the structure representation of the sum, and 4) finally solves for the alias of the structured sum."
+          ]
         ; rules = 
-          [ "SumOf(Zero, ?Number, ?Number)."
-          ; "SumOf(Succ(?InnerLeft), ?Right, Succ(?SumOfRightAndInnerLeft)) when SumOf(?InnerLeft, ?Right, ?SumOfRightAndInnerLeft)."
-          ; "PrettySum(?leftAlias, ?rightAlias, ?prettySum) when Alias(?leftAlias, ?leftStructure) and Alias(?rightAlias, ?rightStructure) and SumOf(?leftStructure, ?rightStructure, ?sumStructure) and Alias(?prettySum, ?sumStructure)."
-          ; "Alias(Zero, Zero)."
+          [ "Alias(Zero, Zero)."
           ; "Alias(One, Succ(Zero))."
           ; "Alias(Two, Succ(Succ(Zero)))."
           ; "Alias(Three, Succ(?twoStructure)) when Alias(Two, ?twoStructure)."
@@ -259,13 +323,60 @@ let chapters: chapter list =
           ; "Alias(Seven, Succ(?sixStructure)) when Alias(Six, ?sixStructure)."
           ; "Alias(Eight, Succ(?sevenStructure)) when Alias(Seven, ?sevenStructure)."
           ; "Alias(Nine, Succ(?eightStructure)) when Alias(Eight, ?eightStructure)."
+          ; "Alias(Ten, Succ(?nineStructure)) when Alias(Nine, ?nineStructure)."
+          ; "SumOf(Zero, ?Number, ?Number)."
+          ; "SumOf(Succ(?InnerLeft), ?Right, Succ(?SumOfRightAndInnerLeft)) when SumOf(?InnerLeft, ?Right, ?SumOfRightAndInnerLeft)."
+          ; "PrettySum(?leftAlias, ?rightAlias, ?prettySum) when Alias(?leftAlias, ?leftStructure) and Alias(?rightAlias, ?rightStructure) and SumOf(?leftStructure, ?rightStructure, ?sumStructure) and Alias(?prettySum, ?sumStructure)."
           ]
         ; queries = 
-          [ ("PrettySum(Two, Three, ?prettySum)", Comment "")
+          [ ("PrettySum(Two, Three, ?prettySum)", Comment "Execute this query and breath a sigh of relief. The answer is displayed as a very clear Five.")
           ; ("PrettySum(Three, Five, ?prettySum)", Comment "")
-          ; ("PrettySum(One, Seven, ?prettySum)", Comment "")
           ; ("PrettySum(Four, Five, ?prettySum)", Comment "")
+          ; ("PrettySum(?left, Three, Ten)", Comment "Discover what can be added to Three to equal Ten.")
+          ; ("PrettySum(?left, ?right, Five)", Comment "Find all the ways to add numbers to achieve Five")
+          ; ("PrettySum(?half, ?half, ?num)", Comment "Find all the pairs of numbers and their half.")
           ]
+      }
+      ; { name = "Towers of Hanoi"
+        ; rule_instructions = 
+          []
+        ; rules = 
+          [ "Alias(Zero, Zero)."
+          ; "Alias(One, Succ(Zero))."
+          ; "Alias(Two, Succ(Succ(Zero)))."
+          ; "Alias(Three, Succ(?twoStructure)) when Alias(Two, ?twoStructure)."
+          ; "Alias(Four, Succ(?threeStructure)) when Alias(Three, ?threeStructure)."
+          ; "Alias(Five, Succ(?fourStructure)) when Alias(Four, ?fourStructure)."
+          ; "Alias(Six, Succ(?fiveStructure)) when Alias(Five, ?fiveStructure)."
+          ; "Alias(Seven, Succ(?sixStructure)) when Alias(Six, ?sixStructure)."
+          ; "Alias(Eight, Succ(?sevenStructure)) when Alias(Seven, ?sevenStructure)."
+          ; "Alias(Nine, Succ(?eightStructure)) when Alias(Eight, ?eightStructure)."
+
+          ; {j|ReverseList(Empty, Empty).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, Empty, ?accumulator).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, N(?head, ?tail), ?reversed) when ReverseListWithAccumulator(N(?head, ?accumulator), ?tail, ?reversed).|j}
+          ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(Empty, ?List, ?ReversedList).|j}
+
+          ; {j|Move(Zero, ?X, ?Y, ?dontCare, ?PriorMoves, N(MoveTopDiskFrom(?X, ?Y), ?PriorMoves)).|j}
+          ; {j|Move(Succ(?M), ?X, ?Y, ?Z, ?PriorMoves, ?FinalMoves) 
+                when Move(?M, ?X, ?Z, ?Y, ?PriorMoves, ?MovesAfterFirst) 
+                and Move(Zero, ?X, ?Y, ?_, ?MovesAfterFirst, ?MovesAfterZero) 
+                and Move(?M, ?Z, ?Y, ?X, ?MovesAfterZero, ?FinalMoves).
+          |j}         
+          ; {j|TowerOfHanoiWithDiscs(?numberOfDiscs, ?resultingMoves)
+                when Alias(?numberOfDiscs, Succ(?zeroBasedStructure))
+                and Move(?zeroBasedStructure, Left, Right, Center, Empty, ?resultingMovesReversed)
+                and ReverseList(?resultingMovesReversed, ?resultingMoves).
+          |j}
+          ]
+        ; queries = 
+          [ ("TowerOfHanoiWithDiscs(One, ?solution)", Comment "")
+          ; ("TowerOfHanoiWithDiscs(Two, ?solution)", Comment "")
+          ; ("TowerOfHanoiWithDiscs(Three, ?solution)", Comment "")
+          ; ("TowerOfHanoiWithDiscs(Four, ?solution)", Comment "")
+          ; ("TowerOfHanoiWithDiscs(Five, ?solution)", Comment "")
+          ]
+
       }
     ]
 
