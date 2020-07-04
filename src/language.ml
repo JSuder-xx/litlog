@@ -97,7 +97,7 @@ module Types = struct
         let to_string (terms: t) =  
             terms
             |> List.map ComplexTerm.to_string
-            |> String.concat " and "
+            |> String.concat "\n\tand "
             
     end
 
@@ -224,7 +224,7 @@ module Types = struct
                     consequent_string
                 | _ -> 
                     let antecedents_string = antecedents |> Query.to_string in
-                    Printf.sprintf "%s when %s" consequent_string antecedents_string 
+                    Printf.sprintf "%s\n\twhen %s" consequent_string antecedents_string 
             )
             |> Printf.sprintf "%s."
 
@@ -283,11 +283,8 @@ module Types = struct
             and variable_rename (variable_name: VariableName.t) =
                 VariableName.make_numbered variable_name !rule_counter
             and rename rule =
-                (
-                    rule_counter := !rule_counter + 1;
-                    aux rule
-                )
-            in
+                rule_counter := !rule_counter + 1;
+                aux rule in
             rename
     end
 
@@ -332,7 +329,6 @@ module Types = struct
         let is_same left right = left.id = right.id
 
         let update_rule_entry entry rule = 
-            Js.Console.log (rule |> Rule.to_string |> Printf.sprintf "Update rule entry: %s");
             { id = entry.id
             ; rule 
             }
@@ -391,7 +387,6 @@ module Types = struct
             let update_for_key = function
                 | None -> Some [updated_rule_entry]
                 | Some rules' -> Some (update_rule_entries rules') in
-            updated_rule_entry.rule |> Rule.to_string |> Printf.sprintf "Updating rule in database: %s" |> Js.Console.log; 
             match updated_rule_entry.rule.consequent with
             | Term.Variable _ ->
                 { db with all_rules }
@@ -652,6 +647,7 @@ module Evaluator
         type solution = 
             { frame: Types.Frame.t
             ; rules_applied: Types.RuleDatabase.rule_entry list            
+            ; failed_at_depth: int option                   
             }
 
         val query: Types.RuleDatabase.t -> Types.ComplexTerm.t list -> solution LazyStream.t 
@@ -664,7 +660,8 @@ module Evaluator
 
     type solution = 
         { frame: Frame.t
-        ; rules_applied: Types.RuleDatabase.rule_entry list                    
+        ; rules_applied: Types.RuleDatabase.rule_entry list 
+        ; failed_at_depth: int option                   
         }
 
     let put_negations_at_end terms =
@@ -674,59 +671,124 @@ module Evaluator
         let (negation_terms, positive_terms) = List.partition is_negation terms in
         List.concat [positive_terms; negation_terms]
 
+    let maximum_search_depth = 200
+
     let query_complex_terms (db: RuleDatabase.t) terms =
-        let rec solution_stream_from_complex_term_list complex_term_list solution_stream: solution LazyStream.t =
-            match complex_term_list with
-            | [] -> solution_stream
-            | term::rest_of_terms ->
-                solution_stream_from_complex_term_list rest_of_terms (solution_stream_from_complex_term term solution_stream)
-
-        and solution_stream_from_complex_term (complex_term: ComplexTerm.t) (solution_stream: solution LazyStream.t): solution LazyStream.t = ComplexTerm.(
-            match complex_term with
-            | Term term ->
-                query_term term solution_stream       
-            | EqualityAssertion (left, right) ->
-                solution_stream >>= (fun solution -> (solution_opt_by_unification left right solution) |> LazyStream.from_option)
-            | InequalityAssert (left, right) -> 
-                let solution_stream_where_no_unification solution =
-                    match solution_opt_by_unification left right solution with
-                    | None -> return solution
-                    | Some _ -> EndOfStream in
-                solution_stream >>= solution_stream_where_no_unification
-        )
-        
-        and query_term term (solution_stream: solution LazyStream.t) =
-            solution_stream >>= (apply_rules term)
+        let rec query_complex_terms 
+            (search_depth: int)
+            (complex_term_list: ComplexTerm.t list) 
+            (solution_stream: solution LazyStream.t) 
+            : solution LazyStream.t =
             
-        and apply_rules query_term solution =
-            RuleDatabase.fetch_for_query db query_term 
-            >>= (apply_rule query_term solution) 
+            if (search_depth > maximum_search_depth)
+            then LazyStream.return ({ frame = Frame.empty; rules_applied = []; failed_at_depth = Some search_depth })
+            else
+                let query_complex_term (complex_term: ComplexTerm.t) : solution LazyStream.t = ComplexTerm.(
+                    match complex_term with
+                    | Term term ->
+                        query_term search_depth term solution_stream       
+                    | EqualityAssertion (left, right) ->
+                        solution_stream >>= (fun solution -> (unification_opt left right solution) |> LazyStream.from_option)
+                    | InequalityAssert (left, right) -> 
+                        let solution_stream_where_no_unification solution =
+                            match unification_opt left right solution with
+                            | None -> return solution
+                            | Some _ -> EndOfStream in
+                        solution_stream >>= solution_stream_where_no_unification
+                ) in
+                match complex_term_list with
+                | [] -> solution_stream
+                | term::rest_of_terms ->
+                    query_complex_terms 
+                        search_depth
+                        rest_of_terms 
+                        (query_complex_term term)
         
-        and apply_rule query_term solution rule_entry: solution LazyStream.t = 
-            let rule = RuleDatabase.rule_from_entry rule_entry in 
-            let clean_rule = Rule.rename_rule_variables rule in                
-            match solution_opt_by_unification query_term clean_rule.consequent solution with
-            | None -> 
-                EndOfStream
+        and query_term (search_depth: int) (term: Term.t) (solution_stream: solution LazyStream.t) =
+            let apply_rule 
+                (query_term: Term.t) 
+                (solution: solution) 
+                (rule_entry: RuleDatabase.rule_entry) 
+                : solution LazyStream.t =                 
+                let rule = RuleDatabase.rule_from_entry rule_entry in 
+                let clean_rule = Rule.rename_rule_variables rule in
+                match unification_opt query_term clean_rule.consequent solution with
+                | None -> 
+                    EndOfStream
 
-            | Some solution' ->                     
-                solution_stream_from_complex_term_list 
-                    clean_rule.antecedents 
-                    (LazyStream.return { solution' with rules_applied = rule_entry::solution'.rules_applied })               
+                | Some solution_info' ->                     
+                    query_complex_terms 
+                        (search_depth + 1)
+                        clean_rule.antecedents 
+                        (LazyStream.return ({ solution_info' with rules_applied = rule_entry::solution_info'.rules_applied })) in
+            let apply_rules 
+                (query_term: Term.t) 
+                (solution: solution) =
+                (RuleDatabase.fetch_for_query db query_term)
+                >>= (apply_rule query_term solution) in        
+
+            solution_stream >>= (apply_rules term)
         
-        and solution_opt_by_unification left_term right_term solution: solution option =
+        and unification_opt 
+            (left_term: Term.t) 
+            (right_term: Term.t) 
+            (solution: solution)
+            : solution option =
+
+            let unification_or_add_variable_opt 
+                (variable_name: VariableName.t) 
+                (value_term: Term.t) 
+                (solution: solution)
+                : solution option = 
+                match Frame.lookup variable_name solution.frame with
+                | Some term_bound_to_variable ->
+                    unification_opt term_bound_to_variable value_term solution
+                | None -> (
+                    match value_term with
+                    | Term.Variable value_variable -> (
+                        match Frame.lookup value_variable solution.frame with
+                        | Some term_bound_to_value ->
+                            unification_opt (Term.Variable variable_name) term_bound_to_value solution
+                        | None ->
+                            Some                             
+                                { solution 
+                                with frame = (Frame.extend (variable_name, value_term) solution.frame)
+                                }                        
+                    )
+                    | _ -> (
+                        if (Frame.term_depends_on_variable value_term variable_name solution.frame)
+                        then None
+                        else Some 
+                            { solution
+                            with frame = (Frame.extend (variable_name, value_term) solution.frame)
+                            }                                          
+                    )
+                ) in
+
+            let unification_of_terms left_terms right_terms =                
+                List.combine left_terms right_terms
+                |> List.fold_left 
+                    (fun solution_opt (left, right) -> 
+                        match solution_opt with
+                        | None -> 
+                            None
+                        | Some solution ->
+                            unification_opt left right solution
+                    ) 
+                    (Some solution) in
+
             if (left_term = right_term)
             then (Some solution)                
             else (
                 match (left_term, right_term) with
                 | (Term.Variable left_var, _) ->
-                    solution_opt_by_unification_or_extension_of_variable 
+                    unification_or_add_variable_opt 
                         left_var 
                         right_term 
                         solution
 
                 | (_, Term.Variable right_var) ->
-                    solution_opt_by_unification_or_extension_of_variable 
+                    unification_or_add_variable_opt 
                         right_var 
                         left_term 
                         solution
@@ -734,54 +796,17 @@ module Evaluator
                 | (Term.Relation left_relation, Term.Relation right_relation) ->
                     if (RelationName.equals left_relation.relation_name right_relation.relation_name)
                     then 
-                        solution_opt_by_unification_of_term_lists 
-                            solution  
+                        unification_of_terms 
                             left_relation.related_terms 
                             right_relation.related_terms
                     else 
                         None
 
-            )                       
-        and solution_opt_by_unification_of_term_lists (starting_solution: solution) left_terms right_terms =                
-            List.combine left_terms right_terms
-            |> List.fold_left 
-                (fun solution_opt (left, right) -> 
-                    match solution_opt with
-                    | None -> 
-                        None
-                    | Some solution ->
-                        solution_opt_by_unification left right solution
-                ) 
-                (Some starting_solution)
-        and solution_opt_by_unification_or_extension_of_variable (variable_name: VariableName.t) (value_term: Term.t) (solution: solution): solution option = 
-            match Frame.lookup variable_name solution.frame with
-            | Some term_bound_to_variable ->
-                solution_opt_by_unification term_bound_to_variable value_term solution
-            | None -> (
-                match value_term with
-                | Term.Variable value_variable -> (
-                    match Frame.lookup value_variable solution.frame with
-                    | Some term_bound_to_value ->
-                        solution_opt_by_unification (Term.Variable variable_name) term_bound_to_value solution
-                    | None ->
-                        Some 
-                            { solution 
-                            with frame = (Frame.extend (variable_name, value_term) solution.frame)
-                            }
-                )
-                | _ -> (
-                    if (Frame.term_depends_on_variable value_term variable_name solution.frame)
-                    then None
-                    else Some 
-                        { solution
-                        with frame = (Frame.extend (variable_name, value_term) solution.frame)
-                        }                       
-                )
-            )
-        in
-        solution_stream_from_complex_term_list (put_negations_at_end terms)
+            ) in        
+
+        query_complex_terms 1 (put_negations_at_end terms)
 
     let query (db: RuleDatabase.t) (query: ComplexTerm.t list) : solution LazyStream.t =
-        query_complex_terms db query (LazyStream.return { frame = Frame.empty; rules_applied = [] })
+        query_complex_terms db query (LazyStream.return { frame = Frame.empty; rules_applied = []; failed_at_depth = None })
 
 end

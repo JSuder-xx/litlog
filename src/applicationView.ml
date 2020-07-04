@@ -430,9 +430,14 @@ module CompiledTextEditingView :
         
         .$language_editing_class {
             width: 96%;
+            min-height: 92px;
             font-family: Consolas, monospace;
             background-color: black;
             color: white;
+        }
+
+        .$editing_container_class {
+            margin-bottom: 16px;
         }
 
         .$errors_container_class ul {
@@ -440,7 +445,7 @@ module CompiledTextEditingView :
             list-style: square;
         }
 
-        .$editing_container_class {
+        .$errors_container_class {
             margin-bottom: 16px;
         }
 
@@ -646,22 +651,26 @@ module QueryPanelView = struct
                 "Query"
                 [ RuleView.query_display initiating_query ""] in
         let solution_view (solution: Language.Evaluator.solution) = 
-            match (Frame.to_strings initiating_query solution.frame) with
-            | [] -> 
+            let success_view title bindings =
                 div [ class' solution_frame_class ]
-                    [ h3 [] [text "Satisfied Without Variable Sustitution"]
-                    ; ul [] []
-                    ] 
-            | bindings -> 
-                div [ class' solution_frame_class ]
-                    [ h3 [] [text "Satisfied With Variable Substitution(s)"]
+                    [ h3 [] [title |> text]
                     ; ul [] (bindings |> List.map (fun txt -> li [] [text txt]))
                     ] in
+            match solution.failed_at_depth with
+            | None -> ( 
+                match (Frame.to_strings initiating_query solution.frame) with
+                | [] -> 
+                    success_view "Satisfied Without Variable Sustitution" []
+                | bindings ->
+                    success_view "Satisfied With Variable Substitution(s)" bindings
+            )
+            | Some depth ->
+                div [ class' no_solution_class ] 
+                    [ depth 
+                    |> Printf.sprintf {j|Gave up search at depth of %d. You could be missing a terminating base case in a recursive definition OR you may have simply asked a question whose solution requires more searching than is allowed by LitLog.|j} 
+                    |> text] in
         div ~unique: "executing_query"
             [] 
-            (* 
-            when displayed solutions is empty and end of stream then display a special message indicating no solution found.
-            *)
             [ (
                 match solution_stream with
                 | LazyStream.EndOfStream ->
@@ -670,7 +679,7 @@ module QueryPanelView = struct
                         [ CommandView.button_bar
                             [ CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
                             ; CommandView.button "Manage Rules" (Message.ViewRules)
-                            ; CommandView.button "Next Chapter" Message.NextChapter
+                            ; CommandView.button "Go to Next Chapter" Message.NextChapter
                             ]
                         ; query_view ()
                         ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found. Click New Query to keep experimenting in this chapter or <Next Chapter> to move on." ]]
@@ -685,7 +694,8 @@ module QueryPanelView = struct
                         [ CommandView.button_bar 
                             [ CommandView.button "Next Solution" Message.NextFrame
                             ; CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
-                            ; CommandView.button "Cancel" Message.ViewRules
+                            ; CommandView.button "Cancel Querying" Message.ViewRules
+                            ; CommandView.button "Cancel Querying and Go to Next Chapter" Message.NextChapter
                             ]
                         ; query_view ()
                         ; SectionView.view "Current Solution" 
