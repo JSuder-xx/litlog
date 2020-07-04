@@ -31,12 +31,8 @@ module ApplicationModel = struct
                     | validation_messages ->
                         Tea.Result.Error validation_messages
                 )
-                | Tea.Result.Error errors -> (
-                    match List.sort ParserM.parse_error_compare errors with
-                    | [] -> Tea.Result.Error []
-                    | first_error::rest_of_errors ->
-                        let errors' = first_error::(rest_of_errors |> List.filter (fun err -> (ParserM.parse_error_compare err first_error) <= 0)) in 
-                        Tea.Result.Error (errors' |> List.map ParserM.string_of_parse_error)
+                | Tea.Result.Error _ -> (
+                    Tea.Result.Error ["Parse Error"]
                 )
             }
 
