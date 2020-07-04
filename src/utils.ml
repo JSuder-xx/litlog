@@ -168,6 +168,23 @@ module LazyStream = struct
     let push (value: 'a) (stream: 'a t) : 'a t =
         LCons (value, lazy stream)
 
+    let rec zip stream_one stream_two =
+        match stream_one with
+        | EndOfStream ->
+            EndOfStream
+        | LCons (value_one, delayed_stream_one) ->
+            match stream_two with
+            | EndOfStream ->
+                EndOfStream
+            | LCons (value_two, delayed_stream_two) ->
+                LCons(
+                    (value_one, value_two),
+                    lazy (zip (delayed_stream_one |> Lazy.force) (delayed_stream_two |> Lazy.force))
+                )
+
+    let rec numbers_from start : int t =
+        LCons (start, lazy (numbers_from (start + 1)))
+
     let rec map fn = function
         | EndOfStream ->
             EndOfStream
