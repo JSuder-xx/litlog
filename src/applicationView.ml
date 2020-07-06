@@ -328,15 +328,19 @@ module RuleView = struct
         | Language.Types.ComplexTerm.Term term -> term_view term
         | Language.Types.ComplexTerm.EqualityAssertion (left, right) ->
             span [] 
-                [ term_view left
+                [ punctuation_view "<"
+                ; term_view left
                 ; punctuation_view "="
                 ; term_view right
+                ; punctuation_view ">"
                 ]
         | Language.Types.ComplexTerm.InequalityAssert (left, right) ->
             span [] 
-                [ term_view left
+                [ punctuation_view "<"
+                ; term_view left
                 ; punctuation_view "/="
                 ; term_view right
+                ; punctuation_view ">"
                 ]
 
     let rule_display rule = 
@@ -382,11 +386,16 @@ module RuleView = struct
         div [class' rule_display_class]
             [ (if String.length comment > 0 then div [ class' query_comment_class ] [text comment] else noNode)
             ; ul []
-                 (
-                     complex_terms
-                    |> List.map (fun complex_term ->
-                        li [] [complex_term_view complex_term]
-                    )
+                 (match complex_terms with
+                    | [] -> []
+                    | first_term::rest_terms ->
+                        (li [] [complex_term_view first_term])
+                        ::(
+                            rest_terms
+                            |> List.map (fun complex_term ->
+                                li [] [punctuation_view "and "; complex_term_view complex_term]
+                            )
+                        )                    
                  )     
             ]
 
@@ -682,27 +691,44 @@ module QueryPanelView = struct
                             ; CommandView.button "Go to Next Chapter" Message.NextChapter
                             ]
                         ; query_view ()
-                        ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found. Click New Query to keep experimenting in this chapter or <Next Chapter> to move on." ]]
                         ; (match displayed_solutions with
                             | [] -> div [ class' no_solution_class ] [text "No Solution"]
                             | _ -> noNode
                         )
+                        ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found. Click New Query to keep experimenting in this chapter or <Next Chapter> to move on." ]]
                         ]
-                | LazyStream.LCons (current, _) ->
-                    div ~unique: "solutions_remaining"
-                        []
-                        [ CommandView.button_bar 
-                            [ CommandView.button "Next Solution" Message.NextFrame
-                            ; CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
-                            ; CommandView.button "Cancel Querying" Message.ViewRules
-                            ; CommandView.button "Cancel Querying and Go to Next Chapter" Message.NextChapter
+                | LazyStream.LCons (current, stream) -> (
+                    let current_solution_view = 
+                        SectionView.view "Current Solution" 
+                                [ label [] [text "OBSERVE: All rules and facts applied in the discovery of the current solution are highlighted in the Rules and Facts panel with a count of the number of times the Rule/Fact was applied in the discovery of the solution."]
+                                ; solution_view current 
+                                ] in
+                    match Lazy.force stream with
+                    | LazyStream.EndOfStream -> 
+                        div ~unique: "end_of_stream_with_current" 
+                            []
+                            [ CommandView.button_bar
+                                [ CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
+                                ; CommandView.button "Manage Rules" (Message.ViewRules)
+                                ; CommandView.button "Go to Next Chapter" Message.NextChapter
+                                ]
+                            ; query_view ()
+                            ; current_solution_view
+                            ; SectionView.view "All Solutions Found" [label [] [ text "All of the solutions to the query have been found. Click New Query to keep experimenting in this chapter or <Next Chapter> to move on." ]]
                             ]
-                        ; query_view ()
-                        ; SectionView.view "Current Solution" 
-                            [ label [] [text "OBSERVE: All rules and facts applied in the discovery of the current solution are highlighted in the Rules and Facts panel with a count of the number of times the Rule/Fact was applied in the discovery of the solution."]
-                            ; solution_view current 
+                    | LazyStream.LCons (_next, _) ->
+                        div ~unique: "solutions_remaining"
+                            []
+                            [ CommandView.button_bar 
+                                [ CommandView.button "Next Solution" Message.NextFrame
+                                ; CommandView.button "New Query" (Message.InitiateEditQuery initiating_query)
+                                ; CommandView.button "Cancel Querying" Message.ViewRules
+                                ; CommandView.button "Cancel Querying and Go to Next Chapter" Message.NextChapter
+                                ]
+                            ; query_view ()
+                            ; current_solution_view
                             ]
-                        ]
+                )
             )
             ; (
                 match displayed_solutions with

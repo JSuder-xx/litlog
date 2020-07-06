@@ -102,63 +102,24 @@ let chapters: chapter list =
         ; ("MotherOf(?mother, ?child)", Comment "In fact, we can use variables for both locations to get all mother-child solutions in the database.")
         ]
       }
-    ; { name = "Implication (Rules)"
+    ; { name = "Unification in Queries"
       ; rule_instructions =
-        [ {j|While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, someone is a parent of someone else if 
-        we can prove that they are the mother or father. Parenthood follows from motherhood and fatherhood.|j}
+        [ ""
         ]
       ; rules = 
-        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
-        ; "ParentOf(?parent, ?child) when FatherOf(?parent, ?child)."
+        [ "MotherOf(Sally, Bob)."
         ; "MotherOf(Sally, Janice)."
         ; "MotherOf(Sally, Debrah)."
         ; "MotherOf(Janice, Malcom)."
-        ; "FatherOf(Roberto, Janice)."
         ]
       ; queries = 
-        [ ("ParentOf(Sally, Janice)", Comment "Here we will simply ask the database if it can prove that Sally is the parent of Janice. NOTE: The database does not explicitly declare Sally is the parent of Janice. The logic system deduced the fact from the rules given.")
-        ; ("ParentOf(?parent, Janice)", Comment "We can also use variables in the query to find all parents of Janice.")
-        ; ("ParentOf(Sally, ?child)", Comment "Or find all the children of Sally.")
+        [ ("MotherOf(?mother, ?siblingOne) and MotherOf(?mother, ?siblingTwo)", Comment "Match on all mother/child pairs where the SAME mother is common to both. When running this query you will observe that a person is their own sibling.")
+        ; ("MotherOf(?mother, ?siblingOne) and MotherOf(?mother, ?siblingTwo) and <?siblingOne /= ?siblingTwo>", Comment "To filter out cases where siblingOne and siblingTwo are the same person we use the /= operator which stands for 'does not unify'.")
         ]
       }
-    ; { name = "Unification: Part 1"
+    ; { name = "Unification: Database"
       ; rule_instructions =
-        [ {j|In this next example consider the definition of Siblings. Note that the variable ?parent is found in two sub-queries of ParentOf. 
-        This means that the Siblings rule can only be proven true when a ParentOf can be proven for the first sibling and for the second and
-        that the parent must be able to be unified (in this case the same). This is an example of unification and it is one of most interesting powers 
-        in logic programming because it can accomplish a lot work in a very subtle and succinct way.|j}
-        ]
-      ; rules = 
-        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
-        ; "Siblings(?firstSibling, ?secondSibling) when ParentOf(?parent, ?firstSibling) and ParentOf(?parent, ?secondSibling)."
-        ; "MotherOf(Sally, Janice)."
-        ; "MotherOf(Sally, Debrah)."
-        ; "MotherOf(Sally, Malcom)."
-        ]
-      ; queries = 
-        [ ("Siblings(Janice, Debrah)", Comment "A yes/no style query that just asks the system to deduce whether Janice and Debrah are siblings.")
-        ; ("Siblings(?sibling, Debrah)", Comment "Here we ask about the siblings of Debrah. OBSERVE: Debrah is her own sibling! Weird. We will explain and fix this behavior in the next Chapter.")
-        ]
-      }
-    ; { name = "Unification: Part 2"
-      ; rule_instructions =
-        [ {j|In the last chapter we saw that our definition of sibling was such that it would report that a person was their own sibling. This was because
-        we defined sibling as ANY other term in the database that has the same parent. We did not explicitly ask not to be informed when both terms were the same.|j}
-        ]
-      ; rules = 
-        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
-        ; "Siblings(?firstSibling, ?secondSibling) when ParentOf(?parent, ?firstSibling) and ParentOf(?parent, ?secondSibling) and <?firstSibling /= ?secondSibling>."
-        ; "MotherOf(Sally, Janice)."
-        ; "MotherOf(Sally, Debrah)."
-        ; "MotherOf(Sally, Malcom)."
-        ]
-      ; queries = 
-        [ ("Siblings(?sibling, Debrah)", Comment "Now we should only get other terms that have the same parent but which are not Debrah herself.")
-        ]
-      }
-    ; { name = "Unification: Part 3"
-      ; rule_instructions =
-        [ {j|.|j}
+        [ {j| |j}
         ]
       ; rules = 
         [ "Job(Cindy, QualityEngineer)."
@@ -196,7 +157,61 @@ let chapters: chapter list =
         ; ("Job(?person, QualityEngineer) and Smart(?person) and GetsThingsDone(?person) and Salary(?person, ?salary) and <?salary /= High>", Comment "Now find all the smart, industrious quality engineers who do not get paid a high salary.")
         ]
       }
-    ; { name = "Recursion (Genealogy)"
+    ; { name = "Implication (Rules)"
+      ; rule_instructions =
+        [ {j|While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, someone is a parent of someone else if 
+        we can prove that they are the mother or father. Parenthood follows from motherhood and fatherhood.|j}
+        ]
+      ; rules = 
+        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
+        ; "ParentOf(?parent, ?child) when FatherOf(?parent, ?child)."
+        ; "MotherOf(Sally, Janice)."
+        ; "MotherOf(Sally, Debrah)."
+        ; "MotherOf(Janice, Malcom)."
+        ; "FatherOf(Roberto, Janice)."
+        ]
+      ; queries = 
+        [ ("ParentOf(Sally, Janice)", Comment "Here we will simply ask the database if it can prove that Sally is the parent of Janice. NOTE: The database does not explicitly declare Sally is the parent of Janice. The logic system deduced the fact from the rules given.")
+        ; ("ParentOf(?parent, Janice)", Comment "We can also use variables in the query to find all parents of Janice.")
+        ; ("ParentOf(Sally, ?child)", Comment "Or find all the children of Sally.")
+        ]
+      }
+    ; { name = "Unification in Rules"
+      ; rule_instructions =
+        [ {j|In this next example consider the definition of Siblings. Note that the variable ?parent is found in two sub-queries of ParentOf. 
+        This means that the Siblings rule can only be proven true when a ParentOf can be proven for the first sibling and for the second and
+        that the parent must be able to be unified (in this case the same). This is an example of unification and it is one of most interesting powers 
+        in logic programming because it can accomplish a lot work in a very subtle and succinct way.|j}
+        ]
+      ; rules = 
+        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
+        ; "Siblings(?firstSibling, ?secondSibling) when ParentOf(?parent, ?firstSibling) and ParentOf(?parent, ?secondSibling)."
+        ; "MotherOf(Sally, Janice)."
+        ; "MotherOf(Sally, Debrah)."
+        ; "MotherOf(Sally, Malcom)."
+        ]
+      ; queries = 
+        [ ("Siblings(Janice, Debrah)", Comment "A yes/no style query that just asks the system to deduce whether Janice and Debrah are siblings.")
+        ; ("Siblings(?sibling, Debrah)", Comment "Here we ask about the siblings of Debrah. OBSERVE: Debrah is her own sibling! Weird. We will explain and fix this behavior in the next Chapter.")
+        ]
+      }
+    ; { name = "Asserting Not Unifiable"
+      ; rule_instructions =
+        [ {j|In the last chapter we saw that our definition of sibling was such that it would report that a person was their own sibling. This was because
+        we defined sibling as ANY other term in the database that has the same parent. We did not explicitly ask not to be informed when both terms were the same.|j}
+        ]
+      ; rules = 
+        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
+        ; "Siblings(?firstSibling, ?secondSibling) when ParentOf(?parent, ?firstSibling) and ParentOf(?parent, ?secondSibling) and <?firstSibling /= ?secondSibling>."
+        ; "MotherOf(Sally, Janice)."
+        ; "MotherOf(Sally, Debrah)."
+        ; "MotherOf(Sally, Malcom)."
+        ]
+      ; queries = 
+        [ ("Siblings(?sibling, Debrah)", Comment "Now we should only get other terms that have the same parent but which are not Debrah herself.")
+        ]
+      }
+    ; { name = "Recursion in Rules (Genealogy Example)"
       ; rule_instructions = 
         [ {j|A rule can depend upon itself recursively! This chapter demonstrates a recursive declaration for proving that something is an ancestor of another.|j}
         ; {j|As is always the case with recursion, BEWARE to always have a terminating base case. Observe that the recursive specification of AncestorOf has a ParentOf 
@@ -220,7 +235,7 @@ let chapters: chapter list =
         ; ("AncestorOf(Erica, ?descendant)" , Comment "Demonstrating a variable to ask for ALL descendants of Erica.")
         ]
       }
-      ; { name = "Linked List: Append"
+      ; { name = "Pattern Matching and Recursion (Linked List: Append)"
         ; rule_instructions = 
           [ {j|So far we have covered use cases that probably seem relatively natural to a database system. We are now going to
           explore patterns that approximate general purpose programming but using an entirely declarative information based approach.|j}
@@ -232,11 +247,11 @@ let chapters: chapter list =
           ; {j|...and so on. Obviously this is a tedious way to write lists but it is still pretty amazing to consider it is possible to define list behavior with two rules.|j}
           ; {j|The AMAZING property is that this append operation can be queried from any direction just like every other query we have seen. In other languages the 
           append operation takes two INPUTs and yields an OUTPUT. In a logic programming language there are NO inputs or outputs in the specification of rules and facts. The author
-          of the query determines what is given and what is requested.|j}
+          of the query determines what is given and what must be solved (variables).|j}
           ]
         ; rules = 
         [ "Append(Empty, ?List, ?List)."
-        ; "Append(N(?Head, ?Tail), ?RightList, N(?Head, ?Result)) when Append(?Tail, ?RightList, ?Result)."
+        ; "Append(N(?HeadValue, ?Tail), ?RightLinkedList, N(?HeadValue, ?Result)) when Append(?Tail, ?RightLinkedList, ?Result)."
         ]
         ; queries = 
         [ ("Append(N(a, N(b, N(c, Empty))), N(one, N(two, N(three, Empty))), ?Result)", Comment "Appends a list of [a, b, c] and a list of [one, two, three].")
@@ -244,7 +259,7 @@ let chapters: chapter list =
         ; ("Append(?left, ?right, N(a, N(b, N(c, N(d, Empty)))))", Comment "This is even crazier. We are now asking for all combinations of input that might produce the output.")
         ]
       }
-      ; { name = "Linked List: Reverse"
+      ; { name = "Accumulators in Recursion (Linked List: Reverse)"
         ; rule_instructions = 
           []
         ; rules = 
@@ -269,7 +284,7 @@ let chapters: chapter list =
         ; rules = 
         [ "Remove(?Item, Empty, Empty)."
         ; "Remove(?Item, N(?Item, ?Tail), ?RecursiveTail) when Remove(?Item, ?Tail, ?RecursiveTail)." 
-        ; "Remove(?Item, N(?Head, ?Tail), N(?Head, ?RecursiveTail)) when <?Item /= ?Head> and Remove(?Item, ?Tail, ?RecursiveTail)." 
+        ; "Remove(?Item, N(?HeadValue, ?Tail), N(?HeadValue, ?RecursiveTail)) when <?Item /= ?HeadValue> and Remove(?Item, ?Tail, ?RecursiveTail)." 
         ]
         ; queries = 
         [ ("Remove(a, Empty, ?result)", Comment "")
@@ -281,7 +296,7 @@ let chapters: chapter list =
         ; ("Remove(?whatWouldIRemove, N(x, N(o, N(x, N(o, N(x, Empty))))), N(o, N(o, Empty)))"     , Comment "")
         ]
       }
-      ; { name = "Numbers: Summation"
+      ; { name = "Rules and Recursion #2 (Natural Number Summation)"
         ; rule_instructions = 
           [ {j|Real Prolog natively understands how to work with numbers. LitLog does not. HOWEVER, there is enough expressive power in pattern matching, unification and recursive rules
           to define numbers and numeric behaviors for cardinal numbers (counting numbers).|j}
@@ -294,7 +309,7 @@ let chapters: chapter list =
           [ "SumOf(Zero, ?Number, ?Number)."
           ; "SumOf(Succ(?InnerLeft), ?Right, Succ(?SumOfRightAndInnerLeft)) when SumOf(?InnerLeft, ?Right, ?SumOfRightAndInnerLeft)."
           ; "Append(Empty, ?List, ?List)."
-          ; "Append(N(?Head, ?Tail), ?RightList, N(?Head, ?Result)) when Append(?Tail, ?RightList, ?Result)."
+          ; "Append(N(?HeadValue, ?Tail), ?RightLinkedList, N(?HeadValue, ?Result)) when Append(?Tail, ?RightLinkedList, ?Result)."
           ]          
         ; queries = 
           [ ("SumOf(Zero, Zero, ?sum)", Comment "Query for the result of 0 + 0")
@@ -304,7 +319,7 @@ let chapters: chapter list =
           ; ("SumOf(Succ(Succ(Succ(Zero))), Succ(Succ(Zero)), ?sum)", Comment "3 + 2. Not only is this tedious to write but it is also difficult to decipher the output. We will clean that up in the next Chapter.")
           ]
         }
-      ; { name = "Numbers: Pretty Summation"
+      ; { name = "Mapping Structure to Readable Aliases (Pretty Summation)"
         ; rule_instructions = 
           [ "The SumOf operation works by pattern matching on the structure of Succ. Therefore, the nesting structure, which is so difficult to read, as at the heart of what makes it works. We have to keep the nesting structure."
           ; "However, we can alias the structured representation of numbers and define a pretty sum that relates terms at the level of the aliases."
@@ -327,6 +342,7 @@ let chapters: chapter list =
           ; "SumOf(Zero, ?Number, ?Number)."
           ; "SumOf(Succ(?InnerLeft), ?Right, Succ(?SumOfRightAndInnerLeft)) when SumOf(?InnerLeft, ?Right, ?SumOfRightAndInnerLeft)."
           ; "PrettySum(?leftAlias, ?rightAlias, ?prettySum) when Alias(?leftAlias, ?leftStructure) and Alias(?rightAlias, ?rightStructure) and SumOf(?leftStructure, ?rightStructure, ?sumStructure) and Alias(?prettySum, ?sumStructure)."
+          ; "PrettyDifference(?leftAlias, ?rightAlias, ?result) when PrettySum(?rightAlias, ?result, ?leftAlias)."
           ]
         ; queries = 
           [ ("PrettySum(Two, Three, ?prettySum)", Comment "Execute this query and breath a sigh of relief. The answer is displayed as a very clear Five.")
@@ -337,7 +353,7 @@ let chapters: chapter list =
           ; ("PrettySum(?half, ?half, ?num)", Comment "Find all the pairs of numbers and their half.")
           ]
       }
-      ; { name = "Towers of Hanoi"
+      ; { name = "Algorithmic Problem Solving (Towers of Hanoi)"
         ; rule_instructions = 
           []
         ; rules = 
@@ -376,7 +392,28 @@ let chapters: chapter list =
           ; ("TowerOfHanoiWithDiscs(Four, ?solution)", Comment "")
           ; ("TowerOfHanoiWithDiscs(Five, ?solution)", Comment "")
           ]
-
+      }
+      ; { name = "Finite State Automata"
+      ; rule_instructions = []
+      ; rules = 
+        [ "_Recognize(?Node, Empty) when FinalState(?Node)."
+        ; "_Recognize(?OriginalNode, ?InputList) when TransitionFromToWithInput(?OriginalNode, ?NextNode, ?Label) and _Traverse(?Label, ?InputList, ?NewInputList) and _Recognize(?NextNode, ?NewInputList)."
+        ; "_Traverse(?Label, N(?Label, ?Remaining), ?Remaining)."
+        ; "Recognize(?InputList) when InitialState(?StartingState) and _Recognize(?StartingState, ?InputList)."
+        ; "InitialState(AcceptingApplesOrDone)."
+        ; "FinalState(Finished)."
+        ; "TransitionFromToWithInput(AcceptingApplesOrDone, Finished, Done)."
+        ; "TransitionFromToWithInput(AcceptingApplesOrDone, AcceptingApplesOrDone, Apples)."
+        ; "TransitionFromToWithInput(AcceptingApplesOrDone, AcceptingOranges, Apples)."
+        ; "TransitionFromToWithInput(AcceptingOranges, AcceptingApplesOrDone, Oranges)."
+        ]
+      ; queries = 
+        [ ("Recognize(N(Apples, N(Oranges, N(Done, Empty))))", Comment "")
+        ; ("Recognize(N(Apples, N(Oranges, N(Apples, N(Oranges, N(Done, Empty))))))", Comment "")
+        ; ("Recognize(N(Apples, N(Oranges, N(Apples, N(Oranges, N(Apples, N(Oranges, N(Done, Empty))))))))", Comment "")
+        ; ("Recognize(N(Apples, Done))", Comment "")
+        ; ("Recognize(?Inputs)", Comment "")
+        ]
       }
     ]
 

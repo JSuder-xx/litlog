@@ -10,7 +10,7 @@ module Types = struct
         let make name = VariableName name
 
         (** Make a new variable from an existing by appending a number. *)
-        let make_numbered (VariableName variable) num = VariableName (Printf.sprintf "%s%d" variable num)
+        let make_numbered (VariableName variable) num = VariableName (Printf.sprintf "%s__Renamed%d" variable num)
 
         let to_string (VariableName name) =
             Printf.sprintf "?%s" name
@@ -112,6 +112,13 @@ module Types = struct
         let extend (key, value) map : t= 
             FrameMap.add key value map
 
+        let to_all_bindings frame =
+            FrameMap.bindings frame
+            |> List.map (fun (variable, term) ->
+                Printf.sprintf "%s := %s" (VariableName.to_string variable) (Term.to_string term)
+            )
+
+        (** Recursively search  *)
         let rec lookup key (map: t) : Term.t option =
             match FrameMap.find_opt key map with
             | None -> 
@@ -237,7 +244,7 @@ module Types = struct
                 ]
 
         let rename_rule_variables = 
-            let rule_counter = ref 0 in
+            let id = ref 1 in
             let rec aux rule =
                 rule.antecedents
                 |> List.map rename_complex_term_variables
@@ -281,9 +288,9 @@ module Types = struct
                             ; related_terms = new_related_terms
                             }               
             and variable_rename (variable_name: VariableName.t) =
-                VariableName.make_numbered variable_name !rule_counter
+                VariableName.make_numbered variable_name !id
             and rename rule =
-                rule_counter := !rule_counter + 1;
+                id := !id + 1;
                 aux rule in
             rename
     end
@@ -716,7 +723,7 @@ module Evaluator
                 | None -> 
                     EndOfStream
 
-                | Some solution_info' ->                     
+                | Some solution_info' ->   
                     query_complex_terms 
                         (search_depth + 1)
                         clean_rule.antecedents 
