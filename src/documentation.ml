@@ -45,7 +45,7 @@ let chapters: chapter list =
         ; "soccerBalls_ARE_spherical."
         ]
       ; queries = 
-        [ ("SoccerBallsAreSpherical", Comment "This query just asks whether the fact is found in the database. Execute this query to reveal that this fact is found in the database.")
+        [ ("SoccerBallsAreSpherical", Comment "This query just asks whether the fact is found in the database.")
         ; ("FootballsAreSpherical", Comment "Try this query. Observe that no solution was found because the fact is not in the database.")
         ]
       }
@@ -68,8 +68,8 @@ let chapters: chapter list =
     ; { name = "Querying with Variables"
       ; rule_instructions =
         [ {j|The queries in the prior chapters were pretty lame because they could only ask if very _specific_ facts were present in the database.|j}
-        ; {j|To introduce a little abstraction we need variables which act as kind of wildcard placeholders for any value. Variables are written with a ? prefix.|j}
-        ; {j|When a query includes a variable, the solution to the query will display the variable binding which satisfies the query.|j}
+        ; {j|To introduce a little abstraction we need variables which act as wildcards or placeholders for any value. Variables are written in LitLog with a ? prefix.|j}
+        ; {j|When a query includes a variable, the solution to the query will display the variable "binding" which satisfies the query.|j}
         ]
       ; rules =
         [ "Spherical(Oranges)."
@@ -81,14 +81,15 @@ let chapters: chapter list =
         [ (
             "Spherical(?sphericalThing)", 
             Comment {j|When you execute this query you will observe multiple things: 1) the solution now includes the value of the binding and 
-            2) there are now multiple solutions which can be requested with Next Solution. Logic programming environments
+            2) there are now MULTIPLE solutions which can be requested by clicking Next Solution. Logic programming environments
             require user to explicitly ask for the Next Solution because logic programming supports INFINITE solution spaces!!!|j}
         )
         ]
       }
     ; { name = "Relationships"
       ; rule_instructions =
-        [ "Facts can express relationships between multiple things. This child demonstrates declaration of mother-child relationships."
+        [ {j|In the last chapter we saw a relationship with a single term but Facts can express relationships between many terms. This ability to
+        express complex relationships allows us to encode surprisingly complex information. For now we will start by demonstrating a simple mother-child relationship.|j}
         ]
       ; rules = 
         [ "MotherOf(Sally, Bob)."
@@ -97,14 +98,16 @@ let chapters: chapter list =
         ; "MotherOf(Janice, Malcom)."
         ]
       ; queries = 
-        [ ("MotherOf(Sally, ?childOfSally)", Comment "This query will find all children of Sally in the database.")
-        ; ("MotherOf(?motherOfBob, Bob)", Comment "This query will find the mother (or mothers) of Bob. NOTE: We have now seen that variables can be put in any place. That is a powerful concept we will explore later.")
+        [ ("MotherOf(Sally, Debrah)", Comment "This query without any variables simply asks if the fact can be found in the database; not very interesting.")
+        ; ("MotherOf(Sally, ?childOfSally)", Comment "This query will find all children of Sally in the database by fixing Sally in the Mother position and asking what variable bindings in the Child position would enable a match with a known fact in the database..")
+        ; ("MotherOf(?motherOfBob, Bob)", Comment "Here we fix the Child and instead ask for variable bindings in the Mother position. This query will find the mother (or mothers) of Bob. NOTE: We have now seen that variables can be put in any place. That is a powerful concept we will explore later.")
         ; ("MotherOf(?mother, ?child)", Comment "In fact, we can use variables for both locations to get all mother-child solutions in the database.")
         ]
       }
     ; { name = "Unification in Queries"
       ; rule_instructions =
-        [ ""
+        [ "In the last chapter two chapters we saw how variables can be used to both look for matches and also return information about what the variable values might allow a query term to match a known fact."
+        (** TODO: More documentation *)
         ]
       ; rules = 
         [ "MotherOf(Sally, Bob)."
@@ -113,30 +116,35 @@ let chapters: chapter list =
         ; "MotherOf(Janice, Malcom)."
         ]
       ; queries = 
-        [ ("MotherOf(?mother, ?siblingOne) and MotherOf(?mother, ?siblingTwo)", Comment "Match on all mother/child pairs where the SAME mother is common to both. When running this query you will observe that a person is their own sibling.")
-        ; ("MotherOf(?mother, ?siblingOne) and MotherOf(?mother, ?siblingTwo) and <?siblingOne /= ?siblingTwo>", Comment "To filter out cases where siblingOne and siblingTwo are the same person we use the /= operator which stands for 'does not unify'.")
+        [ ("MotherOf(?mother, ?siblingOne) and MotherOf(?mother, ?siblingTwo)", Comment "Match on all mother/child pairs where the SAME mother is common to both. This happens because we are using the same ?mother variable in each MotherOf sub-query. When running this query you will observe that a person is their own sibling.")
+        ; ("MotherOf(?motherOne, ?siblingOne) and MotherOf(?motherTwo, ?siblingTwo) and <?motherOne = ?motherTwo>", Comment "In the query above we get the work done of ensuring the common mother by simply using the same variable name. This query shows the long-hand version by introducing the <left = right> syntax which expresses that left 'unifies' with right.")
+        ; ("MotherOf(?mother, ?siblingOne) and MotherOf(?mother, ?siblingTwo) and <?siblingOne /= ?siblingTwo>", Comment "In addition to expressing that two terms must unify we can also express that two terms must NOT unify. For example, to filter out cases where siblingOne and siblingTwo are the same person we use the /= operator which stands for 'does not unify'.")
+        ; ("MotherOf(?motherOne, ?notSiblingOne) and MotherOf(?motherTwo, ?notSiblingTwo) and <?motherOne /= ?motherTwo> and <?notSiblingOne /= ?notSiblingTwo>", Comment "This query finds all people who are NOT siblings of one another.")
         ]
       }
     ; { name = "Unification: Database"
       ; rule_instructions =
-        [ {j| |j}
+        [ {j|Facts, Relations, Variables, and Unification clearly provide enough descriptive and querying power to support a common database use cases.|j}
+        ; {j|The facts below describe employees in a fictitious software company. The Job relation associates an employee with a job role. 
+        The Salary relation associates an employee with their level of pay (unrelated to performance as is often the case). Finally there are two sets of which employees may or may not be members: Smart and GetsThingsDone.|j}
+        ; {j|By using unification we will be able to do work similar to a JOIN in a SQL database (in fact, the commonality should start to become obvious).|j}
         ]
       ; rules = 
-        [ "Job(Cindy, QualityEngineer)."
+        [ "Job(Cindy, QAEngineer)."
         ; "Smart(Cindy)."
         ; "GetsThingsDone(Cindy)."
         ; "Salary(Cindy, Moderate)."
 
-        ; "Job(Swathi, QualityEngineer)."
+        ; "Job(Swathi, QAEngineer)."
         ; "Smart(Swathi)."
         ; "GetsThingsDone(Swathi)."
         ; "Salary(Swathi, High)."        
 
-        ; "Job(William, QualityEngineer)."
+        ; "Job(William, QAEngineer)."
         ; "GetsThingsDone(William)."
         ; "Salary(William, Low)."        
 
-        ; "Job(Janet, QualityEngineer)."
+        ; "Job(Janet, QAEngineer)."
         ; "Smart(Janet)."
         ; "Salary(Janet, Low)."        
 
@@ -151,16 +159,23 @@ let chapters: chapter list =
         ; "Salary(Beatrice, High)."
         ]
       ; queries = 
-        [ ("Job(?person, QualityEngineer)", Comment "Simply find all the persons who are quality engineers.")
-        ; ("Job(?person, QualityEngineer) and Smart(?person) and GetsThingsDone(?person)", Comment "Now find all the quality engineers who are both smart and get things done.")
-        ; ("Job(?person, ?jobRole) and Smart(?person) and GetsThingsDone(?person)", Comment "Just find the smart industrious people and report on their job role.")
-        ; ("Job(?person, QualityEngineer) and Smart(?person) and GetsThingsDone(?person) and Salary(?person, ?salary) and <?salary /= High>", Comment "Now find all the smart, industrious quality engineers who do not get paid a high salary.")
+        [ ("Job(?person, QAEngineer)", Comment "Simply find all the persons who are quality engineers.")
+        ; ("Job(?person, QAEngineer) and Smart(?person) and GetsThingsDone(?person)", Comment "Now find all the quality engineers who are both smart and get things done.")
+        ; ("Job(?person, QAEngineer) and Salary(?person, High)", Comment "Find all the highly paid QA Engineers.")
+        ; ("Job(?person, QAEngineer) and Salary(?person, ?salary)", Comment "This is where things get fun!!! Here we ask for all persons who are QA Engineers and then use the SAME ?person variable in the Salary sub-query in order to join to the Salary relation and get the salary level for said person. Take a moment to reflect on the implications.")
+        ; ("Smart(?person) and GetsThingsDone(?person) and Job(?person, ?jobRole)", Comment "Here is another way of looking at a join: We first find the smart people who are also industrious and then finally use the Job relation to query that person's role.")
+        ; ("Job(?person, QAEngineer) and Smart(?person) and GetsThingsDone(?person) and Salary(?person, ?salary) and <?salary /= High>", Comment "As a final example, find all the smart, industrious quality engineers who do not get paid a high salary.")
         ]
       }
     ; { name = "Implication (Rules)"
       ; rule_instructions =
-        [ {j|While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions. For example, someone is a parent of someone else if 
-        we can prove that they are the mother or father. Parenthood follows from motherhood and fatherhood.|j}
+        [ {j| |j}
+        ; {j|While Facts are uncondtionally true, a RULE specifies a _conclusion_ whose truth is dependent upon one or more conditions.|j}
+        ; {j|Rules are written This when That (Consequent <-- Antecedent) but can be _thought_ from the other direction as Antecedent --> Consequent.|j}
+        ; {j|For example, someone is a parent of someone else if we can prove that they are the mother or father. Parenthood follows from motherhood and fatherhood (Parenthood <-- Fatherhood). 
+        Stated the other direction, Fatherhood implies Parenthood (Fatherhood --> Parenthood).|j}
+        ; {j|Rules also serve a function (pun intended) similar to functions in other languages in that they are a named abstraction / generalization with a body where the body represents the "work" that is done.|j}
+        ; {j|The body of a rule is the list of all the sub-queries which must be satisfied in order for the rule to hold true.|j}
         ]
       ; rules = 
         [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
@@ -178,27 +193,9 @@ let chapters: chapter list =
       }
     ; { name = "Unification in Rules"
       ; rule_instructions =
-        [ {j|In this next example consider the definition of Siblings. Note that the variable ?parent is found in two sub-queries of ParentOf. 
-        This means that the Siblings rule can only be proven true when a ParentOf can be proven for the first sibling and for the second and
-        that the parent must be able to be unified (in this case the same). This is an example of unification and it is one of most interesting powers 
-        in logic programming because it can accomplish a lot work in a very subtle and succinct way.|j}
-        ]
-      ; rules = 
-        [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
-        ; "Siblings(?firstSibling, ?secondSibling) when ParentOf(?parent, ?firstSibling) and ParentOf(?parent, ?secondSibling)."
-        ; "MotherOf(Sally, Janice)."
-        ; "MotherOf(Sally, Debrah)."
-        ; "MotherOf(Sally, Malcom)."
-        ]
-      ; queries = 
-        [ ("Siblings(Janice, Debrah)", Comment "A yes/no style query that just asks the system to deduce whether Janice and Debrah are siblings.")
-        ; ("Siblings(?sibling, Debrah)", Comment "Here we ask about the siblings of Debrah. OBSERVE: Debrah is her own sibling! Weird. We will explain and fix this behavior in the next Chapter.")
-        ]
-      }
-    ; { name = "Asserting Not Unifiable"
-      ; rule_instructions =
-        [ {j|In the last chapter we saw that our definition of sibling was such that it would report that a person was their own sibling. This was because
-        we defined sibling as ANY other term in the database that has the same parent. We did not explicitly ask not to be informed when both terms were the same.|j}
+        [ {j|A few chapters earlier we QUERIED for siblings by using the same variable to represent the mother of two individuals. All of the interesting "work" was done in the query itself.|j}
+        ; {j|In this chapter we are going to use Rules as an abstraction mechanism (like functions in other languages) to put the work inside the rule. Further, we are going to base our sibling
+        definition off of the more general ParentOf relation rather than the specific subset relation MotherOf.|j}
         ]
       ; rules = 
         [ "ParentOf(?parent, ?child) when MotherOf(?parent, ?child)."
@@ -208,7 +205,8 @@ let chapters: chapter list =
         ; "MotherOf(Sally, Malcom)."
         ]
       ; queries = 
-        [ ("Siblings(?sibling, Debrah)", Comment "Now we should only get other terms that have the same parent but which are not Debrah herself.")
+        [ ("Siblings(Janice, Debrah)", Comment "A yes/no style query that just asks the system to deduce whether Janice and Debrah are siblings.")
+        ; ("Siblings(?sibling, Debrah)", Comment "Here we ask about the siblings of Debrah. OBSERVE: Debrah is her own sibling! Weird. We will explain and fix this behavior in the next Chapter.")
         ]
       }
     ; { name = "Recursion in Rules (Genealogy Example)"
@@ -216,6 +214,11 @@ let chapters: chapter list =
         [ {j|A rule can depend upon itself recursively! This chapter demonstrates a recursive declaration for proving that something is an ancestor of another.|j}
         ; {j|As is always the case with recursion, BEWARE to always have a terminating base case. Observe that the recursive specification of AncestorOf has a ParentOf 
         sub-query which is not a reference to AncestorOf. When the ParentOf sub-query in the body of the AncestorOf rule fails the recursion terminates.|j}
+        ; {j|You will also observe that we define the AncestorOf relation TWICE!!! Relations can be declared multiple times where each succeeding declaration adds another pattern that can
+        match for the relation. In other words, when a relation is defined a second time the second does not override or replace the first but rather adds a new way the relation can match.|j}
+        ; {j|Observe that the simplest case of Ancestor is immediate Parentage. If someone is your parent they are your ancestor full-stop. This is a base case.|j}
+        ; {j|In the second, recursive, definition of AncestorOf the ParentOf sub-query comes first as a simple base case which, only if it succeeds, then leads the logic engine to recursively search AncestorOf.|j}
+        ; {j|From this explanation you can see that... the ORDER OF QUERIES MATTERS!!!|j}
         ]
       ; rules = 
         [ "ParentOf(?Mother, ?Child) when MotherOf(?Mother, ?Child)."
@@ -239,37 +242,39 @@ let chapters: chapter list =
         ; rule_instructions = 
           [ {j|So far we have covered use cases that probably seem relatively natural to a database system. We are now going to
           explore patterns that approximate general purpose programming but using an entirely declarative information based approach.|j}
-          ; {j|We begin with appending two linked lists together. In this example, the N relation defines a linked-list node (abbreviated to N for reasons that become quickly apparent.)|j}
-          ; {j|A node in a linked list has a value and a pointer to the next item in the list. The last node in the list typically has a null pointer in most imperative programming languages.|j}
-          ; {j|Here we represent the terminating value as Empty. So an empty list is just Empty.|j}
-          ; {j|A list of a single item would be N(FirstItem, Empty).|j}
-          ; {j|A list of two items N(FirstItem, N(SecondItem, Empty))|j}
-          ; {j|...and so on. Obviously this is a tedious way to write lists but it is still pretty amazing to consider it is possible to define list behavior with two rules.|j}
+          ; {j|We begin with appending two linked lists together. In this example, the Node relation defines a linked-list node.|j}
+          ; {j|A node in a linked list has a value in the first position while the second position holds the next Node in the list.|j}
+          ; {j|The last node in the list typically has a null pointer in most imperative programming languages. Here we represent the terminating value as EmptyList. In other words, an empty list is just EmptyList.|j}
+          ; {j|A list of a single item would be Node(FirstItem, EmptyList).|j}
+          ; {j|A list of two items Node(FirstItem, Node(SecondItem, EmptyList))|j}
+          ; {j|A list of three items Node(FirstItem, Node(SecondItem, Node(ThirdItem, EmptyList)))|j}
+          ; {j|...and so on.|j}
+          ; {j|This is a tedious way to write lists but it is still pretty amazing to consider it is possible to define list behavior with two rules.|j}
           ; {j|The AMAZING property is that this append operation can be queried from any direction just like every other query we have seen. In other languages the 
           append operation takes two INPUTs and yields an OUTPUT. In a logic programming language there are NO inputs or outputs in the specification of rules and facts. The author
           of the query determines what is given and what must be solved (variables).|j}
           ]
         ; rules = 
-        [ "Append(Empty, ?List, ?List)."
-        ; "Append(N(?HeadValue, ?Tail), ?RightLinkedList, N(?HeadValue, ?Result)) when Append(?Tail, ?RightLinkedList, ?Result)."
+        [ "Append(EmptyList, ?List, ?List)."
+        ; "Append(Node(?HeadValue, ?Tail), ?RightLinkedList, Node(?HeadValue, ?Result)) when Append(?Tail, ?RightLinkedList, ?Result)."
         ]
         ; queries = 
-        [ ("Append(N(a, N(b, N(c, Empty))), N(one, N(two, N(three, Empty))), ?Result)", Comment "Appends a list of [a, b, c] and a list of [one, two, three].")
-        ; ("Append(N(a, N(b, Empty)), ?right, N(a, N(b, N(c, N(d, Empty)))))", Comment "AMAZING!!! We are asking what list would we have to add to [a, b] to get [a, b, c, d].")
-        ; ("Append(?left, ?right, N(a, N(b, N(c, N(d, Empty)))))", Comment "This is even crazier. We are now asking for all combinations of input that might produce the output.")
+        [ ("Append(Node(a, Node(b, Node(c, EmptyList))), Node(one, Node(two, Node(three, EmptyList))), ?Result)", Comment "Appends a list of [a, b, c] and a list of [one, two, three].")
+        ; ("Append(Node(a, Node(b, EmptyList)), ?right, Node(a, Node(b, Node(c, Node(d, EmptyList)))))", Comment "AMAZING!!! We are asking what list would we have to add to [a, b] to get [a, b, c, d].")
+        ; ("Append(?left, ?right, Node(a, Node(b, Node(c, Node(d, EmptyList)))))", Comment "This is even crazier. We are now asking for all combinations of input that might produce the output.")
         ]
       }
       ; { name = "Accumulators in Recursion (Linked List: Reverse)"
         ; rule_instructions = 
           []
         ; rules = 
-          [ {j|ReverseList(Empty, Empty).|j}
-          ; {j|ReverseListWithAccumulator(?accumulator, Empty, ?accumulator).|j}
-          ; {j|ReverseListWithAccumulator(?accumulator, N(?head, ?tail), ?reversed) when ReverseListWithAccumulator(N(?head, ?accumulator), ?tail, ?reversed).|j}
-          ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(Empty, ?List, ?ReversedList).|j}
+          [ {j|ReverseList(EmptyList, EmptyList).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, EmptyList, ?accumulator).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, Node(?head, ?tail), ?reversed) when ReverseListWithAccumulator(Node(?head, ?accumulator), ?tail, ?reversed).|j}
+          ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(EmptyList, ?List, ?ReversedList).|j}
           ]
         ; queries = 
-          [ ("ReverseList(N(a, N(b, N(c, N(d, Empty)))), ?reversed)", Comment "")
+          [ ("ReverseList(Node(a, Node(b, Node(c, Node(d, EmptyList)))), ?reversed)", Comment "")
           ]         
 
       }
@@ -282,18 +287,18 @@ let chapters: chapter list =
 
           ]
         ; rules = 
-        [ "Remove(?Item, Empty, Empty)."
-        ; "Remove(?Item, N(?Item, ?Tail), ?RecursiveTail) when Remove(?Item, ?Tail, ?RecursiveTail)." 
-        ; "Remove(?Item, N(?HeadValue, ?Tail), N(?HeadValue, ?RecursiveTail)) when <?Item /= ?HeadValue> and Remove(?Item, ?Tail, ?RecursiveTail)." 
+        [ "Remove(?Item, EmptyList, EmptyList)."
+        ; "Remove(?Item, Node(?Item, ?Tail), ?RecursiveTail) when Remove(?Item, ?Tail, ?RecursiveTail)." 
+        ; "Remove(?Item, Node(?HeadValue, ?Tail), Node(?HeadValue, ?RecursiveTail)) when <?Item /= ?HeadValue> and Remove(?Item, ?Tail, ?RecursiveTail)." 
         ]
         ; queries = 
-        [ ("Remove(a, Empty, ?result)", Comment "")
-        ; ("Remove(a, N(a, Empty), ?result)", Comment "")
-        ; ("Remove(a, N(b, Empty), ?result)", Comment "")
-        ; ("Remove(b, N(a, N(b, N(a, Empty))), ?result)", Comment "")
-        ; ("Remove(cherry, N(apple, N(banana, N(cherry, N(date, N(elderberry, Empty))))), ?result)", Comment "")
-        ; ("Remove(x, N(x, N(o, N(x, N(o, N(x, Empty))))), ?result)"     , Comment "")
-        ; ("Remove(?whatWouldIRemove, N(x, N(o, N(x, N(o, N(x, Empty))))), N(o, N(o, Empty)))"     , Comment "")
+        [ ("Remove(a, EmptyList, ?result)", Comment "")
+        ; ("Remove(a, Node(a, EmptyList), ?result)", Comment "")
+        ; ("Remove(a, Node(b, EmptyList), ?result)", Comment "")
+        ; ("Remove(b, Node(a, Node(b, Node(a, EmptyList))), ?result)", Comment "")
+        ; ("Remove(cherry, Node(apple, Node(banana, Node(cherry, Node(date, Node(elderberry, EmptyList))))), ?result)", Comment "")
+        ; ("Remove(x, Node(x, Node(o, Node(x, Node(o, Node(x, EmptyList))))), ?result)"     , Comment "")
+        ; ("Remove(?whatWouldIRemove, Node(x, Node(o, Node(x, Node(o, Node(x, EmptyList))))), Node(o, Node(o, EmptyList)))"     , Comment "")
         ]
       }
       ; { name = "Rules and Recursion #2 (Natural Number Summation)"
@@ -308,8 +313,8 @@ let chapters: chapter list =
         ; rules = 
           [ "SumOf(Zero, ?Number, ?Number)."
           ; "SumOf(Succ(?InnerLeft), ?Right, Succ(?SumOfRightAndInnerLeft)) when SumOf(?InnerLeft, ?Right, ?SumOfRightAndInnerLeft)."
-          ; "Append(Empty, ?List, ?List)."
-          ; "Append(N(?HeadValue, ?Tail), ?RightLinkedList, N(?HeadValue, ?Result)) when Append(?Tail, ?RightLinkedList, ?Result)."
+          ; "Append(EmptyList, ?List, ?List)."
+          ; "Append(Node(?HeadValue, ?Tail), ?RightLinkedList, Node(?HeadValue, ?Result)) when Append(?Tail, ?RightLinkedList, ?Result)."
           ]          
         ; queries = 
           [ ("SumOf(Zero, Zero, ?sum)", Comment "Query for the result of 0 + 0")
@@ -368,12 +373,12 @@ let chapters: chapter list =
           ; "Alias(Eight, Succ(?sevenStructure)) when Alias(Seven, ?sevenStructure)."
           ; "Alias(Nine, Succ(?eightStructure)) when Alias(Eight, ?eightStructure)."
 
-          ; {j|ReverseList(Empty, Empty).|j}
-          ; {j|ReverseListWithAccumulator(?accumulator, Empty, ?accumulator).|j}
-          ; {j|ReverseListWithAccumulator(?accumulator, N(?head, ?tail), ?reversed) when ReverseListWithAccumulator(N(?head, ?accumulator), ?tail, ?reversed).|j}
-          ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(Empty, ?List, ?ReversedList).|j}
+          ; {j|ReverseList(EmptyList, EmptyList).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, EmptyList, ?accumulator).|j}
+          ; {j|ReverseListWithAccumulator(?accumulator, Node(?head, ?tail), ?reversed) when ReverseListWithAccumulator(Node(?head, ?accumulator), ?tail, ?reversed).|j}
+          ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(EmptyList, ?List, ?ReversedList).|j}
 
-          ; {j|Move(Zero, ?X, ?Y, ?dontCare, ?PriorMoves, N(MoveTopDiskFrom(?X, ?Y), ?PriorMoves)).|j}
+          ; {j|Move(Zero, ?X, ?Y, ?dontCare, ?PriorMoves, Node(MoveTopDiskFrom(?X, ?Y), ?PriorMoves)).|j}
           ; {j|Move(Succ(?M), ?X, ?Y, ?Z, ?PriorMoves, ?FinalMoves) 
                 when Move(?M, ?X, ?Z, ?Y, ?PriorMoves, ?MovesAfterFirst) 
                 and Move(Zero, ?X, ?Y, ?_, ?MovesAfterFirst, ?MovesAfterZero) 
@@ -381,7 +386,7 @@ let chapters: chapter list =
           |j}         
           ; {j|TowerOfHanoiWithDiscs(?numberOfDiscs, ?resultingMoves)
                 when Alias(?numberOfDiscs, Succ(?zeroBasedStructure))
-                and Move(?zeroBasedStructure, Left, Right, Center, Empty, ?resultingMovesReversed)
+                and Move(?zeroBasedStructure, Left, Right, Center, EmptyList, ?resultingMovesReversed)
                 and ReverseList(?resultingMovesReversed, ?resultingMoves).
           |j}
           ]
@@ -396,9 +401,9 @@ let chapters: chapter list =
       ; { name = "Finite State Automata"
       ; rule_instructions = []
       ; rules = 
-        [ "_Recognize(?Node, Empty) when FinalState(?Node)."
+        [ "_Recognize(?Node, EmptyList) when FinalState(?Node)."
         ; "_Recognize(?OriginalNode, ?InputList) when TransitionFromToWithInput(?OriginalNode, ?NextNode, ?Label) and _Traverse(?Label, ?InputList, ?NewInputList) and _Recognize(?NextNode, ?NewInputList)."
-        ; "_Traverse(?Label, N(?Label, ?Remaining), ?Remaining)."
+        ; "_Traverse(?Label, Node(?Label, ?Remaining), ?Remaining)."
         ; "Recognize(?InputList) when InitialState(?StartingState) and _Recognize(?StartingState, ?InputList)."
         ; "InitialState(AcceptingApplesOrDone)."
         ; "FinalState(Finished)."
@@ -408,10 +413,10 @@ let chapters: chapter list =
         ; "TransitionFromToWithInput(AcceptingOranges, AcceptingApplesOrDone, Oranges)."
         ]
       ; queries = 
-        [ ("Recognize(N(Apples, N(Oranges, N(Done, Empty))))", Comment "")
-        ; ("Recognize(N(Apples, N(Oranges, N(Apples, N(Oranges, N(Done, Empty))))))", Comment "")
-        ; ("Recognize(N(Apples, N(Oranges, N(Apples, N(Oranges, N(Apples, N(Oranges, N(Done, Empty))))))))", Comment "")
-        ; ("Recognize(N(Apples, Done))", Comment "")
+        [ ("Recognize(Node(Apples, Node(Oranges, Node(Done, EmptyList))))", Comment "")
+        ; ("Recognize(Node(Apples, Node(Oranges, Node(Apples, Node(Oranges, Node(Done, EmptyList))))))", Comment "")
+        ; ("Recognize(Node(Apples, Node(Oranges, Node(Apples, Node(Oranges, Node(Apples, Node(Oranges, Node(Done, EmptyList))))))))", Comment "")
+        ; ("Recognize(Node(Apples, Done))", Comment "")
         ; ("Recognize(?Inputs)", Comment "")
         ]
       }
