@@ -42,7 +42,7 @@ module Types = struct
 
         let make_variable name = 
             Variable (VariableName.make name)
-
+        
         let rec to_string = function
         | Variable variable -> 
             VariableName.to_string variable
@@ -62,6 +62,11 @@ module Types = struct
                 related_terms
                 |> Utils.ListEx.concat_map relation_arities
             )
+
+        let rec count_sub_terms = function
+            | Variable _ -> 1
+            | Relation { related_terms } ->
+                1 + (related_terms |> List.map count_sub_terms |> List.fold_left (+) 0 )
 
     end
 

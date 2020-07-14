@@ -209,7 +209,9 @@ module RuleView = struct
     let query_comment_class = "query-comment"
     let rule_application_count_class = "rule-application-count"
     let rule_application_count_visible_class = "rule-application-count-visible"
+    let related_terms_list_class = "related-terms-list"
     let relation_class = "relation"
+    let multi_line_relation_class = "multi-line-relation"
     let rule_item_class = "rule-item"
     let rule_used_class = "rule-used"
     let rule_display_class = "rule-display"
@@ -222,6 +224,14 @@ module RuleView = struct
 
         .$relation_class {
             display: inline-block;
+        }
+
+        .$multi_line_relation_class {
+            border: solid 1px #346;
+            padding: 2px;
+            margin-bottom: 4px;
+            margin-top: 2px;
+            border-radius: 5px;
         }
 
         .$fact_name_class {
@@ -244,6 +254,11 @@ module RuleView = struct
         .$punctuation_class {
             color: white;
             font-weight: bold;
+            vertical-align: top;
+        }
+
+        .$punctuation_class:last-child {
+            vertical-align: bottom;
         }
 
         .$rule_display_class {
@@ -290,6 +305,10 @@ module RuleView = struct
             visibility: visible;
         }
 
+        .$rule_display_class ul.$related_terms_list_class {
+            padding-left: 20px;
+        }
+
         ul {
             list-style: none;
             margin-block-start: 0;
@@ -299,33 +318,70 @@ module RuleView = struct
 
     let punctuation_view str = span [class' punctuation_class] [text str]
     
-    let rec term_view = function
+    let rec term_view term = 
+        let multi_line_relation name first_term rest_terms =
+            span [ classList [(relation_class, true); (multi_line_relation_class, true)] ]
+                [ span [class' relation_name_class] [text name]
+                ; punctuation_view "("
+                ; ul [ class' related_terms_list_class ]
+                    (
+                        (li [] [term_view first_term])
+                        ::(
+                            rest_terms 
+                            |> List.map (fun term -> 
+                                li []
+                                    [ punctuation_view ", "
+                                    ; term_view term                                            
+                                    ] 
+                            )              
+                        )
+                    )
+                ; punctuation_view ")"
+                ] in                      
+        let single_line_relation name first_term rest_terms =
+            span [ class' relation_class ] 
+                [ span [class' relation_name_class] [text name]
+                ; punctuation_view "("
+                ; span [] [term_view first_term]
+                ; span []
+                    (
+                        rest_terms 
+                        |> List.map (fun term -> 
+                            span []
+                                [ punctuation_view ", "
+                                ; term_view term                                            
+                                ] 
+                        )              
+                        )
+                ; punctuation_view ")"
+                ] in                      
+        
+        match term with 
         | Term.Variable VariableName var ->
             span [class' variable_class] [var |> Printf.sprintf "?%s" |> text]
         | Term.Relation { relation_name = RelationName name; related_terms } ->
             match related_terms with
             | [] -> 
                 span [class' fact_name_class] [text name]
-            | first::rest -> 
+            | [single_term] ->
                 span [ class' relation_class ] 
                     [ span [class' relation_name_class] [text name]
                     ; punctuation_view "("
-                    ; term_view first
-                    ; span [] 
-                        (
-                            rest 
-                            |> List.map (fun term -> 
-                                span []
-                                    [ punctuation_view ", "
-                                    ; term_view term                                            
-                                    ]               
-                            )                                                    
-                        )                                
+                    ; term_view single_term
                     ; punctuation_view ")"
-                    ]                     
+                    ]
+
+            | first::rest -> 
+                let count_of_terms = related_terms |> List.map Language.Types.Term.count_sub_terms |> List.fold_left (+) 0 in
+                (
+                    if count_of_terms >= 4
+                    then multi_line_relation 
+                    else single_line_relation
+                ) name first rest
 
     let complex_term_view = function
-        | Language.Types.ComplexTerm.Term term -> term_view term
+        | Language.Types.ComplexTerm.Term term -> 
+            term_view term
         | Language.Types.ComplexTerm.EqualityAssertion (left, right) ->
             span [] 
                 [ punctuation_view "<"
