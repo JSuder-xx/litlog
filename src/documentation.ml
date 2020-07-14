@@ -259,7 +259,7 @@ let chapters: chapter list =
         ; ("AncestorOf(Erica, ?descendant)" , Comment "Demonstrating a variable to ask for ALL descendants of Erica.")
         ]
       }
-      ; { name = "Pattern Matching and Recursion (Linked List: Append)"
+      ; { name = "Pattern Matching & Recursion (Linked List: Append)"
         ; rule_instructions = 
           [ {j|So far we have covered use cases that probably seem relatively natural to a database system. We are now going to
           explore patterns that approximate general purpose programming but using an entirely declarative information based approach.|j}
@@ -302,7 +302,7 @@ let chapters: chapter list =
         ; ("Append(?left, ?right, Node(a, Node(b, Node(c, Node(d, EmptyList)))))", Comment "This is even crazier. We are now asking for all combinations of input that might produce the output.")
         ]
       }
-      ; { name = "Linked List: Zip"
+      ; { name = "Recursion & Result Construction (Linked List: Zip)"
         ; rule_instructions = 
           [ {j|This chapter demonstrates the implementation of a Zip function which takes two lists of equal length and combines them together to form a list of equal length of Pairs.
           For each Pair, the first item of the pair comes from an item in the first list and the second item of the pair comes from the corresponding element in the second list." |j}
@@ -340,7 +340,7 @@ let chapters: chapter list =
             )
           ]
       }
-      ; { name = "Linked List: Remove"
+      ; { name = "Does Not Unify (Linked List: Remove)"
         ; rule_instructions = 
           [ {j|This chapter illustrates how one might implement removal of all instances of a certain element from a list.|j}
           ; {j|The first definition of Remove is a base case relation: Removing an item from an empty list is always the empty list.|j}
@@ -398,9 +398,9 @@ let chapters: chapter list =
           ; ("ReverseList(Node(a, Node(b, Node(c, Node(d, EmptyList)))), ?reversed)", Comment "Using ReverseList as a function to get the reverse of [a, b, c, d].")
           ]         
       }
-      ; { name = "Rules and Recursion #2 (Natural Number Summation)"
+      ; { name = "Rules & Recursion #2 (Natural Number Summation)"
         ; rule_instructions = 
-          [ {j|Real Prolog natively understands how to work with numbers. LitLog does not. HOWEVER, there is enough expressive power in pattern matching, unification and recursive rules
+          [ {j|Prolog natively understands how to work with numbers. LitLog does not. HOWEVER, there is enough expressive power in pattern matching, unification and recursive rules
           to define numbers and numeric behaviors for cardinal numbers (counting numbers).|j}
           ; {j|The representation in the example is based off the Peano Axioms (internet search). Number are defined in terms of Zero, a base case, and PlusOne(?number) operation which, as the name implies adds one to its number argument.|j}
           ; {j|In this system, Zero is... well Zero. The number one is represented by simply adding one to Zero: PlusOne(Zero). Naturally, two can be found by adding one to that: PlusOne(PlusOne(Zero)). 
@@ -421,7 +421,7 @@ let chapters: chapter list =
           ; ("SumOf(PlusOne(PlusOne(PlusOne(Zero))), PlusOne(PlusOne(Zero)), ?sum)", Comment "3 + 2. Not only is this tedious to write but it is also difficult to decipher the output. We will clean that up in the next Chapter.")
           ]
         }
-      ; { name = "Mapping Structure to Readable Aliases (Pretty Summation)"
+      ; { name = "Aliases (Pretty Summation)"
         ; rule_instructions = 
           [ "The SumOf operation works by pattern matching on the structure of PlusOne. Therefore, the nesting structure, which is so difficult to read, is at the heart of what makes it work. We have to keep the nesting structure."
           ; "However, we can alias the structured representation of numbers and define a pretty sum that relates terms at the level of the aliases."
