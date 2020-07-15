@@ -76,6 +76,7 @@ module CommandView : sig
         button {
             background-color: white;
             color: #555;
+            cursor: pointer;
             box-shadow: 0 0 0 1px $blue_color;
             border: none;
             border-radius: 4px;
@@ -117,6 +118,50 @@ module CommandView : sig
     |j}
 
 end    
+
+module PageView = struct
+
+    let menu_class = "menu"
+
+    let style =
+        {j|
+        .$menu_class {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .$menu_class a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .$menu_class a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        |j}
+
+    let page ~hyper_links ~body =
+        div []
+            [ div  
+                [ class' menu_class ]                
+                (
+                    hyper_links
+                    |> List.map (fun (msg, txt) ->
+                        a [ Tea.Html.href msg; Tea.Html.target "_blank" ] [text txt] 
+                    )
+                )
+            ; div 
+                [ ]
+                [ body ]
+            ]
+
+end
 
 module MainPanelView = struct
 
@@ -850,6 +895,7 @@ end
 let style = 
     [ ContainersView.style
     ; CommandView.style
+    ; PageView.style
     ; MainPanelView.style
     ; SectionView.style
     ; RuleView.style
@@ -860,7 +906,16 @@ let style =
     |> String.concat " "
 
 let view (model: ApplicationModel.t) =
-    MainPanelView.panels_container_view
-        [ RulesPanelView.view model
-        ; QueryPanelView.view model       
+    PageView.page
+        ~hyper_links: [                      
+            ("https://jsuder-xx.github.io", "My Home Page")
+            ; ("https://github.com/JSuder-xx/litlog", "On GitHub")
+            ; ("http://tsqlstrongdemo.azurewebsites.net/tsqleditor", "Strong SQL Types")
         ]
+        ~body: (
+            MainPanelView.panels_container_view
+            [ RulesPanelView.view model
+            ; QueryPanelView.view model       
+            ]
+        )
+        
