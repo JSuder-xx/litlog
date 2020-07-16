@@ -15,6 +15,7 @@ module ContainersView = struct
             color: #444;
             margin-left: 4px;
             margin-right: 16px;
+            margin-bottom: 6px;
         }
 
         body {
@@ -123,11 +124,22 @@ module PageView = struct
 
     let menu_class = "menu"
 
+    let body_class = "body"
+
     let style =
         {j|
         .$menu_class {
             overflow: hidden;
             background-color: #333;
+            position: fixed;
+            height: 36px;
+            width: 100%;
+        }
+
+        .$body_class {
+            margin-top: 40px;
+            height: calc(100% - 37px);
+            height: -webkit-calc(100% - 37px);
         }
 
         .$menu_class a {
@@ -147,7 +159,7 @@ module PageView = struct
         |j}
 
     let page ~hyper_links ~body =
-        div []
+        div [ Tea.Html.style "height" "100%" ]
             [ div  
                 [ class' menu_class ]                
                 (
@@ -157,7 +169,7 @@ module PageView = struct
                     )
                 )
             ; div 
-                [ ]
+                [ class' body_class ]
                 [ body ]
             ]
 
@@ -182,7 +194,7 @@ module MainPanelView = struct
 
     let style = {j|
         div.$panels_class {
-            height: 98%;
+            height: 100%;
         }
 
         div.$panel_header_class {
@@ -190,10 +202,10 @@ module MainPanelView = struct
             color: white;
             font-weight: bold;
             padding: 4px;
+            height: 18px;
         }   
 
         div.$panel_class {
-            overflow-y: auto;
             background-color: white;
             margin-top: 5px;
         }     
@@ -213,7 +225,8 @@ module MainPanelView = struct
                 float: left;
                 margin-left: 5px;
                 margin-right: 5px;
-                width: 48%;
+                width: calc(50% - 15px);
+                width: -webkit-calc(50% - 15px);
                 height: 98%;
                 border: solid 1px #aaa;
             }
@@ -221,6 +234,9 @@ module MainPanelView = struct
 
         div.$panel_body_class {
             padding: 6px;
+            height: calc(100% - 40px);
+            height: -webkit-calc(100% - 40px);            
+            overflow-y: auto;            
         }
     |j}
 
@@ -269,6 +285,7 @@ module RuleView = struct
 
         .$relation_class {
             display: inline-block;
+            vertical-align: top;
         }
 
         .$multi_line_relation_class {
@@ -910,7 +927,6 @@ let view (model: ApplicationModel.t) =
         ~hyper_links: [                      
             ("https://jsuder-xx.github.io", "My Home Page")
             ; ("https://github.com/JSuder-xx/litlog", "On GitHub")
-            ; ("http://tsqlstrongdemo.azurewebsites.net/tsqleditor", "Strong SQL Types")
         ]
         ~body: (
             MainPanelView.panels_container_view

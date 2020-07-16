@@ -509,11 +509,53 @@ let chapters: chapter list =
           ; ("PrettyQuotient(Fourteen, Seven, ?result)", Comment "14 / 7 = ?")
           ]
       }
-      ; { name = "Algorithmic Problem Solving (Towers of Hanoi)"
+      ; { name = "Lists and Numbers (Linked List: IndexOf)"
         ; rule_instructions = 
-          [ ]
+          [ {j| This chapter demonstrates a definition that finds the item of an item in a linked list. Previous chapters covered both linked lists and the counting numbers so it felt appropriate. |j}
+          ]
+        ; rules =
+          [ "IndexOf(?item, ?list, ?index) when _IndexOf(?item, ?list, Zero, ?index)."
+          ; "_IndexOf(?itemToFind, EmptyList, ?currentIndex, NotFound)."
+          ; "_IndexOf(?itemToFind, Node(?itemToFind, ?remainingItems), ?currentIndex, ?currentIndex)."
+          ; {j|_IndexOf(?itemToFind, Node(?topItem, ?remainingItems), ?currentIndex, ?resultIndex) 
+                when <?topItem /= ?itemToFind> 
+                and _IndexOf(?itemToFind, ?remainingItems, PlusOne(?currentIndex), ?resultIndex).
+            |j}
+          ]
+        ; queries = 
+          [ ("IndexOf(Apples, Node(Apples, EmptyList), ?index)", Comment "Index of first item in a one item list")
+          ; ("IndexOf(Apples, EmptyList, ?index)", Comment "Index of item in an empty list")
+          ; ("IndexOf(Dates, Node(Apples, Node(Bananas, EmptyList)), ?index)", Comment "Index of item not a member of two item list")
+          ; ("IndexOf(Cherries, Node(Apples, Node(Bananas, Node(Cherries, Node(Dates, EmptyList)))), ?index)", Comment "Index of third item in a four item list")
+          ]
+      }
+      ; { name = "Algorithmic Problem Solving (Tower of Hanoi)"
+        ; rule_instructions = 
+          [ {j| This chapter demonstrates another poster-child problem: the Tower of Hanoi puzzle. 
+          In the puzzle there are three rods: left, middle, and right. At the start of the puzzle there are a number of
+          discs on the leftmost rod stacked from largest at the bottom to smallest on the top. The goal is to get all of the discs from the left rod to the right rod. |j}
+          ; {j| The constraints are: |j} 
+          ; {j| 1. Only one disk can be moved at a time. |j} 
+          ; {j| 2. Only the top disc of any rod may be removed (moved) and it must be placed on the top of another stack (or an empty rod). |j} 
+          ; {j| 3. A disk can only be placed on top of a larger disk. A disk cannot be placed on top of a smaller disk. |j}
+          ; {j| There are four parts to the code. |j}
+          ; {j| 1. The two Move rules effectively do all of the real work of solving the puzzle!!! The rest of the code is for aesthetics. 
+          This is because Move works on Peano numbers which are hard to read and it builds the solution using an accumulator which builds the solution reversed. 
+          |j}
+          ; {j| 2. Define some human readable aliases for the Peano numbers. |j}
+          ; {j| 3. Include the definition of reversing a linked list. |j}
+          ; {j| 4. Finally the top level TowerOfHanoiWithDiscs rule accepts a readable alias for the number of discs to start with on the
+          leftmost rod (the larger the number the more difficult the puzzle) and returns the solution in the correct order. |j}
+          ]
         ; rules = 
-          [ "Alias(Zero, Zero)."
+          [ {j|Move(Zero, ?X, ?Y, ?dontCare, ?PriorMoves, Node(MoveTopDiskFrom(?X, ?Y), ?PriorMoves)).|j}
+          ; {j|Move(PlusOne(?M), ?X, ?Y, ?Z, ?PriorMoves, ?FinalMoves) 
+                when Move(?M, ?X, ?Z, ?Y, ?PriorMoves, ?MovesAfterFirst) 
+                and Move(Zero, ?X, ?Y, ?_, ?MovesAfterFirst, ?MovesAfterZero) 
+                and Move(?M, ?Z, ?Y, ?X, ?MovesAfterZero, ?FinalMoves).
+          |j}         
+
+          ; "Alias(Zero, Zero)."
           ; "Alias(One, PlusOne(Zero))."
           ; "Alias(Two, PlusOne(PlusOne(Zero)))."
           ; "Alias(Three, PlusOne(?twoStructure)) when Alias(Two, ?twoStructure)."
@@ -529,12 +571,6 @@ let chapters: chapter list =
           ; {j|ReverseListWithAccumulator(?accumulator, Node(?head, ?tail), ?reversed) when ReverseListWithAccumulator(Node(?head, ?accumulator), ?tail, ?reversed).|j}
           ; {j|ReverseList(?List, ?ReversedList) when ReverseListWithAccumulator(EmptyList, ?List, ?ReversedList).|j}
 
-          ; {j|Move(Zero, ?X, ?Y, ?dontCare, ?PriorMoves, Node(MoveTopDiskFrom(?X, ?Y), ?PriorMoves)).|j}
-          ; {j|Move(PlusOne(?M), ?X, ?Y, ?Z, ?PriorMoves, ?FinalMoves) 
-                when Move(?M, ?X, ?Z, ?Y, ?PriorMoves, ?MovesAfterFirst) 
-                and Move(Zero, ?X, ?Y, ?_, ?MovesAfterFirst, ?MovesAfterZero) 
-                and Move(?M, ?Z, ?Y, ?X, ?MovesAfterZero, ?FinalMoves).
-          |j}         
           ; {j|TowerOfHanoiWithDiscs(?numberOfDiscs, ?resultingMoves)
                 when Alias(?numberOfDiscs, PlusOne(?zeroBasedStructure))
                 and Move(?zeroBasedStructure, Left, Right, Center, EmptyList, ?resultingMovesReversed)
