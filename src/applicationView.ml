@@ -137,7 +137,7 @@ module PageView = struct
         }
 
         .$body_class {
-            margin-top: 40px;
+            margin-top: 37px;
             height: calc(100% - 37px);
             height: -webkit-calc(100% - 37px);
         }
@@ -560,6 +560,7 @@ module CompiledTextEditingView :
             min-height: 92px;
             font-family: Consolas, monospace;
             background-color: black;
+            white-space: nowrap;
             color: white;
         }
 
@@ -606,6 +607,7 @@ module CompiledTextEditingView :
                 ; textarea 
                     [ onInput Message.updateText
                     ; class' language_editing_class
+                    ; Vdom.prop "spellcheck" "false"
                     ; placeholder placeholder_text
                     ; value editing.text
                     
@@ -629,6 +631,7 @@ module CompiledTextEditingView :
                     [ onInput Message.updateText
                     ; class' language_editing_class
                     ; placeholder placeholder_text
+                    ; Vdom.prop "spellcheck" "false"
                     ; value editing.text                
                     ; Tea.Html.noProp                    
                     ]
