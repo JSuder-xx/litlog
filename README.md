@@ -4,6 +4,8 @@ LitLog, short for Literate Logic programming, is a subset of Prolog with a simpl
 
 When Logic Programming fits the problem space, it beats other programming paradigms by orders of magnitude so it is a helpful tool to have in your mental toolbox (even if an applicable problem may only arise once in a decade). It is also just neat and that alone is worth a few lunch periods.
 
+![LITLOG](logo.jpeg)
+
 # Build
 
 ```
